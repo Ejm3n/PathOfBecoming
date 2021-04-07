@@ -16,6 +16,8 @@ public class ActionWithSpellBook : MonoBehaviour
     private bool isBookOpen = false;
     private bool isUseSpell = false;
 
+    public bool[] Spells = new bool[3] { false,false,false};//добавил яша для отслеживания в других скриптах
+
     /// <summary>
     /// Открытие и закрытие книги
     /// </summary>
@@ -48,12 +50,15 @@ public class ActionWithSpellBook : MonoBehaviour
             {
                 case "Spell":
                     animator.SetBool("ShooseSpellOne", true);
+                   StartCoroutine( ChoosenSpell(0));
                     break;
                 case "Spell (1)":
                     animator.SetBool("ShooseSpellTwo", true);
+                    StartCoroutine(ChoosenSpell(1));
                     break;
                 case "Spell (2)":
                     animator.SetBool("ShooseSpellThree", true);
+                    StartCoroutine(ChoosenSpell(2));
                     break;
                 default:
                     break;
@@ -65,6 +70,23 @@ public class ActionWithSpellBook : MonoBehaviour
             animator.SetBool("ShooseSpellOne", isUseSpell);
             animator.SetBool("ShooseSpellTwo", isUseSpell);
             animator.SetBool("ShooseSpellThree", isUseSpell);
+        }
+    }
+    //ниже метод писал Яша, надо отследить какой спел выбран  
+    private IEnumerator ChoosenSpell(int num)
+    {
+       
+        for(int i = 0; i<3;i++)
+        {
+            if(i==num)
+            {
+                yield return new WaitForSeconds(1);
+                Spells[i] = true;
+            }
+            else
+            {
+                Spells[i] = false;
+            }
         }
     }
 }

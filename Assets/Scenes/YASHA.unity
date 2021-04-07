@@ -790,7 +790,7 @@ GameObject:
   - component: {fileID: 164899726}
   m_Layer: 5
   m_Name: 'NameBox '
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1835,7 +1835,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 457182566}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!231 &374323948
 SpringJoint2D:
@@ -2265,7 +2265,7 @@ PrefabInstance:
     - target: {fileID: 3118470904372466318, guid: c7b776a857953af429cb27146d30f3c4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3118470904372466318, guid: c7b776a857953af429cb27146d30f3c4,
         type: 3}
@@ -2385,6 +2385,7 @@ Transform:
   m_LocalPosition: {x: 37.09, y: 1.16, z: -1}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
+  - {fileID: 8273306845442331642}
   - {fileID: 492037691}
   - {fileID: 1131617963}
   - {fileID: 374323947}
@@ -2564,7 +2565,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 457182566}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &513130435
 GameObject:
@@ -3130,7 +3131,7 @@ PrefabInstance:
     - target: {fileID: -6379603939155540051, guid: 3a1300338751d314db38979cfbdb1c4a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -6379603939155540051, guid: 3a1300338751d314db38979cfbdb1c4a,
         type: 3}
@@ -3795,12 +3796,6 @@ PrefabInstance:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -2388900732422209841, guid: 3a1300338751d314db38979cfbdb1c4a,
     type: 3}
---- !u!4 &554100139 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -9203894239897500109, guid: 3a1300338751d314db38979cfbdb1c4a,
-    type: 3}
-  m_PrefabInstance: {fileID: 554100138}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &616450459
 GameObject:
   m_ObjectHideFlags: 0
@@ -5660,6 +5655,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpellBook
       objectReference: {fileID: 0}
+    - target: {fileID: 6633200056913362740, guid: 01580a6cf273ff449931983b8167056e,
+        type: 3}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
     - target: {fileID: 6633200056913362741, guid: 01580a6cf273ff449931983b8167056e,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5748,7 +5748,7 @@ PrefabInstance:
     - target: {fileID: 6633200056913362741, guid: 01580a6cf273ff449931983b8167056e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -39
+      value: -5.97
       objectReference: {fileID: 0}
     - target: {fileID: 6633200056913362741, guid: 01580a6cf273ff449931983b8167056e,
         type: 3}
@@ -5765,6 +5765,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6633200057831782100, guid: 01580a6cf273ff449931983b8167056e,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633200057831782100, guid: 01580a6cf273ff449931983b8167056e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 52ea7dfc062fb54499e55a2794fe9f88,
+        type: 3}
     - target: {fileID: 6633200058023035698, guid: 01580a6cf273ff449931983b8167056e,
         type: 3}
       propertyPath: m_Sprite
@@ -8647,6 +8658,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1408550956 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9170704742498820677, guid: 01580a6cf273ff449931983b8167056e,
+    type: 3}
+  m_PrefabInstance: {fileID: 854985727}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4597c47820499f4f826ed642af1508a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1423275412
 GameObject:
   m_ObjectHideFlags: 0
@@ -9939,7 +9962,7 @@ GameObject:
   - component: {fileID: 1590492058}
   m_Layer: 5
   m_Name: NextBtn
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12225,7 +12248,7 @@ GameObject:
   - component: {fileID: 4096867036265160524}
   m_Layer: 5
   m_Name: Text
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12319,7 +12342,7 @@ GameObject:
   - component: {fileID: 4096867036412738255}
   m_Layer: 5
   m_Name: DialoguePanel
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12509,9 +12532,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4096867036648459937}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MoveButtons
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12587,7 +12610,7 @@ GameObject:
   - component: {fileID: 4096867036769205000}
   m_Layer: 5
   m_Name: Name
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12646,7 +12669,7 @@ GameObject:
   - component: {fileID: 4096867036808471594}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12811,7 +12834,7 @@ GameObject:
   - component: {fileID: 4096867036868848920}
   m_Layer: 5
   m_Name: 'RightButton '
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12963,7 +12986,7 @@ GameObject:
   - component: {fileID: 4096867036898782992}
   m_Layer: 5
   m_Name: PortretPlayer
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13002,7 +13025,7 @@ GameObject:
   - component: {fileID: 4096867036914392181}
   m_Layer: 5
   m_Name: Slot (2)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13165,7 +13188,7 @@ GameObject:
   - component: {fileID: 4096867036966798148}
   m_Layer: 5
   m_Name: SlotPanel
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13314,7 +13337,7 @@ GameObject:
   - component: {fileID: 4096867037168648340}
   m_Layer: 5
   m_Name: Slot (1)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13426,7 +13449,7 @@ GameObject:
   - component: {fileID: 4096867037273959035}
   m_Layer: 5
   m_Name: JumpButton
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13572,7 +13595,7 @@ GameObject:
   - component: {fileID: 4096867037286508260}
   m_Layer: 5
   m_Name: Bag
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13647,7 +13670,7 @@ GameObject:
   - component: {fileID: 4096867037411984412}
   m_Layer: 5
   m_Name: LeftButton
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14064,11 +14087,11 @@ GameObject:
   - component: {fileID: 4096867038082145765}
   m_Layer: 5
   m_Name: Inventory
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &4096867038180170900
 Animator:
   serializedVersion: 3
@@ -14102,7 +14125,7 @@ GameObject:
   - component: {fileID: 4096867038180170900}
   m_Layer: 5
   m_Name: Black shour
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14284,7 +14307,7 @@ GameObject:
   - component: {fileID: 4096867038219381350}
   m_Layer: 5
   m_Name: Slot
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14323,7 +14346,7 @@ GameObject:
   - component: {fileID: 4096867038329959540}
   m_Layer: 5
   m_Name: Slot (3)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17543,10 +17566,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8273306845442331643}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.30999756, y: 2.215, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
-  m_Father: {fileID: 554100139}
+  m_Father: {fileID: 457182566}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8273306845442331643
@@ -17581,3 +17604,5 @@ MonoBehaviour:
   SpellPrefab: {fileID: 2934894309533582490, guid: 8365b06ae5e1175408fc4e68bba01f41,
     type: 3}
   ObjectPool: []
+  SpellBook: {fileID: 1408550956}
+  spellNum: 0
