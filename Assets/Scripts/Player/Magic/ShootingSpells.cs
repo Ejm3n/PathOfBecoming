@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿    using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,6 +12,7 @@ public class ShootingSpells : MonoBehaviour
     [SerializeField] int spellNum;
     private void Start()
     {
+        
         //Создаем новый список, так как List - 
         //ссылка на динамический массив
         ObjectPool = new List<GameObject>();

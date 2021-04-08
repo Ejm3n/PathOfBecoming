@@ -7,10 +7,14 @@ public class Slot : MonoBehaviour
 {
     [SerializeField] int slotNum;
     [SerializeField] GameObject inventory;
+    private Inventory inv;
     public string ItemType;
+    private void Start()
+    {
+        inv = inventory.GetComponent<Inventory>();
+    }
     public void SlotPressed()
     {
-        var inv = inventory.GetComponent<Inventory>();
         for (int i = 0; i < inv.isChosen.Length; i++)
         {
             if(i == slotNum)
@@ -37,7 +41,6 @@ public class Slot : MonoBehaviour
     }
     public void SlotDropped(int slotNum)
     {
-        var inv = inventory.GetComponent<Inventory>();
         foreach (Transform child in transform)
         {
             GameObject.Destroy(child.gameObject);

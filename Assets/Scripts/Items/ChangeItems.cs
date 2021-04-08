@@ -10,13 +10,12 @@ public class ChangeItems : MonoBehaviour
     int choosenSlot = -1;
     private void OnMouseDown()
     {
-        Debug.Log("НАЖАТ НА ОБМЕН С АНЧУТКОЙ");
+
         for(int i = 0; i<inventory.isChosen.Length;i++)
         {
             if(inventory.isChosen[i])
             {
                 choosenSlot = i;
-                Debug.Log(inventory.slots[choosenSlot].transform.GetChild(0).gameObject.name + " itemtype in slot");
                 break;
             }
         }
