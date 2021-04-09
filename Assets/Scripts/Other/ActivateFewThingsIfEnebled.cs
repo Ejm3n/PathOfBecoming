@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActivateFewThingsIfTapped : MonoBehaviour
+public class ActivateFewThingsIfEnebled : MonoBehaviour
 {
     [SerializeField] GameObject[] whatActivate;
-    private void OnMouseDown()
+    private void OnEnable()
     {
-        for(int i = 0; i<whatActivate.Length;i++)
+        for (int i = 0; i < whatActivate.Length; i++)
         {
-            if(whatActivate[i] != null)
+            if (whatActivate[i] != null)
             {
                 whatActivate[i].SetActive(true);
-            }          
+            }
         }
         Destroy(gameObject);
     }

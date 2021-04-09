@@ -1,7 +1,6 @@
-﻿    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
 public class ShootingSpells : MonoBehaviour
 {
     [SerializeField] GameObject SpellPrefab;
@@ -10,6 +9,8 @@ public class ShootingSpells : MonoBehaviour
     float timeBtwShots = TIME_BTW_SHOTS;
     [SerializeField] ActionWithSpellBook SpellBook;
     [SerializeField] int spellNum;
+    [SerializeField] float manaCost;
+    [SerializeField] ManaCounter MC;
     private void Start()
     {
         
@@ -21,8 +22,9 @@ public class ShootingSpells : MonoBehaviour
     {
         if (timeBtwShots <= 0)
         {
-            if (Input.GetMouseButtonDown(0) && (SpellBook.Spells[spellNum]) && !(EventSystem.current.IsPointerOverGameObject()))
+            if (Input.GetMouseButtonDown(0) && (SpellBook.Spells[spellNum]) && !(EventSystem.current.IsPointerOverGameObject()) && MC.currentMana>=manaCost)
             {
+                MC.SpellShot(manaCost);
                 //diff - будет смещением нашего нажатия от объекта
                 Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
                 //номализация приводит каждое значение в промежуток

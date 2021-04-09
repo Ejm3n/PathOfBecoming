@@ -6,14 +6,16 @@ public class PlaceToPutInAndOut : MonoBehaviour
     [SerializeField] GameObject whatToSpawn;
     [SerializeField] string WhatToTrade;
     [SerializeField] GameObject boulder;
+    [SerializeField] GameObject inGameShkat;
     int choosenSlot = -1;
-    SpriteRenderer render;
-    EdgeCollider2D coll;
+    SpriteRenderer Brender;
+    EdgeCollider2D Bcoll;
+
     bool isThereAShkatulka = false;
     private void Start()
     {
-        render = boulder.GetComponent<SpriteRenderer>();
-        coll = boulder.GetComponent<EdgeCollider2D>();
+        Brender = boulder.GetComponent<SpriteRenderer>();
+        Bcoll = boulder.GetComponent<EdgeCollider2D>();
     }
     private void OnMouseDown()
     {
@@ -36,9 +38,8 @@ public class PlaceToPutInAndOut : MonoBehaviour
         {
             if (inventory.slots[choosenSlot].transform.GetChild(0).gameObject.name == WhatToTrade + "(Clone)")
             {
-                inventory.slots[choosenSlot].GetComponent<Slot>().SlotDropped(choosenSlot);
-                render.enabled = false;
-                coll.enabled = false;
+                inventory.SlotDropped(choosenSlot);
+                ChangeImage(false);
             }
         }
         else if (!isThereAShkatulka)
@@ -47,13 +48,18 @@ public class PlaceToPutInAndOut : MonoBehaviour
             {
                 if (inventory.isFull[i] == false)
                 {
-                    render.enabled = true;
-                    coll.enabled = true;
+                    ChangeImage(true);
                     inventory.isFull[i] = true;
                     Instantiate(whatToSpawn, inventory.slots[i].transform);
                     break;
                 }
             }
         }
+    }
+    private void ChangeImage(bool what)
+    {
+        Brender.enabled = what;
+        Bcoll.enabled = what;
+        inGameShkat.SetActive(!what);
     }
 }

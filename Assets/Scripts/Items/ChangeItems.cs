@@ -8,6 +8,7 @@ public class ChangeItems : MonoBehaviour
     [SerializeField] GameObject whatToSpawn;
     [SerializeField] string WhatToTrade;
     int choosenSlot = -1;
+    [SerializeField] GameObject[] whatActivate;
     private void OnMouseDown()
     {
 
@@ -21,13 +22,17 @@ public class ChangeItems : MonoBehaviour
         }
         if (choosenSlot!=-1 && inventory.slots[choosenSlot].transform.GetChild(0).gameObject.name == WhatToTrade + "(Clone)")
         {
-            inventory.slots[choosenSlot].GetComponent<Slot>().SlotDropped(choosenSlot);
+            inventory.SlotDropped(choosenSlot);
             for (int i = 0; i < inventory.slots.Length; i++)
             {
                 if (inventory.isFull[i] == false)
                 {
                     inventory.isFull[i] = true;
                     Instantiate(whatToSpawn, inventory.slots[i].transform);
+                    for(int k =0; k<whatActivate.Length;k++)
+                    {
+                        whatActivate[k].SetActive(true);
+                    }
                     Destroy(gameObject);
                     break;
                 }

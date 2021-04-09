@@ -4,18 +4,32 @@ using UnityEngine;
 
 public class IfObjectCollidesWithSpell : MonoBehaviour
 {
-    //[SerializeField] SpriteRenderer[] spritesToActivate;
-    //[SerializeField] SpriteRenderer[] spritesToDeactivate;
+    [SerializeField] GameObject[] whatToActivate;
+    [SerializeField] GameObject[] whatToDeactivate;
     [SerializeField] Animator anim;
     [SerializeField] Animation an;
     [SerializeField] string spellName;
+    [SerializeField] string animationName;
+    [SerializeField] float animLength;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("---");
         if (collision.gameObject.name == spellName + "(Clone)")
         {
-            Debug.Log("+++");
-            anim.Play("RottenTreeFall");
+            collision.gameObject.SetActive(false);
+            anim.Play(animationName);
+            StartCoroutine(activateDelay());
         }
+    }
+    private IEnumerator activateDelay()
+    {
+        yield return new WaitForSeconds(animLength);
+        for (int i = 0; i < whatToActivate.Length; i++)
+        {
+            whatToActivate[i].SetActive(true);
+        }
+        for (int i = 0; i < whatToDeactivate.Length; i++)
+        {
+            whatToDeactivate[i].SetActive(false);
+        }       
     }
 }
