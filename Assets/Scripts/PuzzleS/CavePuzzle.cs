@@ -9,15 +9,18 @@ public class CavePuzzle : MonoBehaviour
     bool canUWin = true;
     [SerializeField] PuzzleButtons[] puzzleButtons;
     private Color colorIfUnpressed = new Color(255f, 155f, 0f, 0f);
+    [SerializeField] GameObject spellBook;
+    [SerializeField] GameObject nextDialogue;
     private void Update()
     {
         if (isPressed[0] && isPressed[1] && isPressed[2] && isPressed[3] && isPressed[4]&& canUWin)
         {
             GameWin = true;
             Debug.Log("игра выиграна");
+            nextDialogue.SetActive(true);
             gameObject.SetActive(false);
-        }
-
+            
+        }   
     }
     public void OnPuzzleButtonClick(int num)
     {
