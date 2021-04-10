@@ -9,6 +9,7 @@ public class ChangeItems : MonoBehaviour
     [SerializeField] string WhatToTrade;
     int choosenSlot = -1;
     [SerializeField] GameObject[] whatActivate;
+    [SerializeField] GameObject[] whatDeactivate;
     private void OnMouseDown()
     {
 
@@ -31,7 +32,18 @@ public class ChangeItems : MonoBehaviour
                     Instantiate(whatToSpawn, inventory.slots[i].transform);
                     for(int k =0; k<whatActivate.Length;k++)
                     {
-                        whatActivate[k].SetActive(true);
+                        if(whatActivate[k]!=null)
+                        {
+                            whatActivate[k].SetActive(true);
+                        }
+                        
+                    }
+                    for(int k = 0; k< whatDeactivate.Length;k++)
+                    {
+                        if (whatDeactivate[k] != null)
+                        {
+                            whatDeactivate[k].SetActive(false);
+                        }
                     }
                     Destroy(gameObject);
                     break;

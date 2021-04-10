@@ -29,7 +29,11 @@ public class PlayerController : MonoBehaviour
         moveButtons.SetActive(false);
         rb = GetComponent<Rigidbody2D>();
         extraJump = ExtraJumpValue;
-        StartCoroutine(Wait());
+        if(waitTimeTillStart != 0)
+        {
+            StartCoroutine(Wait());
+        }
+       
     }
 
     private void FixedUpdate()

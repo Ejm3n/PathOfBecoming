@@ -6,7 +6,6 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] Animator slotsAnim;
     bool hidden = false;
-
     public bool[] isFull;
     public bool[] isChosen;
     public GameObject[] slots;

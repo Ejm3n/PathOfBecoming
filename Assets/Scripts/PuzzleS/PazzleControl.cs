@@ -52,7 +52,7 @@ public class PazzleControl : MonoBehaviour
             cage.sortingOrder = 1;
             dor.sortingOrder = 2;
 
-            StartCoroutine(With());
+            StartCoroutine(End());
         }
     }
 
@@ -66,5 +66,10 @@ public class PazzleControl : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         Exit();
+    }
+    IEnumerator End()//яша добавил 
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
     }
 }

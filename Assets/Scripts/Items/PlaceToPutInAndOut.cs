@@ -8,15 +8,15 @@ public class PlaceToPutInAndOut : MonoBehaviour
     [SerializeField] GameObject boulder;
     [SerializeField] GameObject inGameShkat;
     int choosenSlot = -1;
-    SpriteRenderer Brender;
-    EdgeCollider2D Bcoll;
+    //SpriteRenderer Brender;
+    //EdgeCollider2D Bcoll;
 
     bool isThereAShkatulka = false;
-    private void Start()
-    {
-        Brender = boulder.GetComponent<SpriteRenderer>();
-        Bcoll = boulder.GetComponent<EdgeCollider2D>();
-    }
+    //private void Start()
+    //{
+    //    Brender = boulder.GetComponent<SpriteRenderer>();
+    //    Bcoll = boulder.GetComponent<EdgeCollider2D>();
+    //}
     private void OnMouseDown()
     {
         choosenSlot = -1;
@@ -58,8 +58,7 @@ public class PlaceToPutInAndOut : MonoBehaviour
     }
     private void ChangeImage(bool what)
     {
-        Brender.enabled = what;
-        Bcoll.enabled = what;
+        boulder.SetActive(what);
         inGameShkat.SetActive(!what);
     }
 }

@@ -17,8 +17,12 @@ public class CavePuzzle : MonoBehaviour
         {
             GameWin = true;
             Debug.Log("игра выиграна");
-            nextDialogue.SetActive(true);
-            gameObject.SetActive(false);
+            if(nextDialogue != null)
+            {
+                nextDialogue.SetActive(true);
+            }
+          
+            Destroy(gameObject);
             
         }   
     }

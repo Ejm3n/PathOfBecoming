@@ -8,6 +8,10 @@ public class PuzzleStart : MonoBehaviour
 
     public void OnMouseDown()
     {
-        Pazzle.SetActive(true);
+        if(Pazzle!=null)
+        {
+            Pazzle.SetActive(true);
+        }
+      
     }
 }

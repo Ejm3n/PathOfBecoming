@@ -27,12 +27,8 @@ public class ManaCounter : MonoBehaviour
                     currentMana = 100;
                 manaBar.fillAmount = currentMana / startMana;
                 timerTillTick = 1;
-            }
-           
-        }
-       
-        
-        
+            }  
+        }       
     }
     public void SpellShot(float manaCost)
     {

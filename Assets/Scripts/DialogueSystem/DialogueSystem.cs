@@ -12,8 +12,8 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] GameObject choiceNextTrigger;
     [SerializeField] GameObject controlButtons;
     [SerializeField] GameObject manaBar;
-    [SerializeField] GameObject inventory;
-    [SerializeField] GameObject spellBook;
+    [SerializeField] CanvasGroup inventory;
+    [SerializeField] CanvasGroup spellBook;
     [SerializeField] PlayerController PC;
     [SerializeField] Animator panelAnim;
     [SerializeField] Animator choosePanelAnim;
@@ -34,7 +34,7 @@ public class DialogueSystem : MonoBehaviour
     private string subStranger = "stranger";
     private bool dialogueStarted;
     private bool next;
-    private bool canUseInventory = false;
+   [SerializeField] private bool canUseInventory = false;
     private bool canUseSpellBook = false;
     Queue<string> linesTriggered = new Queue<string>();
 
@@ -62,16 +62,32 @@ public class DialogueSystem : MonoBehaviour
     }
     private void SetUI(bool what)
     {
-        //if(canUseInventory)
-        //{
-        //    inventory.SetActive(what);
-        //}
-        //if(canUseSpellBook)
-        //{
-        //    inventory.SetActive(what);
-        //}
+        if (canUseInventory)
+        {
+            Debug.Log("inventar ubrat");
+            ChangeCanvasGroup(what, inventory);
+        }
+        if (canUseSpellBook)
+        {
+            ChangeCanvasGroup(what, spellBook);
+        }
         controlButtons.SetActive(what);
         manaBar.SetActive(what);
+    }
+    private void ChangeCanvasGroup(bool whitch, CanvasGroup cg)
+    {
+        if (whitch)
+        {
+            cg.alpha = 1;
+            cg.interactable = true;
+            cg.blocksRaycasts = true;
+        }
+        else
+        {
+            cg.alpha = 0;
+            cg.interactable = false;
+            cg.blocksRaycasts = false;
+        }
     }
     public void ChooseStart(int choose1, int choose2,int endOfChoices,GameObject nextTrigger)
     {
@@ -97,11 +113,12 @@ public class DialogueSystem : MonoBehaviour
     }
     public void StartDialogue(int startLine, int endLine, GameObject nextTrigger)
     {
-        if(endLine == 30)//следущие 2 ифа надо както покруче сделать но щас поздно мне лень
+        if(endLine >= 30)//следущие 2 ифа надо както покруче сделать но щас поздно мне лень
         {
+            Debug.Log("endline=30");
             canUseInventory = true;
         }
-        if(endLine == 53)
+        if(endLine >= 53)
         {
             canUseSpellBook = true;
         }

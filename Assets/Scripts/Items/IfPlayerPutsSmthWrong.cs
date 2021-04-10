@@ -17,7 +17,7 @@ public class IfPlayerPutsSmthWrong : MonoBehaviour
                 break;
             }
         }
-        if (choosenSlot != -1 && inventory.slots[choosenSlot].transform.GetChild(0).gameObject.name == WhatToTrade + "(Clone)")
+        if (inventory.slots[choosenSlot].transform.GetChild(0) != null && choosenSlot != -1 && inventory.slots[choosenSlot].transform.GetChild(0).gameObject.name == WhatToTrade + "(Clone)")
         {
 
             if (currentDialogue < whatToActivate.Length)
