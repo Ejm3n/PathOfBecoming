@@ -11,7 +11,7 @@ public class ActionWithSpellBook : MonoBehaviour
     [SerializeField] private Sprite closedBook;
 
     [SerializeField] private Button book;
-    [SerializeField] private Image image;
+ // private Image image;
 
     private bool isBookOpen = false;
     private bool isUseSpell = false;
@@ -28,10 +28,11 @@ public class ActionWithSpellBook : MonoBehaviour
             book.image.sprite = closedBook;
             isBookOpen = !isBookOpen;
             animator.SetBool("ShowSlots", isBookOpen);
+            ChoosenSpell(4);
         }
         else // если книга закрыта
         {
-            book.image.sprite = openBook;
+            book.image.sprite = openBook; 
             isBookOpen = true;
             animator.SetBool("ShowSlots", isBookOpen);
             ChoosenSpell(4);

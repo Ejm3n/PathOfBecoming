@@ -40,7 +40,6 @@ public class ButtonsMenuActions : MonoBehaviour
     /// </summary>
     public void Quit()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
-        Debug.Log("quit");
+        Application.Quit();
     }
 }

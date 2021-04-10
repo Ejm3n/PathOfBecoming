@@ -45,4 +45,8 @@ public class TransitionBetweenScenes : MonoBehaviour
             }
         }
     }
+    private void OnMouseDown()
+    {
+        FadeComplete();
+    }
 }
