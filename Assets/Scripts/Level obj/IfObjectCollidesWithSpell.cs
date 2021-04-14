@@ -11,9 +11,10 @@ public class IfObjectCollidesWithSpell : MonoBehaviour
     [SerializeField] string spellName;
     [SerializeField] string animationName;
     [SerializeField] float animLength;
+    public bool Avalible;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == spellName + "(Clone)")
+        if (collision.gameObject.name == spellName + "(Clone)" && Avalible)
         {
             collision.gameObject.SetActive(false);
             anim.Play(animationName);
