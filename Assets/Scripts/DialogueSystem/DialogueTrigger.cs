@@ -10,7 +10,7 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] GameObject nextTriggerToActivate;//какой триггер включить следующим
     [SerializeField] GameObject[] triggersToDelete;//какие триггеры удалить
    // public static Action<bool> DialogStarted;
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)//проверяем кто зашел, стартуем диалог
     {
         if (collision.GetComponent<PlayerController>() != null)
         {

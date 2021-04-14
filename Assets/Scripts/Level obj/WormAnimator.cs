@@ -9,7 +9,7 @@ public class WormAnimator : MonoBehaviour
     [SerializeField] string anim1;
     [SerializeField] string anim2;
     [SerializeField] string anim3;
-    int animatorInt = 0;
+    //int animatorInt = 0;
    [SerializeField] float animLen1;
     [SerializeField]float animLen2;
 

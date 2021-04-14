@@ -5,63 +5,54 @@ using UnityEngine.UI;
 
 public class DialogueSystem : MonoBehaviour
 {
-    [SerializeField] Text output;
-    [SerializeField] Text nameOutput;
-    [SerializeField] Text choice1Text;
-    [SerializeField] Text choice2Text;
-    [SerializeField] GameObject choiceNextTrigger;
-    [SerializeField] GameObject controlButtons;
-    [SerializeField] GameObject manaBar;
-    [SerializeField] CanvasGroup inventory;
-    [SerializeField] CanvasGroup spellBook;
-    [SerializeField] PlayerController PC;
-    [SerializeField] Animator panelAnim;
-    [SerializeField] Animator choosePanelAnim;
-    [SerializeField] Image dialogueImg;
-    [SerializeField] Sprite henryImg;
-    [SerializeField] Sprite fairyImg;
-    [SerializeField] Sprite impImg;
+    [SerializeField] Text output;//ссылка на текст который будет на UI отображаться
+    [SerializeField] Text nameOutput;//ссылка на имя которое будет на UI отображаться
+    [SerializeField] Text choice1Text;//ссылка на 1 вариант выбора который будет на UI отображаться
+    [SerializeField] Text choice2Text;//ссылка на 2 вариант выбора который будет на UI отображаться
+    [SerializeField] GameObject controlButtons;//кнопки передвижения, нужны чтоб их отключать во время диалогов
+    [SerializeField] GameObject manaBar;//нужен чтоб его отключать во время диалогов
+    [SerializeField] CanvasGroup inventory; //нужен чтоб его отключать во время диалогов
+     [SerializeField] CanvasGroup spellBook;//нужен чтоб его отключать во время диалогов
+    [SerializeField] PlayerController PC;//ссылка на скрипт управляющим игроком, чтобы останавливать его когда диалог начинается
+    [SerializeField] Animator panelAnim;//анимация панели диалогов
+    [SerializeField] Animator choosePanelAnim;// анимация панели выбора диалогов
+    [SerializeField] Image dialogueImg;//ссылка на картинку говорящего персонажа
+    [SerializeField] Sprite henryImg;//ссылка непосредственно на спрайт игрока
+    [SerializeField] Sprite fairyImg;//ссылка непосредственно на спрайт феи
+    [SerializeField] Sprite impImg;//ссылка непосредственно на спрайт анчутки
+    [SerializeField] CanvasGroup blockingPanel;
+    private GameObject choiceNextTrigger;//до куда скипать если выбран 1 вариант
 
-    public string[] file;
-    private int whereIsEndChoose;
-    private int choice1;
-    private int choice2;
+    public string[] file;//все строки файла
+    private int whereIsEndChoose;//на какой строчке конец выбора
+    private int choice1;//строка с выбором 1
+    private int choice2;//строка с выбором 2
+    //далее сабстринги для поиска их в файле
     private string subPlayer = "player";
     private string subFairy = "fairy";
     private string subImp = "imp";
     private string subCat = "cat";
     private string subAnonim = "anonym";
     private string subStranger = "stranger";
-    private bool dialogueStarted;
-    private bool next;
-   [SerializeField] private bool canUseInventory = false;
-    private bool canUseSpellBook = false;
-    Queue<string> linesTriggered = new Queue<string>();
+    public bool canUseInventory = false;//используется ли инвентарь(чтоб его убирать)
+    public bool canUseSpellBook = false;//используется ли книга(чтоб ее убирать)
+    Queue<string> linesTriggered = new Queue<string>();//очередь строк, которые триггерятся. именно эта очередь будет выводиться на экран
 
     
 
     private void Awake()
-    {
-        next = false;
-        dialogueStarted = false;      
-        TextAsset language = Resources.Load<TextAsset>("Russian2");
-        file = language.text.Split('\n');     
-    }
-    private void Update()
-    {
-        if (dialogueStarted && next)
-        {
-            DisplayNextLine();
-            next = false;
-        }
+    {    
+        TextAsset language = Resources.Load<TextAsset>("Russian2");//считываем файл со строками
+        file = language.text.Split('\n');     //заполняем этими строками массив
     }
     
-    public void Next()
-    {
-        next = true;
+    public void Next()//метод для пропуска строчки
+    {      
+        DisplayNextLine();
     }
-    private void SetUI(bool what)
+    public void SetUI(bool what)//метод отключающий лишний UI
     {
+        ChangeCanvasGroup(!what, blockingPanel);
         if (canUseInventory)
         {
             Debug.Log("inventar ubrat");
@@ -74,7 +65,7 @@ public class DialogueSystem : MonoBehaviour
         controlButtons.SetActive(what);
         manaBar.SetActive(what);
     }
-    private void ChangeCanvasGroup(bool whitch, CanvasGroup cg)
+    private void ChangeCanvasGroup(bool whitch, CanvasGroup cg)//для выключения инвентаря и книгизаклинаний
     {
         if (whitch)
         {
@@ -89,7 +80,7 @@ public class DialogueSystem : MonoBehaviour
             cg.blocksRaycasts = false;
         }
     }
-    public void ChooseStart(int choose1, int choose2,int endOfChoices,GameObject nextTrigger)
+    public void ChooseStart(int choose1, int choose2,int endOfChoices,GameObject nextTrigger)//старт выборных диалогов
     {
         SetUI(false);
         PC.OnButtonUp();
@@ -101,30 +92,20 @@ public class DialogueSystem : MonoBehaviour
         choice2 = choose2;
         choiceNextTrigger = nextTrigger;
     }
-    public void OnChoice1Click()
+    public void OnChoice1Click()//выбор 1 нажат
     {
         choosePanelAnim.SetBool("PanelShow", false);       
         StartDialogue(choice1, choice2, choiceNextTrigger);
     }
-    public void OnChoice2Click()
+    public void OnChoice2Click()//выбор 2 нажат
     {
         choosePanelAnim.SetBool("PanelShow", false);
         StartDialogue(choice2, whereIsEndChoose, choiceNextTrigger);
     }
-    public void StartDialogue(int startLine, int endLine, GameObject nextTrigger)
-    {
-        if(endLine >= 30)//следущие 2 ифа надо както покруче сделать но щас поздно мне лень
-        {
-            Debug.Log("endline=30");
-            canUseInventory = true;
-        }
-        if(endLine >= 53)
-        {
-            canUseSpellBook = true;
-        }
+    public void StartDialogue(int startLine, int endLine, GameObject nextTrigger)//неачать диалог
+    { 
         choiceNextTrigger = nextTrigger;
         panelAnim.SetBool("PanelShow", true);
-        dialogueStarted = true;
         SetUI(false);
         PC.OnButtonUp();
         for (int i = startLine; i < endLine; i++)
@@ -133,7 +114,7 @@ public class DialogueSystem : MonoBehaviour
         }
         DisplayNextLine();
     }
-    public void DisplayNextLine()
+    public void DisplayNextLine()//показать следущую строку
     {
         if(linesTriggered.Count == 0)
         {
@@ -145,7 +126,7 @@ public class DialogueSystem : MonoBehaviour
         StartCoroutine(TypeLine(line));
     }
 
-    IEnumerator TypeLine(string sentence)
+    IEnumerator TypeLine(string sentence)//написать строку заменив иконки и имена
     {
         if(sentence.Contains(subPlayer))
         {
@@ -200,11 +181,10 @@ public class DialogueSystem : MonoBehaviour
             output.text += letter;
         }
     }   
-    public void EndDialogue()
+    public void EndDialogue()//закончить диалог 
     {
         choiceNextTrigger.SetActive(true);
-        panelAnim.SetBool("PanelShow", false) ;
-        dialogueStarted = false;
+        panelAnim.SetBool("PanelShow", false);
         SetUI(true);
     }
 }

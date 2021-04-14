@@ -1,27 +1,22 @@
 ﻿using UnityEngine;
-
+using UnityEngine.EventSystems;
+using System.Collections.Generic;
 public class PlaceToPutInAndOut : MonoBehaviour
 {
+    [SerializeField] GameObject canvas;
     [SerializeField] Inventory inventory;
-    [SerializeField] GameObject whatToSpawn;
+    [SerializeField] GameObject whatToSpawn;//шкатулка что заспавнится в инвентаре
     [SerializeField] string WhatToTrade;
     [SerializeField] GameObject boulder;
     [SerializeField] GameObject inGameShkat;
     int choosenSlot = -1;
-    //SpriteRenderer Brender;
-    //EdgeCollider2D Bcoll;
-
     bool isThereAShkatulka = false;
-    //private void Start()
-    //{
-    //    Brender = boulder.GetComponent<SpriteRenderer>();
-    //    Bcoll = boulder.GetComponent<EdgeCollider2D>();
-    //}
-    private void OnMouseDown()
+
+    private void OnMouseUp()
     {
         choosenSlot = -1;
         isThereAShkatulka = false;
-        for (int i = 0; i < inventory.isChosen.Length; i++)
+        for (int i = 0; i < inventory.isChosen.Length; i++)//узнаем какой слот выбрат и есть ли шкатулка
         {
             if (inventory.isChosen[i])
             {
@@ -34,9 +29,9 @@ public class PlaceToPutInAndOut : MonoBehaviour
                 isThereAShkatulka = true;
             }
         }
-        if (isThereAShkatulka && choosenSlot != -1 && inventory.isFull[choosenSlot] == true)
+        if (isThereAShkatulka && choosenSlot != -1 && inventory.isFull[choosenSlot] == true)//если есть шкатулка и инвентарь полон и выбран нужный слот
         {
-            if (inventory.slots[choosenSlot].transform.GetChild(0).gameObject.name == WhatToTrade + "(Clone)")
+            if (inventory.slots[choosenSlot].transform.GetChild(0).gameObject.name == WhatToTrade + "(Clone)")//спавним камень и шкатулку непосредственно в игре
             {
                 inventory.SlotDropped(choosenSlot);
                 ChangeImage(false);
@@ -61,4 +56,5 @@ public class PlaceToPutInAndOut : MonoBehaviour
         boulder.SetActive(what);
         inGameShkat.SetActive(!what);
     }
+
 }

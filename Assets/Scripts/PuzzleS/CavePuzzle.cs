@@ -11,6 +11,7 @@ public class CavePuzzle : MonoBehaviour
     private Color colorIfUnpressed = new Color(255f, 155f, 0f, 0f);
     [SerializeField] GameObject spellBook;
     [SerializeField] GameObject nextDialogue;
+    [SerializeField] DialogueSystem ds;
     private void Update()
     {
         if (isPressed[0] && isPressed[1] && isPressed[2] && isPressed[3] && isPressed[4]&& canUWin)
@@ -43,6 +44,7 @@ public class CavePuzzle : MonoBehaviour
     }
     public void ClosePuzzle()
     {
+        ds.SetUI(true);
         for(int i = 0;i<5;i++)
         {
             isPressed[i] = false;

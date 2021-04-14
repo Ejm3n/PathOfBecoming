@@ -18,6 +18,7 @@ public class PazzleControl : MonoBehaviour
     [SerializeField] GameObject dialogueToActivate;
     [SerializeField] GameObject dialogueIfClosed;
     public static bool youWin;
+    [SerializeField] DialogueSystem ds;
 
     private void Start()
     {
@@ -38,15 +39,18 @@ public class PazzleControl : MonoBehaviour
     private void Update()
     {
         if (hexagon[0].rotation.z >= -0.0001 && hexagon[0].rotation.z <= 0.0001 &&
-            hexagon[1].rotation.z >= -0.0001 && hexagon[0].rotation.z <= 0.0001 &&
-            hexagon[2].rotation.z >= -0.0001 && hexagon[0].rotation.z <= 0.0001 &&
-            hexagon[3].rotation.z >= -0.0001 && hexagon[0].rotation.z <= 0.0001 &&
-            hexagon[4].rotation.z >= -0.0001 && hexagon[0].rotation.z <= 0.0001 &&
-            hexagon[5].rotation.z >= -0.0001 && hexagon[0].rotation.z <= 0.0001 &&
-            hexagon[6].rotation.z >= -0.0001 && hexagon[0].rotation.z <= 0.0001)
+            hexagon[1].rotation.z >= -0.0001 && hexagon[1].rotation.z <= 0.0001 &&
+            hexagon[2].rotation.z >= -0.0001 && hexagon[2].rotation.z <= 0.0001 &&
+            hexagon[3].rotation.z >= -0.0001 && hexagon[3].rotation.z <= 0.0001 &&
+            hexagon[4].rotation.z >= -0.0001 && hexagon[4].rotation.z <= 0.0001 &&
+            hexagon[5].rotation.z >= -0.0001 && hexagon[5].rotation.z <= 0.0001 &&
+            hexagon[6].rotation.z >= -0.0001 && hexagon[6].rotation.z <= 0.0001)
         {
             youWin = true;
-            dialogueToActivate.SetActive(true);
+            if(dialogueToActivate != null)
+            {
+                dialogueToActivate.SetActive(true);
+            }               
             anim.SetBool("New Bool", true);
             cageBack.sortingOrder = 0;
             cage.sortingOrder = 1;
@@ -55,11 +59,14 @@ public class PazzleControl : MonoBehaviour
             StartCoroutine(End());
         }
     }
-
     public void Exit()
     {
+       
         PzGame.SetActive(false);
-        dialogueIfClosed.SetActive(true);
+        if(dialogueIfClosed!=null)
+            dialogueIfClosed.SetActive(true);
+        else
+            ds.SetUI(true);
     }
 
     IEnumerator With()

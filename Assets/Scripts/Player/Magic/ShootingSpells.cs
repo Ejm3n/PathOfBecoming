@@ -11,12 +11,15 @@ public class ShootingSpells : MonoBehaviour
     [SerializeField] int spellNum;
     [SerializeField] float manaCost;
     [SerializeField] ManaCounter MC;
+    [SerializeField] GameObject firstSpell;
+    [SerializeField] PlayerController pc;
     private void Start()
     {
         
         //Создаем новый список, так как List - 
         //ссылка на динамический массив
         ObjectPool = new List<GameObject>();
+        ObjectPool.Add(firstSpell);
     } 
     void Update()
     {
@@ -30,6 +33,14 @@ public class ShootingSpells : MonoBehaviour
                 //номализация приводит каждое значение в промежуток
                 //от -1 до 1
                 diff.Normalize();
+                if(diff.x<0 && pc.faceRight)
+                {
+                    pc.Flip();
+                }
+                else if(diff.x>=0 && !pc.faceRight)
+                {
+                    pc.Flip();
+                }               
                 //по нормализованному виду мы находим угол, так как в diff
                 //находится вектор, который можно перенести на тригонометрическую окружность
                 float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;

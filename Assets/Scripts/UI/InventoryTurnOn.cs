@@ -1,22 +1,23 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryTurnOn : MonoBehaviour
 {
-    [SerializeField] GameObject[] WhatToTurnOff;
-    [SerializeField] Animator panelAnim;
+    [SerializeField] GameObject[] WhatToTurnOff;//список объектов которые надо отключить
+    [SerializeField] Animator panelAnim;//анимация панели диавлогов
+    [SerializeField] DialogueSystem ds;//ссылка на диалоговую систему
     private void OnEnable()
     {
-        StartCoroutine(TurnOffCanvases());
+        ds.canUseInventory = true;
+        StartCoroutine(TurnOffCanvases());// при включении вызываем корутину
     }
     private IEnumerator TurnOffCanvases()
     {
-        while(panelAnim.GetBool("PanelShow"))
+        while(panelAnim.GetBool("PanelShow")) //пока диалоги не закрыты мы ничего не делаем
         {
             yield return null;
         }
-        if (!panelAnim.GetBool("PanelShow"))
+        if (!panelAnim.GetBool("PanelShow"))//когда диалоги закрыты мы показываем инвентарь на 5 секунд и выключаем обратно
         {
             SwitchSetActive(false);
             yield return new WaitForSeconds(5);
@@ -25,7 +26,7 @@ public class InventoryTurnOn : MonoBehaviour
         }
         yield break;
     }
-    private void SwitchSetActive(bool WhatToSwitch)
+    private void SwitchSetActive(bool WhatToSwitch)//вырубаем и врубаем элементы указанные в массиве геймобжектов
     {
         for (int i = 0; i < WhatToTurnOff.Length; i++)
         {

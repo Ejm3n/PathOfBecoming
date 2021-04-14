@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +7,7 @@ public class TransitionBetweenScenes : MonoBehaviour
 {
     [SerializeField] private Animator fadeAnimator;
     [SerializeField] private int loadLevel; // загружаемый уровень
+    public bool CanULoadNextLvl;
     private float fadeLength; // длина анимации
 
     /// <summary>
@@ -41,12 +41,13 @@ public class TransitionBetweenScenes : MonoBehaviour
             if (animClip.name.Equals("FadeOut"))
             {
                 fadeLength = animClip.length;
-                Debug.Log(fadeLength); 
+                Debug.Log(fadeLength);
             }
         }
     }
-    private void OnMouseDown()
+    private void OnMouseUp()
     {
-        FadeComplete();
+        if (CanULoadNextLvl)
+            FadeComplete();
     }
 }

@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float MoveInput;
     private Rigidbody2D rb;
 
-    private bool faceRight = true;
+    public bool faceRight = true;
     public bool isGround;
     public Transform groundCheck;
     public float checkRadius;
@@ -44,13 +44,11 @@ public class PlayerController : MonoBehaviour
 
         if (faceRight == false && MoveInput > 0)
         {
-            Flip();
-            pixy.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            Flip();           
         }
         else if (faceRight == true && MoveInput < 0)
         {
-            Flip();
-            pixy.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            Flip();           
         }
 
         if (isGround == true)
@@ -70,8 +68,12 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void Flip()
+    public void Flip()
     {
+        if(!faceRight)
+            pixy.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        else if(faceRight)
+            pixy.transform.localRotation = Quaternion.Euler(0, 0, 0);
         faceRight = !faceRight;
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;

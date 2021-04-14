@@ -3,21 +3,11 @@
 public class PlaceLetterToInventory : MonoBehaviour
 {
     [SerializeField] Inventory inventory;
-    [SerializeField] GameObject whatToSpawn;
-    int choosenSlot = -1;
+    [SerializeField] GameObject whatToSpawn;   
     [SerializeField] GameObject[] whatActivate;
-    private void OnMouseDown()
+    private void OnMouseUp()
     {
-
-        for (int i = 0; i < inventory.isChosen.Length; i++)
-        {
-            if (inventory.isChosen[i])
-            {
-                choosenSlot = i;
-                break;
-            }
-        }
-        for (int i = 0; i < inventory.slots.Length; i++)
+        for (int i = 0; i < inventory.slots.Length; i++)//просто спавним письмо в инвентаре
             if (inventory.isFull[i] == false)
             {
                 inventory.isFull[i] = true;

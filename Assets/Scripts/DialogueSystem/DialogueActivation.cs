@@ -6,11 +6,11 @@ public class DialogueActivation : MonoBehaviour
 {
     [SerializeField] int startNum;//строка с которой начать
     [SerializeField] int endOfThisDia;//до какого числа диалог
-    [SerializeField] GameObject nextTriggerToActivate;//какой триггер включить следующим                                                     // public static Action<bool> DialogStarted;
-    [SerializeField] DialogueSystem ds;
+    [SerializeField] GameObject nextTriggerToActivate;//какой триггер включить следующим                                                  
+    [SerializeField] DialogueSystem ds;//ссылка на диалоговую систему
     private void OnEnable()
     {
-            ds.StartDialogue(startNum, endOfThisDia, nextTriggerToActivate);          
-            Destroy(gameObject);        
+            ds.StartDialogue(startNum, endOfThisDia, nextTriggerToActivate); //при включении геймобжекты мы запускаем метод из диалоговой системе
+            Destroy(gameObject); //а после удаляем объект
     }
 }
