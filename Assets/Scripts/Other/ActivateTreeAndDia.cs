@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ActivateTreeAndDia : MonoBehaviour
 {
+    ///
+    /// просто активатор объектов если включен
+    ///
     [SerializeField] GameObject[] whatActivate;
     [SerializeField] IfObjectCollidesWithSpell tree;
     private void OnEnable()

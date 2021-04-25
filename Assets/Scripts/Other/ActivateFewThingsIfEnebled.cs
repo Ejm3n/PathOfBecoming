@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ActivateFewThingsIfEnebled : MonoBehaviour
+///
+/// просто активатор объектов если включен
+///
+
 {
     [SerializeField] GameObject[] whatActivate;
     private void OnEnable()

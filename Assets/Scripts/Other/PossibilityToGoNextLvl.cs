@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PossibilityToGoNextLvl : MonoBehaviour
 {
+    ///
+    /// проверка места где стоит игрок давать ли возможность перейти на след уровень
+    ///
     [SerializeField] TransitionBetweenScenes TBS;
     private void OnTriggerEnter2D(Collider2D collision)
     {

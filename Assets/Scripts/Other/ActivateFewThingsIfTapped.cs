@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ActivateFewThingsIfTapped : MonoBehaviour
 {
+    ///
+    /// просто активатор объектов если нажат
+    ///
     [SerializeField] GameObject[] whatActivate;
     private void OnMouseDown()
     {
