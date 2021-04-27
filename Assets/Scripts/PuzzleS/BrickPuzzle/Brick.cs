@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
@@ -20,6 +18,8 @@ public class Brick : MonoBehaviour
             brick.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         else if (orientation == Orientation.Y)
             brick.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        else
+            brick.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     public enum Orientation
@@ -28,6 +28,11 @@ public class Brick : MonoBehaviour
         Y = 1,
         XY = 2
     };
+
+    void Win_Condition()
+    {
+        //Some event here...
+    }
 
     private void OnMouseDown()
     {
@@ -40,8 +45,9 @@ public class Brick : MonoBehaviour
         Vector3 power = mainCam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         brick.AddForce(power * powerMultiplier * brick.mass);
     }
-    private void OnMouseUpAsButton()
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        brick.velocity = Vector3.zero;
+        Win_Condition();
     }
 }
