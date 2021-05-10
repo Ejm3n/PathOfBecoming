@@ -18,6 +18,7 @@ namespace GlobalVariables
 
             //Cage puzzle
             public static GameObject SEGMENTPREFAB = Resources.Load<GameObject>("Prefabs/Puzzles/CagePuzzle/Segment");
+            public static GameObject HEXAGONPREFAB = Resources.Load<GameObject>("Prefabs/Puzzles/CagePuzzle/Hexagon");
         }
 
         public static class Sprites
@@ -27,6 +28,11 @@ namespace GlobalVariables
 
             //Cage puzzle
             public static Sprite[] SEGMENTSPRITES = Resources.LoadAll<Sprite>("Sprites/Puzzles/CagePuzzle/Segments");
+        }
+
+        public static class Layers
+        {
+            public static LayerMask PUZZLESEGMENTLM = LayerMask.GetMask("PuzzleSegment");
         }
     }
 }

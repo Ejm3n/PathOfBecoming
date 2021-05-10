@@ -1,26 +1,30 @@
 ﻿using GlobalVariables.PuzzleVariables;
 using UnityEngine;
+using AnimationUtils.RenderUtils;
 
 public class Hexagon : MonoBehaviour
 {
-    PolygonCollider2D hexagon;
+    [SerializeField] SpriteRenderer spriteRenderer;
     Segment[] segments;
+
+    float fadeTime = 0.5f;
 
     void Awake()
     {
-        hexagon = GetComponent<PolygonCollider2D>();
-        Initialize(6);
+        spriteRenderer.Unfade(fadeTime);
+        Initialize();
     }
 
-    public void Initialize(int segmentsAmount)
+    public void Initialize()
     {
+        int segmentsAmount = 6;
         segments = new Segment[segmentsAmount];
         float degree = 360 / segmentsAmount;
         for (int i = 0; i < segmentsAmount; i ++)
         {
             segments[i] = Instantiate(Prefabs.SEGMENTPREFAB, gameObject.transform).GetComponent<Segment>();
-            segments[i].Initialize(Random.Range(0, Sprites.SEGMENTSPRITES.Length));
             segments[i].gameObject.transform.Rotate(0, 0, i * degree);
+            segments[i].Initialize();
         }
     }
 
