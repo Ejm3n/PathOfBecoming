@@ -4,12 +4,13 @@ using GlobalVariables.PuzzleVariables;
 
 public class Spawner : MonoBehaviour
 {
-    float spawnTime = 0.5f;
+    float spawnDelay = 0.5f;
 
     private void Start()
     {
         StartCoroutine(Spawn_Hexagons());
     }
+
     IEnumerator Spawn_Hexagons()
     {
         GameObject centralHex = Instantiate(Prefabs.HEXAGONPREFAB, gameObject.transform);
@@ -28,7 +29,7 @@ public class Spawner : MonoBehaviour
 
         foreach (Vector3 center in edgeCenters)
         {
-            yield return new WaitForSeconds(spawnTime);
+            yield return new WaitForSeconds(spawnDelay);
             Instantiate(Prefabs.HEXAGONPREFAB, (center - centralHexCol.bounds.center) * 2.1f, Quaternion.identity, gameObject.transform);
         }
     }

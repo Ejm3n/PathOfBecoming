@@ -1,6 +1,7 @@
 ﻿using GlobalVariables.PuzzleVariables;
 using UnityEngine;
 using AnimationUtils.RenderUtils;
+using AnimationUtils.TransformUtils;
 
 public class Hexagon : MonoBehaviour
 {
@@ -28,5 +29,8 @@ public class Hexagon : MonoBehaviour
         }
     }
 
-
+    private void OnMouseDown()
+    {
+        transform.SpringRotation(0.5f, Vector3.forward * 60);
+    }
 }
