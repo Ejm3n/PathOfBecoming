@@ -9,7 +9,7 @@ public class Interact : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         interactButton.gameObject.SetActive(true);
-        interactButton.Set_Button(interactSprite, () => interactEvent.Start_Event());
+        interactButton.Set_Button(interactSprite, interactEvent.Start_Event);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

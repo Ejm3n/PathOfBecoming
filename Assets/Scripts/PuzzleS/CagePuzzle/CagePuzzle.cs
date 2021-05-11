@@ -1,19 +1,38 @@
 ﻿using System.Collections;
 using UnityEngine;
 using GlobalVariables.PuzzleVariables;
+using System.Collections.Generic;
 
-public class Spawner : MonoBehaviour
+public class CagePuzzle : MonoBehaviour
 {
     float spawnDelay = 0.5f;
+    public bool activated { get; private set; }
+
+    List<Hexagon> hexagons = new List<Hexagon>();
 
     private void Start()
     {
+        activated = false;
         StartCoroutine(Spawn_Hexagons());
+    }
+
+    public void Check_Win_Condition()
+    {
+        bool winCondition = true;
+        for (int i = 0; i < hexagons.Count; i++)
+        {
+            hexagons[i].Check_Segments_Connection();
+            if (!hexagons[i].connected)
+                winCondition = false;
+        }
+        if(winCondition)
+            Debug.Log("Yaay"); //win condition here
     }
 
     IEnumerator Spawn_Hexagons()
     {
         GameObject centralHex = Instantiate(Prefabs.HEXAGONPREFAB, gameObject.transform);
+        hexagons.Add(centralHex.GetComponent<Hexagon>());
         PolygonCollider2D centralHexCol = centralHex.GetComponent<PolygonCollider2D>();
         Vector3[] edgeCenters = new Vector3[centralHexCol.points.Length];
         Vector3 edgeCenter;
@@ -30,8 +49,13 @@ public class Spawner : MonoBehaviour
         foreach (Vector3 center in edgeCenters)
         {
             yield return new WaitForSeconds(spawnDelay);
-            Instantiate(Prefabs.HEXAGONPREFAB, (center - centralHexCol.bounds.center) * 2.1f, Quaternion.identity, gameObject.transform);
+            hexagons.Add(Instantiate(Prefabs.HEXAGONPREFAB, (center - centralHexCol.bounds.center) * 2.1f, Quaternion.identity, gameObject.transform).GetComponent<Hexagon>());
         }
+
+        yield return new WaitUntil(() => hexagons[hexagons.Count - 1].ready);
+        for (int i = 0; i < hexagons.Count; i++)
+            hexagons[i].Rotate_Hex(2);
+        activated = true;
     }
 
     float Avg(params float[] values)

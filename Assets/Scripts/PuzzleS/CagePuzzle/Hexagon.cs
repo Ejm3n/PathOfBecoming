@@ -6,13 +6,19 @@ using AnimationUtils.TransformUtils;
 public class Hexagon : MonoBehaviour
 {
     [SerializeField] SpriteRenderer spriteRenderer;
+    CagePuzzle controller;
     Segment[] segments;
+
+    public bool ready { get; private set; }
+
+    public bool connected { get; private set; }
 
     float fadeTime = 0.5f;
 
     void Awake()
     {
-        spriteRenderer.Unfade(fadeTime);
+        controller = transform.parent.gameObject.GetComponent<CagePuzzle>();
+        spriteRenderer.Unfade(fadeTime, () => ready = true);
         Initialize();
     }
 
@@ -31,6 +37,27 @@ public class Hexagon : MonoBehaviour
 
     private void OnMouseDown()
     {
-        transform.SpringRotation(0.5f, Vector3.forward * 60);
+        if (controller.activated)
+            Rotate_Hex(60, 0.5f);
+    }
+
+    void Rotate_Hex(float angleDeg, float timeToRotate)
+    {
+        transform.SpringRotation(timeToRotate, Vector3.forward * angleDeg, controller.Check_Win_Condition);
+    }
+
+    public void Rotate_Hex(float timeToRotate = 0.5f)
+    {
+        float angle = Random.Range(1, 6) * 60;
+        transform.SpringRotation(timeToRotate, Vector3.forward * angle, controller.Check_Win_Condition);
+    }
+
+    public void Check_Segments_Connection()
+    {
+        bool hexConnected = true;
+        foreach(Segment segment in segments)
+            if (!segment.Connect_Adjacent_Segments())
+                hexConnected = false;
+        connected = hexConnected;
     }
 }

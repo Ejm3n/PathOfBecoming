@@ -19,6 +19,7 @@ namespace GlobalVariables
             //Cage puzzle
             public static GameObject SEGMENTPREFAB = Resources.Load<GameObject>("Prefabs/Puzzles/CagePuzzle/Segment");
             public static GameObject HEXAGONPREFAB = Resources.Load<GameObject>("Prefabs/Puzzles/CagePuzzle/Hexagon");
+            public static GameObject CAGEPUZZLEPREFAB = Resources.Load<GameObject>("Prefabs/Puzzles/CagePuzzle/CagePuzzle");
         }
 
         public static class Sprites
