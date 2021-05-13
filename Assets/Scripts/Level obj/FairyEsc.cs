@@ -6,28 +6,16 @@ public class FairyEsc : MonoBehaviour
 {
     [SerializeField]
     private float speed;
-    private Transform target;
-    float smoothTime = 0.6f;
-    float yVelocity = 0.0f;
+    [SerializeField] Transform target;
     [SerializeField] bool isFairyAttached;
-
-    private void Start()
-    {
-        if(!isFairyAttached)
-        {
-           
-            transform.position = new Vector2(52, 4.5f);
-        }
-        target = GameObject.FindGameObjectWithTag("TargetFairy").transform;
-    }
 
     private void Update()
     {
-        if (PazzleControl.youWin || isFairyAttached)
+        if (PazzleControl.youWin && !isFairyAttached)
         {
-            float newPosition = Mathf.SmoothDamp(transform.position.x, target.position.x, ref yVelocity, smoothTime);
-            transform.position = new Vector3(newPosition, target.position.y, transform.position.z);
-            //Flip();
+            transform.SetParent(target);
+            transform.localPosition = Vector3.zero;
+            isFairyAttached = true;
         }
     }
 

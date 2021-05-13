@@ -3,7 +3,7 @@ using UnityEngine;
 using GlobalVariables.PuzzleVariables;
 using System.Collections.Generic;
 
-public class CagePuzzle : MonoBehaviour
+public class CagePuzzle : Puzzle
 {
     float spawnDelay = 0.5f;
     public bool activated { get; private set; }
@@ -26,7 +26,10 @@ public class CagePuzzle : MonoBehaviour
                 winCondition = false;
         }
         if(winCondition)
-            Debug.Log("Yaay"); //win condition here
+        {
+            solved = true;
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator Spawn_Hexagons()

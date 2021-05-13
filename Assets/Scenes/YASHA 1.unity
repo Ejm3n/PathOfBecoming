@@ -283,6 +283,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &40785233 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7678581233024174098, guid: a9bede5dc819f804a8437ed3a7f6061c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7678581232718623481}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &42476743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,8 +1075,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1762f768b8978fd40b95a7b6afa55850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleController: {fileID: 407603182}
   Puzzle: {fileID: 399709785}
   ds: {fileID: 2369979692232838263}
+  create: 0
 --- !u!61 &153583970
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2863,6 +2871,50 @@ MonoBehaviour:
   spellBook: {fileID: 6633200056144884939}
   nextDialogue: {fileID: 1080446703}
   ds: {fileID: 2369979692232838263}
+--- !u!1 &407603181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 407603183}
+  - component: {fileID: 407603182}
+  m_Layer: 0
+  m_Name: PuzzleController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &407603182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407603181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d846ae155fd57c6418adac0eefa61f2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactButton: {fileID: 0}
+--- !u!4 &407603183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407603181}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 519420032}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &416594060
 GameObject:
   m_ObjectHideFlags: 0
@@ -3518,7 +3570,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 407603183}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11724,8 +11777,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1762f768b8978fd40b95a7b6afa55850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleController: {fileID: 407603182}
   Puzzle: {fileID: 6164301952294901902}
   ds: {fileID: 2369979692232838263}
+  create: 0
 --- !u!61 &1584898149
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16195,6 +16250,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3512574674285925807, guid: 3ebf0178f0319094abc47dd42eb2580e,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 40785233}
     - target: {fileID: 3512574674285925808, guid: 3ebf0178f0319094abc47dd42eb2580e,
         type: 3}
       propertyPath: m_RootOrder
@@ -16701,7 +16761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4096867036808471593
 RectTransform:
   m_ObjectHideFlags: 0
