@@ -2,7 +2,6 @@
 using GlobalVariables.PuzzleVariables;
 using VectorUtils;
 using AnimationUtils.RenderUtils;
-using AnimationUtils.TransformUtils;
 
 public class Segment : MonoBehaviour
 {
@@ -64,12 +63,14 @@ public class Segment : MonoBehaviour
 
         if (highlight != highlighted)
         {
-            spriteRenderer.transform.SpringRotation(0.5f, Vector3.forward * 45);
+            //spriteRenderer.transform.SpringRotation(0.5f, Vector3.forward * 45);
+            spriteRenderer.sprite = highlight ? Sprites.HSEGMENTSPRITES[type] : Sprites.SEGMENTSPRITES[type];
             highlighted = highlight;
         }
         if (adjacentSegment && highlight != adjacentSegment.highlighted)
         {
-            adjacentSegment.spriteRenderer.transform.SpringRotation(0.5f, Vector3.forward * 45);
+            //adjacentSegment.spriteRenderer.transform.SpringRotation(0.5f, Vector3.forward * 45);
+            adjacentSegment.spriteRenderer.sprite = highlight ? Sprites.HSEGMENTSPRITES[adjacentSegment.type] : Sprites.SEGMENTSPRITES[adjacentSegment.type];
             adjacentSegment.highlighted = highlight;
         }
 

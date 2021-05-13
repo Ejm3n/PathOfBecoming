@@ -29,6 +29,7 @@ namespace GlobalVariables
 
             //Cage puzzle
             public static Sprite[] SEGMENTSPRITES = Resources.LoadAll<Sprite>("Sprites/Puzzles/CagePuzzle/Segments");
+            public static Sprite[] HSEGMENTSPRITES = Resources.LoadAll<Sprite>("Sprites/Puzzles/CagePuzzle/HighlightedSegments");
         }
 
         public static class Layers
