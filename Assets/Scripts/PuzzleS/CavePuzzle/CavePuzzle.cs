@@ -9,7 +9,6 @@ public class CavePuzzle : MonoBehaviour
     bool canUWin = true;
     [SerializeField] PuzzleButtons[] puzzleButtons;
     private Color colorIfUnpressed = new Color(255f, 155f, 0f, 0f);
-    [SerializeField] GameObject spellBook;
     [SerializeField] GameObject nextDialogue;
     [SerializeField] DialogueSystem ds;
     private void Update()

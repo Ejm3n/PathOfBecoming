@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 public class PuzzleStart : InteractEvent
 {
     public PuzzleController puzzleController;
-    public GameObject Puzzle;
-    [SerializeField] DialogueSystem ds;
+    public GameObject puzzle;
     [SerializeField] bool create;
+    public UnityEvent winEvent;
+    public UnityEvent closeEvent;
+
+    [SerializeField] DialogueSystem ds;
 
     public override void Start_Event()
     {
-        puzzleController.Start_Puzzle(Puzzle, eventTrigger, create);
+        puzzleController.Start_Puzzle(this, create);
         ds.SetUI(false);
     }
 }

@@ -13,6 +13,6 @@ public class Puzzle : MonoBehaviour
 
     private void OnDestroy()
     {
-        //send "solved" to puzzle controller
+        puzzleController.Handle_Puzzle_result(solved);
     }
 }

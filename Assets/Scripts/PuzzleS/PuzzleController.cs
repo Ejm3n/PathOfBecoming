@@ -4,20 +4,29 @@ public class PuzzleController : MonoBehaviour
 {
     public GameObject interactButton;
 
-    Collider2D puzzleTrigger;
+    PuzzleStart puzzleStart;
 
     
-    public void Start_Puzzle(GameObject puzzle, Collider2D trigger, bool create)
+    public void Start_Puzzle(PuzzleStart puzzleStart, bool create)
     {
-        puzzleTrigger = trigger;
+        this.puzzleStart = puzzleStart;
         if (create)
-            Instantiate(puzzle, gameObject.transform);
+            Instantiate(puzzleStart.puzzle, gameObject.transform);
         else
-            puzzle.SetActive(true);
+            puzzleStart.puzzle.SetActive(true);
     }
 
     public void Handle_Puzzle_result(bool solved)
     {
-
+        if (solved)
+        {
+            Destroy(puzzleStart.eventTrigger);
+            puzzleStart.winEvent?.Invoke();
+        }
+        else
+        {
+            interactButton.SetActive(true);
+            puzzleStart.closeEvent?.Invoke();
+        }
     }
 }

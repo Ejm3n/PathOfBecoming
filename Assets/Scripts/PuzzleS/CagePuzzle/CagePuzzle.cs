@@ -52,7 +52,7 @@ public class CagePuzzle : Puzzle
         foreach (Vector3 center in edgeCenters)
         {
             yield return new WaitForSeconds(spawnDelay);
-            hexagons.Add(Instantiate(Prefabs.HEXAGONPREFAB, (center - centralHexCol.bounds.center) * 2.1f, Quaternion.identity, gameObject.transform).GetComponent<Hexagon>());
+            hexagons.Add(Instantiate(Prefabs.HEXAGONPREFAB, center * 2.1f + transform.position, Quaternion.identity, gameObject.transform).GetComponent<Hexagon>());
         }
 
         yield return new WaitUntil(() => hexagons[hexagons.Count - 1].ready);
