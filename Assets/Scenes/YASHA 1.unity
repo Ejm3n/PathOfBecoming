@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: {fileID: 1440259083}
-  puzzleController: {fileID: 407603182}
+  interactController: {fileID: 407603182}
   puzzle: {fileID: 399709785}
   create: 0
   winEvent:
@@ -2891,7 +2891,7 @@ GameObject:
   - component: {fileID: 407603183}
   - component: {fileID: 407603182}
   m_Layer: 0
-  m_Name: PuzzleController
+  m_Name: InteractController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2910,6 +2910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactButton: {fileID: 631268083}
+  buttonEnabled: 0
 --- !u!4 &407603183
 Transform:
   m_ObjectHideFlags: 0
@@ -11787,7 +11788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: {fileID: 305295939}
-  puzzleController: {fileID: 407603182}
+  interactController: {fileID: 407603182}
   puzzle: {fileID: 4342615957535141557, guid: 22a39dab64a70b245af8cc178535c242, type: 3}
   create: 1
   winEvent:
@@ -15399,6 +15400,7 @@ MonoBehaviour:
   fairyImg: {fileID: 21300000, guid: b09189f6bc4f70142a76e18829dd8a9a, type: 3}
   impImg: {fileID: 21300000, guid: c547dec0766e5954bb8c5fdcde71eb31, type: 3}
   blockingPanel: {fileID: 1264847137}
+  interactController: {fileID: 407603182}
   file: []
   canUseInventory: 0
   canUseSpellBook: 0

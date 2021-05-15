@@ -1,12 +1,25 @@
 ﻿using UnityEngine;
 
-public class PuzzleController : MonoBehaviour
+public class InteractController : MonoBehaviour
 {
     public GameObject interactButton;
+    [HideInInspector] public bool buttonEnabled;
 
     PuzzleStart puzzleStart;
 
-    
+    public void Activate_Interact_Button(bool activate)
+    {
+        if (activate)
+        {
+            interactButton.SetActive(buttonEnabled);
+        }
+        else
+        {
+            buttonEnabled = interactButton.activeInHierarchy;
+            interactButton.SetActive(false);
+        }
+    }
+
     public void Start_Puzzle(PuzzleStart puzzleStart, bool create)
     {
         this.puzzleStart = puzzleStart;
@@ -29,4 +42,6 @@ public class PuzzleController : MonoBehaviour
             puzzleStart.closeEvent?.Invoke();
         }
     }
+
+
 }

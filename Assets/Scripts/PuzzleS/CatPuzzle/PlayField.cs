@@ -5,6 +5,7 @@ using GlobalVariables.PuzzleVariables;
 
 public class PlayField : MonoBehaviour
 {
+    [SerializeField] Puzzle controller;
     [SerializeField] int height;
     [SerializeField] int width;
 
@@ -30,7 +31,6 @@ public class PlayField : MonoBehaviour
     void Update()
     {
         Check_Queue(queue);
-        Check_Win_Condition();
     }
 
     void Check_Queue(Queue<QueueItem> queue)
@@ -42,7 +42,7 @@ public class PlayField : MonoBehaviour
     void Check_Win_Condition()
     {
         if (miceInHole == winCondition)
-            Reload();
+            controller.Solve_Puzzle();
     }
 
     void Move_Chip(QueueItem item, int[] targetIndex)
@@ -62,20 +62,14 @@ public class PlayField : MonoBehaviour
         if (item.searchObject == null)
             Move_Chip(item, targetIndex);
         else if (chips[item.index[0], item.index[1]].GetType() != typeof(HoleChip)) //mouse is caught
-            Reload();
+            Destroy(controller.gameObject);
         else //mouse adjacent to hole
         {
             miceInHole += 1;
             Transform_Chip<Chip>(targetIndex, Prefabs.CHIPPREFAB);
+            Check_Win_Condition();
         }
     }
-
-    private void Reload()
-    {
-        Instantiate(Prefabs.CATPUZZLEPREFAB, transform.parent.position, Quaternion.identity);
-        Destroy(gameObject.transform.parent.gameObject);
-    }
-
     int[] Look_Adjacent_Places(QueueItem item)
     {
         int[][] adjacent_places = new int[][]

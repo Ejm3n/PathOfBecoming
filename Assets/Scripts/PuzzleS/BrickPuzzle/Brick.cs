@@ -6,6 +6,7 @@ public class Brick : MonoBehaviour
 {
     public Orientation orientation;
     public float powerMultiplier;
+    public Puzzle controller;
 
     Rigidbody2D brick;
     Camera mainCam;
@@ -31,7 +32,7 @@ public class Brick : MonoBehaviour
 
     void Win_Condition()
     {
-        //Some event here...
+        controller.Solve_Puzzle();
     }
 
     private void OnMouseDown()

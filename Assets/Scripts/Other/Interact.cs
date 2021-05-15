@@ -21,5 +21,6 @@ public class Interact : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         interactButton.gameObject.SetActive(false);
+        interactEvent.Unset_Trigger();
     }
 }

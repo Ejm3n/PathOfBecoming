@@ -26,10 +26,7 @@ public class CagePuzzle : Puzzle
                 winCondition = false;
         }
         if(winCondition)
-        {
-            solved = true;
-            Destroy(gameObject);
-        }
+            Solve_Puzzle();
     }
 
     IEnumerator Spawn_Hexagons()

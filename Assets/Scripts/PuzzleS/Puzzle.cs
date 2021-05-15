@@ -2,14 +2,19 @@
 
 public class Puzzle : MonoBehaviour
 {
-    protected bool solved = false;
-    PuzzleController puzzleController;
+    bool solved = false;
+    InteractController puzzleController;
 
     private void Awake()
     {
-        puzzleController = transform.parent.GetComponent<PuzzleController>();
+        puzzleController = transform.parent.GetComponent<InteractController>();
     }
 
+    public void Solve_Puzzle()
+    {
+        solved = true;
+        Destroy(gameObject);
+    }
 
     private void OnDestroy()
     {
