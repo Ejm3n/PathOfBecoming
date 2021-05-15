@@ -1,18 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CageOpen : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer cage;
+    [SerializeField] private SpriteRenderer door;
+    [SerializeField] private SpriteRenderer cageBack;
+
     private Animator anim;
     void Start()
     {
         anim = GetComponent<Animator>();
     }
-
-    void Update()
+    public void Open_Cage()
     {
-       if(PazzleControl.youWin)
-            anim.SetBool("open", true);
+        cageBack.sortingOrder = 0;
+        cage.sortingOrder = 1;
+        door.sortingOrder = 2;
+        anim.SetBool("open", true);
     }
 }

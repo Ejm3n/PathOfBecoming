@@ -23,6 +23,8 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] CanvasGroup blockingPanel;
     private GameObject choiceNextTrigger;//до куда скипать если выбран 1 вариант
 
+    [SerializeField] InteractController interactController;
+
     public string[] file;//все строки файла
     private int whereIsEndChoose;//на какой строчке конец выбора
     private int choice1;//строка с выбором 1
@@ -63,6 +65,7 @@ public class DialogueSystem : MonoBehaviour
             ChangeCanvasGroup(what, spellBook);
         }
         controlButtons.SetActive(what);
+        interactController.Activate_Interact_Button(what);
         manaBar.SetActive(what);
     }
     private void ChangeCanvasGroup(bool whitch, CanvasGroup cg)//для выключения инвентаря и книгизаклинаний
