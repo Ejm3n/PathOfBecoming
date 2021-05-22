@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,7 +24,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject firstDiaTrigger;
     [SerializeField] float waitTimeTillStart;
     [SerializeField] Transform pixy;
-
+    [SerializeField] Image rArrow;
+    [SerializeField] Image lArrow;
+    [SerializeField] Image jumpArrow;
+    Color shadowed = new Color(255, 255, 255, 0.1f);
+    Color showed = new Color(255, 255, 255, 255);
     private void Start()
     {
         moveButtons.SetActive(false);
@@ -65,7 +70,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector2.up * jumpForce;
         }
-
     }
 
     public void Flip()
@@ -88,18 +92,33 @@ public class PlayerController : MonoBehaviour
     public void OnRightButtonDown()
     {
         MoveInput = 1;
+        rArrow.color = showed;
     }
     public void OnLeftButtonDown()
     {
         MoveInput = -1;
+        lArrow.color = showed;
     }
     public void OnButtonUp()
     {
         MoveInput = 0;
+        rArrow.color = shadowed;
+        lArrow.color = shadowed;
+        //jumpArrow.color = shadowed;
     }
     public void OnJumpButton()
     {
         if (isGround)
+        {
             rb.velocity = Vector2.up * jumpForce;
+            jumpArrow.color = showed;
+            StartCoroutine(showJumpButton());
+        }
+            
+    }
+    private IEnumerator showJumpButton()
+    {
+        yield return new WaitForSeconds(0.2f);
+        jumpArrow.color = shadowed;
     }
 }
