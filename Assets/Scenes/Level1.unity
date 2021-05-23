@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactButton: {fileID: 631268085}
-  interactSprite: {fileID: 21300000, guid: 512f4777c22035c43a19b5bd037a7b1a, type: 3}
+  interactSprite: {fileID: 21300000, guid: f54e17fa0639e5b4abe488893afe9177, type: 3}
   interactEvent: {fileID: 1595001881}
 --- !u!61 &50658343
 BoxCollider2D:
@@ -2266,7 +2266,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.47684097, y: -2.4963932}
+  m_Offset: {x: -0.41355133, y: -2.4963932}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2277,7 +2277,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 13.874687, y: 11.981327}
+  m_Size: {x: 7.4190063, y: 11.981327}
   m_EdgeRadius: 0
 --- !u!1 &327088560
 GameObject:
@@ -4666,8 +4666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactButton: {fileID: 631268085}
-  interactSprite: {fileID: -9049566845407604895, guid: a68c7c557269b5249a67643045350c55,
-    type: 3}
+  interactSprite: {fileID: 21300000, guid: f54e17fa0639e5b4abe488893afe9177, type: 3}
   interactEvent: {fileID: 142392686}
 --- !u!61 &663731943
 BoxCollider2D:
@@ -9189,8 +9188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactButton: {fileID: 631268085}
-  interactSprite: {fileID: -1094135756351764416, guid: a68c7c557269b5249a67643045350c55,
-    type: 3}
+  interactSprite: {fileID: 21300000, guid: f54e17fa0639e5b4abe488893afe9177, type: 3}
   interactEvent: {fileID: 371191083}
 --- !u!61 &1311316379
 BoxCollider2D:
@@ -15005,6 +15003,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoveButtons (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2131418351892602170, guid: cef96a138a77d5c4ea98f7d034199659,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2131418351892602171, guid: cef96a138a77d5c4ea98f7d034199659,
         type: 3}
       propertyPath: m_Pivot.x
@@ -15137,12 +15140,6 @@ PrefabInstance:
       objectReference: {fileID: 457182567}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cef96a138a77d5c4ea98f7d034199659, type: 3}
---- !u!1 &1384775998075283354 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2131418351892602170, guid: cef96a138a77d5c4ea98f7d034199659,
-    type: 3}
-  m_PrefabInstance: {fileID: 1054941670728874656}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1384775998075283355 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2131418351892602171, guid: cef96a138a77d5c4ea98f7d034199659,
@@ -15160,6 +15157,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InteractButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542811436697893515, guid: 9eff4f84901a54149929053242e73594,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1542811436697893516, guid: 9eff4f84901a54149929053242e73594,
         type: 3}
@@ -15244,12 +15246,12 @@ PrefabInstance:
     - target: {fileID: 1542811436697893516, guid: 9eff4f84901a54149929053242e73594,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -282
+      value: -182
       objectReference: {fileID: 0}
     - target: {fileID: 1542811436697893516, guid: 9eff4f84901a54149929053242e73594,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 715
+      value: 504.01
       objectReference: {fileID: 0}
     - target: {fileID: 1542811436697893516, guid: 9eff4f84901a54149929053242e73594,
         type: 3}
@@ -15853,7 +15855,7 @@ MonoBehaviour:
   nameOutput: {fileID: 4096867036769205000}
   choice1Text: {fileID: 4096867036885876448}
   choice2Text: {fileID: 4096867038330046695}
-  controlButtons: {fileID: 1384775998075283354}
+  controlButtons: {fileID: 4096867036648459936}
   manaBar: {fileID: 1854690393}
   inventory: {fileID: 2777641021553108446}
   spellBook: {fileID: 6633200056144884940}
@@ -20631,6 +20633,11 @@ PrefabInstance:
       objectReference: {fileID: 1621591983}
     - target: {fileID: 7678581233075142558, guid: a9bede5dc819f804a8437ed3a7f6061c,
         type: 3}
+      propertyPath: speed
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678581233075142558, guid: a9bede5dc819f804a8437ed3a7f6061c,
+        type: 3}
       propertyPath: lArrow
       value: 
       objectReference: {fileID: 3165266049980953642}
@@ -20648,7 +20655,7 @@ PrefabInstance:
         type: 3}
       propertyPath: moveButtons
       value: 
-      objectReference: {fileID: 1384775998075283354}
+      objectReference: {fileID: 4096867036648459936}
     - target: {fileID: 7678581233075142558, guid: a9bede5dc819f804a8437ed3a7f6061c,
         type: 3}
       propertyPath: firstDiaTrigger
