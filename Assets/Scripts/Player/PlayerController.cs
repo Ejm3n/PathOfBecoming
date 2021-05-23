@@ -24,11 +24,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject firstDiaTrigger;
     [SerializeField] float waitTimeTillStart;
     [SerializeField] Transform pixy;
-    [SerializeField] Image rArrow;
-    [SerializeField] Image lArrow;
-    [SerializeField] Image jumpArrow;
-    Color shadowed = new Color(255, 255, 255, 0.1f);
-    Color showed = new Color(255, 255, 255, 255);
+    [SerializeField] Joystick joystick;
+
     private void Start()
     {
         moveButtons.SetActive(false);
@@ -44,7 +41,17 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         isGround = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-         //MoveInput = Input.GetAxis("Horizontal");
+        //MoveInput = Input.GetAxis("Horizontal");
+        if(moveButtons.activeInHierarchy)
+        {
+
+            MoveInput = joystick.Horizontal;
+        }
+        else
+        {
+            OnButtonUp();
+        }
+       
         rb.velocity = new Vector2(MoveInput * speed, rb.velocity.y);
 
         if (faceRight == false && MoveInput > 0)
@@ -92,33 +99,30 @@ public class PlayerController : MonoBehaviour
     public void OnRightButtonDown()
     {
         MoveInput = 1;
-        rArrow.color = showed;
+        
     }
     public void OnLeftButtonDown()
     {
         MoveInput = -1;
-        lArrow.color = showed;
+        
     }
     public void OnButtonUp()
     {
         MoveInput = 0;
-        rArrow.color = shadowed;
-        lArrow.color = shadowed;
-        //jumpArrow.color = shadowed;
     }
     public void OnJumpButton()
     {
         if (isGround)
         {
             rb.velocity = Vector2.up * jumpForce;
-            jumpArrow.color = showed;
-            StartCoroutine(showJumpButton());
+
+            //StartCoroutine(showJumpButton());
         }
             
     }
     private IEnumerator showJumpButton()
     {
         yield return new WaitForSeconds(0.2f);
-        jumpArrow.color = shadowed;
+
     }
 }
