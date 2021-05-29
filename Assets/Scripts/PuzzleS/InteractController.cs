@@ -32,8 +32,7 @@ public class InteractController : MonoBehaviour
     public void Handle_Puzzle_result(bool solved)
     {
         if (solved)
-        {
-            Destroy(puzzleStart.eventTrigger);
+        {            
             puzzleStart.winEvent?.Invoke();
         }
         else
