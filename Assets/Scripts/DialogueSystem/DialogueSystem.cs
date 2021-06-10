@@ -39,6 +39,8 @@ public class DialogueSystem : MonoBehaviour
     public bool canUseInventory = false;//используется ли инвентарь(чтоб его убирать)
     public bool canUseSpellBook = false;//используется ли книга(чтоб ее убирать)
     Queue<string> linesTriggered = new Queue<string>();//очередь строк, которые триггерятся. именно эта очередь будет выводиться на экран
+    private bool isDialogueTyping = false;
+    private bool typeDialogeInstantly = false;
 
     
 
@@ -119,14 +121,21 @@ public class DialogueSystem : MonoBehaviour
     }
     public void DisplayNextLine()//показать следущую строку
     {
-        if(linesTriggered.Count == 0)
+        if(!isDialogueTyping)
         {
-            EndDialogue();
-            return;
+            if (linesTriggered.Count == 0)
+            {
+                EndDialogue();
+                return;
+            }
+            string line = linesTriggered.Dequeue();
+            StopAllCoroutines();
+            StartCoroutine(TypeLine(line));
         }
-        string line = linesTriggered.Dequeue();
-        StopAllCoroutines();
-        StartCoroutine(TypeLine(line));
+        else
+        {
+            typeDialogeInstantly = true;
+        }
     }
 
     IEnumerator TypeLine(string sentence)//написать строку заменив иконки и имена
@@ -180,9 +189,21 @@ public class DialogueSystem : MonoBehaviour
         output.text = "";
         foreach(char letter in sentence.ToCharArray())
         {
-            yield return new WaitForSecondsRealtime(0.06f);
-            output.text += letter;
+            isDialogueTyping = true;
+            if(!typeDialogeInstantly)
+            {
+                yield return new WaitForSecondsRealtime(0.04f);
+                output.text += letter;
+            }
+            else
+            {
+                output.text = sentence;
+                break;
+            }
+               
         }
+        isDialogueTyping = false;
+        typeDialogeInstantly = false;
     }   
     public void EndDialogue()//закончить диалог 
     {

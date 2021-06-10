@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
-public class PlaceToPutInAndOut : MonoBehaviour
+public class PlaceToPutInAndOut : InteractEvent
 {
     [SerializeField] GameObject canvas;
     [SerializeField] Inventory inventory;
@@ -12,7 +12,7 @@ public class PlaceToPutInAndOut : MonoBehaviour
     int choosenSlot = -1;
     bool isThereAShkatulka = false;
 
-    private void OnMouseUp()
+    public override void Start_Event()
     {
         choosenSlot = -1;
         isThereAShkatulka = false;

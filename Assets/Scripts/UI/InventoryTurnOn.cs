@@ -6,6 +6,7 @@ public class InventoryTurnOn : MonoBehaviour
     [SerializeField] GameObject[] WhatToTurnOff;//список объектов которые надо отключить
     [SerializeField] Animator panelAnim;//анимация панели диавлогов
     [SerializeField] DialogueSystem ds;//ссылка на диалоговую систему
+    //[SerializeField] GameObject interactWithSpider;
     private void OnEnable()
     {
         ds.canUseInventory = true;
@@ -20,7 +21,7 @@ public class InventoryTurnOn : MonoBehaviour
         if (!panelAnim.GetBool("PanelShow"))//когда диалоги закрыты мы показываем инвентарь на 5 секунд и выключаем обратно
         {
             SwitchSetActive(false);
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(2);
             SwitchSetActive(true);
             
         }

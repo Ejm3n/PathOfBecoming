@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject firstDiaTrigger;
     [SerializeField] float waitTimeTillStart;
     [SerializeField] Transform pixy;
+    [SerializeField] Joystick joystick;
 
     private void Start()
     {
@@ -39,7 +41,17 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         isGround = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-         //MoveInput = Input.GetAxis("Horizontal");
+        //MoveInput = Input.GetAxis("Horizontal");
+        if(moveButtons.activeInHierarchy)
+        {
+
+            MoveInput = joystick.Horizontal;
+        }
+        else
+        {
+            OnButtonUp();
+        }
+       
         rb.velocity = new Vector2(MoveInput * speed, rb.velocity.y);
 
         if (faceRight == false && MoveInput > 0)
@@ -65,7 +77,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector2.up * jumpForce;
         }
-
     }
 
     public void Flip()
@@ -88,10 +99,12 @@ public class PlayerController : MonoBehaviour
     public void OnRightButtonDown()
     {
         MoveInput = 1;
+        
     }
     public void OnLeftButtonDown()
     {
         MoveInput = -1;
+        
     }
     public void OnButtonUp()
     {
@@ -100,6 +113,16 @@ public class PlayerController : MonoBehaviour
     public void OnJumpButton()
     {
         if (isGround)
+        {
             rb.velocity = Vector2.up * jumpForce;
+
+            //StartCoroutine(showJumpButton());
+        }
+            
+    }
+    private IEnumerator showJumpButton()
+    {
+        yield return new WaitForSeconds(0.2f);
+
     }
 }

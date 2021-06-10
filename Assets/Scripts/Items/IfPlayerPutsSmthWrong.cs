@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Collections.Generic;
-public class IfPlayerPutsSmthWrong : MonoBehaviour
+public class IfPlayerPutsSmthWrong : InteractEvent
 {
     [SerializeField] Inventory inventory;
     [SerializeField] GameObject canvas;
@@ -9,32 +9,36 @@ public class IfPlayerPutsSmthWrong : MonoBehaviour
     [SerializeField] string WhatToTrade;
     int currentActivation = 0;
     int choosenSlot = -1;
-    private void OnMouseUp()
+    public override void Start_Event()
     {
-        if (!this.IsPointerOverUIObject())
-        {
-            for (int i = 0; i < inventory.isChosen.Length; i++)//смотрим какой слот выбран
-            {
-                if (inventory.isChosen[i])
-                {
-                    choosenSlot = i;
-                    break;
-                }
-            }
-            if (inventory.slots[choosenSlot].transform.GetChild(0) != null && choosenSlot != -1 && inventory.slots[choosenSlot].transform.GetChild(0).gameObject.name == WhatToTrade + "(Clone)")
-            {
 
-                if (currentActivation < whatToActivate.Length)//включаем один из диалогов в случае неправильной постановки предмета
-                {
-                    whatToActivate[currentActivation].SetActive(true);
-                    currentActivation++;
-                }
-                else//если иалоги заканчиваются то больше ниче говорить не надо и уничтожаем геймобжект
+
+        for (int i = 0; i < inventory.isChosen.Length; i++)//смотрим какой слот выбран
+        {
+            if (inventory.isChosen[i])
+            {
+                choosenSlot = i;
+                break;
+            }
+        }
+        if (inventory.slots[choosenSlot].transform.GetChild(0) != null && choosenSlot != -1 && inventory.slots[choosenSlot].transform.GetChild(0).gameObject.name == WhatToTrade + "(Clone)")
+        {
+
+            if (currentActivation < whatToActivate.Length)//включаем один из диалогов в случае неправильной постановки предмета
+            {
+                whatToActivate[currentActivation].SetActive(true);
+                currentActivation++;
+                if ((currentActivation == whatToActivate.Length))
                 {
                     Destroy(gameObject);
                 }
             }
+            else//если иалоги заканчиваются то больше ниче говорить не надо и уничтожаем геймобжект
+            {
+                Destroy(gameObject);
+            }
         }
+
     }
     private bool IsPointerOverUIObject()
     {

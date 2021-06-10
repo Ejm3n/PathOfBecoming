@@ -5,10 +5,16 @@ using UnityEngine;
 public class RockController : MonoBehaviour
 {
     [SerializeField] Transform[] rocks;
+    [SerializeField] GameObject[] whatToDelete;
     private void Update()
     {
         if (rocks[0].position.y == -1.5 && rocks[1].position.y == -2 && rocks[2].position.y == -2.5 && rocks[3].position.y == -3 )
         {
+            for (int i = 0; i < whatToDelete.Length; i++)
+            {
+                if (whatToDelete != null)
+                    Destroy(whatToDelete[i]);
+            }
             Debug.Log("ПОБЕДА");
             Destroy(gameObject);
         }
