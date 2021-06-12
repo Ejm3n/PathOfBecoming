@@ -14,5 +14,9 @@ public class PuzzleStart : InteractEvent
         interactController.Start_Puzzle(this, create);
         ds.SetUI(false);
     }
+    private void OnMouseUp()
+    {
+        Start_Event();
+    }
 }
 
