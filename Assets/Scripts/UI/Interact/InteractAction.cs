@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 [RequireComponent(typeof (BoxCollider2D))]
 public class InteractAction : MonoBehaviour
@@ -9,7 +8,6 @@ public class InteractAction : MonoBehaviour
     
     public void Set_Action(Action action)
     {
-        Debug.Log("set action");
         this.action = action;
     }
     private void OnMouseUp()

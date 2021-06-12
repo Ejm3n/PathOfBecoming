@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
-using System.Collections.Generic;
+using Cinemachine;
+using AnimationUtils.RenderUtils;
 public class PlaceToPutInAndOut : InteractEvent
 {
     [SerializeField] GameObject canvas;
     [SerializeField] Inventory inventory;
     [SerializeField] GameObject whatToSpawn;//шкатулка что заспавнится в инвентаре
     [SerializeField] string WhatToTrade;
-    [SerializeField] GameObject boulder;
+    [SerializeField] SpriteRenderer boulder;
     [SerializeField] GameObject inGameShkat;
+    [SerializeField] CinemachineVirtualCamera rockCamera;
+    [SerializeField] DialogueSystem ds;
     int choosenSlot = -1;
     bool isThereAShkatulka = false;
 
@@ -53,8 +55,23 @@ public class PlaceToPutInAndOut : InteractEvent
     }
     private void ChangeImage(bool what)
     {
-        boulder.SetActive(what);
+        ds.SetUI(false);
+        rockCamera.Priority = 11;
         inGameShkat.SetActive(!what);
+        Animate_Boulder(what);
     }
 
+    void Return_Control(bool appear)
+    {
+        rockCamera.Priority = 1;
+        boulder.gameObject.SetActive(appear);
+    }
+
+    void Animate_Boulder(bool appear, float timeToAnimate = 3f)
+    {
+        if (appear)
+            boulder.Unfade(timeToAnimate, () => Return_Control(appear));
+        else
+            boulder.Fade(timeToAnimate, () => Return_Control(appear));
+    }
 }

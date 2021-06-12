@@ -67,7 +67,6 @@ public class DialogueSystem : MonoBehaviour
             ChangeCanvasGroup(what, spellBook);
         }
         controlButtons.SetActive(what);
-        interactController.Activate_Interact_Button(what);
         manaBar.SetActive(what);
     }
     private void ChangeCanvasGroup(bool whitch, CanvasGroup cg)//для выключения инвентаря и книгизаклинаний
