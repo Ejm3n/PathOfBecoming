@@ -39,6 +39,7 @@ public class HintMap : MonoBehaviour
     IEnumerator Highlight_With_Delay()
     {
         highlighted = true;
+        particleShape.spriteRenderer = map[0].objectToHighlight;
         yield return new WaitForSeconds(map[0].highlightDelay);
         hintParticle.Play();
     }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using AnimationUtils.RenderUtils;
+using Cinemachine;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,6 +13,9 @@ public class ChangeItems : InteractEvent
     [SerializeField] GameObject[] whatActivate;
     [SerializeField] GameObject[] whatDeactivate;
     [SerializeField] GameObject canvas;
+    [SerializeField] CinemachineVirtualCamera rockCamera;
+    [SerializeField] DialogueSystem ds;
+    [SerializeField] HintMap hintMap;
     public override void Start_Event()
     {
 
@@ -31,28 +36,56 @@ public class ChangeItems : InteractEvent
                 {
                     inventory.isFull[i] = true;
                     Instantiate(whatToSpawn, inventory.slots[i].transform);
-                    for (int k = 0; k < whatActivate.Length; k++)
-                    {
-                        if (whatActivate[k] != null)
-                        {
-                            whatActivate[k].SetActive(true);
-                        }
-
-                    }
                     for (int k = 0; k < whatDeactivate.Length; k++)//отключаем ненужные объекты
                     {
                         if (whatDeactivate[k] != null)
                         {
-                            whatDeactivate[k].SetActive(false);
+                            ChangeImage(false, whatDeactivate[k].GetComponent<SpriteRenderer>());
                         }
                     }
-                    Destroy(gameObject);
                     break;
                 }
             }
 
         }
     }
+
+    private void ChangeImage(bool what, SpriteRenderer animObject)
+    {
+        ds.SetUI(false);
+        rockCamera.Priority = 11;
+        Animate(what, animObject);
+    }
+
+    void Return_Control(bool appear, SpriteRenderer animObject)
+    {
+        rockCamera.Priority = 1;
+        animObject.gameObject.SetActive(appear);
+        ds.SetUI(true);
+        for (int k = 0; k < whatActivate.Length; k++)
+        {
+            if (whatActivate[k] != null)
+            {
+                whatActivate[k].SetActive(true);
+            }
+
+        }
+        hintMap.Stop_Highlight();
+        Destroy(gameObject);
+    }
+
+    void Animate(bool appear, SpriteRenderer animObject, float timeToAnimate = 3f)
+    {
+        if (appear)
+        {
+            animObject.gameObject.SetActive(true);
+            animObject.Unfade(timeToAnimate, () => Return_Control(appear, animObject));
+        }
+        else
+            animObject.Fade(timeToAnimate, () => Return_Control(appear, animObject));
+    }
+
+
     private bool IsPointerOverUIObject()
     {
         // get current pointer position and raycast it

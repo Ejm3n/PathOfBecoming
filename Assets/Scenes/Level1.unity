@@ -383,7 +383,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 50658340}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1595001880}
@@ -401,9 +401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1660c8e9a1eb32b46b6dc41be97fa94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactAction: {fileID: 0}
-  interactEvent: {fileID: 1595001881}
-  hintMap: {fileID: 0}
+  hintMap: {fileID: 457182570}
 --- !u!61 &50658343
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -979,7 +977,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142392684}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -1149,7 +1147,18 @@ MonoBehaviour:
   create: 0
   winEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 457182570}
+        m_MethodName: Stop_Highlight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   closeEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -2311,9 +2320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1660c8e9a1eb32b46b6dc41be97fa94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactAction: {fileID: 0}
-  interactEvent: {fileID: 1584898148}
-  hintMap: {fileID: 0}
+  hintMap: {fileID: 457182570}
 --- !u!61 &305295939
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2589,7 +2596,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -7476,6 +7483,9 @@ MonoBehaviour:
   whatDeactivate:
   - {fileID: 2061547664}
   canvas: {fileID: 4096867036808471592}
+  rockCamera: {fileID: 1872147480}
+  ds: {fileID: 2369979692232838263}
+  hintMap: {fileID: 457182570}
 --- !u!61 &371191084
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7483,7 +7493,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371191081}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -7982,7 +7992,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d846ae155fd57c6418adac0eefa61f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonEnabled: 0
 --- !u!4 &407603183
 Transform:
   m_ObjectHideFlags: 0
@@ -7997,6 +8006,77 @@ Transform:
   m_Father: {fileID: 519420032}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &408194825
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 408194826}
+  - component: {fileID: 408194828}
+  - component: {fileID: 408194827}
+  m_Layer: 12
+  m_Name: Interact
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &408194826
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408194825}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1126746051}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &408194827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408194825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1660c8e9a1eb32b46b6dc41be97fa94c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintMap: {fileID: 457182570}
+--- !u!61 &408194828
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408194825}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1, y: -1}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5, y: 4}
+  m_EdgeRadius: 0
 --- !u!1 &416594060
 GameObject:
   m_ObjectHideFlags: 0
@@ -8354,13 +8434,13 @@ MonoBehaviour:
   map:
   - objectToHighlight: {fileID: 1584898147}
     highlightDelay: 0
-  - objectToHighlight: {fileID: 693632503}
-    highlightDelay: 60
   - objectToHighlight: {fileID: 1259078407}
     highlightDelay: 60
   - objectToHighlight: {fileID: 693632503}
     highlightDelay: 60
   - objectToHighlight: {fileID: 153583968}
+    highlightDelay: 60
+  - objectToHighlight: {fileID: 693632503}
     highlightDelay: 60
   - objectToHighlight: {fileID: 830217368}
     highlightDelay: 60
@@ -11158,9 +11238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1660c8e9a1eb32b46b6dc41be97fa94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactAction: {fileID: 0}
-  interactEvent: {fileID: 142392686}
-  hintMap: {fileID: 0}
+  hintMap: {fileID: 457182570}
 --- !u!61 &663731943
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14413,6 +14491,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1126746051}
   - component: {fileID: 1126746052}
+  - component: {fileID: 1126746054}
+  - component: {fileID: 1126746053}
   m_Layer: 0
   m_Name: "\u0421\u0442\u0440\u0430\u043D\u0438\u0447\u043D\u0430\u044F_\u043D\u043E\u0440\u043A\u0430"
   m_TagString: Untagged
@@ -14430,7 +14510,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 408194826}
   m_Father: {fileID: 872827684}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14484,6 +14565,45 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1126746053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126746050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e50d3928ea4310468c8f8ea69334783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactController: {fileID: 407603182}
+--- !u!61 &1126746054
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126746050}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.64, y: 2.49}
+    newSize: {x: 2.64, y: 2.49}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.64, y: 2.49}
+  m_EdgeRadius: 0
 --- !u!95 &1131617964
 Animator:
   serializedVersion: 3
@@ -15912,7 +16032,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1311316376}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 371191082}
@@ -15930,9 +16050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1660c8e9a1eb32b46b6dc41be97fa94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactAction: {fileID: 0}
-  interactEvent: {fileID: 371191083}
-  hintMap: {fileID: 0}
+  hintMap: {fileID: 457182570}
 --- !u!61 &1311316379
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16810,6 +16928,7 @@ MonoBehaviour:
   joint: {fileID: 1344662153}
   spellName: Wind
   timeToWait: 4
+  hintMap: {fileID: 0}
   Avalible: 1
 --- !u!1 &1420287645
 GameObject:
@@ -17066,8 +17185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1660c8e9a1eb32b46b6dc41be97fa94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactAction: {fileID: 0}
-  interactEvent: {fileID: 153583969}
   hintMap: {fileID: 0}
 --- !u!1 &1442440524 stripped
 GameObject:
@@ -18990,10 +19107,11 @@ MonoBehaviour:
   whatToSpawn: {fileID: 1749191604798665267, guid: a35f598a407797d4aa2d8f9c8a7bfb96,
     type: 3}
   WhatToTrade: Shkatulka
-  boulder: {fileID: 2061547664}
+  boulder: {fileID: 2061547668}
   inGameShkat: {fileID: 1007337420}
-  rockCamera: {fileID: 0}
-  ds: {fileID: 0}
+  rockCamera: {fileID: 1872147480}
+  ds: {fileID: 2369979692232838263}
+  hintMap: {fileID: 0}
 --- !u!61 &1595001882
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19001,7 +19119,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1595001879}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -21639,9 +21757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1660c8e9a1eb32b46b6dc41be97fa94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactAction: {fileID: 2041405125515496583}
-  interactEvent: {fileID: 2041405125515496577}
-  hintMap: {fileID: 0}
+  hintMap: {fileID: 457182570}
 --- !u!4 &2081502832
 Transform:
   m_ObjectHideFlags: 0
@@ -22307,6 +22423,9 @@ MonoBehaviour:
   - {fileID: 371191081}
   whatDeactivate: []
   canvas: {fileID: 4096867036808471592}
+  rockCamera: {fileID: 0}
+  ds: {fileID: 0}
+  hintMap: {fileID: 0}
 --- !u!61 &2041405125515496580
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22344,7 +22463,6 @@ GameObject:
   - component: {fileID: 2041405125515496582}
   - component: {fileID: 2041405125515496580}
   - component: {fileID: 2041405125515496577}
-  - component: {fileID: 2041405125515496583}
   m_Layer: 0
   m_Name: TradeWithAnchutka
   m_TagString: Untagged
@@ -22367,18 +22485,6 @@ Transform:
   m_Father: {fileID: 197558940}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2041405125515496583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041405125515496581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 541ff8b9c2781be4da4a846944d2f126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2186171166095849372
 MonoBehaviour:
   m_ObjectHideFlags: 0

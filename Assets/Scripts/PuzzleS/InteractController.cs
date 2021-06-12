@@ -2,8 +2,6 @@
 
 public class InteractController : MonoBehaviour
 {
-    [HideInInspector] public bool buttonEnabled;
-
     PuzzleStart puzzleStart;
 
     public void Start_Puzzle(PuzzleStart puzzleStart, bool create)

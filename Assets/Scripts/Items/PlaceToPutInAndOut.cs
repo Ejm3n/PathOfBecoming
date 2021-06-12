@@ -11,6 +11,7 @@ public class PlaceToPutInAndOut : InteractEvent
     [SerializeField] GameObject inGameShkat;
     [SerializeField] CinemachineVirtualCamera rockCamera;
     [SerializeField] DialogueSystem ds;
+    [SerializeField] HintMap hintMap;
     int choosenSlot = -1;
     bool isThereAShkatulka = false;
 
@@ -52,6 +53,8 @@ public class PlaceToPutInAndOut : InteractEvent
                 }
             }
         }
+        if (hintMap.map[0].objectToHighlight.name == "MagicAltar_0")
+            hintMap.Stop_Highlight();
     }
     private void ChangeImage(bool what)
     {
@@ -65,12 +68,16 @@ public class PlaceToPutInAndOut : InteractEvent
     {
         rockCamera.Priority = 1;
         boulder.gameObject.SetActive(appear);
+        ds.SetUI(true);
     }
 
     void Animate_Boulder(bool appear, float timeToAnimate = 3f)
     {
         if (appear)
+        {
+            boulder.gameObject.SetActive(true);
             boulder.Unfade(timeToAnimate, () => Return_Control(appear));
+        }
         else
             boulder.Fade(timeToAnimate, () => Return_Control(appear));
     }
