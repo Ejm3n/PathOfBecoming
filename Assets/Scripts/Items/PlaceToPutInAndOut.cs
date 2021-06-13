@@ -53,7 +53,7 @@ public class PlaceToPutInAndOut : InteractEvent
                 }
             }
         }
-        if (hintMap.map[0].objectToHighlight.name == "MagicAltar_0")
+        if (hintMap.map[0].objectToHighlight.name == "MagicAltar_0") //костыль
             hintMap.Stop_Highlight();
     }
     private void ChangeImage(bool what)

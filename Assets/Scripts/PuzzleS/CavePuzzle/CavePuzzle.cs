@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CavePuzzle : MonoBehaviour
+public class CavePuzzle : Puzzle
 {
     bool[] isPressed = new bool[5] { false, false, false, false, false };
     int[] whatShouldBePressed = new int[5] { 8, 0, 11, 6, 12 };
@@ -11,6 +11,12 @@ public class CavePuzzle : MonoBehaviour
     private Color colorIfUnpressed = new Color(255f, 155f, 0f, 0f);
     [SerializeField] GameObject nextDialogue;
     [SerializeField] DialogueSystem ds;
+    [SerializeField] InteractController controllerRef;
+
+    public override void Awake()
+    {
+        puzzleController = controllerRef;
+    }
     private void Update()
     {
         if (isPressed[0] && isPressed[1] && isPressed[2] && isPressed[3] && isPressed[4]&& canUWin)
@@ -21,9 +27,7 @@ public class CavePuzzle : MonoBehaviour
             {
                 nextDialogue.SetActive(true);
             }
-          
-            Destroy(gameObject);
-            
+            Solve_Puzzle();            
         }   
     }
     public void OnPuzzleButtonClick(int num)

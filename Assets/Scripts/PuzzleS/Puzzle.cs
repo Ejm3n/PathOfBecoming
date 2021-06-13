@@ -3,9 +3,9 @@
 public class Puzzle : MonoBehaviour
 {
     bool solved = false;
-    InteractController puzzleController;
+    protected InteractController puzzleController;
 
-    private void Awake()
+    public virtual void Awake()
     {
         puzzleController = transform.parent.GetComponent<InteractController>();
     }
