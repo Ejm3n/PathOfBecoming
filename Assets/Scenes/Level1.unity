@@ -7483,6 +7483,8 @@ MonoBehaviour:
   whatDeactivate:
   - {fileID: 2061547664}
   canvas: {fileID: 4096867036808471592}
+  rockCamera: {fileID: 1872147480}
+  ds: {fileID: 2369979692232838263}
   hintMap: {fileID: 457182570}
 --- !u!61 &371191084
 BoxCollider2D:
@@ -7961,7 +7963,6 @@ MonoBehaviour:
   - {fileID: 1954617106}
   nextDialogue: {fileID: 1080446703}
   ds: {fileID: 2369979692232838263}
-  controllerRef: {fileID: 407603182}
 --- !u!1 &407603181
 GameObject:
   m_ObjectHideFlags: 0
@@ -8060,10 +8061,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5, y: -1}
+  m_Offset: {x: 1, y: -1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -8074,7 +8075,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 4}
+  m_Size: {x: 5, y: 4}
   m_EdgeRadius: 0
 --- !u!1 &416594060
 GameObject:
@@ -14587,7 +14588,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -16927,7 +16928,7 @@ MonoBehaviour:
   joint: {fileID: 1344662153}
   spellName: Wind
   timeToWait: 4
-  hintMap: {fileID: 457182570}
+  hintMap: {fileID: 0}
   Avalible: 1
 --- !u!1 &1420287645
 GameObject:
@@ -17125,7 +17126,7 @@ GameObject:
   - component: {fileID: 1440259082}
   - component: {fileID: 1440259083}
   - component: {fileID: 1440259084}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: Interact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17184,7 +17185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1660c8e9a1eb32b46b6dc41be97fa94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hintMap: {fileID: 457182570}
+  hintMap: {fileID: 0}
 --- !u!1 &1442440524 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2733221802868007067, guid: 437e2158ca2936f4fa77ba24f8db66be,
@@ -19110,7 +19111,7 @@ MonoBehaviour:
   inGameShkat: {fileID: 1007337420}
   rockCamera: {fileID: 1872147480}
   ds: {fileID: 2369979692232838263}
-  hintMap: {fileID: 457182570}
+  hintMap: {fileID: 0}
 --- !u!61 &1595001882
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22422,7 +22423,9 @@ MonoBehaviour:
   - {fileID: 371191081}
   whatDeactivate: []
   canvas: {fileID: 4096867036808471592}
-  hintMap: {fileID: 457182570}
+  rockCamera: {fileID: 0}
+  ds: {fileID: 0}
+  hintMap: {fileID: 0}
 --- !u!61 &2041405125515496580
 BoxCollider2D:
   m_ObjectHideFlags: 0
