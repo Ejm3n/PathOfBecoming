@@ -45,14 +45,19 @@ public class ActionWithSpellBook : MonoBehaviour
     /// <param name="button"> выбранное заклинание </param>
     public void UseSpell(Button button)
     {
-        if (isUseSpell == false)
+        UseSpell(button.name);
+    }
+
+    public void UseSpell(string buttonName = null)
+    {
+        if (isUseSpell == false && buttonName != null)
         {
             isUseSpell = true;
-            switch (button.name)
+            switch (buttonName)
             {
                 case "Spell":
                     animator.SetBool("ShooseSpellOne", true);
-                   ChoosenSpell(0);
+                    ChoosenSpell(0);
                     break;
                 case "Spell (1)":
                     animator.SetBool("ShooseSpellTwo", true);
@@ -72,7 +77,8 @@ public class ActionWithSpellBook : MonoBehaviour
             animator.SetBool("ShooseSpellOne", isUseSpell);
             animator.SetBool("ShooseSpellTwo", isUseSpell);
             animator.SetBool("ShooseSpellThree", isUseSpell);
-
+            for ( int i = 0; i < Spells.Length;i++ )
+                Spells[i] = false;
         }
     }
     //ниже метод писал Яша, надо отследить какой спел выбран  

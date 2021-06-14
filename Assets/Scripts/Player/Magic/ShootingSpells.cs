@@ -75,6 +75,7 @@ public class ShootingSpells : MonoBehaviour
                     ObjectPool.Add(newSpell);
                 }
                 timeBtwShots = TIME_BTW_SHOTS;
+                SpellBook.UseSpell();
             }
         }
         else
