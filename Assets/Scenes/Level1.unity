@@ -7483,8 +7483,6 @@ MonoBehaviour:
   whatDeactivate:
   - {fileID: 2061547664}
   canvas: {fileID: 4096867036808471592}
-  rockCamera: {fileID: 1872147480}
-  ds: {fileID: 2369979692232838263}
   hintMap: {fileID: 457182570}
 --- !u!61 &371191084
 BoxCollider2D:
@@ -19111,7 +19109,7 @@ MonoBehaviour:
   inGameShkat: {fileID: 1007337420}
   rockCamera: {fileID: 1872147480}
   ds: {fileID: 2369979692232838263}
-  hintMap: {fileID: 0}
+  hintMap: {fileID: 457182570}
 --- !u!61 &1595001882
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22423,9 +22421,7 @@ MonoBehaviour:
   - {fileID: 371191081}
   whatDeactivate: []
   canvas: {fileID: 4096867036808471592}
-  rockCamera: {fileID: 0}
-  ds: {fileID: 0}
-  hintMap: {fileID: 0}
+  hintMap: {fileID: 457182570}
 --- !u!61 &2041405125515496580
 BoxCollider2D:
   m_ObjectHideFlags: 0
