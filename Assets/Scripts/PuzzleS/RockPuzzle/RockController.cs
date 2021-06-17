@@ -6,9 +6,11 @@ public class RockController : MonoBehaviour
 {
     [SerializeField] Transform[] rocks;
     [SerializeField] GameObject[] whatToDelete;
+    [Header ("Вписать дефолтную высоту от 1 до 4")]
+    [SerializeField] int[] rockLevelChecker;
     private void Update()
     {
-        if (rocks[0].position.y == -1.5 && rocks[1].position.y == -2 && rocks[2].position.y == -2.5 && rocks[3].position.y == -3 )
+        if (rockLevelChecker[0] == 3 && rockLevelChecker[1] == 2 && rockLevelChecker[2] == 1 && rockLevelChecker[3] == 0)
         {
             for (int i = 0; i < whatToDelete.Length; i++)
             {
@@ -21,13 +23,15 @@ public class RockController : MonoBehaviour
     }
     public void ChangeRockPositions(int whatRockUp, int whatRockDown)
     {
-        if (rocks[whatRockUp].position.y < -1.5)
+        if (rocks[whatRockUp].position.y < -1)
         {
-            rocks[whatRockUp].position = new Vector3(rocks[whatRockUp].position.x, rocks[whatRockUp].position.y + 0.5f, rocks[whatRockUp].position.z);
+            rockLevelChecker[whatRockUp]++;
+            rocks[whatRockUp].position = new Vector3(rocks[whatRockUp].position.x, rocks[whatRockUp].position.y + 1.2f, rocks[whatRockUp].position.z);
         }
-        if (rocks[whatRockDown].position.y > -3)
+        if (rocks[whatRockDown].position.y > -4.6f)
         {
-            rocks[whatRockDown].position = new Vector3(rocks[whatRockDown].position.x, rocks[whatRockDown].position.y - 0.5f, rocks[whatRockDown].position.z);
+            rockLevelChecker[whatRockDown]--;
+            rocks[whatRockDown].position = new Vector3(rocks[whatRockDown].position.x, rocks[whatRockDown].position.y - 1.2f, rocks[whatRockDown].position.z);
         }
     }
 }
