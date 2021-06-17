@@ -40,7 +40,7 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-    public void SlotDropped(int slotNum)
+    public void SlotDropped(int slotNum)  
     {
         foreach (Transform child in slots[slotNum].transform)
         {
