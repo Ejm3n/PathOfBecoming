@@ -2,9 +2,10 @@
 
 public class Interact : MonoBehaviour
 {
-    [SerializeField] HintMap hintMap;
+    HintMap hintMap;
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        hintMap = collision.GetComponent<HintMap>();
         hintMap.Highlight();
     }
 }
