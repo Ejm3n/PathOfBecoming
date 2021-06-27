@@ -15,9 +15,12 @@ public class HintMap : MonoBehaviour
 
     private void Awake()
     {
-        highlighted = false;
-        particleShape = hintParticle.shape;
-        particleShape.spriteRenderer = map[0].objectToHighlight;
+        if (map.Count > 0)
+        {
+            highlighted = false;
+            particleShape = hintParticle.shape;
+            particleShape.spriteRenderer = map[0].objectToHighlight;
+        }
     }
 
     public void Highlight()
