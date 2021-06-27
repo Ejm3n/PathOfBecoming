@@ -59,7 +59,7 @@ public class DialogueSystem : MonoBehaviour
         ChangeCanvasGroup(!what, blockingPanel);
         if (canUseInventory)
         {
-            Debug.Log("inventar ubrat");
+
             ChangeCanvasGroup(what, inventory);
         }
         if (canUseSpellBook)

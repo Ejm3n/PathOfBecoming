@@ -24,12 +24,11 @@ public class Inventory : MonoBehaviour
                 isChosen[slotNum] = !isChosen[slotNum];
                 if (isChosen[slotNum])
                 {
-                    Debug.Log("sokdfois");
+
                     borders[i].enabled = true;
                 }
                 else
                 {
-                    Debug.Log("aaaaa");
                     borders[i].enabled = false;
                 }
             }

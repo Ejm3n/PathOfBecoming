@@ -13,10 +13,8 @@ public class IfSpellTriggersTree : MonoBehaviour
     public bool Avalible;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.tag);
         if (collision.tag == spellName && Avalible)
         {
-            Debug.Log("QQQQQQQQQQQ");
             collision.gameObject.SetActive(false);
             joint.enabled = false;
             StartCoroutine(activateDelay());
