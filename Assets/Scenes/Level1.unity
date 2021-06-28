@@ -962,6 +962,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactController: {fileID: 407603182}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   inventory: {fileID: 2777641021553108422}
   canvas: {fileID: 4096867036808471592}
   whatToActivate:
@@ -1142,6 +1148,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactController: {fileID: 407603182}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   puzzle: {fileID: 399709785}
   create: 0
   winEvent:
@@ -2648,16 +2660,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactController: {fileID: 407603182}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1007337420}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4820012933642009550}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1595001879}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2061547664}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   inventory: {fileID: 2777641021553108422}
   whatToSpawn: {fileID: 7937802892343493360, guid: b72963859c09de8449160972fb1d980a,
     type: 3}
   WhatToTrade: Shkatulka
-  whatActivate:
-  - {fileID: 1007337420}
-  - {fileID: 4820012933642009550}
-  - {fileID: 1595001879}
-  whatDeactivate:
-  - {fileID: 2061547664}
   canvas: {fileID: 4096867036808471592}
   hintMap: {fileID: 457182570}
 --- !u!61 &371191084
@@ -8282,6 +8338,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactController: {fileID: 407603182}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1126746054
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12402,6 +12464,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactController: {fileID: 407603182}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   puzzle: {fileID: 4342615957535141557, guid: 22a39dab64a70b245af8cc178535c242, type: 3}
   create: 1
   winEvent:
@@ -12748,6 +12816,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactController: {fileID: 407603182}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   canvas: {fileID: 4096867036808471592}
   inventory: {fileID: 2777641021553108422}
   whatToSpawn: {fileID: 1749191604798665267, guid: a35f598a407797d4aa2d8f9c8a7bfb96,
@@ -16051,14 +16125,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactController: {fileID: 407603182}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 184551406}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 371191081}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   inventory: {fileID: 2777641021553108422}
   whatToSpawn: {fileID: 1749191604798665267, guid: a35f598a407797d4aa2d8f9c8a7bfb96,
     type: 3}
   WhatToTrade: Spider
-  whatActivate:
-  - {fileID: 184551406}
-  - {fileID: 371191081}
-  whatDeactivate: []
   canvas: {fileID: 4096867036808471592}
   hintMap: {fileID: 457182570}
 --- !u!61 &2041405125515496580

@@ -8,8 +8,6 @@ public class ChangeItems : InteractEvent
     [SerializeField] GameObject whatToSpawn;
     [SerializeField] string WhatToTrade;
     int choosenSlot = -1;
-    [SerializeField] GameObject[] whatActivate;
-    [SerializeField] GameObject[] whatDeactivate;
     [SerializeField] GameObject canvas;
     [SerializeField] HintMap hintMap;
     public override void Start_Event()
@@ -32,24 +30,12 @@ public class ChangeItems : InteractEvent
                 {
                     inventory.isFull[i] = true;
                     Instantiate(whatToSpawn, inventory.slots[i].transform);
-                    for (int k = 0; k < whatActivate.Length; k++)
-                    {
-                        if (whatActivate[k] != null)
-                        {
-                            whatActivate[k].SetActive(true);
-                        }
-
-                    }
-                    for (int k = 0; k < whatDeactivate.Length; k++)//отключаем ненужные объекты
-                    {
-                        if (whatDeactivate[k] != null)
-                        {
-                            whatDeactivate[k].SetActive(false);
-                        }
-                    }
+                    onSuccess?.Invoke();
                     Destroy(gameObject);
                     break;
                 }
+                else if (i == inventory.slots.Length - 1)
+                    onFail?.Invoke();
             }
             hintMap.Stop_Highlight();
         }

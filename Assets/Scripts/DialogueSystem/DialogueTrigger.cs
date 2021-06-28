@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
@@ -15,7 +13,7 @@ public class DialogueTrigger : MonoBehaviour
         if (collision.GetComponent<PlayerController>() != null)
         {
             var ds = FindObjectOfType<DialogueSystem>();
-            ds.StartDialogue(startNum, endOfThisDia,nextTriggerToActivate);                      
+            ds.StartDialogue(startNum, endOfThisDia, nextTriggerToActivate);
             for (int k = 0; k < triggersToDelete.Length; k++)
             {
                 if (triggersToDelete[k] != null)

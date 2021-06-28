@@ -107,7 +107,7 @@ public class DialogueSystem : MonoBehaviour
         StartDialogue(choice2, whereIsEndChoose, choiceNextTrigger);
     }
     public void StartDialogue(int startLine, int endLine, GameObject nextTrigger)//неачать диалог
-    { 
+    {
         choiceNextTrigger = nextTrigger;
         panelAnim.SetBool("PanelShow", true);
         SetUI(false);
@@ -206,7 +206,8 @@ public class DialogueSystem : MonoBehaviour
     }   
     public void EndDialogue()//закончить диалог 
     {
-        choiceNextTrigger.SetActive(true);
+        if (choiceNextTrigger)
+            choiceNextTrigger.SetActive(true);
         panelAnim.SetBool("PanelShow", false);
         SetUI(true);
     }
