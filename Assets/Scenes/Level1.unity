@@ -914,7 +914,7 @@ Transform:
   - {fileID: 1259078405}
   - {fileID: 184551408}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &142392684
 GameObject:
@@ -1150,14 +1150,6 @@ MonoBehaviour:
   interactController: {fileID: 407603182}
   onSuccess:
     m_PersistentCalls:
-      m_Calls: []
-  onFail:
-    m_PersistentCalls:
-      m_Calls: []
-  puzzle: {fileID: 399709785}
-  create: 0
-  winEvent:
-    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 457182570}
         m_MethodName: Stop_Highlight
@@ -1170,9 +1162,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  closeEvent:
+  onFail:
     m_PersistentCalls:
       m_Calls: []
+  puzzle: {fileID: 399709785}
+  create: 0
   ds: {fileID: 2369979692232838263}
 --- !u!61 &153583970
 BoxCollider2D:
@@ -1572,7 +1566,7 @@ Transform:
   - {fileID: 2041405125515496582}
   - {fileID: 4608452845711540324}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &204429655
 GameObject:
@@ -2612,7 +2606,7 @@ Transform:
   - {fileID: 523860748}
   - {fileID: 1872147479}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &371191081
 GameObject:
@@ -3512,6 +3506,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 389767edede155c4bb236197f1df5a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &457182571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457182565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eab008cef2c0f94995008d75f30d0be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 1851370198}
+  maxHealth: 100
 --- !u!1 &463062350
 GameObject:
   m_ObjectHideFlags: 0
@@ -4781,7 +4789,7 @@ PrefabInstance:
     - target: {fileID: 146292263643629452, guid: a3b797bdbf2f16c4b89181a8d2c652a2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 146292263643629452, guid: a3b797bdbf2f16c4b89181a8d2c652a2,
         type: 3}
@@ -5532,7 +5540,7 @@ PrefabInstance:
     - target: {fileID: 2733221802868007065, guid: 437e2158ca2936f4fa77ba24f8db66be,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2733221802868007065, guid: 437e2158ca2936f4fa77ba24f8db66be,
         type: 3}
@@ -6816,7 +6824,7 @@ Transform:
   - {fileID: 86752663}
   - {fileID: 1126746051}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &903916136 stripped
 MonoBehaviour:
@@ -7743,7 +7751,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1069754904
 GameObject:
@@ -12094,7 +12102,7 @@ Transform:
   m_LocalScale: {x: 0.4110218, y: 0.4110218, z: 0.4110218}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1554630871
 GameObject:
@@ -12466,14 +12474,6 @@ MonoBehaviour:
   interactController: {fileID: 407603182}
   onSuccess:
     m_PersistentCalls:
-      m_Calls: []
-  onFail:
-    m_PersistentCalls:
-      m_Calls: []
-  puzzle: {fileID: 4342615957535141557, guid: 22a39dab64a70b245af8cc178535c242, type: 3}
-  create: 1
-  winEvent:
-    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1694981830}
         m_MethodName: Free_Fairy
@@ -12519,7 +12519,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  closeEvent:
+  onFail:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4820012933565130547}
@@ -12533,6 +12533,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  puzzle: {fileID: 4342615957535141557, guid: 22a39dab64a70b245af8cc178535c242, type: 3}
+  create: 1
   ds: {fileID: 2369979692232838263}
 --- !u!61 &1584898149
 BoxCollider2D:
@@ -14120,7 +14122,7 @@ Transform:
   m_Children:
   - {fileID: 1474363156}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1884604921
 BoxCollider2D:
@@ -15506,12 +15508,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085665764}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.550537, y: 0.4935099, z: -2.822115}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1648.8795, y: -988.8936, z: 223.64664}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 2002228495351016752}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2108413511
 GameObject:
@@ -16092,6 +16094,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2002228495071406469}
+  - {fileID: 2085665765}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16562,10 +16565,9 @@ MonoBehaviour:
   choice1Text: {fileID: 4096867036885876448}
   choice2Text: {fileID: 4096867038330046695}
   controlButtons: {fileID: 631509721}
-  manaBar: {fileID: 1854690393}
+  playerBars: {fileID: 1854690393}
   inventory: {fileID: 2777641021553108446}
   spellBook: {fileID: 6633200056144884940}
-  PC: {fileID: 457182567}
   panelAnim: {fileID: 4096867036412738255}
   choosePanelAnim: {fileID: 4096867036521702165}
   dialogueImg: {fileID: 4096867036898782992}
@@ -21062,6 +21064,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096178443407678824, guid: 8125649352c2cee4190aa4e2e2d59b4e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9096178443407678827, guid: 8125649352c2cee4190aa4e2e2d59b4e,
         type: 3}

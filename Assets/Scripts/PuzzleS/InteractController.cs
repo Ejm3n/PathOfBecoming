@@ -16,9 +16,9 @@ public class InteractController : MonoBehaviour
     public void Handle_Puzzle_result(bool solved)
     {
         if (solved)          
-            puzzleStart.winEvent?.Invoke();
+            puzzleStart.onSuccess?.Invoke();
         else
-            puzzleStart.closeEvent?.Invoke();
+            puzzleStart.onFail?.Invoke();
     }
 
 
