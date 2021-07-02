@@ -2,6 +2,7 @@
 using UnityEngine;
 using GlobalVariables;
 using System;
+using UnityEngine.UI;
 
 namespace AnimationUtils
 {
@@ -21,8 +22,8 @@ namespace AnimationUtils
             {
                 renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, 1);
                 if (renderer.gameObject.TryGetComponent(out CoroutineLoader loader))
-                    return loader.Start_Change_Transparency(renderer, true, timeToFade, onComplete, timeScale);
-                return renderer.gameObject.AddComponent<CoroutineLoader>().Start_Change_Transparency(renderer, true, timeToFade, onComplete, timeScale);
+                    return loader.Start_Change_Transparency(renderer, true, timeToFade, timeScale, onComplete);
+                return renderer.gameObject.AddComponent<CoroutineLoader>().Start_Change_Transparency(renderer, true, timeToFade, timeScale, onComplete);
             }
 
             public static Coroutine Unfade(this SpriteRenderer renderer, float timeToFade, bool timeScale = true)
@@ -37,8 +38,46 @@ namespace AnimationUtils
             {
                 renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, 0);
                 if (renderer.gameObject.TryGetComponent(out CoroutineLoader loader))
-                    return loader.Start_Change_Transparency(renderer, false, timeToFade, onComplete, timeScale);
-                return renderer.gameObject.AddComponent<CoroutineLoader>().Start_Change_Transparency(renderer, false, timeToFade, onComplete, timeScale);
+                    return loader.Start_Change_Transparency(renderer, false, timeToFade, timeScale, onComplete);
+                return renderer.gameObject.AddComponent<CoroutineLoader>().Start_Change_Transparency(renderer, false, timeToFade, timeScale, onComplete);
+            }
+        }
+    }
+
+    namespace ImageUtils
+    {
+        public static class ImageUtils
+        {
+            public static Coroutine Fade(this Image image, float timeToFade, bool timeScale = true)
+            {
+                image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
+                if (image.gameObject.TryGetComponent(out CoroutineLoader loader))
+                    return loader.Start_Change_Transparency(image, true, timeToFade, timeScale);
+                return image.gameObject.AddComponent<CoroutineLoader>().Start_Change_Transparency(image, true, timeToFade, timeScale);
+            }
+
+            public static Coroutine Fade(this Image image, float timeToFade, Action onComplete, bool timeScale = true)
+            {
+                image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
+                if (image.gameObject.TryGetComponent(out CoroutineLoader loader))
+                    return loader.Start_Change_Transparency(image, true, timeToFade, timeScale, onComplete);
+                return image.gameObject.AddComponent<CoroutineLoader>().Start_Change_Transparency(image, true, timeToFade, timeScale, onComplete);
+            }
+
+            public static Coroutine Unfade(this Image image, float timeToFade, bool timeScale = true)
+            {
+                image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
+                if (image.gameObject.TryGetComponent(out CoroutineLoader loader))
+                    return loader.Start_Change_Transparency(image, false, timeToFade, timeScale);
+                return image.gameObject.AddComponent<CoroutineLoader>().Start_Change_Transparency(image, false, timeToFade, timeScale);
+            }
+
+            public static Coroutine Unfade(this Image image, float timeToFade, Action onComplete, bool timeScale = true)
+            {
+                image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
+                if (image.gameObject.TryGetComponent(out CoroutineLoader loader))
+                    return loader.Start_Change_Transparency(image, false, timeToFade, timeScale, onComplete);
+                return image.gameObject.AddComponent<CoroutineLoader>().Start_Change_Transparency(image, false, timeToFade, timeScale, onComplete);
             }
         }
     }
@@ -67,17 +106,12 @@ namespace AnimationUtils
     public class CoroutineLoader : MonoBehaviour
     {
         #region Change_Transparency
-        public Coroutine Start_Change_Transparency(SpriteRenderer renderer, bool makeTransparent, float processTime, bool timeScale = true)
+        public Coroutine Start_Change_Transparency(SpriteRenderer renderer, bool makeTransparent, float processTime, bool timeScale = true, Action onComplete = null)
         {
-            return StartCoroutine(Change_Transparency(renderer, makeTransparent, processTime, timeScale));
+            return StartCoroutine(Change_Transparency(renderer, makeTransparent, processTime, timeScale, onComplete));
         }
 
-        public Coroutine Start_Change_Transparency(SpriteRenderer renderer, bool makeTransparent, float processTime, Action onComplete, bool timeScale = true)
-        {
-            return StartCoroutine(Change_Transparency(renderer, makeTransparent, processTime, onComplete, timeScale));
-        }
-
-        IEnumerator Change_Transparency(SpriteRenderer renderer, bool makeTransparent, float processTime, bool timeScale = true)
+        IEnumerator Change_Transparency(SpriteRenderer renderer, bool makeTransparent, float processTime, bool timeScale = true, Action onComplete = null)
         {
             float alpha = makeTransparent ? 0 : 1;
             float timetoWait = timeScale ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime;
@@ -90,12 +124,28 @@ namespace AnimationUtils
                 else
                     yield return new WaitForSecondsRealtime(timetoWait);
             }
+            onComplete?.Invoke();
         }
 
-        IEnumerator Change_Transparency(SpriteRenderer renderer, bool makeTransparent, float processTime, Action onComplete, bool timeScale = true)
+        public Coroutine Start_Change_Transparency(Image image, bool makeTransparent, float processTime, bool timeScale = true, Action onComplete = null)
         {
-            yield return StartCoroutine(Change_Transparency(renderer, makeTransparent, processTime, timeScale));
-            onComplete();
+            return StartCoroutine(Change_Transparency(image, makeTransparent, processTime, timeScale, onComplete));
+        }
+
+        IEnumerator Change_Transparency(Image image, bool makeTransparent, float processTime, bool timeScale = true, Action onComplete = null)
+        {
+            float alpha = makeTransparent ? 0 : 1;
+            float timetoWait = timeScale ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime;
+            float iter = (alpha - image.color.a) / processTime;
+            while (image.color.a != alpha)
+            {
+                image.color = new Color(image.color.r, image.color.g, image.color.b, Mathf.Clamp(image.color.a + iter * timetoWait, 0, 1));
+                if (timeScale)
+                    yield return new WaitForSeconds(timetoWait);
+                else
+                    yield return new WaitForSecondsRealtime(timetoWait);
+            }
+            onComplete?.Invoke();
         }
 
         #endregion Change_Transparency
