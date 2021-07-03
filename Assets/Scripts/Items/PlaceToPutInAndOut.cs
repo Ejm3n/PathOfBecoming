@@ -59,7 +59,6 @@ public class PlaceToPutInAndOut : InteractEvent
         {
             hintMap.Stop_Highlight(hintId);
             hinted = true;
-            Debug.Log("hinted");
         }
     }
     private void ChangeImage(bool what)
