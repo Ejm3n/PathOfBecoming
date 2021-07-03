@@ -20,15 +20,12 @@ public class PlayerController : MonoBehaviour
     private int extraJump;
     public int ExtraJumpValue;
 
-    [SerializeField] GameObject moveButtons;
     [SerializeField] GameObject firstDiaTrigger;
     [SerializeField] float waitTimeTillStart;
     [SerializeField] Transform pixy;
-    [SerializeField] Joystick joystick;
 
     private void Start()
     {
-        moveButtons.SetActive(false);
         rb = GetComponent<Rigidbody2D>();
         extraJump = ExtraJumpValue;
         if(waitTimeTillStart != 0)
@@ -41,24 +38,14 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         isGround = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-        //MoveInput = Input.GetAxis("Horizontal");
-        if(moveButtons.activeInHierarchy)
-        {
-
-            MoveInput = joystick.Horizontal;
-        }
-        else
-        {
-            OnButtonUp();
-        }
        
-        rb.velocity = new Vector2(MoveInput * speed, rb.velocity.y);
+        rb.velocity = new Vector2(Joystick.axisX * speed, rb.velocity.y);
 
-        if (faceRight == false && MoveInput > 0)
+        if (faceRight == false && Joystick.axisX > 0)
         {
             Flip();           
         }
-        else if (faceRight == true && MoveInput < 0)
+        else if (faceRight == true && Joystick.axisX < 0)
         {
             Flip();           
         }

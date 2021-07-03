@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
@@ -8,6 +6,9 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public float Horizontal { get { return (snapX) ? SnapFloat(input.x, AxisOptions.Horizontal) : input.x; } }
     public float Vertical { get { return (snapY) ? SnapFloat(input.y, AxisOptions.Vertical) : input.y; } }
     public Vector2 Direction { get { return new Vector2(Horizontal, Vertical); } }
+
+    public static float axisX = 0;
+    public static float axisY = 0;
 
     public float HandleRange
     {
@@ -85,6 +86,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         }
         else
             input = Vector2.zero;
+        Set_Static_Axes();
     }
 
     private void FormatInput()
@@ -133,6 +135,13 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
         input = Vector2.zero;
         handle.anchoredPosition = Vector2.zero;
+        Set_Static_Axes();
+    }
+
+    private void Set_Static_Axes()
+    {
+        axisX = Horizontal;
+        axisY = Vertical;
     }
 
     protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition)
@@ -149,6 +158,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
         input = Vector2.zero;
         handle.anchoredPosition = Vector2.zero;
+        Set_Static_Axes();
     }
 }
 

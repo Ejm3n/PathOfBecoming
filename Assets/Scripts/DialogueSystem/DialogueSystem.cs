@@ -10,10 +10,9 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] Text choice1Text;//ссылка на 1 вариант выбора который будет на UI отображаться
     [SerializeField] Text choice2Text;//ссылка на 2 вариант выбора который будет на UI отображаться
     [SerializeField] GameObject controlButtons;//кнопки передвижения, нужны чтоб их отключать во время диалогов
-    [SerializeField] GameObject manaBar;//нужен чтоб его отключать во время диалогов
+    [SerializeField] GameObject playerBars;//нужен чтоб его отключать во время диалогов
     [SerializeField] CanvasGroup inventory; //нужен чтоб его отключать во время диалогов
-     [SerializeField] CanvasGroup spellBook;//нужен чтоб его отключать во время диалогов
-    [SerializeField] PlayerController PC;//ссылка на скрипт управляющим игроком, чтобы останавливать его когда диалог начинается
+    [SerializeField] CanvasGroup spellBook;//нужен чтоб его отключать во время диалогов
     [SerializeField] Animator panelAnim;//анимация панели диалогов
     [SerializeField] Animator choosePanelAnim;// анимация панели выбора диалогов
     [SerializeField] Image dialogueImg;//ссылка на картинку говорящего персонажа
@@ -67,7 +66,7 @@ public class DialogueSystem : MonoBehaviour
             ChangeCanvasGroup(what, spellBook);
         }
         controlButtons.SetActive(what);
-        manaBar.SetActive(what);
+        playerBars.SetActive(what);
     }
     private void ChangeCanvasGroup(bool whitch, CanvasGroup cg)//для выключения инвентаря и книгизаклинаний
     {
@@ -87,7 +86,6 @@ public class DialogueSystem : MonoBehaviour
     public void ChooseStart(int choose1, int choose2,int endOfChoices,GameObject nextTrigger)//старт выборных диалогов
     {
         SetUI(false);
-        PC.OnButtonUp();
         choice1Text.text = file[choose1].Substring(file[choose1].IndexOf('=') + 1); ;
         choice2Text.text = file[choose2].Substring(file[choose2].IndexOf('=') + 1); ;
         choosePanelAnim.SetBool("PanelShow", true);
@@ -111,7 +109,6 @@ public class DialogueSystem : MonoBehaviour
         choiceNextTrigger = nextTrigger;
         panelAnim.SetBool("PanelShow", true);
         SetUI(false);
-        PC.OnButtonUp();
         for (int i = startLine; i < endLine; i++)
         {
             linesTriggered.Enqueue(file[i]);

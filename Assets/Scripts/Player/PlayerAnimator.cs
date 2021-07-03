@@ -18,7 +18,7 @@ public class PlayerAnimator : MonoBehaviour
     
     void Update()
     {
-        walk = PC.MoveInput;
+        walk = Joystick.axisX;
         if(walk != 0)
         {
             anim.SetBool("walk", true);

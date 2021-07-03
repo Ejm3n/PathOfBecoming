@@ -5485,6 +5485,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactController: {fileID: 33896037}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   rockDown: 2
   rockUp: 1
   RC: {fileID: 184001161}
@@ -5572,6 +5578,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactController: {fileID: 33896037}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   rockDown: 0
   rockUp: 2
   RC: {fileID: 184001161}
@@ -7919,6 +7931,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactController: {fileID: 33896037}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   rockDown: 3
   rockUp: 0
   RC: {fileID: 184001161}
@@ -9150,6 +9168,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactController: {fileID: 33896037}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   rockDown: 1
   rockUp: 2
   RC: {fileID: 184001161}
@@ -9990,10 +10014,9 @@ MonoBehaviour:
   choice1Text: {fileID: 4096867036885876448}
   choice2Text: {fileID: 4096867038330046695}
   controlButtons: {fileID: 1977558033}
-  manaBar: {fileID: 1854690393}
+  playerBars: {fileID: 1854690393}
   inventory: {fileID: 2777641021553108446}
   spellBook: {fileID: 6633200056144884940}
-  PC: {fileID: 457182567}
   panelAnim: {fileID: 4096867036412738255}
   choosePanelAnim: {fileID: 4096867036521702165}
   dialogueImg: {fileID: 4096867036898782992}
