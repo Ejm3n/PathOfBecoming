@@ -12,6 +12,7 @@ public class PlaceToPutInAndOut : InteractEvent
     [SerializeField] CinemachineVirtualCamera rockCamera;
     [SerializeField] DialogueSystem ds;
     [SerializeField] HintMap hintMap;
+    [SerializeField] int hintId;
     int choosenSlot = -1;
     bool isThereAShkatulka = false;
     bool hinted = false;
@@ -56,7 +57,7 @@ public class PlaceToPutInAndOut : InteractEvent
         }
         if (!hinted)
         {
-            hintMap.Stop_Highlight();
+            hintMap.Stop_Highlight(hintId);
             hinted = true;
             Debug.Log("hinted");
         }

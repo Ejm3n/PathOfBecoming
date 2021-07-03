@@ -914,7 +914,7 @@ Transform:
   - {fileID: 1259078405}
   - {fileID: 184551408}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &132950018
 GameObject:
@@ -1206,18 +1206,7 @@ MonoBehaviour:
       m_Calls: []
   onFail:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 329633384}
-        m_MethodName: Stop_Highlight
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   puzzle: {fileID: 399709785}
   create: 0
   ds: {fileID: 2369979692232838263}
@@ -1619,7 +1608,7 @@ Transform:
   - {fileID: 2041405125515496582}
   - {fileID: 4608452845711540324}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &204429655
 GameObject:
@@ -2485,19 +2474,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   map:
-  - objectToHighlight: {fileID: 1584898147}
+  - id: 0
+    objectToHighlight: {fileID: 1584898147}
     highlightDelay: 0
-  - objectToHighlight: {fileID: 1259078407}
+  - id: 1
+    objectToHighlight: {fileID: 1259078407}
     highlightDelay: 60
-  - objectToHighlight: {fileID: 693632503}
+  - id: 2
+    objectToHighlight: {fileID: 693632503}
     highlightDelay: 60
-  - objectToHighlight: {fileID: 153583968}
+  - id: 3
+    objectToHighlight: {fileID: 153583968}
     highlightDelay: 60
-  - objectToHighlight: {fileID: 693632503}
+  - id: 4
+    objectToHighlight: {fileID: 693632503}
     highlightDelay: 60
-  - objectToHighlight: {fileID: 830217368}
+  - id: 5
+    objectToHighlight: {fileID: 830217368}
     highlightDelay: 60
-  - objectToHighlight: {fileID: 1126746052}
+  - id: 6
+    objectToHighlight: {fileID: 1126746052}
     highlightDelay: 0
 --- !u!1 &335096729
 GameObject:
@@ -7439,7 +7435,7 @@ Transform:
   - {fileID: 523860748}
   - {fileID: 1872147479}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &371191081
 GameObject:
@@ -7536,11 +7532,11 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 329633384}
         m_MethodName: Stop_Highlight
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7957,6 +7953,8 @@ MonoBehaviour:
   - {fileID: 1954617106}
   nextDialogue: {fileID: 1080446703}
   ds: {fileID: 2369979692232838263}
+  hintMap: {fileID: 329633384}
+  hintId: 3
 --- !u!1 &407603181
 GameObject:
   m_ObjectHideFlags: 0
@@ -8054,7 +8052,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 1, y: -1}
@@ -9575,7 +9573,7 @@ PrefabInstance:
     - target: {fileID: 146292263643629452, guid: a3b797bdbf2f16c4b89181a8d2c652a2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 146292263643629452, guid: a3b797bdbf2f16c4b89181a8d2c652a2,
         type: 3}
@@ -11548,7 +11546,7 @@ Transform:
   - {fileID: 86752663}
   - {fileID: 1126746051}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &905297471
 GameObject:
@@ -12487,7 +12485,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1069754904
 GameObject:
@@ -13097,7 +13095,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -13194,82 +13192,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1145951327
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1145951330}
-  - component: {fileID: 1145951329}
-  - component: {fileID: 1145951328}
-  m_Layer: 0
-  m_Name: TimeLine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!95 &1145951328
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1145951327}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!320 &1145951329
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1145951327}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: b3eab7714639cdc499b49ce4e2fa8630, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 6309041518640340921, guid: b3eab7714639cdc499b49ce4e2fa8630, type: 2}
-    value: {fileID: 1145951328}
-  - key: {fileID: 2480793518051373845, guid: b3eab7714639cdc499b49ce4e2fa8630, type: 2}
-    value: {fileID: 4096867038180170900}
-  - key: {fileID: -2860229178800911846, guid: b3eab7714639cdc499b49ce4e2fa8630, type: 2}
-    value: {fileID: 4096867038180170984}
-  - key: {fileID: -1290261238770440116, guid: b3eab7714639cdc499b49ce4e2fa8630, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References: []
---- !u!4 &1145951330
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1145951327}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1147061143
 GameObject:
   m_ObjectHideFlags: 0
@@ -16802,7 +16724,7 @@ Transform:
   m_LocalScale: {x: 0.4110218, y: 0.4110218, z: 0.4110218}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1554630871
 GameObject:
@@ -17198,7 +17120,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 329633384}
         m_MethodName: Stop_Highlight
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -17533,6 +17455,7 @@ MonoBehaviour:
   rockCamera: {fileID: 1872147480}
   ds: {fileID: 2369979692232838263}
   hintMap: {fileID: 329633384}
+  hintId: 4
 --- !u!61 &1595001882
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18801,7 +18724,7 @@ Transform:
   m_Children:
   - {fileID: 1474363156}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1884604921
 BoxCollider2D:
@@ -20785,7 +20708,7 @@ Transform:
   - {fileID: 2002228495071406469}
   - {fileID: 2085665765}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2002228495351016758
 GameObject:
@@ -20844,11 +20767,11 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 329633384}
         m_MethodName: Stop_Highlight
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -21228,7 +21151,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2369979692232838262
 GameObject:
@@ -22624,7 +22547,7 @@ RectTransform:
   - {fileID: 1335615307}
   - {fileID: 8146046557226223223}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -24356,7 +24279,7 @@ Transform:
   - {fileID: 1865095998}
   - {fileID: 1485190693}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4820012934293369260
 GameObject:
@@ -24609,7 +24532,7 @@ Transform:
   m_Children:
   - {fileID: 5846583376265460350}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &5846583376265460344
 BoxCollider2D:

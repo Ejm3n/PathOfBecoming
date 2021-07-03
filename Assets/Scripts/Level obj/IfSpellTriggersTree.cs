@@ -18,7 +18,7 @@ public class IfSpellTriggersTree : MonoBehaviour
             collision.gameObject.SetActive(false);
             joint.enabled = false;
             StartCoroutine(activateDelay());
-            hintMap.Stop_Highlight();
+            hintMap.Stop_Highlight(5);
         }
     }
     private IEnumerator activateDelay()

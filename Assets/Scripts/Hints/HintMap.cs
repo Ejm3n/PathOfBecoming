@@ -28,7 +28,7 @@ public class HintMap : MonoBehaviour
     public void Set_Map(HintHighlight[] hints)
     {
         if (highlighted)
-            Stop_Highlight();
+            Stop_Highlight(map[0].id);
         map = new List<HintHighlight>();
         map.AddRange(hints);
     }
@@ -49,12 +49,15 @@ public class HintMap : MonoBehaviour
             hintCoroutine = StartCoroutine(Highlight_With_Delay());
     }
 
-    public void Stop_Highlight()
+    public void Stop_Highlight(int id)
     {
-        highlighted = false;
-        StopCoroutine(hintCoroutine);
-        hintParticle.Stop();
-        map.RemoveAt(0);
+        if (map[0].id == id)
+        {
+            highlighted = false;
+            StopCoroutine(hintCoroutine);
+            hintParticle.Stop();
+        }
+        map.Remove(map.Find(hint => hint.id == id));
     }
 
     IEnumerator Highlight_With_Delay()
