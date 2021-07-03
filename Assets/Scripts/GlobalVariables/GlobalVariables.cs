@@ -13,4 +13,10 @@ namespace GlobalVariables
     {
         public static CurveSamples CURVESAMPLES = Resources.Load<CurveSamples>("ScriptableObjects/CurveSamples");
     }
+
+    public static class Prefabs
+    {
+        public static GameObject PLAYER = Resources.Load<GameObject>("Prefabs/Characters/Player");
+        public static GameObject FAIRY = Resources.Load<GameObject>("Prefabs/Characters/Fairy");
+    }
 }

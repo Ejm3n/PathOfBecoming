@@ -21,10 +21,10 @@ public class MagicBookTurnOn : MonoBehaviour
         if (!panelAnim.GetBool("PanelShow"))//когда диалоги закрыты мы показываем до тех пор пока на сцене не будет обнаружен геймобжект спелл и выключаем обратно
         {
             SwitchSetActive(false);
-            while (!firstSpell.activeInHierarchy)
-            {
-                yield return null;
-            }
+            //while (!firstSpell.activeInHierarchy)
+            //{
+            //    yield return null;
+            //}
             Debug.Log("нашел геймобжект active in hie");
             yield return new WaitForSeconds(2);
             SwitchSetActive(true);

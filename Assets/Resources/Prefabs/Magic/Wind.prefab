@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2e310e9f3658ab43b1100f7f7db6eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
-  TimeToDisable: 5
+  Speed: 20
+  TimeToDisable: 2
 --- !u!50 &5523236902156884742
 Rigidbody2D:
   serializedVersion: 4
@@ -2372,7 +2372,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    inWorldSpace: 1
+    inWorldSpace: 0
     randomizePerFrame: 0
   ExternalForcesModule:
     serializedVersion: 2

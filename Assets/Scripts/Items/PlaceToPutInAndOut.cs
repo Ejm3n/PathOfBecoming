@@ -14,6 +14,7 @@ public class PlaceToPutInAndOut : InteractEvent
     [SerializeField] HintMap hintMap;
     int choosenSlot = -1;
     bool isThereAShkatulka = false;
+    bool hinted = false;
 
     public override void Start_Event()
     {
@@ -53,8 +54,11 @@ public class PlaceToPutInAndOut : InteractEvent
                 }
             }
         }
-        if (hintMap.map[0].objectToHighlight.name == "MagicAltar_0")
+        if (!hinted)
+        {
             hintMap.Stop_Highlight();
+            hinted = true;
+        }
     }
     private void ChangeImage(bool what)
     {

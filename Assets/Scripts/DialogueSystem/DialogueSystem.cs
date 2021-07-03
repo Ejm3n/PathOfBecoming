@@ -22,8 +22,6 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] CanvasGroup blockingPanel;
     private GameObject choiceNextTrigger;//до куда скипать если выбран 1 вариант
 
-    [SerializeField] InteractController interactController;
-
     public string[] file;//все строки файла
     private int whereIsEndChoose;//на какой строчке конец выбора
     private int choice1;//строка с выбором 1

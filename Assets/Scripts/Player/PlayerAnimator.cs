@@ -26,7 +26,6 @@ public class PlayerAnimator : MonoBehaviour
         else
         {
             anim.SetBool("walk", false);
-            SoundManager.instance.Steps();
         }
 
         if (!PC.isGround)

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ParticleSystem))]
 public class HintMap : MonoBehaviour
 {
-    public ParticleSystem hintParticle;
-    public List<HintHighlight> map;
+    [SerializeField] List<HintHighlight> map;
 
+    ParticleSystem hintParticle;
     ParticleSystem.ShapeModule particleShape;
 
     Coroutine hintCoroutine;
@@ -15,12 +16,29 @@ public class HintMap : MonoBehaviour
 
     private void Awake()
     {
+        hintParticle = GetComponent<ParticleSystem>();
+        highlighted = false;
         if (map.Count > 0)
         {
-            highlighted = false;
             particleShape = hintParticle.shape;
             particleShape.spriteRenderer = map[0].objectToHighlight;
         }
+    }
+
+    public void Set_Map(HintHighlight[] hints)
+    {
+        if (highlighted)
+            Stop_Highlight();
+        map = new List<HintHighlight>();
+        map.AddRange(hints);
+    }
+
+    public HintHighlight[] Get_Map()
+    {
+        HintHighlight[] currentMap = new HintHighlight[map.Count];
+        for (int i = 0; i < currentMap.Length; i++)
+            currentMap[i] = map[i];
+        return currentMap;
     }
 
     public void Highlight()

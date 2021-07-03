@@ -2,10 +2,10 @@
 
 public class Interact : MonoBehaviour
 {
-    HintMap hintMap;
+    PlayerController controller;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        hintMap = collision.GetComponent<HintMap>();
-        hintMap.Highlight();
+        controller = collision.GetComponent<PlayerController>();
+        controller.engine.hintMap.Highlight();
     }
 }

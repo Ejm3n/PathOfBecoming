@@ -2,37 +2,44 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(ShootingSpells))]
 public class PlayerController : MonoBehaviour
 {
     public float speed;
     public float jumpForce;
+    public Rigidbody2D fairyAnchor;
 
     public float MoveInput;
     private Rigidbody2D rb;
 
-    public bool faceRight = true;
-    public bool isGround;
+    public bool faceRight { get; private set; }
+    public bool isGround { get; private set; }
+    public Engine engine { get; private set; }
     public Transform groundCheck;
     public float checkRadius;
     public LayerMask whatIsGround;
 
+    Health health;
+    ShootingSpells spellFire;
 
     private int extraJump;
     public int ExtraJumpValue;
 
-    [SerializeField] GameObject firstDiaTrigger;
-    [SerializeField] float waitTimeTillStart;
-    [SerializeField] Transform pixy;
+    public void Initialise(Engine engine, ActionWithSpellBook spellBook, ManaCounter mana, Image healthBar)
+    {
+        this.engine = engine;
+        health = GetComponent<Health>();
+        spellFire = GetComponent<ShootingSpells>();
+        health.Initialise(healthBar);
+        spellFire.Initialise(spellBook, mana);
+    }
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         extraJump = ExtraJumpValue;
-        if(waitTimeTillStart != 0)
-        {
-            StartCoroutine(Wait());
-        }
-       
+        faceRight = true;
     }
 
     private void FixedUpdate()
@@ -68,20 +75,10 @@ public class PlayerController : MonoBehaviour
 
     public void Flip()
     {
-        if(!faceRight)
-            pixy.transform.localRotation = Quaternion.Euler(0, 180, 0);
-        else if(faceRight)
-            pixy.transform.localRotation = Quaternion.Euler(0, 0, 0);
         faceRight = !faceRight;
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
-    }
-
-    private IEnumerator Wait()
-    {
-        yield return new WaitForSecondsRealtime(waitTimeTillStart);
-        firstDiaTrigger.SetActive(true);
     }
     public void OnRightButtonDown()
     {
