@@ -1203,6 +1203,9 @@ MonoBehaviour:
   interactController: {fileID: 407603182}
   onSuccess:
     m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 329633384}
         m_MethodName: Stop_Highlight
@@ -1215,9 +1218,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onFail:
-    m_PersistentCalls:
-      m_Calls: []
   puzzle: {fileID: 399709785}
   create: 0
   ds: {fileID: 2369979692232838263}
