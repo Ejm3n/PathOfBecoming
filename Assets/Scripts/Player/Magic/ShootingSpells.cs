@@ -52,7 +52,7 @@ public class ShootingSpells : MonoBehaviour
                 //float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
                 //и прсиваиваем наш угол персонажу
                 //firePoint.rotation = Quaternion.Euler(0f, 0f, rot_z);
-                Instantiate(SpellPrefab, firePoint).GetComponent<Spell>().Set_Direction(diff);
+                Instantiate(SpellPrefab, firePoint.position, firePoint.rotation).GetComponent<Spell>().Set_Direction(diff);
                 spellBook.UseSpell();
             }
         }
