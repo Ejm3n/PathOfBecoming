@@ -37,6 +37,7 @@ public class ShootingSpells : MonoBehaviour
                 Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - firePoint.position;
                 //номализация приводит каждое значение в промежуток
                 //от -1 до 1
+                diff = new Vector3(diff.x, diff.y);
                 diff.Normalize();
                 if(diff.x<0 && pc.faceRight)
                 {
@@ -51,7 +52,7 @@ public class ShootingSpells : MonoBehaviour
                 //float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
                 //и прсиваиваем наш угол персонажу
                 //firePoint.rotation = Quaternion.Euler(0f, 0f, rot_z);
-                Instantiate(SpellPrefab, firePoint).GetComponent<Spell>().Set_Direction(new Vector3(diff.x, diff.y));
+                Instantiate(SpellPrefab, firePoint).GetComponent<Spell>().Set_Direction(diff);
                 spellBook.UseSpell();
             }
         }
