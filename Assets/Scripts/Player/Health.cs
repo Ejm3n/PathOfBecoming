@@ -30,6 +30,11 @@ public class Health : MonoBehaviour
         healthBar.fillAmount = currentHealth / maxHealth;
     }
 
+    public float Get_Health()
+    {
+        return currentHealth;
+    }
+
     public void Damage(float damage)
     {
        Change_Health(-damage);

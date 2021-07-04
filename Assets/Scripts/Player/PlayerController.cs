@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Health))]
@@ -33,6 +34,17 @@ public class PlayerController : MonoBehaviour
         spellFire = GetComponent<ShootingSpells>();
         health.Initialise(healthBar);
         spellFire.Initialise(spellBook, mana);
+    }
+
+    public void Load_State(PlayerData data)
+    {
+        health.Set_Health(data.hp);
+        transform.position = data.lastCheckpoint.Convert_to_UnityVector();
+    }
+
+    public PlayerData Save_State()
+    {
+        return new PlayerData(SceneManager.GetActiveScene().buildIndex, new Vector3Serial(transform.position), health.Get_Health());
     }
 
     private void Start()

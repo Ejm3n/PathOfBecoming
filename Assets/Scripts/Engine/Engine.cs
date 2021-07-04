@@ -59,4 +59,16 @@ public abstract class Engine : MonoBehaviour
         else
             LoadLevel();
     }
+
+    public void Checkpoint()
+    {
+        PlayerData playerData = playerController.Save_State();
+        FairyData fairyData = fairyController.Save_State();
+        SaveSyatem.Save(new SaveData(playerData, fairyData));
+    }
+
+    public void Connect_Fairy()
+    {
+        fairyController.Connect_Fairy(playerController.fairyAnchor);
+    }
 }

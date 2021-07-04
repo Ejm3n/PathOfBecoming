@@ -19,4 +19,9 @@ namespace GlobalVariables
         public static GameObject PLAYER = Resources.Load<GameObject>("Prefabs/Characters/Player");
         public static GameObject FAIRY = Resources.Load<GameObject>("Prefabs/Characters/Fairy");
     }
+
+    public static class Paths
+    {
+        public static string SAVEPATH = Application.persistentDataPath + "/savedata.dat";
+    }
 }
