@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
 
-public class MagicBookData : MonoBehaviour
+[Serializable]
+public class MagicBookData
 {
     public bool[] EnabledSpells ;      
 

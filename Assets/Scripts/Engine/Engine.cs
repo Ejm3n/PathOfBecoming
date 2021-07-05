@@ -5,14 +5,15 @@ using GlobalVariables;
 
 public abstract class Engine : MonoBehaviour
 {
-    public static bool load = false;
+    public static bool load = true;
 
     [SerializeField] protected Image curtain;
     [SerializeField] CinemachineVirtualCamera playerCamera;
     public HintMap hintMap;
 
     [Header("Player Interface")]
-    [SerializeField] ActionWithSpellBook spellBook;
+    [SerializeField] protected ActionWithSpellBook spellBook;
+    [SerializeField] protected Inventory inventory;
     [SerializeField] ManaCounter mana;
     [SerializeField] Image healthBar;
 
@@ -64,7 +65,9 @@ public abstract class Engine : MonoBehaviour
     {
         PlayerData playerData = playerController.Save_State();
         FairyData fairyData = fairyController.Save_State();
-        SaveSyatem.Save(new SaveData(playerData, fairyData));
+        InventoryData inventoryData = inventory.SaveInvetnoryData();
+        MagicBookData magicBookData = spellBook.SaveBookData();
+        SaveSyatem.Save(new SaveData(playerData, fairyData, inventoryData, magicBookData));
     }
 
     public void Connect_Fairy()
