@@ -62,7 +62,8 @@ public class Inventory : MonoBehaviour
         ClearInventory();
        for(int i = 0; i<slots.Length;i++)
         {
-            LoadSlot(i, Slot.SlotItems[i], Slot.SlotCount[i]);
+            if(Slot.SlotItems[i]!=null && Slot.SlotItems[i]!="")
+                LoadSlot(i, Slot.SlotItems[i], Slot.SlotCount[i]);
         }
     }
     void LoadSlot(int slotNum,string path, int count)
