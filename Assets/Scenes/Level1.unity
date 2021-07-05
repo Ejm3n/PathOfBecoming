@@ -21777,7 +21777,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2777641021553108441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22098,6 +22098,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 2777641021553108422}
   slot: {fileID: 1749191604798665267, guid: a35f598a407797d4aa2d8f9c8a7bfb96, type: 3}
+  filePath: 
 --- !u!61 &3368713583996179866
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23357,6 +23358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 2777641021553108422}
   slot: {fileID: 1306065675522992209, guid: f3ccaa4c4c7d45a48b4f5fc581ef0d66, type: 3}
+  filePath: Prefabs/Inventory & Items/Spider
 --- !u!61 &4608452845711540323
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24693,7 +24695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!225 &6633200056144884940
 CanvasGroup:
   m_ObjectHideFlags: 0

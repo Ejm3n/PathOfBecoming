@@ -45,6 +45,8 @@ public class Inventory : MonoBehaviour
         {
             GameObject.Destroy(child.gameObject);
         }
+        Slot.SlotCount[slotNum] = 0;
+        Slot.SlotItems[slotNum] = "";
         isFull[slotNum] = false;
         SlotPressed(slotNum);
     }
