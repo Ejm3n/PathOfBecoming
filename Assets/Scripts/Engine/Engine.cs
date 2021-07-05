@@ -5,7 +5,7 @@ using GlobalVariables;
 
 public abstract class Engine : MonoBehaviour
 {
-    public static bool load = true;
+    public static bool load = false;
 
     [SerializeField] protected Image curtain;
     [SerializeField] CinemachineVirtualCamera playerCamera;
@@ -16,6 +16,7 @@ public abstract class Engine : MonoBehaviour
     [SerializeField] protected Inventory inventory;
     [SerializeField] ManaCounter mana;
     [SerializeField] Image healthBar;
+    [SerializeField] Button jumpButton;
 
     [Header("Start Positions")]
     [SerializeField] Transform playerStartPosition;
@@ -50,7 +51,7 @@ public abstract class Engine : MonoBehaviour
         playerCamera.Follow = player.transform;
         playerController = player.GetComponent<PlayerController>();
         fairyController = fairy.GetComponent<Fairy>();
-        playerController.Initialise(this, spellBook, mana, healthBar);
+        playerController.Initialise(this, spellBook, mana, healthBar, jumpButton);
     }
 
     private void Awake()
