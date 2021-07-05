@@ -55,4 +55,31 @@ public class Inventory : MonoBehaviour
         slotsAnim.SetBool("SlotsShown", true);
         hidden = true;
     }
+    public InventoryData SaveInvetnoryData()
+    {
+        return new InventoryData();
+    }
+    public void LoadInventoryData(InventoryData ID)
+    {
+        ClearInventory();
+       for(int i = 0; i<slots.Length;i++)
+        {
+            LoadSlot(i, Slot.SlotItems[i], Slot.SlotCount[i]);
+        }
+    }
+    void LoadSlot(int slotNum,string path, int count)
+    {
+        GameObject slotInst = Instantiate(Resources.Load(path, typeof(GameObject)), slots[slotNum].transform) as GameObject;
+        if(count>1)
+        {
+            slotInst.GetComponentInChildren<Flower>().countText.text = count.ToString();//костыль - надо переделать
+        }
+    }
+    void ClearInventory()
+    {
+        for(int i = 0;i<slots.Length;i++)
+        {
+            SlotDropped(i);
+        }
+    }
 }
