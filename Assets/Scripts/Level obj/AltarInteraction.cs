@@ -16,7 +16,6 @@ public class AltarInteraction : InteractEvent
     [SerializeField] string WhatNotToTrade;
     int currentActivation = 0;
     int choosenSlot = -1;
-    int stage = 0;
    
     [SerializeField] GameObject whatToSpawn;
     [SerializeField] string WhatToTrade;

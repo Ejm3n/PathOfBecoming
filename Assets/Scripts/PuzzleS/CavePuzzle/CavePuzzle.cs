@@ -11,13 +11,16 @@ public class CavePuzzle : MonoBehaviour
     private Color colorIfUnpressed = new Color(255f, 155f, 0f, 0f);
     [SerializeField] GameObject nextDialogue;
     [SerializeField] DialogueSystem ds;
+    [SerializeField] HintMap hintMap;
+    [SerializeField] int hintId;
     private void Update()
     {
         if (isPressed[0] && isPressed[1] && isPressed[2] && isPressed[3] && isPressed[4]&& canUWin)
         {
             GameWin = true;
             Debug.Log("игра выиграна");
-            if(nextDialogue != null)
+            hintMap.Stop_Highlight(hintId);
+            if (nextDialogue != null)
             {
                 nextDialogue.SetActive(true);
             }

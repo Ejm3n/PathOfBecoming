@@ -9,7 +9,6 @@ public class ChangeItems : InteractEvent
     [SerializeField] string WhatToTrade;
     int choosenSlot = -1;
     [SerializeField] GameObject canvas;
-    [SerializeField] HintMap hintMap;
     public override void Start_Event()
     {
 
@@ -37,7 +36,6 @@ public class ChangeItems : InteractEvent
                 else if (i == inventory.slots.Length - 1)
                     onFail?.Invoke();
             }
-            hintMap.Stop_Highlight();
         }
     }
     private bool IsPointerOverUIObject()

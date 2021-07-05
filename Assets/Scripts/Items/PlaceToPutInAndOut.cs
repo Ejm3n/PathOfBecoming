@@ -12,8 +12,10 @@ public class PlaceToPutInAndOut : InteractEvent
     [SerializeField] CinemachineVirtualCamera rockCamera;
     [SerializeField] DialogueSystem ds;
     [SerializeField] HintMap hintMap;
+    [SerializeField] int hintId;
     int choosenSlot = -1;
     bool isThereAShkatulka = false;
+    bool hinted = false;
 
     public override void Start_Event()
     {
@@ -53,8 +55,11 @@ public class PlaceToPutInAndOut : InteractEvent
                 }
             }
         }
-        if (hintMap.map[0].objectToHighlight.name == "MagicAltar_0")
-            hintMap.Stop_Highlight();
+        if (!hinted)
+        {
+            hintMap.Stop_Highlight(hintId);
+            hinted = true;
+        }
     }
     private void ChangeImage(bool what)
     {

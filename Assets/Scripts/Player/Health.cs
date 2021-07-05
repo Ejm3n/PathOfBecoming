@@ -3,14 +3,19 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public Image healthBar;
     public float maxHealth;
     float currentHealth;
+    Image healthBar;
+
+
+    public void Initialise(Image healthBar)
+    {
+        this.healthBar = healthBar;
+    }
 
     private void Awake()
     {
         currentHealth = maxHealth;
-        healthBar.fillAmount = 1;
     }
 
     void Change_Health(float value)
@@ -23,6 +28,11 @@ public class Health : MonoBehaviour
     {
         currentHealth = Mathf.Clamp(health, 0, maxHealth);
         healthBar.fillAmount = currentHealth / maxHealth;
+    }
+
+    public float Get_Health()
+    {
+        return currentHealth;
     }
 
     public void Damage(float damage)
