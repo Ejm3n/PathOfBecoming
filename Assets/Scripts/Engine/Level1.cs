@@ -14,6 +14,8 @@ public class Level1 : Engine
             Spawn_Characters(data.playerData.lastCheckpoint.Convert_to_UnityVector(), data.fairyData.checkPoint.Convert_to_UnityVector());
             playerController.Load_State(data.playerData);
             fairyController.Load_State(data.fairyData);
+            inventory.LoadInventoryData(data.inventoryData);
+            spellBook.LoadBookData(data.magicBookData);
         }
         catch (NullReferenceException)
         {

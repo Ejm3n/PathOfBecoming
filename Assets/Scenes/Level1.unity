@@ -447,7 +447,7 @@ PrefabInstance:
     - target: {fileID: 6303547240790361204, guid: 64a2ffcfc63e52b4f9370fa97c5696c8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6303547240790361204, guid: 64a2ffcfc63e52b4f9370fa97c5696c8,
         type: 3}
@@ -950,6 +950,7 @@ MonoBehaviour:
   playerCamera: {fileID: 523860747}
   hintMap: {fileID: 329633384}
   spellBook: {fileID: 6633200057924713170}
+  inventory: {fileID: 2777641021553108422}
   mana: {fileID: 552790274}
   healthBar: {fileID: 1851370198}
   playerStartPosition: {fileID: 1040815325}
@@ -7373,7 +7374,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4096867036808471593}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -22566,8 +22567,8 @@ RectTransform:
   - {fileID: 399709786}
   - {fileID: 1608093198}
   - {fileID: 1854690394}
-  - {fileID: 631509722}
   - {fileID: 342839217}
+  - {fileID: 631509722}
   - {fileID: 1335615307}
   - {fileID: 8146046557226223223}
   m_Father: {fileID: 0}
@@ -23127,7 +23128,7 @@ PrefabInstance:
     - target: {fileID: 5744639958034896453, guid: bdcf51778476edc43b612439dd0208c6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5744639958034896453, guid: bdcf51778476edc43b612439dd0208c6,
         type: 3}
@@ -25256,6 +25257,8 @@ MonoBehaviour:
   openBook: {fileID: 21300000, guid: c01df23e29ade6a42b750d6d975e5629, type: 3}
   closedBook: {fileID: 21300000, guid: 60495e0d609c0ca47aeab8b96136c53c, type: 3}
   book: {fileID: 6633200057181423822}
+  spellsImgs: []
+  questionImg: {fileID: 0}
   Spells: 000000
 --- !u!224 &6633200057924713173
 RectTransform:
