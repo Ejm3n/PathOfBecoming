@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class DialogueSystem : MonoBehaviour
@@ -20,7 +22,6 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] Sprite fairyImg;//ссылка непосредственно на спрайт феи
     [SerializeField] Sprite impImg;//ссылка непосредственно на спрайт анчутки
     [SerializeField] CanvasGroup blockingPanel;
-    private GameObject choiceNextTrigger;//до куда скипать если выбран 1 вариант
 
     public string[] file;//все строки файла
     private int whereIsEndChoose;//на какой строчке конец выбора
@@ -38,7 +39,7 @@ public class DialogueSystem : MonoBehaviour
     Queue<string> linesTriggered = new Queue<string>();//очередь строк, которые триггерятся. именно эта очередь будет выводиться на экран
     private bool isDialogueTyping = false;
     private bool typeDialogeInstantly = false;
-
+    UnityEvent onComplete;
     
 
     private void Awake()
@@ -81,8 +82,9 @@ public class DialogueSystem : MonoBehaviour
             cg.blocksRaycasts = false;
         }
     }
-    public void ChooseStart(int choose1, int choose2,int endOfChoices,GameObject nextTrigger)//старт выборных диалогов
+    public void ChooseStart(int choose1, int choose2,int endOfChoices, UnityEvent onComplete)//старт выборных диалогов
     {
+        this.onComplete = onComplete;
         SetUI(false);
         choice1Text.text = file[choose1].Substring(file[choose1].IndexOf('=') + 1); ;
         choice2Text.text = file[choose2].Substring(file[choose2].IndexOf('=') + 1); ;
@@ -90,21 +92,20 @@ public class DialogueSystem : MonoBehaviour
         whereIsEndChoose = endOfChoices;
         choice1 = choose1;
         choice2 = choose2;
-        choiceNextTrigger = nextTrigger;
     }
     public void OnChoice1Click()//выбор 1 нажат
     {
         choosePanelAnim.SetBool("PanelShow", false);       
-        StartDialogue(choice1, choice2, choiceNextTrigger);
+        StartDialogue(choice1, choice2, onComplete);
     }
     public void OnChoice2Click()//выбор 2 нажат
     {
         choosePanelAnim.SetBool("PanelShow", false);
-        StartDialogue(choice2, whereIsEndChoose, choiceNextTrigger);
+        StartDialogue(choice2, whereIsEndChoose, onComplete);
     }
-    public void StartDialogue(int startLine, int endLine, GameObject nextTrigger)//неачать диалог
+    public void StartDialogue(int startLine, int endLine, UnityEvent onComplete)//неачать диалог
     {
-        choiceNextTrigger = nextTrigger;
+        this.onComplete = onComplete;
         panelAnim.SetBool("PanelShow", true);
         SetUI(false);
         for (int i = startLine; i < endLine; i++)
@@ -113,6 +114,7 @@ public class DialogueSystem : MonoBehaviour
         }
         DisplayNextLine();
     }
+
     public void DisplayNextLine()//показать следущую строку
     {
         if(!isDialogueTyping)
@@ -201,8 +203,8 @@ public class DialogueSystem : MonoBehaviour
     }   
     public void EndDialogue()//закончить диалог 
     {
-        if (choiceNextTrigger)
-            choiceNextTrigger.SetActive(true);
+        onComplete?.Invoke();
+        onComplete = null;
         panelAnim.SetBool("PanelShow", false);
         SetUI(true);
     }
