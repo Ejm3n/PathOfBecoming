@@ -5,7 +5,6 @@ public class Fairy : MonoBehaviour
     Rigidbody2D rb;
     RelativeJoint2D joint;
 
-    Rigidbody2D connection;
     Engine engine;
 
     private void Awake()
@@ -19,22 +18,18 @@ public class Fairy : MonoBehaviour
     {
         rb.bodyType = RigidbodyType2D.Dynamic;
         joint.connectedBody = anchor;
-        connection = anchor;
     }
 
     public void Load_State(FairyData data)
     {
         transform.position = data.checkPoint.Convert_to_UnityVector();
         if (data.connected)
-            engine.Connect_Fairy();
+            engine.Connect_Fairy_to_Player();
     }
 
     public FairyData Save_State()
     {
-        bool connected = false;
-        if (connection)
-            connected = true;
-        return new FairyData(new Vector3Serial(transform.position), connected);
+        return new FairyData(new Vector3Serial(transform.position));
     }
 
     private void FixedUpdate()

@@ -39,11 +39,15 @@ public class DialogueSystem : MonoBehaviour
     Queue<string> linesTriggered = new Queue<string>();//очередь строк, которые триггерятся. именно эта очередь будет выводиться на экран
     private bool isDialogueTyping = false;
     private bool typeDialogeInstantly = false;
+
+    [SerializeField] CheckpointDialogue[] checkpoints;
+    Engine engine;
     UnityEvent onComplete;
     
 
     private void Awake()
-    {    
+    {
+        engine = transform.parent.GetComponent<Engine>();
         TextAsset language = Resources.Load<TextAsset>("Russian2");//считываем файл со строками
         file = language.text.Split('\n');     //заполняем этими строками массив
     }
@@ -207,5 +211,22 @@ public class DialogueSystem : MonoBehaviour
         onComplete = null;
         panelAnim.SetBool("PanelShow", false);
         SetUI(true);
+    }
+
+    public void Checkpoint(CheckpointDialogue dialogue)
+    {
+        for (int i = 0; i < checkpoints.Length; i++)
+            if (dialogue == checkpoints[i])
+            {
+                engine.Checkpoint(i);
+                break;
+            }
+    }
+
+    public void Load_State(int index)
+    {
+        for (int i = 0; i <= index; i++)
+            checkpoints[i].onCheckpoint?.Invoke();
+        checkpoints[index].onTrigger?.Invoke();
     }
 }
