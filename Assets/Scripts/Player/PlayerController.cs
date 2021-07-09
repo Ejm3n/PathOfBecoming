@@ -27,13 +27,14 @@ public class PlayerController : MonoBehaviour
     private int extraJump;
     public int ExtraJumpValue;
 
-    public void Initialise(Engine engine, ActionWithSpellBook spellBook, ManaCounter mana, Image healthBar)
+    public void Initialise(Engine engine, ActionWithSpellBook spellBook, ManaCounter mana, Image healthBar, Button jump)
     {
         this.engine = engine;
         health = GetComponent<Health>();
         spellFire = GetComponent<ShootingSpells>();
         health.Initialise(healthBar);
         spellFire.Initialise(spellBook, mana);
+        jump.onClick.AddListener(OnJumpButton);
     }
 
     public void Load_State(PlayerData data)

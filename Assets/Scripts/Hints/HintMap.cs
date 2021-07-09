@@ -25,46 +25,29 @@ public class HintMap : MonoBehaviour
         }
     }
 
-    public void Set_Map(HintHighlight[] hints)
+    public void Highlight(int id)
     {
-        if (highlighted)
-            Stop_Highlight(map[0].id);
-        map = new List<HintHighlight>();
-        map.AddRange(hints);
-    }
-
-    public HintHighlight[] Get_Map()
-    {
-        HintHighlight[] currentMap = new HintHighlight[map.Count];
-        for (int i = 0; i < currentMap.Length; i++)
-            currentMap[i] = map[i];
-        return currentMap;
-    }
-
-    public void Highlight()
-    {
-        if (map.Count == 0)
+        if (map.Count <= id)
             return;
-        if (!highlighted)
-            hintCoroutine = StartCoroutine(Highlight_With_Delay());
+        if (highlighted)
+            Stop_Highlight();
+        hintCoroutine = StartCoroutine(Highlight_With_Delay(id));
     }
 
-    public void Stop_Highlight(int id)
+    public void Stop_Highlight()
     {
-        if (map[0].id == id)
-        {
-            highlighted = false;
-            StopCoroutine(hintCoroutine);
-            hintParticle.Stop();
-        }
-        map.Remove(map.Find(hint => hint.id == id));
+        if (!highlighted)
+            return;
+        highlighted = false;
+        StopCoroutine(hintCoroutine);
+        hintParticle.Stop();
     }
 
-    IEnumerator Highlight_With_Delay()
+    IEnumerator Highlight_With_Delay(int id)
     {
         highlighted = true;
-        particleShape.spriteRenderer = map[0].objectToHighlight;
-        yield return new WaitForSeconds(map[0].highlightDelay);
+        particleShape.spriteRenderer = map[id].objectToHighlight;
+        yield return new WaitForSeconds(map[id].highlightDelay);
         hintParticle.Play();
     }
 }
