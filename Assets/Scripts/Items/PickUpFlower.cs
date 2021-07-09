@@ -9,6 +9,7 @@ public class PickUpFlower : MonoBehaviour
     public GameObject slot;
     bool foundFlower = false;
     GameObject madeFlower;
+    public string FilePath;
     private void Start()
     {
         inventory = FindObjectOfType<Inventory>();
@@ -22,6 +23,7 @@ public class PickUpFlower : MonoBehaviour
                 foundFlower = true;
                 Flower flower = inventory.slots[i].GetComponentInChildren<Flower>();
                 int flowcount = Convert.ToInt32(flower.countText.text);
+                Slot.SlotCount[i]++;
                 Debug.Log(flowcount);
                 if(flowcount < 3)
                 {
@@ -39,6 +41,8 @@ public class PickUpFlower : MonoBehaviour
                 inventory.isFull[i] = true;
                 madeFlower = Instantiate(slot, inventory.slots[i].transform);
                 madeFlower.GetComponent<Flower>().SlotNum = i;
+                Slot.SlotItems[i] = FilePath;
+                Slot.SlotCount[i] = 1;
                 Destroy(gameObject);
                 break;
             }

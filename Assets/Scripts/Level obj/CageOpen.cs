@@ -7,7 +7,7 @@ public class CageOpen : MonoBehaviour
     [SerializeField] private SpriteRenderer cageBack;
 
     private Animator anim;
-    void Start()
+    void Awake()
     {
         anim = GetComponent<Animator>();
     }

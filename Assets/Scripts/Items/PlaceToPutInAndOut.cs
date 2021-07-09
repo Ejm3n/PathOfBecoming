@@ -11,11 +11,8 @@ public class PlaceToPutInAndOut : InteractEvent
     [SerializeField] GameObject inGameShkat;
     [SerializeField] CinemachineVirtualCamera rockCamera;
     [SerializeField] DialogueSystem ds;
-    [SerializeField] HintMap hintMap;
-    [SerializeField] int hintId;
     int choosenSlot = -1;
     bool isThereAShkatulka = false;
-    bool hinted = false;
 
     public override void Start_Event()
     {
@@ -54,11 +51,6 @@ public class PlaceToPutInAndOut : InteractEvent
                     break;
                 }
             }
-        }
-        if (!hinted)
-        {
-            hintMap.Stop_Highlight(hintId);
-            hinted = true;
         }
     }
     private void ChangeImage(bool what)

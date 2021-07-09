@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
 
 [Serializable]
 public class FairyData
@@ -7,9 +6,8 @@ public class FairyData
     public Vector3Serial checkPoint;
     public bool connected;
 
-    public FairyData(Vector3Serial checkPoint, bool connected)
+    public FairyData(Vector3Serial checkPoint)
     {
         this.checkPoint = checkPoint;
-        this.connected = connected;
     }
 }

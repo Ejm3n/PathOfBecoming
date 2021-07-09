@@ -9,7 +9,6 @@ public class IfSpellTriggersTree : MonoBehaviour
     [SerializeField] FixedJoint2D joint;
     [SerializeField] string spellName;
     [SerializeField] float timeToWait;
-    [SerializeField] HintMap hintMap;
     public bool Avalible;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,7 +17,6 @@ public class IfSpellTriggersTree : MonoBehaviour
             collision.gameObject.SetActive(false);
             joint.enabled = false;
             StartCoroutine(activateDelay());
-            hintMap.Stop_Highlight(5);
         }
     }
     private IEnumerator activateDelay()

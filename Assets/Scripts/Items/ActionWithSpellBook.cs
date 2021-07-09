@@ -11,6 +11,9 @@ public class ActionWithSpellBook : MonoBehaviour
     [SerializeField] private Sprite closedBook;
 
     [SerializeField] private Button book;
+
+    [SerializeField] private Sprite[] spellsImgs;
+    [SerializeField] private Sprite questionImg;
  // private Image image;
 
     private bool isBookOpen = false;
@@ -94,6 +97,25 @@ public class ActionWithSpellBook : MonoBehaviour
             else
             {               
                 Spells[i] = false;            
+            }
+        }
+    }
+    public MagicBookData SaveBookData()
+    {
+        return new MagicBookData();
+    }
+    public void LoadBookData(MagicBookData MBD)
+    {
+        Image[] spellImages = gameObject.GetComponentsInChildren<Image>();
+        for (int i = 0;i<3;i++)
+        {
+            if(MBD.EnabledSpells[i] == true)
+            {
+                spellImages[i].sprite = spellsImgs[i];
+            }
+            else
+            {
+                spellImages[i].sprite = questionImg;
             }
         }
     }

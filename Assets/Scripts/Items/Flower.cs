@@ -23,6 +23,7 @@ public class Flower : MonoBehaviour
             if (count>1)
             {
                 count--;
+                Slot.SlotCount[SlotNum]--;
                 countText.text = count.ToString();
             }
             else if(count == 1)
