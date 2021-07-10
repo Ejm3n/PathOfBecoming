@@ -7,7 +7,7 @@ using AnimationUtils.ImageUtils;
 
 public abstract class Engine : MonoBehaviour
 {
-    public static bool load = true;
+    public static bool load = false;
 
     [SerializeField] protected Image curtain;
     [SerializeField] CinemachineVirtualCamera playerCamera;
