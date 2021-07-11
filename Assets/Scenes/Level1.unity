@@ -12464,8 +12464,8 @@ MonoBehaviour:
   onTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6633200056144884939}
-        m_MethodName: SetActive
+      - m_Target: {fileID: 2369979692232838263}
+        m_MethodName: SetUI
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12473,7 +12473,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 329633384}
         m_MethodName: Stop_Highlight
@@ -12485,6 +12485,94 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6633200057924713170}
+        m_MethodName: ChangeAccessToSpells
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2369979692232838263}
+        m_MethodName: SetBook
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6633200056144884940}
+        m_MethodName: set_alpha
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6633200056144884940}
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6633200056144884940}
+        m_MethodName: set_blocksRaycasts
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1742796659}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1264847137}
+        m_MethodName: set_blocksRaycasts
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1264847137}
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!61 &1080446706
 BoxCollider2D:
@@ -17778,7 +17866,7 @@ GameObject:
   - component: {fileID: 1742796660}
   - component: {fileID: 1742796662}
   - component: {fileID: 1742796663}
-  m_Layer: 12
+  m_Layer: 23
   m_Name: FirstCast(Checkpoint)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17881,6 +17969,28 @@ MonoBehaviour:
       - m_Target: {fileID: 1007337420}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6633200057924713170}
+        m_MethodName: ChangeAccessToSpells
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6633200056144884941}
+        m_MethodName: OnBookGuide
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -21506,7 +21616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2777641021553108441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21522,9 +21632,10 @@ MonoBehaviour:
   WhatToTurnOff:
   - {fileID: 631509721}
   - {fileID: 4820012933034209164}
-  - {fileID: 142392684}
   panelAnim: {fileID: 4096867036412738255}
   ds: {fileID: 2369979692232838263}
+  inv: {fileID: 2777641021553108440}
+  invCG: {fileID: 2777641021553108446}
 --- !u!225 &2777641021553108446
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -21533,9 +21644,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2777641021553108440}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &2777641021680374340
 MonoBehaviour:
@@ -21827,7 +21938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 2777641021553108422}
   slot: {fileID: 1749191604798665267, guid: a35f598a407797d4aa2d8f9c8a7bfb96, type: 3}
-  filePath: 
+  filePath: Prefabs/Inventory & Items/Shkatulka
 --- !u!61 &3368713583996179866
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23801,6 +23912,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 2369979692232838263}
+        m_MethodName: SetInventory
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!4 &4820012933785366196
 Transform:
   m_ObjectHideFlags: 0
@@ -23930,17 +24052,6 @@ MonoBehaviour:
   onTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2777641021553108440}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 4820012932763159685}
         m_MethodName: SetActive
         m_Mode: 6
@@ -23955,6 +24066,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1947734187}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2777641021553108441}
+        m_MethodName: InventoryGuide
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -24510,7 +24632,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!225 &6633200056144884940
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -24519,9 +24641,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6633200056144884939}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &6633200056144884941
 MonoBehaviour:
@@ -25166,8 +25288,11 @@ MonoBehaviour:
   openBook: {fileID: 21300000, guid: c01df23e29ade6a42b750d6d975e5629, type: 3}
   closedBook: {fileID: 21300000, guid: 60495e0d609c0ca47aeab8b96136c53c, type: 3}
   book: {fileID: 6633200057181423822}
-  spellsImgs: []
-  questionImg: {fileID: 0}
+  spellsImgs:
+  - {fileID: 21300000, guid: 2306e4c6aae839349bdc3d1b34cd56f3, type: 3}
+  - {fileID: 21300000, guid: 2306e4c6aae839349bdc3d1b34cd56f3, type: 3}
+  - {fileID: 21300000, guid: 2306e4c6aae839349bdc3d1b34cd56f3, type: 3}
+  questionImg: {fileID: 21300000, guid: 09ff27d6917abb14e908bd3585f5a8fe, type: 3}
   Spells: 000000
 --- !u!224 &6633200057924713173
 RectTransform:

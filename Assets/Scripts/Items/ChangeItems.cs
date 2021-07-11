@@ -20,23 +20,25 @@ public class ChangeItems : InteractEvent
                 break;
             }
         }
-        if (choosenSlot != -1 && inventory.slots[choosenSlot].transform.GetChild(0).gameObject.name == WhatToTrade + "(Clone)")//прлверка если выбран нужный предмет
-        {
-            inventory.SlotDropped(choosenSlot);
-            for (int i = 0; i < inventory.slots.Length; i++)
+        
+            if (choosenSlot != -1 && inventory.slots[choosenSlot].transform.childCount>=1 && inventory.slots[choosenSlot].transform.GetChild(0).gameObject.name == WhatToTrade + "(Clone)")//прлверка если выбран нужный предмет
             {
-                if (inventory.isFull[i] == false)//создаем в пустом слоте предмет
+                inventory.SlotDropped(choosenSlot);
+                for (int i = 0; i < inventory.slots.Length; i++)
                 {
-                    inventory.isFull[i] = true;
-                    Instantiate(whatToSpawn, inventory.slots[i].transform);
-                    onSuccess?.Invoke();
-                    Destroy(gameObject);
-                    break;
+                    if (inventory.isFull[i] == false)//создаем в пустом слоте предмет
+                    {
+                        inventory.isFull[i] = true;
+                        Instantiate(whatToSpawn, inventory.slots[i].transform);
+                        onSuccess?.Invoke();
+                        Destroy(gameObject);
+                        break;
+                    }
+                    else if (i == inventory.slots.Length - 1)
+                        onFail?.Invoke();
                 }
-                else if (i == inventory.slots.Length - 1)
-                    onFail?.Invoke();
             }
-        }
+                
     }
     private bool IsPointerOverUIObject()
     {
