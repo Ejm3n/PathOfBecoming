@@ -7,15 +7,14 @@ public class PlayerAnimator : MonoBehaviour
 
     private Animator anim;
     private float walk;
-    [SerializeField]
     private PlayerController PC;
     
     void Start()
     {
+        PC = transform.parent.GetComponent<PlayerController>();
         anim = GetComponent<Animator>(); 
     }
 
-    
     void Update()
     {
         walk = Joystick.axisX;
