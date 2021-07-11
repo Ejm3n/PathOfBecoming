@@ -207,10 +207,10 @@ public class DialogueSystem : MonoBehaviour
     }   
     public void EndDialogue()//закончить диалог 
     {
-        onComplete?.Invoke();
-        onComplete = null;
         panelAnim.SetBool("PanelShow", false);
         SetUI(true);
+        onComplete?.Invoke();
+        onComplete = null;
     }
 
     public void Checkpoint(CheckpointDialogue dialogue)
