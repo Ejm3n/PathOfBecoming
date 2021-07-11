@@ -8,11 +8,19 @@ public class PlayerAnimator : MonoBehaviour
     private Animator anim;
     private float walk;
     private PlayerController PC;
+
+    AudioClip step;
     
     void Start()
     {
         PC = transform.parent.GetComponent<PlayerController>();
-        anim = GetComponent<Animator>(); 
+        anim = GetComponent<Animator>();
+        step = Resources.Load<AudioClip>("Sounds/Effects/Звук/Footsteps/footstep forest 2");
+    }
+
+    public void Step()
+    {
+        SoundRecorder.Play_Effect(step);
     }
 
     void Update()
