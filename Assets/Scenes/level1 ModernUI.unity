@@ -401,7 +401,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1660c8e9a1eb32b46b6dc41be97fa94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hintMap: {fileID: 457182570}
 --- !u!61 &50658343
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -674,6 +673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slot: {fileID: 2379365570660116632, guid: 240d392467507774c97a77f45343a4cb, type: 3}
+  FilePath: 
 --- !u!61 &106543443
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1085,6 +1085,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactController: {fileID: 407603182}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   inventory: {fileID: 2777641021553108422}
   canvas: {fileID: 4096867036808471592}
   whatToActivate:
@@ -1265,25 +1271,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactController: {fileID: 407603182}
-  puzzle: {fileID: 399709785}
-  create: 0
-  winEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 457182570}
-        m_MethodName: Stop_Highlight
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  closeEvent:
+  onSuccess:
     m_PersistentCalls:
       m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
+  puzzle: {fileID: 399709785}
+  create: 0
   ds: {fileID: 2369979692232838263}
 --- !u!61 &153583970
 BoxCollider2D:
@@ -1731,9 +1726,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 36
   endOfThisDia: 37
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 1439581102}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &204429658
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2442,7 +2437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1660c8e9a1eb32b46b6dc41be97fa94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hintMap: {fileID: 457182570}
 --- !u!61 &305295939
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7547,6 +7541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slot: {fileID: 2379365570660116632, guid: 240d392467507774c97a77f45343a4cb, type: 3}
+  FilePath: 
 --- !u!61 &346440468
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7716,20 +7711,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactController: {fileID: 407603182}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   inventory: {fileID: 2777641021553108422}
   whatToSpawn: {fileID: 7937802892343493360, guid: b72963859c09de8449160972fb1d980a,
     type: 3}
   WhatToTrade: Shkatulka
-  whatActivate:
-  - {fileID: 1007337420}
-  - {fileID: 4820012933642009550}
-  - {fileID: 1595001879}
-  whatDeactivate:
-  - {fileID: 2061547664}
   canvas: {fileID: 4096867036808471592}
-  rockCamera: {fileID: 1872147480}
-  ds: {fileID: 2369979692232838263}
-  hintMap: {fileID: 457182570}
 --- !u!61 &371191084
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8294,7 +8286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1660c8e9a1eb32b46b6dc41be97fa94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hintMap: {fileID: 457182570}
 --- !u!61 &408194828
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8611,20 +8602,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2.7
   jumpForce: 5.2
+  fairyAnchor: {fileID: 0}
   MoveInput: 0
-  faceRight: 1
-  isGround: 0
   groundCheck: {fileID: 492037691}
   checkRadius: 0.2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
   ExtraJumpValue: 0
-  moveButtons: {fileID: 631509721}
-  firstDiaTrigger: {fileID: 4820012933081349875}
-  waitTimeTillStart: 10
-  pixy: {fileID: 1621591983}
-  joystick: {fileID: 903916136}
 --- !u!50 &457182568
 Rigidbody2D:
   serializedVersion: 4
@@ -8674,21 +8659,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 389767edede155c4bb236197f1df5a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hintParticle: {fileID: 335096732}
   map:
-  - objectToHighlight: {fileID: 1584898147}
+  - id: 0
+    objectToHighlight: {fileID: 1584898147}
     highlightDelay: 0
-  - objectToHighlight: {fileID: 1259078407}
+  - id: 0
+    objectToHighlight: {fileID: 1259078407}
     highlightDelay: 60
-  - objectToHighlight: {fileID: 693632503}
+  - id: 0
+    objectToHighlight: {fileID: 693632503}
     highlightDelay: 60
-  - objectToHighlight: {fileID: 153583968}
+  - id: 0
+    objectToHighlight: {fileID: 153583968}
     highlightDelay: 60
-  - objectToHighlight: {fileID: 693632503}
+  - id: 0
+    objectToHighlight: {fileID: 693632503}
     highlightDelay: 60
-  - objectToHighlight: {fileID: 830217368}
+  - id: 0
+    objectToHighlight: {fileID: 830217368}
     highlightDelay: 60
-  - objectToHighlight: {fileID: 1126746052}
+  - id: 0
+    objectToHighlight: {fileID: 1126746052}
     highlightDelay: 0
 --- !u!1 &460427754
 GameObject:
@@ -8871,6 +8862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slot: {fileID: 2379365570660116632, guid: 240d392467507774c97a77f45343a4cb, type: 3}
+  FilePath: 
 --- !u!61 &490667545
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10955,9 +10947,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 35
   endOfThisDia: 36
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 1439581102}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &592018639
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11588,7 +11580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1660c8e9a1eb32b46b6dc41be97fa94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hintMap: {fileID: 457182570}
 --- !u!61 &663731943
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13402,18 +13393,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &903916136 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2383552559582746647, guid: bd4de6b7f92f85f4893d2cadd7a2d3cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 698866092883393477}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &905297471
 GameObject:
   m_ObjectHideFlags: 0
@@ -14575,9 +14554,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 52
   endOfThisDia: 55
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 6633200056144884939}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1080446706
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14965,6 +14944,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactController: {fileID: 407603182}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1126746054
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16527,7 +16512,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1660c8e9a1eb32b46b6dc41be97fa94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hintMap: {fileID: 457182570}
 --- !u!61 &1311316379
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17318,8 +17302,13 @@ MonoBehaviour:
   joint: {fileID: 1344662153}
   spellName: Wind
   timeToWait: 4
-  hintMap: {fileID: 0}
   Avalible: 1
+--- !u!224 &1413950793 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+    type: 3}
+  m_PrefabInstance: {fileID: 6739158385744361000}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1423275412
 GameObject:
   m_ObjectHideFlags: 0
@@ -17501,7 +17490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1660c8e9a1eb32b46b6dc41be97fa94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hintMap: {fileID: 0}
 --- !u!1 &1442440524 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2733221802868007067, guid: 437e2158ca2936f4fa77ba24f8db66be,
@@ -18304,9 +18292,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 61
   endOfThisDia: 68
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 1884604918}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1485190692
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18555,9 +18543,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 57
   endOfThisDia: 58
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 1839175900}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1546034816
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18805,10 +18793,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 48
   endOfThisDia: 49
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 2041405125515496581}
-  triggersToDelete:
-  - {fileID: 142392684}
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1562236943
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19072,69 +19059,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactController: {fileID: 407603182}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   puzzle: {fileID: 4342615957535141557, guid: 22a39dab64a70b245af8cc178535c242, type: 3}
   create: 1
-  winEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1694981830}
-        m_MethodName: Free_Fairy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 285242477}
-        m_MethodName: Open_Cage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4820012933073172353}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 457182570}
-        m_MethodName: Stop_Highlight
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  closeEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4820012933565130547}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
   ds: {fileID: 2369979692232838263}
 --- !u!61 &1584898149
 BoxCollider2D:
@@ -19418,6 +19350,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactController: {fileID: 407603182}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   canvas: {fileID: 4096867036808471592}
   inventory: {fileID: 2777641021553108422}
   whatToSpawn: {fileID: 1749191604798665267, guid: a35f598a407797d4aa2d8f9c8a7bfb96,
@@ -19427,7 +19365,6 @@ MonoBehaviour:
   inGameShkat: {fileID: 1007337420}
   rockCamera: {fileID: 1872147480}
   ds: {fileID: 2369979692232838263}
-  hintMap: {fileID: 0}
 --- !u!61 &1595001882
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19609,12 +19546,6 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!4 &1621591983 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3512574674285925808, guid: 3ebf0178f0319094abc47dd42eb2580e,
-    type: 3}
-  m_PrefabInstance: {fileID: 3512574673743188511}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1650239667
 GameObject:
   m_ObjectHideFlags: 0
@@ -19904,18 +19835,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684418898}
   m_CullTransparentMesh: 0
---- !u!114 &1694981830 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3512574674285925807, guid: 3ebf0178f0319094abc47dd42eb2580e,
-    type: 3}
-  m_PrefabInstance: {fileID: 3512574673743188511}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8b1661722188f54997142bb69f33e2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1719042729
 GameObject:
   m_ObjectHideFlags: 0
@@ -20091,9 +20010,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 55
   endOfThisDia: 57
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 1546034813}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1742796662
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20247,6 +20166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slot: {fileID: 2379365570660116632, guid: 240d392467507774c97a77f45343a4cb, type: 3}
+  FilePath: 
 --- !u!61 &1798633082
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20595,9 +20515,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 58
   endOfThisDia: 61
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 148817437}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1865096000
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20842,9 +20762,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 34
   endOfThisDia: 35
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 1439581102}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1902276181
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20903,6 +20823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slot: {fileID: 2379365570660116632, guid: 240d392467507774c97a77f45343a4cb, type: 3}
+  FilePath: 
 --- !u!61 &1905130989
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21026,9 +20947,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 2
   endOfThisDia: 3
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 1439581102}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1947734189
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22354,7 +22275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1660c8e9a1eb32b46b6dc41be97fa94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hintMap: {fileID: 457182570}
 --- !u!4 &2081502832
 Transform:
   m_ObjectHideFlags: 0
@@ -23109,18 +23029,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactController: {fileID: 407603182}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   inventory: {fileID: 2777641021553108422}
   whatToSpawn: {fileID: 1749191604798665267, guid: a35f598a407797d4aa2d8f9c8a7bfb96,
     type: 3}
   WhatToTrade: Spider
-  whatActivate:
-  - {fileID: 184551406}
-  - {fileID: 371191081}
-  whatDeactivate: []
   canvas: {fileID: 4096867036808471592}
-  rockCamera: {fileID: 0}
-  ds: {fileID: 0}
-  hintMap: {fileID: 0}
 --- !u!61 &2041405125515496580
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23524,10 +23443,9 @@ MonoBehaviour:
   choice1Text: {fileID: 4096867036885876448}
   choice2Text: {fileID: 4096867038330046695}
   controlButtons: {fileID: 631509721}
-  manaBar: {fileID: 920475437}
+  playerBars: {fileID: 0}
   inventory: {fileID: 2777641021553108446}
   spellBook: {fileID: 6633200056144884940}
-  PC: {fileID: 457182567}
   panelAnim: {fileID: 4096867036412738255}
   choosePanelAnim: {fileID: 4096867036521702165}
   dialogueImg: {fileID: 4096867036898782992}
@@ -23535,10 +23453,10 @@ MonoBehaviour:
   fairyImg: {fileID: 21300000, guid: b09189f6bc4f70142a76e18829dd8a9a, type: 3}
   impImg: {fileID: 21300000, guid: c547dec0766e5954bb8c5fdcde71eb31, type: 3}
   blockingPanel: {fileID: 1264847137}
-  interactController: {fileID: 407603182}
   file: []
   canUseInventory: 0
   canUseSpellBook: 0
+  checkpoints: []
 --- !u!114 &2777641020587554998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24111,6 +24029,8 @@ MonoBehaviour:
   - {fileID: 142392684}
   panelAnim: {fileID: 4096867036412738255}
   ds: {fileID: 2369979692232838263}
+  inv: {fileID: 0}
+  invCG: {fileID: 0}
 --- !u!225 &2777641021553108446
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -24413,6 +24333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 2777641021553108422}
   slot: {fileID: 1749191604798665267, guid: a35f598a407797d4aa2d8f9c8a7bfb96, type: 3}
+  filePath: 
 --- !u!61 &3368713583996179866
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24959,6 +24880,7 @@ RectTransform:
   - {fileID: 631509722}
   - {fileID: 1335615307}
   - {fileID: 8146046557226223223}
+  - {fileID: 1413950793}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25746,6 +25668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 2777641021553108422}
   slot: {fileID: 1306065675522992209, guid: f3ccaa4c4c7d45a48b4f5fc581ef0d66, type: 3}
+  filePath: 
 --- !u!61 &4608452845711540323
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25858,9 +25781,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 1
   endOfThisDia: 2
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 1947734187}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4820012933034209164
 GameObject:
   m_ObjectHideFlags: 0
@@ -25919,9 +25842,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 32
   endOfThisDia: 34
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 4820012933765281947}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &4820012933034209171
 Transform:
   m_ObjectHideFlags: 0
@@ -25950,10 +25873,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 11
   endOfThisDia: 12
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 5846583376265460349}
-  triggersToDelete:
-  - {fileID: 4820012933565130547}
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4820012933073172353
 GameObject:
   m_ObjectHideFlags: 0
@@ -26026,9 +25948,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 0
   endOfThisDia: 1
-  moveButtons: {fileID: 457182565}
-  nextTriggerToActivate: {fileID: 4820012933785366199}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &4820012933081349873
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26175,9 +26097,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 7
   endOfThisDia: 11
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 1439581102}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4820012933565130547
 GameObject:
   m_ObjectHideFlags: 0
@@ -26212,9 +26134,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 49
   endOfThisDia: 50
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 4820012934377974190}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &4820012933642009549
 Transform:
   m_ObjectHideFlags: 0
@@ -26313,10 +26235,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 42
   endOfThisDia: 48
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 1562236940}
-  triggersToDelete:
-  - {fileID: 142392684}
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &4820012933671861286
 Transform:
   m_ObjectHideFlags: 0
@@ -26390,9 +26311,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 37
   endOfThisDia: 42
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 416594060}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &4820012933765281946
 Transform:
   m_ObjectHideFlags: 0
@@ -26479,9 +26400,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 3
   endOfThisDia: 6
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 4820012934038312829}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4820012933785366199
 GameObject:
   m_ObjectHideFlags: 0
@@ -26540,11 +26461,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 31
   endOfThisDia: 32
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 2777641021553108440}
-  triggersToDelete:
-  - {fileID: 4820012932763159685}
-  - {fileID: 1947734187}
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4820012933943306270
 GameObject:
   m_ObjectHideFlags: 0
@@ -26632,9 +26551,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 6
   endOfThisDia: 7
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 1439581102}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4820012934038312829
 GameObject:
   m_ObjectHideFlags: 0
@@ -26763,9 +26682,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 20
   endOfThisDia: 26
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 4820012934667155593}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &4820012934293369267
 Transform:
   m_ObjectHideFlags: 0
@@ -26794,9 +26713,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 50
   endOfThisDia: 52
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 1439581102}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &4820012934377974189
 Transform:
   m_ObjectHideFlags: 0
@@ -26927,9 +26846,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 26
   endOfThisDia: 31
-  moveButtons: {fileID: 0}
-  nextTriggerToActivate: {fileID: 4820012933943306270}
-  triggersToDelete: []
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5846583375641373426
 GameObject:
   m_ObjectHideFlags: 0
@@ -27031,12 +26950,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda15d4b7d5210840866115ee25aab31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  choose1: 12
-  choose2: 16
-  endOfChoices: 20
-  nextTriggerToActivate: {fileID: 4820012934293369260}
-  triggersToDelete: []
-  ds: {fileID: 2369979692232838263}
+  startNum: 0
+  endOfThisDia: 0
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  secondChoiceStart: 0
 --- !u!114 &6633200056144884937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27752,6 +27671,8 @@ MonoBehaviour:
   openBook: {fileID: 21300000, guid: 96b36166b7dac5f4b8041e7c3824be2e, type: 3}
   closedBook: {fileID: 21300000, guid: 81580f10c26ec224eb7e7ac1ff9ac883, type: 3}
   book: {fileID: 6633200057181423822}
+  spellsImgs: []
+  questionImg: {fileID: 0}
   Spells: 000000
 --- !u!224 &6633200057924713173
 RectTransform:
@@ -27812,6 +27733,125 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1001 &6739158385744361000
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4096867036808471593}
+    m_Modifications:
+    - target: {fileID: 6739158387149511520, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_Name
+      value: inv(new)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -634
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 289
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739158387149511521, guid: 86fb36da191ca184cab928f9a3f67599,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 86fb36da191ca184cab928f9a3f67599, type: 3}
 --- !u!114 &7393831970341443265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27958,10 +27998,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpellPrefab: {fileID: 2733221802868007067, guid: 437e2158ca2936f4fa77ba24f8db66be,
     type: 3}
-  ObjectPool: []
-  SpellBook: {fileID: 6633200057924713170}
   spellNum: 0
   manaCost: 25
-  MC: {fileID: 0}
-  firstSpell: {fileID: 1442440524}
-  pc: {fileID: 457182567}
+  firePoint: {fileID: 0}

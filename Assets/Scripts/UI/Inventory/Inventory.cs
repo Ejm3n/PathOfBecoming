@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
     public bool[] isFull;
     public bool[] isChosen;
     public GameObject[] slots;
-    [SerializeField] Image[] borders;
+    
     public void ShowSlots()
     {
         hidden = !hidden;
@@ -15,25 +15,18 @@ public class Inventory : MonoBehaviour
     }
     public void SlotPressed(int slotNum)
     {
+        Debug.Log("SlotPressed + " + slotNum);
         for (int i = 0; i < isChosen.Length; i++)
         {
             if (i == slotNum)
             {
                 isChosen[slotNum] = !isChosen[slotNum];
-                if (isChosen[slotNum])
-                {
-
-                    borders[i].enabled = true;
-                }
-                else
-                {
-                    borders[i].enabled = false;
-                }
+               
             }
             else
             {
                 isChosen[i] = false;
-                borders[i].enabled = false;
+                
             }
         }
     }
