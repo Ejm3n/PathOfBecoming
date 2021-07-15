@@ -7,11 +7,12 @@ using AnimationUtils.ImageUtils;
 
 public abstract class Engine : MonoBehaviour
 {
-    public static bool load = true;
+    public static bool load = false;
 
     [SerializeField] protected Image curtain;
     [SerializeField] CinemachineVirtualCamera playerCamera;
     [SerializeField] protected DialogueSystem dialogueSystem;
+    public GameSettings gameSettings;
 
     [Header("Player Interface")]
     [SerializeField] protected ActionWithSpellBook spellBook;
@@ -38,7 +39,7 @@ public abstract class Engine : MonoBehaviour
         SaveData data;
         try
         {
-            data = SaveSyatem.Load();
+            data = SaveSyatem.Load_Data();
             Spawn_Characters(data.playerData.lastCheckpoint.Convert_to_UnityVector(), data.fairyData.checkPoint.Convert_to_UnityVector());
             playerController.Load_State(data.playerData);
             fairyController.Load_State(data.fairyData);
@@ -77,6 +78,7 @@ public abstract class Engine : MonoBehaviour
 
     private void Start()
     {
+        gameSettings = SaveSyatem.gameSettings;
         if (!load)
             Start_Level();
         else
@@ -89,7 +91,7 @@ public abstract class Engine : MonoBehaviour
         FairyData fairyData = fairyController.Save_State();
         InventoryData inventoryData = inventory.SaveInvetnoryData();
         MagicBookData magicBookData = spellBook.SaveBookData();
-        SaveSyatem.Save(new SaveData(index, playerData, fairyData, inventoryData, magicBookData));
+        new SaveData(index, playerData, fairyData, inventoryData, magicBookData).Save();
     }
 
     public void Connect_Fairy_to_Player()

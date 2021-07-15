@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     public bool faceRight { get; private set; }
     public bool isGround { get; private set; }
     public Engine engine { get; private set; }
-    public Transform groundCheck;
     public float checkRadius;
     public LayerMask whatIsGround;
 
@@ -57,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        isGround = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+        isGround = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
        
         rb.velocity = new Vector2(Joystick.axisX * speed, rb.velocity.y);
 
