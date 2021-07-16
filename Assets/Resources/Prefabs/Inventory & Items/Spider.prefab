@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8223520469829553214}
   - component: {fileID: 6694453067609503635}
   - component: {fileID: 822671675686435042}
+  - component: {fileID: 7407298352683553085}
   m_Layer: 5
   m_Name: Spider
   m_TagString: Untagged
@@ -36,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 150, y: 150}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8223520469829553214
 CanvasRenderer:
@@ -87,3 +88,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b8b04cc83d44e45848296c657fd3cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &7407298352683553085
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306065675522992209}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

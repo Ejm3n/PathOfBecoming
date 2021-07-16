@@ -119,4 +119,14 @@ public class ActionWithSpellBook : MonoBehaviour
             }
         }
     }
+    public void ChangeAccessToSpells(int spells)
+    {
+        for(int i = 0;i<3;i++)
+        {
+            if(i<spells)
+                MagicBookSave.whichSpellIsActive[i] = true;
+            else
+                MagicBookSave.whichSpellIsActive[i] = false;
+        }
+    }
 }

@@ -7,7 +7,7 @@ public class MagicBookTurnOn : MonoBehaviour
     [SerializeField] Animator panelAnim;//анимация панели диавлогов
     [SerializeField] DialogueSystem ds;//ссылка на диалоговую систему
     [SerializeField] GameObject firstSpell;//так как у меня стрельба не удаляет а отключает магические пули то я просто спрошу активирована ли первая пуля
-    private void OnEnable()
+    public void OnBookGuide()
     {
         ds.canUseSpellBook = true;
         StartCoroutine(TurnOffCanvases());// при включении вызываем корутину
@@ -30,9 +30,7 @@ public class MagicBookTurnOn : MonoBehaviour
             SwitchSetActive(true);
             yield break;
         }
-        
-        
-    }
+       }
     private void SwitchSetActive(bool WhatToSwitch)//вырубаем и врубаем элементы указанные в массиве геймобжектов
     {
         for (int i = 0; i < WhatToTurnOff.Length; i++)
