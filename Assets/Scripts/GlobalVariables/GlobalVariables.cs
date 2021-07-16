@@ -22,6 +22,7 @@ namespace GlobalVariables
 
     public static class Paths
     {
-        public static string SAVEPATH = Application.persistentDataPath + "/savedata.dat";
+        public static string SAVEDATAPATH = Application.persistentDataPath + "/savedata.dat";
+        public static string GAMEDATAPATH = Application.persistentDataPath + "/gamedata.dat";
     }
 }

@@ -212,8 +212,7 @@ public class DialogueSystem : MonoBehaviour
         typeDialogeInstantly = false;
     }   
     public void EndDialogue()//закончить диалог 
-    {
-      
+    {      
         panelAnim.SetBool("PanelShow", false);
         SetUI(true);
         onComplete?.Invoke();
