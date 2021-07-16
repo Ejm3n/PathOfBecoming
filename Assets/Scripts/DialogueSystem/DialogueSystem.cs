@@ -44,14 +44,7 @@ public class DialogueSystem : MonoBehaviour
     Engine engine;
     UnityEvent onComplete;
     
-    public void SetInventory(bool what)
-    {
-        canUseInventory = what;
-    }
-    public void SetBook(bool what)
-    {
-        canUseSpellBook = what;
-    }
+
     private void Awake()
     {
         engine = transform.parent.GetComponent<Engine>();
@@ -68,6 +61,7 @@ public class DialogueSystem : MonoBehaviour
         ChangeCanvasGroup(!what, blockingPanel);
         if (canUseInventory)
         {
+
             ChangeCanvasGroup(what, inventory);
         }
         if (canUseSpellBook)
@@ -213,7 +207,6 @@ public class DialogueSystem : MonoBehaviour
     }   
     public void EndDialogue()//закончить диалог 
     {
-      
         panelAnim.SetBool("PanelShow", false);
         SetUI(true);
         onComplete?.Invoke();
