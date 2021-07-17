@@ -9,6 +9,19 @@ public class IfPlayerPutsSmthWrong : InteractEvent
     [SerializeField] string WhatToTrade;
     int currentActivation = 0;
     int choosenSlot = -1;
+    private void OnMouseOver()
+    {
+        for (int i = 0; i < inventory.isChosen.Length; i++)//узнаем какой слот выбран
+        {
+            if (inventory.isChosen[i])
+            {
+                choosenSlot = i;
+                break;
+            }
+        }
+        if (choosenSlot != -1 && Input.GetMouseButtonUp(0))
+            Start_Event();
+    }
     public override void Start_Event()
     {
 
