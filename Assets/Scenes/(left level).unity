@@ -4053,8 +4053,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startNum: 69
   endOfThisDia: 71
-  nextTriggerToActivate: {fileID: 0}
-  triggersToDelete: []
   onTrigger:
     m_PersistentCalls:
       m_Calls: []
@@ -6860,6 +6858,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd4de6b7f92f85f4893d2cadd7a2d3cc, type: 3}
+--- !u!114 &1511097086 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2476865109633679153, guid: bd4de6b7f92f85f4893d2cadd7a2d3cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1511097085}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1511390063
 GameObject:
   m_ObjectHideFlags: 0
@@ -7996,12 +8006,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curtain: {fileID: 512046898}
   playerCamera: {fileID: 1196790619}
-  hintMap: {fileID: 1680975752652485194}
+  dialogueSystem: {fileID: 2369979692232838263}
+  gameSettings:
+    soundSettings:
+      musicVolume: 1
+      effectsVolume: 1
   spellBook: {fileID: 6633200057924713170}
-  inventory: {fileID: 0}
+  inventory: {fileID: 2777641021553108422}
   mana: {fileID: 552790274}
   healthBar: {fileID: 1851370198}
-  jumpButton: {fileID: 0}
+  jumpButton: {fileID: 1511097086}
   playerStartPosition: {fileID: 1002362517}
   fairyStartPosition: {fileID: 457513554}
   startDialog: {fileID: 937943384}
@@ -9270,7 +9284,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1680975752313181222}
-  - component: {fileID: 1680975752313181223}
   - component: {fileID: 1763675875}
   m_Layer: 0
   m_Name: Engine
@@ -9295,18 +9308,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1680975752313181223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1680975752313181216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c0d57676deb274499601ee96c544c02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1680975752649611192
 Transform:
   m_ObjectHideFlags: 0
@@ -14759,6 +14760,7 @@ MonoBehaviour:
   file: []
   canUseInventory: 1
   canUseSpellBook: 1
+  checkpoints: []
 --- !u!1 &2587207495466184021
 GameObject:
   m_ObjectHideFlags: 0
@@ -15349,11 +15351,6 @@ MonoBehaviour:
   - {fileID: 2777641020587555019}
   - {fileID: 2777641020837815402}
   - {fileID: 2777641021707947115}
-  borders:
-  - {fileID: 2186171166440433875}
-  - {fileID: 2186171166481172550}
-  - {fileID: 2186171166095849372}
-  - {fileID: 2186171166790206487}
 --- !u!224 &2777641021553108423
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15411,6 +15408,8 @@ MonoBehaviour:
   - {fileID: 0}
   panelAnim: {fileID: 4096867036412738255}
   ds: {fileID: 2369979692232838263}
+  inv: {fileID: 0}
+  invCG: {fileID: 0}
 --- !u!225 &2777641021553108446
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -17276,7 +17275,6 @@ MonoBehaviour:
   - {fileID: 6633200057004850470}
   - {fileID: 6633200057269206096}
   - {fileID: 6633200057186976076}
-  borders: []
 --- !u!224 &6633200056144884938
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18088,9 +18086,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ed54f03033fb2429edf6008175fc1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSourceSFX:
-  - {fileID: 0}
-  audioSourceMusic: []
 --- !u!212 &7993240903235890036
 SpriteRenderer:
   m_ObjectHideFlags: 0
