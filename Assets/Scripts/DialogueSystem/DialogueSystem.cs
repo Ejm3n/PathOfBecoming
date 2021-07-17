@@ -54,7 +54,8 @@ public class DialogueSystem : MonoBehaviour
     }
     private void Awake()
     {
-        engine = transform.parent.GetComponent<Engine>();
+        if (transform.parent.TryGetComponent(out Engine engine)) 
+            this.engine = engine;
         TextAsset language = Resources.Load<TextAsset>("Russian2");//считываем файл со строками
         file = language.text.Split('\n');     //заполняем этими строками массив
     }
