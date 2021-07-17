@@ -9,6 +9,11 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        StartDialogue();
+    }
+    protected void StartDialogue()
+    {
+        Debug.Log("start" + startNum + " end " + endOfThisDia);
         transform.parent.GetComponent<DialogueSystem>().StartDialogue(startNum, endOfThisDia, onTrigger);
         Destroy(gameObject);
     }
