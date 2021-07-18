@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
     public bool[] isFull;
     public bool[] isChosen;
     public GameObject[] slots;
-    [SerializeField] Image[] borders;
+    
     public void ShowSlots()
     {
         hidden = !hidden;
@@ -15,25 +15,18 @@ public class Inventory : MonoBehaviour
     }
     public void SlotPressed(int slotNum)
     {
+        Debug.Log("SlotPressed + " + slotNum);
         for (int i = 0; i < isChosen.Length; i++)
         {
             if (i == slotNum)
             {
                 isChosen[slotNum] = !isChosen[slotNum];
-                if (isChosen[slotNum])
-                {
-
-                    borders[i].enabled = true;
-                }
-                else
-                {
-                    borders[i].enabled = false;
-                }
+               
             }
             else
             {
                 isChosen[i] = false;
-                borders[i].enabled = false;
+                
             }
         }
     }
@@ -62,13 +55,16 @@ public class Inventory : MonoBehaviour
         ClearInventory();
        for(int i = 0; i<slots.Length;i++)
         {
-            if(Slot.SlotItems[i]!=null && Slot.SlotItems[i]!="")
-                LoadSlot(i, Slot.SlotItems[i], Slot.SlotCount[i]);
+            if(ID.InventoryCount[i]!=0 && ID.InventorySlots[i]!="")
+                LoadSlot(i, ID.InventorySlots[i], ID.InventoryCount[i]);
         }
     }
     void LoadSlot(int slotNum,string path, int count)
     {
         GameObject slotInst = Instantiate(Resources.Load(path, typeof(GameObject)), slots[slotNum].transform) as GameObject;
+        isFull[slotNum] = true;
+        Slot.SlotCount[slotNum] = count;
+        Slot.SlotItems[slotNum] = path;
         if(count>1)
         {
             slotInst.GetComponentInChildren<Flower>().countText.text = count.ToString();//костыль - надо переделать
