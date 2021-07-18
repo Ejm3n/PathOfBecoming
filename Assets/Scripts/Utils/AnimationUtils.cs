@@ -100,6 +100,12 @@ namespace AnimationUtils
                     return loader.Start_Curved_Rotation(obj, timeToRotate, curve, rotationAxis, onComplete, timeScale);
                 return obj.gameObject.AddComponent<CoroutineLoader>().Start_Curved_Rotation(obj, timeToRotate, curve, rotationAxis, onComplete, timeScale);
             }
+            public static Coroutine Move_To(this Transform obj, Vector3 target, float timeToSlide, Action onComplete = null, bool timeScale = true)
+            {
+                if (obj.gameObject.TryGetComponent(out CoroutineLoader loader))
+                    return loader.Start_Slide(obj, target, timeToSlide, timeScale, onComplete);
+                return obj.gameObject.AddComponent<CoroutineLoader>().Start_Slide(obj, target, timeToSlide, timeScale, onComplete);
+            }
         }
     }
 
@@ -202,5 +208,28 @@ namespace AnimationUtils
         }
 
         #endregion Curved_Rotation
+
+        #region Slide
+        public Coroutine Start_Slide(Transform transform, Vector3 target, float processTime, bool timeScale = true, Action onComplete = null)
+        {
+            return StartCoroutine(Slide(transform, target, processTime, timeScale, onComplete));
+        }
+
+        IEnumerator Slide(Transform transform, Vector3 target, float processTime, bool timeScale = true, Action onComplete = null)
+        {
+            const float EPS = 0.0001f;
+            float timetoWait = timeScale ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime;
+            Vector3 iter = (target - transform.position) / processTime;
+            while((target - transform.position).sqrMagnitude > EPS)
+            {
+                transform.position += iter * timetoWait;
+                if (timeScale)
+                    yield return new WaitForSeconds(timetoWait);
+                else
+                    yield return new WaitForSecondsRealtime(timetoWait);
+            }
+            onComplete?.Invoke();
+        }
+        #endregion
     }
 }
