@@ -4211,6 +4211,12 @@ Transform:
   m_Father: {fileID: 764708176}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!225 &1906014055 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 8010683029305604218, guid: 5c757377ed5650d469521ac08a733bb7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2280054277792781390}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1972506986
 GameObject:
   m_ObjectHideFlags: 0
@@ -6233,24 +6239,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24bdeb34841bae5459b59b3681665d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  output: {fileID: 0}
-  nameOutput: {fileID: 0}
-  choice1Text: {fileID: 0}
-  choice2Text: {fileID: 0}
-  controlButtons: {fileID: 0}
-  playerBars: {fileID: 0}
-  inventory: {fileID: 0}
-  spellBook: {fileID: 0}
-  panelAnim: {fileID: 0}
-  choosePanelAnim: {fileID: 0}
-  dialogueImg: {fileID: 0}
+  output: {fileID: 1572735424858152628}
+  nameOutput: {fileID: 1572735425362197238}
+  choice1Text: {fileID: 1572735425478835998}
+  choice2Text: {fileID: 1572735424775522585}
+  controlButtons: {fileID: 3245270504510346023}
+  playerBars: {fileID: 1894801516109236296}
+  inventory: {fileID: 1906014055}
+  spellBook: {fileID: 8143730898347341106}
+  panelAnim: {fileID: 1572735425014086449}
+  choosePanelAnim: {fileID: 1572735425106305771}
+  dialogueImg: {fileID: 1572735425500131054}
   henryImg: {fileID: 21300000, guid: 76f4bea751b5dfa4cb86b8c8896c1f1a, type: 3}
   fairyImg: {fileID: 21300000, guid: b09189f6bc4f70142a76e18829dd8a9a, type: 3}
   impImg: {fileID: 21300000, guid: c547dec0766e5954bb8c5fdcde71eb31, type: 3}
-  blockingPanel: {fileID: 0}
+  blockingPanel: {fileID: 3245270503004588255}
   file: []
-  canUseInventory: 0
-  canUseSpellBook: 0
+  canUseInventory: 1
+  canUseSpellBook: 1
   checkpoints:
   - {fileID: 8473479445223961335}
 --- !u!114 &1730815709924676309
