@@ -1810,7 +1810,7 @@ GameObject:
   m_Component:
   - component: {fileID: 657898601}
   - component: {fileID: 657898602}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1866,7 +1866,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 687413419}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ColliderMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2081,7 +2081,7 @@ GameObject:
   m_Component:
   - component: {fileID: 900371498}
   - component: {fileID: 900371499}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Swamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2920,7 +2920,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1282769669}
   - component: {fileID: 1282769670}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RightBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6315,7 +6315,7 @@ MonoBehaviour:
   choice2Text: {fileID: 1572735424775522585}
   controlButtons: {fileID: 3245270504510346023}
   playerBars: {fileID: 1894801516109236296}
-  inventory: {fileID: 1906014055}
+  inventory: {fileID: 2280054277792781393}
   spellBook: {fileID: 8143730898347341106}
   panelAnim: {fileID: 1572735425014086449}
   choosePanelAnim: {fileID: 1572735425106305771}
@@ -6999,6 +6999,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbceca41386af4e4aae37b11ede18992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &2280054277792781393 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 8010683029305604218, guid: 5c757377ed5650d469521ac08a733bb7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2280054277792781390}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3245270502899424374
 MonoBehaviour:
   m_ObjectHideFlags: 0
