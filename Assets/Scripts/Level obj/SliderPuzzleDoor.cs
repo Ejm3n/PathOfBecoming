@@ -3,9 +3,10 @@ using AnimationUtils.TransformUtils;
 
 public class SliderPuzzleDoor : MonoBehaviour
 {
+    [SerializeField] Vector3 offset;
+    [SerializeField] float time;
     public void Open_Door()
     {
-        Vector3 offset = transform.position + Vector3.right * 3;
-        transform.Move_To(offset, 0.3f);
+        transform.Move_To(transform.position + offset, time, ()=> Destroy(gameObject));
     }
 }

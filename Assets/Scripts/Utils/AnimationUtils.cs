@@ -222,7 +222,7 @@ namespace AnimationUtils
             Vector3 iter = (target - transform.position) / processTime;
             while((target - transform.position).sqrMagnitude > EPS)
             {
-                transform.position += iter;
+                transform.position += iter * timetoWait;
                 if (timeScale)
                     yield return new WaitForSeconds(timetoWait);
                 else
