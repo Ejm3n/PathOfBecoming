@@ -10,7 +10,8 @@ public class Lever : InteractEvent
     [SerializeField] RockController RC;
     public override void Start_Event()
     {
-        RC.ChangeRockPositions(rockUp, rockDown);
+        if(!RC.ended)
+            RC.ChangeRockPositions(rockUp, rockDown);
     }
     
 }
