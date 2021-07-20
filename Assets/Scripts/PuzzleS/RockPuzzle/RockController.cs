@@ -23,12 +23,12 @@ public class RockController : MonoBehaviour
     }
     public void ChangeRockPositions(int whatRockUp, int whatRockDown)
     {
-        if (rocks[whatRockUp].position.y < -1)
+        if (rocks[whatRockUp].position.y < -0.8f)
         {
             rockLevelChecker[whatRockUp]++;
             rocks[whatRockUp].position = new Vector3(rocks[whatRockUp].position.x, rocks[whatRockUp].position.y + 1.2f, rocks[whatRockUp].position.z);
         }
-        if (rocks[whatRockDown].position.y > -4.6f)
+        if (rocks[whatRockDown].position.y > -4.4f)
         {
             rockLevelChecker[whatRockDown]--;
             rocks[whatRockDown].position = new Vector3(rocks[whatRockDown].position.x, rocks[whatRockDown].position.y - 1.2f, rocks[whatRockDown].position.z);
