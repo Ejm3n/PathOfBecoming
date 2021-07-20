@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Collider2D))]
 public abstract class InteractEvent : MonoBehaviour
 {
     public InteractController interactController;

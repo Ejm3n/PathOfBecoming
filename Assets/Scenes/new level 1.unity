@@ -404,6 +404,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 64823949}
+  - component: {fileID: 64823950}
   m_Layer: 0
   m_Name: cat NPC
   m_TagString: Untagged
@@ -426,6 +427,28 @@ Transform:
   m_Father: {fileID: 1181788089}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &64823950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64823948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1762f768b8978fd40b95a7b6afa55850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactController: {fileID: 5013331101932920923}
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
+  puzzle: {fileID: 6781495670207286724, guid: 90e823ff4a6872840b7dc5049fff576b, type: 3}
+  create: 1
+  ds: {fileID: 1697895997173157677}
 --- !u!1 &65313682
 GameObject:
   m_ObjectHideFlags: 0
