@@ -9,6 +9,7 @@ public class RockController : MonoBehaviour
     [Header ("Вписать дефолтную высоту от 1 до 4")]
     [SerializeField] int[] rockLevelChecker;
     [HideInInspector] public bool ended;
+    bool playerNear = false;
     private void Update()
     {
         if (rockLevelChecker[0] == 3 && rockLevelChecker[1] == 2 && rockLevelChecker[2] == 1 && rockLevelChecker[3] == 0)
@@ -25,15 +26,26 @@ public class RockController : MonoBehaviour
     }
     public void ChangeRockPositions(int whatRockUp, int whatRockDown)
     {
-        if (rocks[whatRockUp].position.y < -0.8f)
+        if(playerNear)
         {
-            rockLevelChecker[whatRockUp]++;
-            rocks[whatRockUp].position = new Vector3(rocks[whatRockUp].position.x, rocks[whatRockUp].position.y + 1.2f, rocks[whatRockUp].position.z);
-        }
-        if (rocks[whatRockDown].position.y > -4.4f)
-        {
-            rockLevelChecker[whatRockDown]--;
-            rocks[whatRockDown].position = new Vector3(rocks[whatRockDown].position.x, rocks[whatRockDown].position.y - 1.2f, rocks[whatRockDown].position.z);
-        }
+            if (rocks[whatRockUp].position.y < -0.8f)
+            {
+                rockLevelChecker[whatRockUp]++;
+                rocks[whatRockUp].position = new Vector3(rocks[whatRockUp].position.x, rocks[whatRockUp].position.y + 1.2f, rocks[whatRockUp].position.z);
+            }
+            if (rocks[whatRockDown].position.y > -4.4f)
+            {
+                rockLevelChecker[whatRockDown]--;
+                rocks[whatRockDown].position = new Vector3(rocks[whatRockDown].position.x, rocks[whatRockDown].position.y - 1.2f, rocks[whatRockDown].position.z);
+            }
+        }        
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        playerNear = true;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        playerNear = false;
     }
 }

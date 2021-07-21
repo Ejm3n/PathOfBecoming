@@ -27,10 +27,14 @@ public class ChangeItems : InteractEvent
             {
                 if (inventory.isFull[i] == false)//создаем в пустом слоте предмет
                 {
-                    inventory.isFull[i] = true;
-                    Instantiate(Resources.Load(filePath, typeof(GameObject)), inventory.slots[i].transform);
-                    Slot.SlotCount[i] = 1;
-                    Slot.SlotItems[i] = filePath;
+                    Debug.Log(!(filePath != "" || filePath != null));
+                    if(!(filePath != "" || filePath != null))
+                    {
+                        inventory.isFull[i] = true;
+                        Instantiate(Resources.Load(filePath, typeof(GameObject)), inventory.slots[i].transform);
+                        Slot.SlotCount[i] = 1;
+                        Slot.SlotItems[i] = filePath;
+                    }               
                     onSuccess?.Invoke();
                     Destroy(gameObject);
                     break;
