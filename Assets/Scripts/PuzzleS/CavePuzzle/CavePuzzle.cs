@@ -12,6 +12,7 @@ public class CavePuzzle : MonoBehaviour
     [SerializeField] GameObject nextDialogue;
     [SerializeField] DialogueSystem ds;
     [SerializeField] InteractController interactController;
+    [SerializeField] Inventory inv;
     private void Update()
     {
         if (isPressed[0] && isPressed[1] && isPressed[2] && isPressed[3] && isPressed[4]&& canUWin)
@@ -19,6 +20,7 @@ public class CavePuzzle : MonoBehaviour
             GameWin = true;
             Debug.Log("игра выиграна");
             interactController.Handle_Puzzle_result(true);
+            inv.SlotDropped(0);
             if (nextDialogue != null)
             {
                 nextDialogue.SetActive(true);

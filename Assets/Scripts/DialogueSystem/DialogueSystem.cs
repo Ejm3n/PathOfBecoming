@@ -199,7 +199,7 @@ public class DialogueSystem : MonoBehaviour
             isDialogueTyping = true;
             if(!typeDialogeInstantly)
             {
-                yield return new WaitForSecondsRealtime(0.04f);
+                yield return new WaitForSecondsRealtime(0.025f);
                 output.text += letter;
             }
             else

@@ -18,7 +18,10 @@ public class ActivateTreeAndDia : MonoBehaviour
                 whatActivate[i].SetActive(true);
             }
         }
-        tree.Avalible = true;
+        if(tree!=null)
+        {
+            tree.Avalible = true;
+        }       
         Destroy(gameObject);
     }
 }

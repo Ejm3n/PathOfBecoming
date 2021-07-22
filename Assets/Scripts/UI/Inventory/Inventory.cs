@@ -39,7 +39,7 @@ public class Inventory : MonoBehaviour
         Slot.SlotCount[slotNum] = 0;
         Slot.SlotItems[slotNum] = "";
         isFull[slotNum] = false;
-        SlotPressed(slotNum);
+        isChosen[slotNum] = false;
     }
     private void OnDisable()
     {

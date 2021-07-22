@@ -19052,7 +19052,7 @@ GameObject:
   - component: {fileID: 2134550119}
   - component: {fileID: 2134550118}
   m_Layer: 0
-  m_Name: trigger for spider (1)
+  m_Name: trigger for Desk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19086,7 +19086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 6739158385195757003}
   filePath: Prefabs/Inventory & Items/Desk
-  onEnableActive: 1
+  onEnableActive: 0
 --- !u!61 &2134550119
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20185,7 +20185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 6739158385195757003}
   filePath: Prefabs/Inventory & Items/Shkatulka
-  onEnableActive: 0
+  onEnableActive: 1
 --- !u!61 &3368713583996179866
 BoxCollider2D:
   m_ObjectHideFlags: 0
