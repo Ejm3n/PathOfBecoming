@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using AnimationUtils.ImageUtils;
 
 public class Level1 : Engine
 {

@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public abstract class Engine : MonoBehaviour
 {
-    public static bool load = false;
+    public static bool load = true;
 
     [SerializeField] protected Image curtain;
     [SerializeField] CinemachineVirtualCamera playerCamera;
@@ -47,7 +47,7 @@ public abstract class Engine : MonoBehaviour
             playerController.Load_State(data.playerData);
             fairyController.Load_State(data.fairyData);
             inventory.LoadInventoryData(data.inventoryData);
-            spellBook.LoadBookData(data.magicBookData);
+            //spellBook.LoadBookData(data.magicBookData);
             dialogueSystem.Load_State(data.checkpointIndex);
             Show_Scene(() => dialogueSystem.SetUI(true));
         }
