@@ -6,6 +6,7 @@ public class Fairy : MonoBehaviour
     RelativeJoint2D joint;
 
     Engine engine;
+    public Vector3 lastCheckpoint { get; private set; }
 
     private void Awake()
     {
@@ -23,12 +24,14 @@ public class Fairy : MonoBehaviour
     public void Load_State(FairyData data)
     {
         transform.position = data.checkPoint.Convert_to_UnityVector();
+        lastCheckpoint = transform.position;
         if (data.connected)
             engine.Connect_Fairy_to_Player();
     }
 
     public FairyData Save_State()
     {
+        lastCheckpoint = transform.position;
         return new FairyData(new Vector3Serial(transform.position));
     }
 
