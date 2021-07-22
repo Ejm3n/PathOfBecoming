@@ -1,18 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AnimationUtils.ImageUtils;
+using Cinemachine;
 //ПЕРЕМЕЩЕНИЕ ИГРОКА И КАМЕРЫ
 public class ChangeLocation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] CinemachineVirtualCamera playerCamera;
+    [SerializeField] float timeToFade;
+    private void OnMouseUp()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //playerCamera.Fade(timeToFade, () => playerCamera.Priority = 11);
     }
 }
