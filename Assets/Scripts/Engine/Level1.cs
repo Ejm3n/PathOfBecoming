@@ -16,7 +16,7 @@ public class Level1 : Engine
     protected override void Start_Level()
     {
         Spawn_Characters();
-        curtain.Fade(timeToFade, () => startDialog.SetActive(true));
+        Show_Scene(() => startDialog.SetActive(true));
         SoundRecorder.Play_Music(mainTheme);
     }
 
