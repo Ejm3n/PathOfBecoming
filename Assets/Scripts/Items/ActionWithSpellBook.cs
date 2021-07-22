@@ -106,7 +106,7 @@ public class ActionWithSpellBook : MonoBehaviour
     }
     public void LoadBookData(MagicBookData MBD)
     {
-        Image[] spellImages = gameObject.GetComponentsInChildren<Image>();
+        Image[] spellImages = gameObject.GetComponentsInChildren<Image>();//тут ошибка с вопросами на все лицо
         for (int i = 0;i<3;i++)
         {
             if(MBD.EnabledSpells[i] == true)

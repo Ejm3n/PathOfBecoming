@@ -13436,12 +13436,6 @@ Transform:
   m_Father: {fileID: 197558940}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1335615304 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2456218596546880964, guid: 64a2ffcfc63e52b4f9370fa97c5696c8,
-    type: 3}
-  m_PrefabInstance: {fileID: 72358391}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1335615307 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6303547240790361204, guid: 64a2ffcfc63e52b4f9370fa97c5696c8,
@@ -17470,7 +17464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fefe2229a0eb9042b4342aafb8ad233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeAnimator: {fileID: 1335615304}
+  fadeAnimator: {fileID: 0}
   loadLevel: 2
   CanULoadNextLvl: 0
   CutScenes: []
@@ -19918,7 +19912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 6739158385195757003}
   filePath: Prefabs/Inventory & Items/Shkatulka
-  onEnableActive: 0
+  onEnableActive: 1
 --- !u!61 &3368713583996179866
 BoxCollider2D:
   m_ObjectHideFlags: 0
