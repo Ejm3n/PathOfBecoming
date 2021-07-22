@@ -23,11 +23,11 @@ public class Chip : MonoBehaviour
     protected IEnumerator MoveTo(Vector3 target, float time)
     {
         chipMoving = true;
-        float distance = Vector3.Distance(target, gameObject.transform.position);
+        float distance = Vector3.Distance(target, gameObject.transform.localPosition);
         float speed = distance / time;
-        while ((target - gameObject.transform.position).sqrMagnitude > EPS)
+        while ((target - gameObject.transform.localPosition).sqrMagnitude > EPS)
         {
-            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, target, speed * Time.fixedUnscaledDeltaTime);
+            gameObject.transform.localPosition = Vector3.MoveTowards(gameObject.transform.localPosition, target, speed * Time.fixedUnscaledDeltaTime);
             yield return new WaitForSecondsRealtime(Time.fixedUnscaledDeltaTime);
         }
         chipMoving = false;

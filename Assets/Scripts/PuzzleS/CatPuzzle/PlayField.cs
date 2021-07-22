@@ -154,8 +154,12 @@ public class PlayField : MonoBehaviour
                     coll = chips[i, j - 1].GetComponent<Collider2D>();
                     chipPositions[i, j] = coll.bounds.max;
                     if (i == empty[0] && j == empty[1]) //no chip here
+                    {
+                        chipPositions[i, j].z = 0;
                         continue;
+                    }
                 }
+                chipPositions[i, j].z = 0;
 
                 //spawn chips
                 if (mouseSpawn.Count > 0 && i == mouseSpawn[0][0] && j == mouseSpawn[0][1]) //MouseChip
