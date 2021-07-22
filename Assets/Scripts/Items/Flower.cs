@@ -16,21 +16,21 @@ public class Flower : MonoBehaviour
     }
     public void OnFlowerClick()
     {
-        //if(health.!=1)
-        //{
-        //    int count = Convert.ToInt32(countText.text);
-        //    hpImage.fillAmount += 0.25f;
-        //    if (count>1)
-        //    {
-        //        count--;
-        //        Slot.SlotCount[SlotNum]--;
-        //        countText.text = count.ToString();
-        //    }
-        //    else if(count == 1)
-        //    {
-        //        inventory.SlotDropped(SlotNum);
-        //        Destroy(gameObject);
-        //    }          
-        //}
+        if (health.Get_Health()!= health.maxHealth)
+        {
+            int count = Convert.ToInt32(countText.text);
+            health.Heal(25f);//можно добавить сериалайзфилд флоат но это уже посмотрим
+            if (count > 1)
+            {
+                count--;
+                Slot.SlotCount[SlotNum]--;
+                countText.text = count.ToString();
+            }
+            else if (count == 1)
+            {
+                inventory.SlotDropped(SlotNum);
+                Destroy(gameObject);
+            }
+        }
     }
 }
