@@ -21,6 +21,7 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] Sprite henryImg;//ссылка непосредственно на спрайт игрока
     [SerializeField] Sprite fairyImg;//ссылка непосредственно на спрайт феи
     [SerializeField] Sprite impImg;//ссылка непосредственно на спрайт анчутки
+    [SerializeField] Sprite catImg;//на спрайт кота
     [SerializeField] CanvasGroup blockingPanel;
 
     public string[] file;//все строки файла
@@ -181,7 +182,9 @@ public class DialogueSystem : MonoBehaviour
         }
         else if(sentence.Contains(subCat))
         {
+            dialogueImg.color = new Color(255, 255, 255);
             nameOutput.text = "Кот";
+            dialogueImg.sprite = catImg;
         }
         else if(sentence.Contains(subAnonim))
         {

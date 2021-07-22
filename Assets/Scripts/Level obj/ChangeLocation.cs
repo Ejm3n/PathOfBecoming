@@ -8,19 +8,26 @@ using UnityEngine.UI;
 public class ChangeLocation : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera playerCamera;
-    [SerializeField] Image fade;
-    [SerializeField] float timeToFade;
-    [SerializeField] GameObject player;
+
+    GameObject player;
     Vector2 cavePos = new Vector2(-25.74f, 14.9f);
     Vector2 outSidePos = new Vector2(-0.77f,-2.99f);
+    [SerializeField] float fadeTime;
+    [SerializeField] Engine engine;
+    [SerializeField] Image fadeToBlack;
     private void OnMouseUp()
     {
-        fade.Fade(timeToFade, () => MovePlayerAndCam(true));
+        player = GameObject.FindGameObjectWithTag("Player");
+        MoveIt(true);
     }
-    private void MovePlayerAndCam(bool goIN)
+    public IEnumerator MovePlayerAndCam(bool goIN)
     {
+        engine.Hide_Scene();
+        Debug.Log("0");
+        yield return new WaitForSeconds(fadeTime);
         if(goIN)
         {
+            Debug.Log("1");
             player.transform.position = cavePos;
             playerCamera.Priority = 11;
         }
@@ -29,5 +36,12 @@ public class ChangeLocation : MonoBehaviour
             player.transform.position = outSidePos;
             playerCamera.Priority = 1;
         }
+       
+        yield return new WaitForSeconds(fadeTime);
+        engine.Show_Scene();       
+    }
+    public void MoveIt(bool goIN)
+    {
+        StartCoroutine(MovePlayerAndCam(goIN));
     }
 }
