@@ -104,6 +104,7 @@ public class PlayField : MonoBehaviour
         GameObject clone;
         Destroy(chips[index[0], index[1]].gameObject);
         clone = Instantiate(prefab, chipPositions[index[0], index[1]], Quaternion.identity, transform.parent);
+        clone.transform.localPosition = chipPositions[index[0], index[1]];
         chips[index[0], index[1]] = clone.GetComponent<T>();
         chips[index[0], index[1]].Set_Index(index);
     }
