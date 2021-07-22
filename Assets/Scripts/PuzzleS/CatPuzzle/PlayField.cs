@@ -161,23 +161,27 @@ public class PlayField : MonoBehaviour
                 if (mouseSpawn.Count > 0 && i == mouseSpawn[0][0] && j == mouseSpawn[0][1]) //MouseChip
                 {
                     clone = Instantiate(Prefabs.MOUSECHIPPREFAB, chipPositions[i, j], Quaternion.identity, transform.parent);
+                    clone.transform.localPosition = chipPositions[i, j];
                     chips[i, j] = clone.GetComponent<MouseChip>();
                     mouseSpawn.RemoveAt(0);
                 }
                 else if (catSpawn.Count > 0 && i == catSpawn[0][0] && j == catSpawn[0][1]) //CatChip
                 {
                     clone = Instantiate(Prefabs.CATCHIPPREFAB, chipPositions[i, j], Quaternion.identity, transform.parent);
+                    clone.transform.localPosition = chipPositions[i, j];
                     chips[i, j] = clone.GetComponent<CatChip>();
                     catSpawn.RemoveAt(0);
                 }
                 else if (i == center[0] && j == center[1]) //HoleChip
                 {
                     clone = Instantiate(Prefabs.HOLECHIPPREFAB, chipPositions[i, j], Quaternion.identity, transform.parent);
+                    clone.transform.localPosition = chipPositions[i, j];
                     chips[i, j] = clone.GetComponent<HoleChip>();
                 }
                 else //Chip
                 {
                     clone = Instantiate(Prefabs.CHIPPREFAB, chipPositions[i, j], Quaternion.identity, transform.parent);
+                    clone.transform.localPosition = chipPositions[i, j];
                     chips[i, j] = clone.GetComponent<Chip>();
                 }
                 chips[i, j].Set_Index(new int[] { i, j });
