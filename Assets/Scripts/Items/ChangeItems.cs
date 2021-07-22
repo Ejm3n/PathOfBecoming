@@ -28,7 +28,7 @@ public class ChangeItems : InteractEvent
                 if (inventory.isFull[i] == false)//создаем в пустом слоте предмет
                 {
                     Debug.Log(!(filePath != "" || filePath != null));
-                    if(!(filePath != "" || filePath != null))
+                    if((filePath != ""))
                     {
                         inventory.isFull[i] = true;
                         Instantiate(Resources.Load(filePath, typeof(GameObject)), inventory.slots[i].transform);
