@@ -474,11 +474,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FadeToBlack
       objectReference: {fileID: 0}
-    - target: {fileID: 7344380739278185710, guid: 64a2ffcfc63e52b4f9370fa97c5696c8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64a2ffcfc63e52b4f9370fa97c5696c8, type: 3}
 --- !u!1 &86752661
@@ -2094,7 +2089,7 @@ MonoBehaviour:
     objectToHighlight: {fileID: 830217368}
     highlightDelay: 60
   - id: 6
-    objectToHighlight: {fileID: 0}
+    objectToHighlight: {fileID: 905297473}
     highlightDelay: 0
 --- !u!1 &335096729
 GameObject:
@@ -3640,7 +3635,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 09ff27d6917abb14e908bd3585f5a8fe, type: 3}
+    - sprite: {fileID: 21300000, guid: e8b49fbd80616a54a9e4b8f117a8a434, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -16897,6 +16892,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 2061547664}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1744329129
 GameObject:
   m_ObjectHideFlags: 0
@@ -19355,7 +19361,7 @@ MonoBehaviour:
   checkpoints:
   - {fileID: 4820012934293369261}
   - {fileID: 4820012933765281948}
-  - {fileID: 0}
+  - {fileID: 1843748535}
   - {fileID: 1742796663}
 --- !u!1 &2587207495466184021
 GameObject:
@@ -22198,6 +22204,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 142392684}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onCheckpoint:
     m_PersistentCalls:
       m_Calls:
@@ -22223,17 +22240,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 0
-      - m_Target: {fileID: 142392684}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 2369979692232838263}
         m_MethodName: SetInventory
         m_Mode: 6

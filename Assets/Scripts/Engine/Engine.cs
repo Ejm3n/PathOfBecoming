@@ -47,7 +47,7 @@ public abstract class Engine : MonoBehaviour
             playerController.Load_State(data.playerData);
             fairyController.Load_State(data.fairyData);
             inventory.LoadInventoryData(data.inventoryData);
-            spellBook.LoadBookData(data.magicBookData);
+            //spellBook.LoadBookData(data.magicBookData);
             dialogueSystem.Load_State(data.checkpointIndex);
             Show_Scene(() => dialogueSystem.SetUI(true));
         }

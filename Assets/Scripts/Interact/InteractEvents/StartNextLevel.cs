@@ -6,7 +6,7 @@ public class StartNextLevel : InteractEvent
 
     private void Awake()
     {
-        engine = interactController.transform.parent.GetComponent<Engine>();
+        engine = interactController.transform.parent.parent.GetComponent<Engine>();
     }
 
     public override void Start_Event()
