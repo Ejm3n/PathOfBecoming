@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D fairyAnchor;
 
     public float MoveInput;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb { get; private set; }
 
     public bool faceRight { get; private set; }
     public bool isGround { get; private set; }
@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     Health health;
     ShootingSpells spellFire;
+
+    public Vector3 lastCheckpoint { get; private set; }
 
     private int extraJump;
     public int ExtraJumpValue;
@@ -40,10 +42,12 @@ public class PlayerController : MonoBehaviour
     {
         health.Set_Health(data.hp);
         transform.position = data.lastCheckpoint.Convert_to_UnityVector();
+        lastCheckpoint = transform.position;
     }
 
     public PlayerData Save_State()
     {
+        lastCheckpoint = transform.position;
         return new PlayerData(SceneManager.GetActiveScene().buildIndex, new Vector3Serial(transform.position), health.Get_Health());
     }
 
@@ -120,5 +124,10 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
+    }
+
+    public void Last_Checkpoint()
+    {
+        engine.Last_Chekpoint(() => health.Heal(health.maxHealth));
     }
 }

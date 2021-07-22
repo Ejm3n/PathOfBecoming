@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using Cinemachine;
 using GlobalVariables;
 using AnimationUtils.ImageUtils;
+using UnityEngine.SceneManagement;
 
 public abstract class Engine : MonoBehaviour
 {
@@ -40,6 +41,8 @@ public abstract class Engine : MonoBehaviour
         try
         {
             data = SaveSyatem.Load_Data();
+            if (data.playerData.sceneIndex != SceneManager.GetActiveScene().buildIndex)
+                Start_Level();
             Spawn_Characters(data.playerData.lastCheckpoint.Convert_to_UnityVector(), data.fairyData.checkPoint.Convert_to_UnityVector());
             playerController.Load_State(data.playerData);
             fairyController.Load_State(data.fairyData);
@@ -97,5 +100,25 @@ public abstract class Engine : MonoBehaviour
     public void Connect_Fairy_to_Player()
     {
         fairyController.Connect_Fairy(playerController.fairyAnchor);
+    }
+
+    public void Last_Chekpoint(Action onRespawn)
+    {
+        curtain.Unfade(timeToFade, () =>
+        {
+            player.transform.position = playerController.lastCheckpoint;
+            fairy.transform.position = fairyController.lastCheckpoint;
+            curtain.Fade(timeToFade, onRespawn);
+        });
+    }
+
+    public void Hide_Scene(Action onComplete)
+    {
+        curtain.Unfade(timeToFade, onComplete);
+    }
+
+    public void Show_Scene(Action onComplete)
+    {
+        curtain.Fade(timeToFade, onComplete);
     }
 }
