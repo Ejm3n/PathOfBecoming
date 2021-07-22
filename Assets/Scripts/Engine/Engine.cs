@@ -49,7 +49,7 @@ public abstract class Engine : MonoBehaviour
             inventory.LoadInventoryData(data.inventoryData);
             spellBook.LoadBookData(data.magicBookData);
             dialogueSystem.Load_State(data.checkpointIndex);
-            curtain.Fade(timeToFade, () => dialogueSystem.SetUI(true));
+            Show_Scene(() => dialogueSystem.SetUI(true));
         }
         catch (NullReferenceException)
         {
@@ -104,21 +104,23 @@ public abstract class Engine : MonoBehaviour
 
     public void Last_Chekpoint(Action onRespawn)
     {
-        curtain.Unfade(timeToFade, () =>
+        Hide_Scene(() =>
         {
             player.transform.position = playerController.lastCheckpoint;
             fairy.transform.position = fairyController.lastCheckpoint;
-            curtain.Fade(timeToFade, onRespawn);
+            Show_Scene(onRespawn);
         });
     }
 
-    public void Hide_Scene(Action onComplete)
+    public void Hide_Scene(Action onComplete = null)
     {
+        curtain.gameObject.SetActive(true);
         curtain.Unfade(timeToFade, onComplete);
     }
 
-    public void Show_Scene(Action onComplete)
+    public void Show_Scene(Action onComplete = null)
     {
+        onComplete += () => curtain.gameObject.SetActive(false);
         curtain.Fade(timeToFade, onComplete);
     }
 }
