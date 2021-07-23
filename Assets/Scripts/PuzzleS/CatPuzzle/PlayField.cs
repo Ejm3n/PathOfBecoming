@@ -14,6 +14,8 @@ public class PlayField : MonoBehaviour
     Chip[,] chips;
     Vector3[,] chipPositions;
 
+    List<Sprite> mouseSprites = new List<Sprite>();
+
     int winCondition;
     int miceInHole = 0;
 
@@ -24,6 +26,7 @@ public class PlayField : MonoBehaviour
         fieldFrame = GetComponent<BoxCollider2D>();
         fieldFrame.size = new Vector2(width, height);
         gameObject.transform.localScale = new Vector3(height, width, 1);
+        mouseSprites.AddRange(Sprites.MICESPRITES);
 
         Initialise_Field();
     }
@@ -167,7 +170,10 @@ public class PlayField : MonoBehaviour
                 {
                     clone = Instantiate(Prefabs.MOUSECHIPPREFAB, chipPositions[i, j], Quaternion.identity, transform.parent);
                     clone.transform.localPosition = chipPositions[i, j];
-                    chips[i, j] = clone.GetComponent<MouseChip>();
+                    MouseChip mouseChip = clone.GetComponent<MouseChip>();
+                    mouseChip.Initialise(mouseSprites[0]);
+                    mouseSprites.RemoveAt(0);
+                    chips[i, j] = mouseChip;
                     mouseSpawn.RemoveAt(0);
                 }
                 else if (catSpawn.Count > 0 && i == catSpawn[0][0] && j == catSpawn[0][1]) //CatChip
