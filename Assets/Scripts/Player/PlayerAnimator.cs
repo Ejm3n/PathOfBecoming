@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using GlobalVariables;
 
 public class PlayerAnimator : MonoBehaviour
 {
@@ -9,18 +8,26 @@ public class PlayerAnimator : MonoBehaviour
     private float walk;
     private PlayerController PC;
 
-    AudioClip step;
-    
+    AudioClip[] steps;
+
+    AudioClip jump;
+
     void Start()
     {
         PC = transform.parent.GetComponent<PlayerController>();
         anim = GetComponent<Animator>();
-        step = Resources.Load<AudioClip>("Sounds/Effects/Звук/Footsteps/footstep forest 2");
+        steps = Sounds.PLAYERSTEPFORESTSOUNDS;
+        jump = Sounds.PLAYERJUMPSOUND;
     }
 
     public void Step()
     {
-        SoundRecorder.Play_Effect(step);
+        SoundRecorder.Play_Effect(steps[Random.Range(0, steps.Length)]);
+    }
+
+    public void Jump()
+    {
+        SoundRecorder.Play_Effect(jump);
     }
 
     void Update()

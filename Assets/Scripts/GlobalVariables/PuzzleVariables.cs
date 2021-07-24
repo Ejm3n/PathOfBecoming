@@ -36,5 +36,11 @@ namespace GlobalVariables
         {
             public static LayerMask PUZZLESEGMENTLM = LayerMask.GetMask("PuzzleSegment");
         }
+
+        public static class Sounds
+        {
+            public static AudioClip RIDDLESOUND = Resources.Load<AudioClip>("Sounds/Effects/Puzzle/riddle");
+            public static AudioClip SOLVESOUND = Resources.Load<AudioClip>("Sounds/Effects/Puzzle/solve");
+        }
     }
 }

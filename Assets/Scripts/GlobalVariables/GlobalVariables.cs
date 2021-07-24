@@ -25,4 +25,13 @@ namespace GlobalVariables
         public static string SAVEDATAPATH = Application.persistentDataPath + "/savedata.dat";
         public static string GAMEDATAPATH = Application.persistentDataPath + "/gamedata.dat";
     }
+
+    public static class Sounds
+    {
+        public static AudioClip LEVEL1MUSIC = Resources.Load<AudioClip>("Sounds/Music/ForestTheme");
+        public static AudioClip LEVEL1AMBIENT = Resources.Load<AudioClip>("Sounds/Effects/forestambient");
+
+        public static AudioClip[] PLAYERSTEPFORESTSOUNDS = Resources.LoadAll<AudioClip>("Sounds/Effects/Footsteps/Forest");
+        public static AudioClip PLAYERJUMPSOUND = Resources.Load<AudioClip>("Sounds/Effects/Footsteps/jump");
+    }
 }

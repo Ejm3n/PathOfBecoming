@@ -26,10 +26,13 @@ public abstract class Engine : MonoBehaviour
     [SerializeField] Transform playerStartPosition;
     [SerializeField] Transform fairyStartPosition;
 
-    protected const float timeToFade = 3f;
+    protected const float timeToFade = 1f;
 
     protected PlayerController playerController;
     protected Fairy fairyController;
+
+    protected AudioClip mainTheme;
+    protected AudioClip ambient;
 
     public GameObject player { get; protected set; }
     public GameObject fairy { get; protected set; }

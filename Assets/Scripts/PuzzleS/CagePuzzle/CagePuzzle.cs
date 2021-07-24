@@ -55,6 +55,7 @@ public class CagePuzzle : Puzzle
         yield return new WaitUntil(() => hexagons[hexagons.Count - 1].ready);
         for (int i = 0; i < hexagons.Count; i++)
             hexagons[i].Rotate_Hex(2);
+        SoundRecorder.Play_Effect(Sounds.RIDDLESOUND);
         activated = true;
     }
 
