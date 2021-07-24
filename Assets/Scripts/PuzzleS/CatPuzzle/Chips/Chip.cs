@@ -9,6 +9,11 @@ public class Chip : MonoBehaviour
 
     const float EPS = 0.001f;
 
+    private void Awake()
+    {
+        chipMoving = false;
+    }
+
     public virtual void Move(Vector3 target, int[] index)
     {
         StartCoroutine(MoveTo(target, timeToMove));
