@@ -34,19 +34,19 @@ public class PickUpFlower : MonoBehaviour
                 }
             }          
         }
-        for(int i =0;i<inventory.slots.Length;i++)
-        {
-            if (inventory.isFull[i] == false && !foundFlower)
-            {
-                inventory.isFull[i] = true;
-                madeFlower = Instantiate(slot, inventory.slots[i].transform);
-                madeFlower.GetComponent<Flower>().SlotNum = i;
-                Slot.SlotItems[i] = FilePath;
-                Slot.SlotCount[i] = 1;
-                Destroy(gameObject);
-                break;
-            }
-        }
+        //for(int i =0;i<inventory.slots.Length;i++)
+        //{
+        //    if (inventory.isFull[i] == false && !foundFlower)
+        //    {
+        //        inventory.isFull[i] = true;
+        //        madeFlower = Instantiate(slot, inventory.slots[i].transform);
+        //        madeFlower.GetComponent<Flower>().SlotNum = i;
+        //        Slot.SlotItems[i] = FilePath;
+        //        Slot.SlotCount[i] = 1;
+        //        Destroy(gameObject);
+        //        break;
+        //    }
+        //}
         foundFlower = false;
     }
 }

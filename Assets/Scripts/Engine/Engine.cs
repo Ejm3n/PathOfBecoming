@@ -126,4 +126,10 @@ public abstract class Engine : MonoBehaviour
         onComplete += () => curtain.gameObject.SetActive(false);
         curtain.Fade(timeToFade, onComplete);
     }
+
+    public void Load_Next_Level()
+    {
+        load = false;
+        Hide_Scene(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
+    }
 }

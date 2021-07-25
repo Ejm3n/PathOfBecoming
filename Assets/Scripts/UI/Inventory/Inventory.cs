@@ -1,12 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] Animator slotsAnim;
     bool hidden = false;
-    public bool[] isFull;
-    public bool[] isChosen;
-    public GameObject[] slots;
+    public Transform[] slots;
+
+    List<InventoryItem> inventoryList = new List<InventoryItem>();
+
+    int chosenSlot;
     
     public void ShowSlots()
     {
@@ -15,31 +18,12 @@ public class Inventory : MonoBehaviour
     }
     public void SlotPressed(int slotNum)
     {
-        Debug.Log("SlotPressed + " + slotNum);
-        for (int i = 0; i < isChosen.Length; i++)
-        {
-            if (i == slotNum)
-            {
-                isChosen[slotNum] = !isChosen[slotNum];
-               
-            }
-            else
-            {
-                isChosen[i] = false;
-                
-            }
-        }
+        chosenSlot = slotNum;
     }
     public void SlotDropped(int slotNum)  
     {
         foreach (Transform child in slots[slotNum].transform)
-        {
-            GameObject.Destroy(child.gameObject);
-        }
-        Slot.SlotCount[slotNum] = 0;
-        Slot.SlotItems[slotNum] = "";
-        isFull[slotNum] = false;
-        isChosen[slotNum] = false;
+            Destroy(child.gameObject);
     }
     private void OnDisable()
     {
@@ -61,10 +45,7 @@ public class Inventory : MonoBehaviour
     }
     void LoadSlot(int slotNum,string path, int count)
     {
-        GameObject slotInst = Instantiate(Resources.Load(path, typeof(GameObject)), slots[slotNum].transform) as GameObject;
-        isFull[slotNum] = true;
-        Slot.SlotCount[slotNum] = count;
-        Slot.SlotItems[slotNum] = path;
+        GameObject slotInst = Instantiate(Resources.Load(path, typeof(GameObject)), slots[slotNum]) as GameObject;
         if(count>1)
         {
             slotInst.GetComponentInChildren<Flower>().countText.text = count.ToString();//костыль - надо переделать
@@ -76,5 +57,39 @@ public class Inventory : MonoBehaviour
         {
             SlotDropped(i);
         }
+    }
+
+    public void Add_To_Inventory(GameObject item)
+    {
+        if (inventoryList.Count >= slots.Length)
+        {
+            Debug.Log("Inventory is full!");
+            return;
+        }
+        inventoryList.Add(item.GetComponent<InventoryItem>());
+        Instantiate(item, slots[inventoryList.Count - 1]);
+    }
+
+    public void Remove_From_Inventory(InventoryItem item)
+    {
+        int itemIndex = -1;
+        for (int i = 0; i < inventoryList.Count; i++)
+            if (inventoryList[i] == item)
+            {
+                itemIndex = i;
+                break;
+            }
+        inventoryList.RemoveAt(itemIndex);
+        SlotDropped(itemIndex);
+    }
+
+    public InventoryItem Get_Chosen_Item()
+    {
+        return inventoryList[chosenSlot];
+    }
+
+    public void Use_Chosen_Item()
+    {
+
     }
 }

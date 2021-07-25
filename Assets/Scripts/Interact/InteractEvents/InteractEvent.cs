@@ -3,7 +3,6 @@ using UnityEngine.Events;
 
 public abstract class InteractEvent : MonoBehaviour
 {
-    public InteractController interactController;
     public UnityEvent onSuccess;
     public UnityEvent onFail;
 

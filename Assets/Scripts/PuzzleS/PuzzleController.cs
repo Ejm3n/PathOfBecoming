@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class InteractController : MonoBehaviour
+public class PuzzleController : MonoBehaviour
 {
     PuzzleStart puzzleStart;
 

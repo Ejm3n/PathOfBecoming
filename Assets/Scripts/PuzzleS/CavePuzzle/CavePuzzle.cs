@@ -11,7 +11,7 @@ public class CavePuzzle : MonoBehaviour
     private Color colorIfUnpressed = new Color(255f, 155f, 0f, 0f);
     [SerializeField] GameObject nextDialogue;
     [SerializeField] DialogueSystem ds;
-    [SerializeField] InteractController interactController;
+    [SerializeField] PuzzleController interactController;
     [SerializeField] Inventory inv;
     private void Update()
     {

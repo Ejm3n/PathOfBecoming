@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spider : InventoryItem
+public class Box : InventoryItem
 {
     public override void Use()
     {
