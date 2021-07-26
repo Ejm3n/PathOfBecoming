@@ -1708,6 +1708,12 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!224 &295411653 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8010683028817498625, guid: 5c757377ed5650d469521ac08a733bb7,
+    type: 3}
+  m_PrefabInstance: {fileID: 3651826786938033584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &327088560
 GameObject:
   m_ObjectHideFlags: 0
@@ -13415,6 +13421,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!224 &1400933637 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8010683028205377594, guid: 5c757377ed5650d469521ac08a733bb7,
+    type: 3}
+  m_PrefabInstance: {fileID: 3651826786938033584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1402369486
 GameObject:
   m_ObjectHideFlags: 0
@@ -17885,6 +17897,12 @@ Transform:
   m_Father: {fileID: 995157281}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &2104234495 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8010683029730166129, guid: 5c757377ed5650d469521ac08a733bb7,
+    type: 3}
+  m_PrefabInstance: {fileID: 3651826786938033584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2108413511
 GameObject:
   m_ObjectHideFlags: 3
@@ -18450,28 +18468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1413b4412f9444395186e6e36c3dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactController: {fileID: 407603182}
-  onSuccess:
-    m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 184551406}, m_MethodName: SetActive, m_Mode: 6, m_Arguments: {m_ObjectArgument: {fileID: 0},
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0,
-          m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 1}, m_CallState: 2}
-      - {m_Target: {fileID: 1843748533}, m_MethodName: SetActive, m_Mode: 6, m_Arguments: {m_ObjectArgument: {fileID: 0},
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0,
-          m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 1}, m_CallState: 2}
-    m_CallsDirty: 1
-  onFail:
-    m_PersistentCalls:
-      m_Calls: []
-    m_CallsDirty: 1
-  inventory: {fileID: 6739158385195757003}
-  whatToSpawn: {fileID: 1749191604798665267, guid: a35f598a407797d4aa2d8f9c8a7bfb96,
-    type: 3}
-  WhatToTrade: Spider
-  choosenSlot: -1
-  canvas: {fileID: 4096867036808471592}
-  filePath: Prefabs/Inventory & Items/Shkatulka
 --- !u!61 &2041405125515496580
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19138,9 +19134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa523f25927f014488b5e7372c9dd87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 6739158385195757003}
-  filePath: Prefabs/Inventory & Items/Shkatulka
-  onEnableActive: 0
 --- !u!61 &3368713583996179866
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19318,6 +19311,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: inv(new)
       objectReference: {fileID: 0}
+    - target: {fileID: 8010683029305604219, guid: 5c757377ed5650d469521ac08a733bb7,
+        type: 3}
+      propertyPath: slots.Array.data[0]
+      value: 
+      objectReference: {fileID: 295411653}
+    - target: {fileID: 8010683029305604219, guid: 5c757377ed5650d469521ac08a733bb7,
+        type: 3}
+      propertyPath: slots.Array.data[1]
+      value: 
+      objectReference: {fileID: 2104234495}
+    - target: {fileID: 8010683029305604219, guid: 5c757377ed5650d469521ac08a733bb7,
+        type: 3}
+      propertyPath: slots.Array.data[2]
+      value: 
+      objectReference: {fileID: 1400933637}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c757377ed5650d469521ac08a733bb7, type: 3}
 --- !u!222 &3981793006488829163
@@ -20842,9 +20850,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa523f25927f014488b5e7372c9dd87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 6739158385195757003}
-  filePath: Prefabs/Inventory & Items/Spider
-  onEnableActive: 1
 --- !u!61 &4608452845711540323
 BoxCollider2D:
   m_ObjectHideFlags: 0

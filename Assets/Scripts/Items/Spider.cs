@@ -1,11 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Spider : InventoryItem
 {
+    [SerializeField] GameObject closedBox;
     public override void Use()
     {
-        throw new System.NotImplementedException();
+        inventory.Add_To_Inventory(closedBox);
+        Destroy(gameObject);
+    }
+
+    protected override void Initialise()
+    {
+        draggable = true;
+        stack = 1;
+        amount = 1;
     }
 }

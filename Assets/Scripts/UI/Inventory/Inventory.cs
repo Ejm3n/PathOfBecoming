@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
     }
     public void SlotDropped(int slotNum)  
     {
-        foreach (Transform child in slots[slotNum].transform)
+        foreach (Transform child in slots[slotNum])
             Destroy(child.gameObject);
     }
     private void OnDisable()
@@ -61,24 +61,30 @@ public class Inventory : MonoBehaviour
 
     public void Add_To_Inventory(GameObject item)
     {
-        if (inventoryList.Count >= slots.Length)
+        if (!item.TryGetComponent(out InventoryItem itemScript)) //invalid item
+            return;
+        int itemIndex = Get_Item_Index(itemScript);
+
+        if (itemIndex != -1) //we can add item to stack
         {
-            Debug.Log("Inventory is full!");
+            inventoryList[itemIndex].Add_To_Stack();
             return;
         }
-        inventoryList.Add(item.GetComponent<InventoryItem>());
+
+        if (inventoryList.Count >= slots.Length) //inventory is full
+            return;
+
+        //create new item in inventory
+        inventoryList.Add(itemScript);
+        itemScript.Inventory_Link(this);
         Instantiate(item, slots[inventoryList.Count - 1]);
     }
 
-    public void Remove_From_Inventory(InventoryItem item)
+    public void Remove_From_Inventory(InventoryItem item) //а надо ли нам это...
     {
-        int itemIndex = -1;
-        for (int i = 0; i < inventoryList.Count; i++)
-            if (inventoryList[i] == item)
-            {
-                itemIndex = i;
-                break;
-            }
+        int itemIndex = Get_Item_Index(item);
+        if (itemIndex == -1)
+            return;
         inventoryList.RemoveAt(itemIndex);
         SlotDropped(itemIndex);
     }
@@ -86,6 +92,33 @@ public class Inventory : MonoBehaviour
     public InventoryItem Get_Chosen_Item()
     {
         return inventoryList[chosenSlot];
+    }
+
+    public int Get_Item_Index(InventoryItem item)
+    {
+        for (int i = 0; i < inventoryList.Count; i++)
+            if (inventoryList[i] == item && inventoryList[i].amount < inventoryList[i].stack)
+                return i;
+        return -1;
+    }
+
+    public void Sort_Inventory()
+    {
+        int emptySlot = -1;
+        for (int i =0;i< slots.Length; i++)
+        {
+            if (slots[i].childCount == 0)
+                emptySlot = i;
+            else if (slots[i].childCount > 0 && emptySlot != -1 && emptySlot < i) //previous slot is empty
+            {
+                foreach(Transform child in slots[i])
+                {
+                    child.SetParent(slots[i - 1]);
+                    child.localPosition = Vector3.zero;
+                }
+                emptySlot = i; //now this slot is empty
+            }
+        }
     }
 
     public void Use_Chosen_Item()
