@@ -10,6 +10,8 @@ public abstract class Engine : MonoBehaviour
 {
     public static bool load = false;
 
+    public static Engine current;
+
     [SerializeField] protected Image curtain;
     [SerializeField] CinemachineVirtualCamera playerCamera;
     [SerializeField] protected DialogueSystem dialogueSystem;
@@ -79,11 +81,12 @@ public abstract class Engine : MonoBehaviour
         playerCamera.Follow = player.transform;
         playerController = player.GetComponent<PlayerController>();
         fairyController = fairy.GetComponent<Fairy>();
-        playerController.Initialise(this, spellBook, mana, healthBar, jumpButton);
+        playerController.Initialise(spellBook, mana, healthBar, jumpButton);
     }
 
     private void Start()
     {
+        current = this;
         gameSettings = SaveSyatem.gameSettings;
         if (!load)
             Start_Level();

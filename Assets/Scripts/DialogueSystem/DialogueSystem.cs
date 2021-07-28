@@ -42,7 +42,6 @@ public class DialogueSystem : MonoBehaviour
     private bool typeDialogeInstantly = false;
 
     [SerializeField] CheckpointDialogue[] checkpoints;
-    Engine engine;
     UnityEvent onComplete;
     
     public void SetInventory(bool what)
@@ -55,8 +54,6 @@ public class DialogueSystem : MonoBehaviour
     }
     private void Awake()
     {
-        if (transform.parent.TryGetComponent(out Engine engine)) 
-            this.engine = engine;
         TextAsset language = Resources.Load<TextAsset>("Russian2");//считываем файл со строками
         file = language.text.Split('\n');     //заполняем этими строками массив
     }
@@ -228,7 +225,7 @@ public class DialogueSystem : MonoBehaviour
         for (int i = 0; i < checkpoints.Length; i++)
             if (dialogue == checkpoints[i])
             {
-                engine.Checkpoint(i);
+                Engine.current.Checkpoint(i);
                 break;
             }
     }

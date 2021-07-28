@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
 
     public bool faceRight { get; private set; }
     public bool isGround { get; private set; }
-    public Engine engine { get; private set; }
     public float checkRadius;
     public LayerMask whatIsGround;
 
@@ -28,9 +27,8 @@ public class PlayerController : MonoBehaviour
     private int extraJump;
     public int ExtraJumpValue;
 
-    public void Initialise(Engine engine, ActionWithSpellBook spellBook, ManaCounter mana, Image healthBar, Button jump)
+    public void Initialise(ActionWithSpellBook spellBook, ManaCounter mana, Image healthBar, Button jump)
     {
-        this.engine = engine;
         health = GetComponent<Health>();
         spellFire = GetComponent<ShootingSpells>();
         health.Initialise(healthBar);
@@ -113,21 +111,12 @@ public class PlayerController : MonoBehaviour
     public void OnJumpButton()
     {
         if (isGround)
-        {
             rb.velocity = Vector2.up * jumpForce;
-
-            //StartCoroutine(showJumpButton());
-        }
             
-    }
-    private IEnumerator showJumpButton()
-    {
-        yield return new WaitForSeconds(0.2f);
-
     }
 
     public void Last_Checkpoint()
     {
-        engine.Last_Chekpoint(() => health.Heal(health.maxHealth));
+        Engine.current.Last_Chekpoint(() => health.Heal(health.maxHealth));
     }
 }

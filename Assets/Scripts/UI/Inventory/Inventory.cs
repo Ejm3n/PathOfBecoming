@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
     bool hidden = false;
     public Transform[] slots;
 
-    List<InventoryItem> inventoryList = new List<InventoryItem>();
+    List<Item> inventoryList = new List<Item>();
 
     int chosenSlot;
     
@@ -16,41 +16,34 @@ public class Inventory : MonoBehaviour
         hidden = !hidden;
         slotsAnim.SetBool("SlotsShown", hidden);
     }
-    public void SlotPressed(int slotNum)
-    {
-        chosenSlot = slotNum;
-    }
+
     public void SlotDropped(int slotNum)  
     {
         foreach (Transform child in slots[slotNum])
             Destroy(child.gameObject);
     }
+
     private void OnDisable()
     {
         slotsAnim.SetBool("SlotsShown", true);
         hidden = true;
     }
+
     public InventoryData SaveInvetnoryData()
     {
         return new InventoryData();
     }
+
     public void LoadInventoryData(InventoryData ID)
     {
-        ClearInventory();
-       for(int i = 0; i<slots.Length;i++)
-        {
-            if(ID.InventoryCount[i]!=0 && ID.InventorySlots[i]!="")
-                LoadSlot(i, ID.InventorySlots[i], ID.InventoryCount[i]);
-        }
+        //TODO
     }
-    void LoadSlot(int slotNum,string path, int count)
+
+    void LoadSlot()
     {
-        GameObject slotInst = Instantiate(Resources.Load(path, typeof(GameObject)), slots[slotNum]) as GameObject;
-        if(count>1)
-        {
-            slotInst.GetComponentInChildren<Flower>().countText.text = count.ToString();//костыль - надо переделать
-        }
+        //TODO
     }
+
     void ClearInventory()
     {
         for(int i = 0;i<slots.Length;i++)
@@ -59,9 +52,14 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void Choose_Item(Item item)
+    {
+        chosenSlot = inventoryList.IndexOf(item);
+    }
+
     public void Add_To_Inventory(GameObject item)
     {
-        if (!item.TryGetComponent(out InventoryItem itemScript)) //invalid item
+        if (!item.TryGetComponent(out Item itemScript)) //invalid item
             return;
         int itemIndex = Get_Item_Index(itemScript);
 
@@ -80,21 +78,22 @@ public class Inventory : MonoBehaviour
         Instantiate(item, slots[inventoryList.Count - 1]);
     }
 
-    public void Remove_From_Inventory(InventoryItem item) //а надо ли нам это...
+    public void Remove_From_Inventory(Item item)
     {
         int itemIndex = Get_Item_Index(item);
         if (itemIndex == -1)
             return;
         inventoryList.RemoveAt(itemIndex);
         SlotDropped(itemIndex);
+        Sort_Inventory();
     }
 
-    public InventoryItem Get_Chosen_Item()
+    public Item Get_Chosen_Item()
     {
         return inventoryList[chosenSlot];
     }
 
-    public int Get_Item_Index(InventoryItem item)
+    public int Get_Item_Index(Item item)
     {
         for (int i = 0; i < inventoryList.Count; i++)
             if (inventoryList[i] == item && inventoryList[i].amount < inventoryList[i].stack)
@@ -102,22 +101,13 @@ public class Inventory : MonoBehaviour
         return -1;
     }
 
-    public void Sort_Inventory()
+    void Sort_Inventory()
     {
-        int emptySlot = -1;
-        for (int i =0;i< slots.Length; i++)
+        for (int i = 0; i < inventoryList.Count; i++)
         {
-            if (slots[i].childCount == 0)
-                emptySlot = i;
-            else if (slots[i].childCount > 0 && emptySlot != -1 && emptySlot < i) //previous slot is empty
-            {
-                foreach(Transform child in slots[i])
-                {
-                    child.SetParent(slots[i - 1]);
-                    child.localPosition = Vector3.zero;
-                }
-                emptySlot = i; //now this slot is empty
-            }
+            Transform item = inventoryList[i].gameObject.transform;
+            item.SetParent(slots[i]);
+            item.localPosition = Vector3.zero;
         }
     }
 

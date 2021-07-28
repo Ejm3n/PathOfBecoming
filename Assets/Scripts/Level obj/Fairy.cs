@@ -4,15 +4,12 @@ public class Fairy : MonoBehaviour
 {
     Rigidbody2D rb;
     RelativeJoint2D joint;
-
-    Engine engine;
     public Vector3 lastCheckpoint { get; private set; }
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         joint = GetComponent<RelativeJoint2D>();
-        engine = transform.parent.GetComponent<Engine>();
     }
 
     public void Connect_Fairy(Rigidbody2D anchor)
@@ -26,7 +23,7 @@ public class Fairy : MonoBehaviour
         transform.position = data.checkPoint.Convert_to_UnityVector();
         lastCheckpoint = transform.position;
         if (data.connected)
-            engine.Connect_Fairy_to_Player();
+            Engine.current.Connect_Fairy_to_Player();
     }
 
     public FairyData Save_State()

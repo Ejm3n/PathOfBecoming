@@ -7,16 +7,9 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField] AudioSource musicSound;
     [SerializeField] AudioSource ambientSound;
 
-    Engine engine;
-
     static public Queue<AudioClip> effectsQueue = new Queue<AudioClip>();
     static public Queue<AudioClip> musicQueue = new Queue<AudioClip>();
     static public Queue<AudioClip> ambientQueue = new Queue<AudioClip>();
-
-    private void Awake()
-    {
-        engine = transform.parent.GetComponent<Engine>();
-    }
 
     void Update()
     {
@@ -29,7 +22,7 @@ public class SoundPlayer : MonoBehaviour
     {
         while (effectsQueue.Count > 0)
         {
-            effectsSound.PlayOneShot(effectsQueue.Dequeue(), engine.gameSettings.soundSettings.effectsVolume);
+            effectsSound.PlayOneShot(effectsQueue.Dequeue(), Engine.current.gameSettings.soundSettings.effectsVolume);
         }
     }
 
@@ -40,8 +33,8 @@ public class SoundPlayer : MonoBehaviour
             musicSound.clip = musicQueue.Dequeue();
             musicSound.Play();
         }
-        if (musicSound.volume != engine.gameSettings.soundSettings.musicVolume)
-            musicSound.volume = engine.gameSettings.soundSettings.musicVolume;
+        if (musicSound.volume != Engine.current.gameSettings.soundSettings.musicVolume)
+            musicSound.volume = Engine.current.gameSettings.soundSettings.musicVolume;
     }
 
     void Check_Ambient_Queue()
@@ -51,8 +44,8 @@ public class SoundPlayer : MonoBehaviour
             ambientSound.clip = ambientQueue.Dequeue();
             ambientSound.Play();
         }
-        if (ambientSound.volume != engine.gameSettings.soundSettings.effectsVolume)
-            ambientSound.volume = engine.gameSettings.soundSettings.effectsVolume;
+        if (ambientSound.volume != Engine.current.gameSettings.soundSettings.effectsVolume)
+            ambientSound.volume = Engine.current.gameSettings.soundSettings.effectsVolume;
     }
 
     public void Play_Effect(AudioClip clip)
