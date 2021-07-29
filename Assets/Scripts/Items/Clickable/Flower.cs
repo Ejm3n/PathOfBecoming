@@ -8,7 +8,7 @@ public class Flower : ClickableItem
 
     Health health;
 
-    protected override void Initialise()
+    protected override void Set_Item_Parameters()
     {
         stack = 5;
         amount = 1;

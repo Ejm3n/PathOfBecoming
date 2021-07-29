@@ -14,7 +14,7 @@ public abstract class Engine : MonoBehaviour
 
     [SerializeField] protected Image curtain;
     [SerializeField] CinemachineVirtualCamera playerCamera;
-    [SerializeField] protected DialogueSystem dialogueSystem;
+    [SerializeField] public DialogueSystem dialogueSystem;
     public GameSettings gameSettings;
 
     [Header("Player Interface")]

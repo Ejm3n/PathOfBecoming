@@ -8,8 +8,6 @@ public class Inventory : MonoBehaviour
     public Transform[] slots;
 
     List<Item> inventoryList = new List<Item>();
-
-    int chosenSlot;
     
     public void ShowSlots()
     {
@@ -52,51 +50,47 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void Choose_Item(Item item)
-    {
-        chosenSlot = inventoryList.IndexOf(item);
-    }
-
-    public void Add_To_Inventory(GameObject item)
+    public bool Add_To_Inventory(GameObject item)
     {
         if (!item.TryGetComponent(out Item itemScript)) //invalid item
-            return;
+        {
+            Debug.Log("Invalid");
+            return false;
+        }
         int itemIndex = Get_Item_Index(itemScript);
 
         if (itemIndex != -1) //we can add item to stack
         {
+            Debug.Log("Add to stack");
             inventoryList[itemIndex].Add_To_Stack();
-            return;
+            return true;
         }
 
         if (inventoryList.Count >= slots.Length) //inventory is full
-            return;
-
+            return false;
         //create new item in inventory
+        Debug.Log("Create");
+        itemScript = Instantiate(item, slots[inventoryList.Count]).GetComponent<Item>();
+        itemScript.Initialise(this);
         inventoryList.Add(itemScript);
-        itemScript.Inventory_Link(this);
-        Instantiate(item, slots[inventoryList.Count - 1]);
+        return true;
     }
 
-    public void Remove_From_Inventory(Item item)
+    public bool Remove_From_Inventory(Item item)
     {
         int itemIndex = Get_Item_Index(item);
         if (itemIndex == -1)
-            return;
+            return false;
         inventoryList.RemoveAt(itemIndex);
         SlotDropped(itemIndex);
         Sort_Inventory();
+        return true;
     }
 
-    public Item Get_Chosen_Item()
-    {
-        return inventoryList[chosenSlot];
-    }
-
-    public int Get_Item_Index(Item item)
+    int Get_Item_Index(Item item)
     {
         for (int i = 0; i < inventoryList.Count; i++)
-            if (inventoryList[i] == item && inventoryList[i].amount < inventoryList[i].stack)
+            if (inventoryList[i].GetType() == item.GetType() && inventoryList[i].amount < inventoryList[i].stack)
                 return i;
         return -1;
     }
@@ -111,8 +105,9 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void Use_Chosen_Item()
+    private void Start()
     {
-
+        Add_To_Inventory(Resources.Load<GameObject>("Prefabs/Items/Spider"));
+        Add_To_Inventory(Resources.Load<GameObject>("Prefabs/Items/Box"));
     }
 }

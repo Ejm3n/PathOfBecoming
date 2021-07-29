@@ -7,7 +7,7 @@ public class Interface : MonoBehaviour
     //[SerializeField] spellbook
     public static Interface current;
 
-    private void Start()
+    private void Awake()
     {
         current = this;
     }

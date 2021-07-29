@@ -5,6 +5,8 @@ public abstract class DraggableItem : Item, IBeginDragHandler, IEndDragHandler, 
 {
     public Items item;
 
+    public static DraggableItem chosenItem;
+
     RectTransform rectTransform;
     CanvasGroup canvasGroup;
 
@@ -21,20 +23,19 @@ public abstract class DraggableItem : Item, IBeginDragHandler, IEndDragHandler, 
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("OnBeingDrag");
         canvasGroup.blocksRaycasts = false;
-        inventory.Choose_Item(this);
+        chosenItem = this;
     }
     public void OnDrag(PointerEventData eventData)
     {
         rectTransform.anchoredPosition += eventData.delta;
-        Debug.Log("OnDrag");
     }
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("OnEndDrag");
         canvasGroup.blocksRaycasts = true;
         rectTransform.anchoredPosition = Vector3.zero;
+        chosenItem = null;
     }
 }
 public enum Items

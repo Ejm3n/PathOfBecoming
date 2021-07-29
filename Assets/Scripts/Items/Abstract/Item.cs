@@ -11,7 +11,7 @@ public abstract class Item : MonoBehaviour
 
     public int amount { get; protected set; }
 
-    protected virtual void Initialise()
+    protected virtual void Set_Item_Parameters()
     {
         amount = 1;
         stack = 1;
@@ -42,8 +42,9 @@ public abstract class Item : MonoBehaviour
 
     }
 
-    public void Inventory_Link(Inventory inventory)
+    public void Initialise(Inventory inventory)
     {
         this.inventory = inventory;
+        Set_Item_Parameters();
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class DstroyItem : MonoBehaviour
+public class DestroyItem : MonoBehaviour
 {
     public void OnClick()
     {
