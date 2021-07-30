@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class PlaceForItem : MonoBehaviour
 {
     [SerializeField] Transform placePosition;
+    [SerializeField] DialogueTrigger failDialog;
     [SerializeField] ItemExecusion[] interactWith;
 
     private void OnMouseOver()
@@ -23,8 +24,15 @@ public class PlaceForItem : MonoBehaviour
             {
                 DraggableItem.chosenItem.Use();
                 item.execution?.Invoke();
-                break;
+                return;
             }
+        Cannot_Interact();
+    }
+
+    void Cannot_Interact()
+    {
+        if(failDialog)
+            failDialog.StartDialogue();
     }
 
     public void Place_Item(GameObject item)

@@ -1,10 +1,16 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Interface : MonoBehaviour
 {
+    [SerializeField] protected Engine engine;
     [SerializeField] Transform canvas;
     public Inventory inventory;
-    //[SerializeField] spellbook
+    public ActionWithSpellBook spellBook;
+    public ManaCounter mana;
+    public Image healthBar;
+    public Button jumpButton;
+
     public static Interface current;
 
     private void Awake()

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] Animator slotsAnim;
@@ -53,23 +52,20 @@ public class Inventory : MonoBehaviour
     public bool Add_To_Inventory(GameObject item)
     {
         if (!item.TryGetComponent(out Item itemScript)) //invalid item
-        {
-            Debug.Log("Invalid");
             return false;
-        }
+
         int itemIndex = Get_Item_Index(itemScript);
 
         if (itemIndex != -1) //we can add item to stack
         {
-            Debug.Log("Add to stack");
             inventoryList[itemIndex].Add_To_Stack();
             return true;
         }
 
         if (inventoryList.Count >= slots.Length) //inventory is full
             return false;
+
         //create new item in inventory
-        Debug.Log("Create");
         itemScript = Instantiate(item, slots[inventoryList.Count]).GetComponent<Item>();
         itemScript.Initialise(this);
         inventoryList.Add(itemScript);
@@ -103,11 +99,5 @@ public class Inventory : MonoBehaviour
             item.SetParent(slots[i]);
             item.localPosition = Vector3.zero;
         }
-    }
-
-    private void Start()
-    {
-        Add_To_Inventory(Resources.Load<GameObject>("Prefabs/Items/Spider"));
-        Add_To_Inventory(Resources.Load<GameObject>("Prefabs/Items/Box"));
     }
 }

@@ -12,17 +12,11 @@ public abstract class Engine : MonoBehaviour
 
     public static Engine current;
 
+    [SerializeField] protected Interface userInterface;
     [SerializeField] protected Image curtain;
     [SerializeField] CinemachineVirtualCamera playerCamera;
     [SerializeField] public DialogueSystem dialogueSystem;
     public GameSettings gameSettings;
-
-    [Header("Player Interface")]
-    [SerializeField] protected ActionWithSpellBook spellBook;
-    [SerializeField] protected Inventory inventory;
-    [SerializeField] ManaCounter mana;
-    [SerializeField] Image healthBar;
-    [SerializeField] Button jumpButton;
 
     [Header("Start Positions")]
     [SerializeField] Transform playerStartPosition;
@@ -51,7 +45,7 @@ public abstract class Engine : MonoBehaviour
             Spawn_Characters(data.playerData.lastCheckpoint.Convert_to_UnityVector(), data.fairyData.checkPoint.Convert_to_UnityVector());
             playerController.Load_State(data.playerData);
             fairyController.Load_State(data.fairyData);
-            inventory.LoadInventoryData(data.inventoryData);
+            userInterface.inventory.LoadInventoryData(data.inventoryData);
             //spellBook.LoadBookData(data.magicBookData);
             dialogueSystem.Load_State(data.checkpointIndex);
             Show_Scene(() => dialogueSystem.SetUI(true));
@@ -81,7 +75,7 @@ public abstract class Engine : MonoBehaviour
         playerCamera.Follow = player.transform;
         playerController = player.GetComponent<PlayerController>();
         fairyController = fairy.GetComponent<Fairy>();
-        playerController.Initialise(spellBook, mana, healthBar, jumpButton);
+        playerController.Initialise(userInterface.spellBook, userInterface.mana, userInterface.healthBar, userInterface.jumpButton);
     }
 
     private void Start()
@@ -98,8 +92,8 @@ public abstract class Engine : MonoBehaviour
     {
         PlayerData playerData = playerController.Save_State();
         FairyData fairyData = fairyController.Save_State();
-        InventoryData inventoryData = inventory.SaveInvetnoryData();
-        MagicBookData magicBookData = spellBook.SaveBookData();
+        InventoryData inventoryData = userInterface.inventory.SaveInvetnoryData();
+        MagicBookData magicBookData = userInterface.spellBook.SaveBookData();
         new SaveData(index, playerData, fairyData, inventoryData, magicBookData).Save();
     }
 
