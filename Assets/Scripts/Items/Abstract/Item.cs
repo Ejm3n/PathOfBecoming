@@ -7,6 +7,8 @@ public abstract class Item : MonoBehaviour
 
     protected Inventory inventory;
 
+    public const string path = "Prefabs/Items/Inventory/";
+
     public int stack { get; protected set; }
 
     public int amount { get; protected set; }
@@ -15,6 +17,13 @@ public abstract class Item : MonoBehaviour
     {
         amount = 1;
         stack = 1;
+    }
+
+    public void Set_Item_Parameters(int amount, int stack)
+    {
+        this.amount = amount;
+        this.stack = stack;
+        Show_Amount();
     }
 
     protected void Show_Amount()
@@ -46,5 +55,10 @@ public abstract class Item : MonoBehaviour
     {
         this.inventory = inventory;
         Set_Item_Parameters();
+    }
+
+    public ItemData Get_ItemData()
+    {
+        return new ItemData(gameObject.name, amount, stack);
     }
 }

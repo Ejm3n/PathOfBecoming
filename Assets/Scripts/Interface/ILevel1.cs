@@ -3,20 +3,30 @@ using UnityEngine;
 
 public class ILevel1 : Interface
 {
+    [SerializeField] GameObject inventoryGuideTrigger;
+    [SerializeField] GameObject startingInventory;
     public void Inventory_Guide()
     {
         StartCoroutine(Show_Inventory());
     }
 
+    public void Spellbook_Guide()
+    {
+        engine.dialogueSystem.SetUI(false);
+        spellBook.Enable_Spellbook();
+    }
+
     IEnumerator Show_Inventory()
     {
         engine.dialogueSystem.SetUI(false);
-        CanvasGroup inventoryCanvas = inventory.GetComponent<CanvasGroup>();
-        inventoryCanvas.alpha = 1;
-        inventoryCanvas.blocksRaycasts = true;
-        inventoryCanvas.interactable = true;
+        inventory.Enable_Inventory();
         yield return new WaitForSeconds(2);
-        engine.dialogueSystem.canUseInventory = true;
-        engine.dialogueSystem.SetUI(true);
+        engine.dialogueSystem.SetUI(false);
+        inventoryGuideTrigger.SetActive(true);
+    }
+
+    public void StartingInventory()
+    {
+        inventory.Add_To_Inventory(startingInventory);
     }
 }

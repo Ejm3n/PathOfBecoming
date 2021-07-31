@@ -7,8 +7,9 @@ public class Level1 : Engine
     [SerializeField] GameObject startDialog;
 
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         mainTheme = Sounds.LEVEL1MUSIC;
         ambient = Sounds.LEVEL1AMBIENT;
         SoundRecorder.Play_Music(mainTheme);

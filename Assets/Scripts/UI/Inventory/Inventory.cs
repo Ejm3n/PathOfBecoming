@@ -3,15 +3,22 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] Animator slotsAnim;
-    bool hidden = false;
+    bool shown = false;
     public Transform[] slots;
 
     List<Item> inventoryList = new List<Item>();
-    
+
+    CanvasGroup inventoryCG;
+
+    private void Awake()
+    {
+        inventoryCG = GetComponent<CanvasGroup>();
+    }
+
     public void ShowSlots()
     {
-        hidden = !hidden;
-        slotsAnim.SetBool("SlotsShown", hidden);
+        shown = !shown;
+        slotsAnim.SetBool("SlotsShown", shown);
     }
 
     public void SlotDropped(int slotNum)  
@@ -23,30 +30,26 @@ public class Inventory : MonoBehaviour
     private void OnDisable()
     {
         slotsAnim.SetBool("SlotsShown", true);
-        hidden = true;
+        shown = true;
     }
 
     public InventoryData SaveInvetnoryData()
     {
-        return new InventoryData();
+        ItemData[] items = new ItemData[inventoryList.Count];
+        for (int i = 0;i< items.Length; i++)
+            items[i] = inventoryList[i].Get_ItemData();
+        return new InventoryData(items);
     }
 
-    public void LoadInventoryData(InventoryData ID)
+    public void LoadInventoryData(InventoryData data)
     {
-        //TODO
-    }
-
-    void LoadSlot()
-    {
-        //TODO
-    }
-
-    void ClearInventory()
-    {
-        for(int i = 0;i<slots.Length;i++)
-        {
-            SlotDropped(i);
-        }
+       for(int i = 0; i < data.items.Length; i++)
+       {
+            ItemData item = data.items[i];
+            GameObject prefab = Resources.Load<GameObject>(Item.path + item.itemName);
+            Add_To_Inventory(prefab);
+            inventoryList[i].Set_Item_Parameters(item.amount, item.stack);
+       }
     }
 
     public bool Add_To_Inventory(GameObject item)
@@ -54,7 +57,7 @@ public class Inventory : MonoBehaviour
         if (!item.TryGetComponent(out Item itemScript)) //invalid item
             return false;
 
-        int itemIndex = Get_Item_Index(itemScript);
+        int itemIndex = Get_Item_Index_By_Type(itemScript);
 
         if (itemIndex != -1) //we can add item to stack
         {
@@ -83,10 +86,18 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-    int Get_Item_Index(Item item)
+    int Get_Item_Index_By_Type(Item item)
     {
         for (int i = 0; i < inventoryList.Count; i++)
             if (inventoryList[i].GetType() == item.GetType() && inventoryList[i].amount < inventoryList[i].stack)
+                return i;
+        return -1;
+    }
+
+    int Get_Item_Index(Item item)
+    {
+        for (int i = 0; i < inventoryList.Count; i++)
+            if (inventoryList[i] == item)
                 return i;
         return -1;
     }
@@ -99,5 +110,13 @@ public class Inventory : MonoBehaviour
             item.SetParent(slots[i]);
             item.localPosition = Vector3.zero;
         }
+    }
+
+    public void Enable_Inventory()
+    {
+        inventoryCG.alpha = 1;
+        inventoryCG.blocksRaycasts = true;
+        inventoryCG.interactable = true;
+        Engine.current.dialogueSystem.canUseInventory = true;
     }
 }

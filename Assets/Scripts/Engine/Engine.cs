@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public abstract class Engine : MonoBehaviour
 {
-    public static bool load = false;
+    public static bool load = true;
 
     public static Engine current;
 
@@ -45,9 +45,9 @@ public abstract class Engine : MonoBehaviour
             Spawn_Characters(data.playerData.lastCheckpoint.Convert_to_UnityVector(), data.fairyData.checkPoint.Convert_to_UnityVector());
             playerController.Load_State(data.playerData);
             fairyController.Load_State(data.fairyData);
-            userInterface.inventory.LoadInventoryData(data.inventoryData);
-            //spellBook.LoadBookData(data.magicBookData);
             dialogueSystem.Load_State(data.checkpointIndex);
+            userInterface.inventory.LoadInventoryData(data.inventoryData);
+            userInterface.spellBook.Load_State(data.spellBookData);
             Show_Scene(() => dialogueSystem.SetUI(true));
         }
         catch (NullReferenceException)
@@ -75,12 +75,16 @@ public abstract class Engine : MonoBehaviour
         playerCamera.Follow = player.transform;
         playerController = player.GetComponent<PlayerController>();
         fairyController = fairy.GetComponent<Fairy>();
-        playerController.Initialise(userInterface.spellBook, userInterface.mana, userInterface.healthBar, userInterface.jumpButton);
+        playerController.Initialise(userInterface.healthBar, userInterface.jumpButton);
+    }
+
+    protected virtual void Awake()
+    {
+        current = this;
     }
 
     private void Start()
     {
-        current = this;
         gameSettings = SaveSyatem.gameSettings;
         if (!load)
             Start_Level();
@@ -93,8 +97,8 @@ public abstract class Engine : MonoBehaviour
         PlayerData playerData = playerController.Save_State();
         FairyData fairyData = fairyController.Save_State();
         InventoryData inventoryData = userInterface.inventory.SaveInvetnoryData();
-        MagicBookData magicBookData = userInterface.spellBook.SaveBookData();
-        new SaveData(index, playerData, fairyData, inventoryData, magicBookData).Save();
+        SpellBookData spellBookData = userInterface.spellBook.Save_State();
+        new SaveData(index, playerData, fairyData, inventoryData, spellBookData).Save();
     }
 
     public void Connect_Fairy_to_Player()

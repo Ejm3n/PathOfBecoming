@@ -6,7 +6,7 @@ public class Interface : MonoBehaviour
     [SerializeField] protected Engine engine;
     [SerializeField] Transform canvas;
     public Inventory inventory;
-    public ActionWithSpellBook spellBook;
+    public Spellbook spellBook;
     public ManaCounter mana;
     public Image healthBar;
     public Button jumpButton;

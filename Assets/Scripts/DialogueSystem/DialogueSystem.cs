@@ -216,7 +216,8 @@ public class DialogueSystem : MonoBehaviour
     {      
         panelAnim.SetBool("PanelShow", false);
         SetUI(true);
-        onComplete?.Invoke();
+        UnityEvent complete = onComplete;
+        complete?.Invoke();
         onComplete = null;
     }
 

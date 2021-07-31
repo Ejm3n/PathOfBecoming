@@ -7,14 +7,14 @@ public class SaveData
     public PlayerData playerData;
     public FairyData fairyData;
     public InventoryData inventoryData;
-    public MagicBookData magicBookData;
+    public SpellBookData spellBookData;
 
-    public SaveData(int checkpointIndex, PlayerData playerData, FairyData fairyData, InventoryData inventoryData, MagicBookData magicBookData)
+    public SaveData(int checkpointIndex, PlayerData playerData, FairyData fairyData, InventoryData inventoryData, SpellBookData spellBookData)
     {
         this.checkpointIndex = checkpointIndex;
         this.playerData = playerData;
         this.fairyData = fairyData;
         this.inventoryData = inventoryData;
-        this.magicBookData = magicBookData;
+        this.spellBookData = spellBookData;
     }
 }

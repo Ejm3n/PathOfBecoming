@@ -1,39 +1,40 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Spell : MonoBehaviour
+public class Spell : MonoBehaviour, IPointerDownHandler
 {
-    
+    //Spell in spellbook
+    public float manaCost;
+    public SpellType spellType;
+    public float cooldown;
 
-    //Скорость нашей пули
-    public float Speed;
-    //Время, через которое наша пуля
-    //уйдет в пул объектов
-    public float TimeToDisable;
-    //Каждый раз, когда наша пуля активируется
-    Vector3 direction;
+    public GameObject projectile;
 
-    IEnumerator SetDisabled(float TimeToDisable)
-    {
-        //Данный скрип приостановит свое исполнение на 
-        //TimeToDisable секунд, а потом продолжит работу
-        yield return new WaitForSeconds(TimeToDisable);
-        Destroy(gameObject);
+    public const string path = "Prefabs/Magic/Spells/";
+
+    bool onCooldown = false;
+
+    public void Cast(Transform firePoint)
+    {   if (onCooldown)
+            return;
+        Instantiate(projectile, firePoint);
+        StartCoroutine(Cooldown());
     }
 
-    private void Awake()
+    public void OnPointerDown(PointerEventData eventData)
     {
-        StartCoroutine(SetDisabled(TimeToDisable));
+        Interface.current.spellBook.Choose_Spell(this);
     }
-    public void Set_Direction(Vector3 direction)
+
+    IEnumerator Cooldown()
     {
-        this.direction = direction;
-    }
-    void Update()
-    {
-        if (direction != null)
-            transform.position += direction * Speed * Time.deltaTime;        
+        onCooldown = true;
+        Interface.current.spellBook.Spell_Used(this);
+        yield return new WaitForSeconds(cooldown);
+        onCooldown = false;
     }
 }
+
+public enum SpellType { Wind }
 

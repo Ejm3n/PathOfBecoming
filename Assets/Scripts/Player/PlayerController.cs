@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Health))]
-[RequireComponent(typeof(ShootingSpells))]
+[RequireComponent(typeof(SpellCast))]
 public class PlayerController : MonoBehaviour
 {
     public float speed;
@@ -20,19 +20,16 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
 
     Health health;
-    ShootingSpells spellFire;
 
     public Vector3 lastCheckpoint { get; private set; }
 
     private int extraJump;
     public int ExtraJumpValue;
 
-    public void Initialise(ActionWithSpellBook spellBook, ManaCounter mana, Image healthBar, Button jump)
+    public void Initialise(Image healthBar, Button jump)
     {
         health = GetComponent<Health>();
-        spellFire = GetComponent<ShootingSpells>();
         health.Initialise(healthBar);
-        spellFire.Initialise(spellBook, mana);
         jump.onClick.AddListener(OnJumpButton);
     }
 
