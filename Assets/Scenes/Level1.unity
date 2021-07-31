@@ -1879,8 +1879,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1393849353
+  m_SortingLayer: 2
   m_SortingOrder: 100
   m_RenderMode: 0
   m_SortMode: 0
@@ -7044,10 +7044,7 @@ MonoBehaviour:
   - {fileID: 1464551236}
   - {fileID: 1456470790}
   - {fileID: 1954617106}
-  nextDialogue: {fileID: 1080446703}
-  ds: {fileID: 2369979692232838263}
   interactController: {fileID: 407603182}
-  inv: {fileID: 6739158385195757003}
 --- !u!1 &407603181
 GameObject:
   m_ObjectHideFlags: 0
@@ -10159,7 +10156,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onSuccess:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 132950019}
+        m_MethodName: Load_Next_Level
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onFail:
     m_PersistentCalls:
       m_Calls: []
@@ -11227,6 +11235,17 @@ MonoBehaviour:
       - m_Target: {fileID: 329633384}
         m_MethodName: Stop_Highlight
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1548664256}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -14271,7 +14290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1548664257
 Transform:
   m_ObjectHideFlags: 0
@@ -14280,7 +14299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1548664256}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 52.25, y: -3.5, z: 0}
+  m_LocalPosition: {x: 52.25, y: -3.5, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2369979692232838256}
@@ -14314,6 +14333,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1548664259}
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!61 &1548664259
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14324,7 +14354,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -15639,7 +15669,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1742796660}
-  - component: {fileID: 1742796662}
   - component: {fileID: 1742796663}
   m_Layer: 23
   m_Name: FirstCast(Checkpoint)
@@ -15662,32 +15691,6 @@ Transform:
   m_Father: {fileID: 2369979692232838256}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1742796662
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742796659}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -13.207659, y: 1.7401359}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 10.867878, y: 3.868722}
-  m_EdgeRadius: 0
 --- !u!114 &1742796663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15727,9 +15730,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  onCheckpoint:
-    m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 2061547664}
         m_MethodName: SetActive
         m_Mode: 6
@@ -15741,6 +15741,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 693632504}
+        m_MethodName: Place_Item
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 57239301600833234, guid: 09107835de685d3409a7b144bc567b3d,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onCheckpoint:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 6633200056144884942}
         m_MethodName: Enable_Spellbook
         m_Mode: 1
@@ -16056,7 +16071,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1865095997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57aeb464a913a2448a714b4fdc0392ea, type: 3}
+  m_Script: {fileID: 11500000, guid: b44b142cd65337c47ba241d57583298d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startNum: 61
@@ -21223,6 +21238,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4096867036808471593}
     m_Modifications:
+    - target: {fileID: 372324311640714009, guid: 6cfb761c8c1eff0489f40803b0c1bd58,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 372324311640714009, guid: 6cfb761c8c1eff0489f40803b0c1bd58,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 372324311640714009, guid: 6cfb761c8c1eff0489f40803b0c1bd58,
+        type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 372324311640714014, guid: 6cfb761c8c1eff0489f40803b0c1bd58,
         type: 3}
       propertyPath: m_Name
@@ -21333,10 +21363,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 372324312745350939, guid: 6cfb761c8c1eff0489f40803b0c1bd58,
+    - target: {fileID: 372324312548910336, guid: 6cfb761c8c1eff0489f40803b0c1bd58,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      propertyPath: m_AnchoredPosition.x
+      value: 669.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 372324312749760134, guid: 6cfb761c8c1eff0489f40803b0c1bd58,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 59.32097
+      objectReference: {fileID: 0}
+    - target: {fileID: 372324312970175216, guid: 6cfb761c8c1eff0489f40803b0c1bd58,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -146
+      objectReference: {fileID: 0}
+    - target: {fileID: 372324313235874690, guid: 6cfb761c8c1eff0489f40803b0c1bd58,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -41.60003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cfb761c8c1eff0489f40803b0c1bd58, type: 3}

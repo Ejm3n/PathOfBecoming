@@ -15,7 +15,7 @@ public class SpellTrigger : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Spell_Effect(collision.gameObject.GetComponent<SpellBlast>());
-        Destroy(gameObject);
+        Destroy(collision.gameObject);
     }
 
     void Spell_Effect(SpellBlast spellBlast)

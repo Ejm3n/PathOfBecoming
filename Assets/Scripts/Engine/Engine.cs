@@ -40,20 +40,21 @@ public abstract class Engine : MonoBehaviour
         try
         {
             data = SaveSyatem.Load_Data();
-            if (data.playerData.sceneIndex != SceneManager.GetActiveScene().buildIndex)
-                Start_Level();
-            Spawn_Characters(data.playerData.lastCheckpoint.Convert_to_UnityVector(), data.fairyData.checkPoint.Convert_to_UnityVector());
-            playerController.Load_State(data.playerData);
-            fairyController.Load_State(data.fairyData);
-            dialogueSystem.Load_State(data.checkpointIndex);
-            userInterface.inventory.LoadInventoryData(data.inventoryData);
-            userInterface.spellBook.Load_State(data.spellBookData);
-            Show_Scene(() => dialogueSystem.SetUI(true));
         }
         catch (NullReferenceException)
         {
             Start_Level();
+            return;
         }
+        if (data.playerData.sceneIndex != SceneManager.GetActiveScene().buildIndex)
+            Start_Level();
+        Spawn_Characters(data.playerData.lastCheckpoint.Convert_to_UnityVector(), data.fairyData.checkPoint.Convert_to_UnityVector());
+        playerController.Load_State(data.playerData);
+        fairyController.Load_State(data.fairyData);
+        dialogueSystem.Load_State(data.checkpointIndex);
+        userInterface.inventory.LoadInventoryData(data.inventoryData);
+        userInterface.spellBook.Load_State(data.spellBookData);
+        Show_Scene(() => dialogueSystem.SetUI(true));
     }
 
     protected void Spawn_Characters()

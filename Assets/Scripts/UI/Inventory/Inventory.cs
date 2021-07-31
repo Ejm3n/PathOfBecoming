@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 public class Inventory : MonoBehaviour
 {
@@ -57,7 +58,7 @@ public class Inventory : MonoBehaviour
         if (!item.TryGetComponent(out Item itemScript)) //invalid item
             return false;
 
-        int itemIndex = Get_Item_Index_By_Type(itemScript);
+        int itemIndex = Get_Item_Index_By_Type(itemScript.GetType());
 
         if (itemIndex != -1) //we can add item to stack
         {
@@ -86,10 +87,22 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-    int Get_Item_Index_By_Type(Item item)
+    public bool Remove_From_Inventory(Type type, bool force = false)
+    {
+        int itemIndex = Get_Item_Index_By_Type(type, force);
+        if (itemIndex == -1)
+            return false;
+        inventoryList.RemoveAt(itemIndex);
+        SlotDropped(itemIndex);
+        Sort_Inventory();
+        return true;
+    }
+
+    int Get_Item_Index_By_Type(Type type, bool force = false)
     {
         for (int i = 0; i < inventoryList.Count; i++)
-            if (inventoryList[i].GetType() == item.GetType() && inventoryList[i].amount < inventoryList[i].stack)
+            if (inventoryList[i].GetType() == type && 
+                (inventoryList[i].amount < inventoryList[i].stack ^ force))
                 return i;
         return -1;
     }

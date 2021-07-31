@@ -15,7 +15,7 @@ public class SpellCast : MonoBehaviour
         if (!Input.GetMouseButtonDown(0) || UICheck.overUI)
             return;
         Player_Direction();
-        Interface.current.spellBook.Cast_Chosen_Spell(firePoint);
+        Interface.current.spellBook.Cast_Chosen_Spell(firePoint.position);
     }
 
     private void Player_Direction()

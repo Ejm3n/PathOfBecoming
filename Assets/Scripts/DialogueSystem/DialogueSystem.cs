@@ -218,7 +218,6 @@ public class DialogueSystem : MonoBehaviour
         SetUI(true);
         UnityEvent complete = onComplete;
         complete?.Invoke();
-        onComplete = null;
     }
 
     public void Checkpoint(CheckpointDialogue dialogue)

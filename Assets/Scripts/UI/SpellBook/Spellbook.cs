@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,7 +20,7 @@ public class Spellbook : MonoBehaviour
 
     bool shown = false;
 
-    private void Start()
+    private void Awake()
     {
         spellBookCG = GetComponent<CanvasGroup>();
     }
@@ -28,7 +29,7 @@ public class Spellbook : MonoBehaviour
     {
         shown = !shown;
         Spell_Animation(-1);
-        slotsAnim.SetBool("SlotsShown", shown);
+        slotsAnim.SetBool("ShowSlots", shown);
         if (shown)
             book.image.sprite = openBook;
         else
@@ -56,7 +57,7 @@ public class Spellbook : MonoBehaviour
         Spell_Animation(index, false);
     }
 
-    public void Cast_Chosen_Spell(Transform firePoint)
+    public void Cast_Chosen_Spell(Vector3 firePoint)
     {
         if (!chosenSpell || !Interface.current.mana.SpellShot(chosenSpell.manaCost))
             return;
@@ -71,15 +72,15 @@ public class Spellbook : MonoBehaviour
                 slotsAnim.SetBool("ChooseSpellOne", state);
                 break;
             case 1:
-                slotsAnim.SetBool("ShooseSpellTwo", state);
+                slotsAnim.SetBool("ChooseSpellTwo", state);
                 break;
             case 2:
-                slotsAnim.SetBool("ShooseSpellThree", state);
+                slotsAnim.SetBool("ChooseSpellThree", state);
                 break;
             default:
                 slotsAnim.SetBool("ChooseSpellOne", state);
-                slotsAnim.SetBool("ShooseSpellTwo", state);
-                slotsAnim.SetBool("ShooseSpellThree", state);
+                slotsAnim.SetBool("ChooseSpellTwo", state);
+                slotsAnim.SetBool("ChooseSpellThree", state);
                 break;
         }
     }
@@ -105,7 +106,7 @@ public class Spellbook : MonoBehaviour
     {
         string[] data = new string[spellList.Count];
         for (int i = 0; i < data.Length; i++)
-            data[i] = spellList[i].name;
+            data[i] = Regex.Replace(spellList[i].name, "\\(Clone\\)", string.Empty);
         return new SpellBookData(data);
     }
 }

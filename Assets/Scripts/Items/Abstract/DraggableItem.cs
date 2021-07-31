@@ -32,7 +32,6 @@ public abstract class DraggableItem : Item, IBeginDragHandler, IEndDragHandler, 
     }
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
         canvasGroup.blocksRaycasts = true;
         rectTransform.anchoredPosition = Vector3.zero;
         chosenItem = null;

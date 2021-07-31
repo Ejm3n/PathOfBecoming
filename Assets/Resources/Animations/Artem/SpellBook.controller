@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: ShooseSpellTwo
+    m_ConditionEvent: ChooseSpellTwo
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3262484652320573077}
@@ -83,7 +83,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShooseSpellOne
+  m_Name: ChooseSpellOne
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -137,7 +137,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: ShooseSpellTwo
+    m_ConditionEvent: ChooseSpellTwo
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1373002582119984825}
@@ -212,7 +212,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: ShooseSpellThree
+    m_ConditionEvent: ChooseSpellThree
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4397005104989721940}
@@ -299,7 +299,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShooseSpellTwo
+  m_Name: ChooseSpellTwo
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -334,19 +334,19 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: ShooseSpellOne
+  - m_Name: ChooseSpellOne
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: ShooseSpellTwo
+  - m_Name: ChooseSpellTwo
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: ShooseSpellThree
+  - m_Name: ChooseSpellThree
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -374,7 +374,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: ShooseSpellOne
+    m_ConditionEvent: ChooseSpellOne
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7044770799899720308}
@@ -399,7 +399,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: ShooseSpellThree
+    m_ConditionEvent: ChooseSpellThree
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3262484652320573077}
@@ -424,7 +424,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: ShooseSpellOne
+    m_ConditionEvent: ChooseSpellOne
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3262484652320573077}
@@ -447,7 +447,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShooseSpellThree
+  m_Name: ChooseSpellThree
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

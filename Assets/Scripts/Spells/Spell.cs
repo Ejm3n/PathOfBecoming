@@ -15,10 +15,10 @@ public class Spell : MonoBehaviour, IPointerDownHandler
 
     bool onCooldown = false;
 
-    public void Cast(Transform firePoint)
+    public void Cast(Vector3 firePoint)
     {   if (onCooldown)
             return;
-        Instantiate(projectile, firePoint);
+        Instantiate(projectile, firePoint, Quaternion.identity);
         StartCoroutine(Cooldown());
     }
 

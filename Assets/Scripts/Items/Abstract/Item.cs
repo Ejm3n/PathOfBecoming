@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Text.RegularExpressions;
+using UnityEngine;
 using UnityEngine.UI;
 
 public abstract class Item : MonoBehaviour
@@ -59,6 +60,6 @@ public abstract class Item : MonoBehaviour
 
     public ItemData Get_ItemData()
     {
-        return new ItemData(gameObject.name, amount, stack);
+        return new ItemData(Regex.Replace(gameObject.name, "\\(Clone\\)", string.Empty), amount, stack);
     }
 }
