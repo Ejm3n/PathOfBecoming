@@ -33,6 +33,7 @@ public class MagicAltarInteract : PlaceForItem
 
     public override void On_Detach()
     {
+        base.On_Detach();
         Show_Rock();
     }
 }

@@ -59,7 +59,7 @@ public class Spellbook : MonoBehaviour
 
     public void Cast_Chosen_Spell(Vector3 firePoint)
     {
-        if (!chosenSpell || !Interface.current.mana.SpellShot(chosenSpell.manaCost))
+        if (!chosenSpell)
             return;
         chosenSpell.Cast(firePoint);
     }

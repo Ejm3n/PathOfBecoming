@@ -8,11 +8,7 @@ public class PuzzleStart : InteractEvent
 
     public override void Start_Event()
     {
-        if (TryGetComponent(out Collider2D coll))
-        {
-            coll.enabled = false;
-            onFail.AddListener(() => coll.enabled = true);
-        }           
+        base.Start_Event();
         interactController.Start_Puzzle(this, create);
         ds.SetUI(false);
     }

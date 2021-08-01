@@ -16,7 +16,7 @@ public class Spell : MonoBehaviour, IPointerDownHandler
     bool onCooldown = false;
 
     public void Cast(Vector3 firePoint)
-    {   if (onCooldown)
+    {   if (onCooldown || !Interface.current.mana.SpellShot(manaCost))
             return;
         Instantiate(projectile, firePoint, Quaternion.identity);
         StartCoroutine(Cooldown());

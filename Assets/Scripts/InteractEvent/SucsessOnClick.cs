@@ -1,5 +1,5 @@
 ﻿
-public class StartNextLevel : InteractEvent
+public class SucsessOnClick : InteractEvent
 {
     public override void Start_Event()
     {

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Interface : MonoBehaviour
 {
     [SerializeField] protected Engine engine;
-    [SerializeField] Transform canvas;
+    public Transform canvas;
     public Inventory inventory;
     public Spellbook spellBook;
     public ManaCounter mana;

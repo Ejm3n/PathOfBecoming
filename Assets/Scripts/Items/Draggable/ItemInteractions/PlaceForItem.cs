@@ -9,6 +9,8 @@ public class PlaceForItem : MonoBehaviour
     [SerializeField] DialogueTrigger failDialog;
     [SerializeField] ItemExecusion[] interactWith;
 
+    bool attachedItem = false;
+
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonUp(0))
@@ -37,13 +39,14 @@ public class PlaceForItem : MonoBehaviour
 
     public void Place_Item(GameObject item)
     {
-        if (placePosition)
+        if (placePosition && !attachedItem)
             Instantiate(item, placePosition).GetComponent<Collectible>().Attach(this);
+        attachedItem = true;
     }
 
     public virtual void On_Detach()
     {
-
+        attachedItem = false;
     }
 }
 
