@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
-using GlobalVariables;
 
 public class Level1 : Engine
 {
     [Header("Other")]
     [SerializeField] GameObject startDialog;
 
+    const string LEVEL1MUSIC = "Sounds/Music/ForestTheme";
+    const string LEVEL1AMBIENT = "Sounds/Effects/forestambient";
+
 
     protected override void Awake()
     {
+        mainTheme = Resources.Load<AudioClip>(LEVEL1MUSIC);
+        ambient = Resources.Load<AudioClip>(LEVEL1AMBIENT);
         base.Awake();
-        mainTheme = Sounds.LEVEL1MUSIC;
-        ambient = Sounds.LEVEL1AMBIENT;
-        SoundRecorder.Play_Music(mainTheme);
-        SoundRecorder.Play_Ambient(ambient);
     }
 
     protected override void Start_Level()

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4399415857577670065}
   - component: {fileID: 4399415857577670070}
   - component: {fileID: 4399415857577670071}
-  - component: {fileID: 4399415857577670068}
+  - component: {fileID: 7420021214710636314}
   m_Layer: 0
   m_Name: Flower(collectible item)
   m_TagString: Untagged
@@ -109,7 +109,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72, y: 1.09}
   m_EdgeRadius: 0
---- !u!114 &4399415857577670068
+--- !u!114 &7420021214710636314
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,8 +118,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4399415857577670069}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa733606aa1e095498d96d3c54848d0c, type: 3}
+  m_Script: {fileID: 11500000, guid: c40f2e5f95206ee45b8f56b43ea1e939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slot: {fileID: 2379365570660116632, guid: 240d392467507774c97a77f45343a4cb, type: 3}
-  FilePath: Prefabs/Inventory & Items/FlowerImage
+  inventoryItem: {fileID: 2379365570660116632, guid: 240d392467507774c97a77f45343a4cb,
+    type: 3}

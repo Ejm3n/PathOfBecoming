@@ -77,6 +77,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 4861907623764894442}
+  segmentPrefab: {fileID: 353444439149029648, guid: be6413c752208ff4698681a793159f84,
+    type: 3}
 --- !u!1 &5901413493568986738
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,7 +147,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -134280985
-  m_SortingLayer: 2
+  m_SortingLayer: 7
   m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

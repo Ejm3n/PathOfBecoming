@@ -28,10 +28,10 @@ namespace GlobalVariables
 
     public static class Sounds
     {
-        public static AudioClip LEVEL1MUSIC = Resources.Load<AudioClip>("Sounds/Music/ForestTheme");
-        public static AudioClip LEVEL1AMBIENT = Resources.Load<AudioClip>("Sounds/Effects/forestambient");
-
         public static AudioClip[] PLAYERSTEPFORESTSOUNDS = Resources.LoadAll<AudioClip>("Sounds/Effects/Footsteps/Forest");
         public static AudioClip PLAYERJUMPSOUND = Resources.Load<AudioClip>("Sounds/Effects/Footsteps/jump");
+
+        public static AudioClip RIDDLESOUND = Resources.Load<AudioClip>("Sounds/Effects/Puzzle/riddle");
+        public static AudioClip SOLVESOUND = Resources.Load<AudioClip>("Sounds/Effects/Puzzle/solve");
     }
 }

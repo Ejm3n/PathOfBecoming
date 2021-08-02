@@ -74,6 +74,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 3512584021025385276}
   rayPoint: {fileID: 8984959415959244519}
+  segmentSprites:
+  - {fileID: 21300000, guid: 2f2af46eb9253934ab53f94b3da92678, type: 3}
+  - {fileID: 21300000, guid: 9783e22766f3d7d4e8cf365f5f580861, type: 3}
+  - {fileID: 21300000, guid: 61556d75baa2c16419ec4fefdaaf7357, type: 3}
+  - {fileID: 21300000, guid: 0e76eb7bd91965e449c709abfdfb33f4, type: 3}
+  - {fileID: 21300000, guid: 9e02c6f9cd1f89a40875a5acd512df4b, type: 3}
+  - {fileID: 21300000, guid: e6eecab3103344940acb0254488432e7, type: 3}
+  segmentSpritesHighlighted:
+  - {fileID: 21300000, guid: 2a664f52f5ef5f44f86519aaab6423ba, type: 3}
+  - {fileID: 21300000, guid: 743fc9ebaf8f6c24caa7d44f25c31e05, type: 3}
+  - {fileID: 21300000, guid: c8cee1e7a596b594da1b3365fff5ff90, type: 3}
+  - {fileID: 21300000, guid: 798e32eeb5eb6304b93007259b60fc86, type: 3}
+  - {fileID: 21300000, guid: 3894789f2ad1695448c8f0d735f40c25, type: 3}
+  - {fileID: 21300000, guid: b1bc0f59da7736343836fe62e74bc13d, type: 3}
 --- !u!1 &3386912073633317005
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +156,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -134280985
-  m_SortingLayer: 2
+  m_SortingLayer: 7
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 2f2af46eb9253934ab53f94b3da92678, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

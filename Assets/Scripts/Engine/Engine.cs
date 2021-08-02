@@ -82,6 +82,8 @@ public abstract class Engine : MonoBehaviour
     protected virtual void Awake()
     {
         current = this;
+        SoundRecorder.Play_Music(mainTheme);
+        SoundRecorder.Play_Ambient(ambient);
     }
 
     private void Start()

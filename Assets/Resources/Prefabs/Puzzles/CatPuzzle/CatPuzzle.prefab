@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -134280985
-  m_SortingLayer: 2
+  m_SortingLayer: 7
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 5b15d64ae8e1bda4cabf0e0762999900, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -188,6 +188,18 @@ MonoBehaviour:
   controller: {fileID: 4725832380263612632}
   height: 7
   width: 7
+  emptyChip: {fileID: 1630586211929627117, guid: ecb14d538544afe49a55b34378f1a636,
+    type: 3}
+  mouseChip: {fileID: 3872147245167363516, guid: af5d7cf90d97a1f4bb1cf259b5c4a271,
+    type: 3}
+  catChip: {fileID: 7896927704852494659, guid: ab2e88d48b2126c409faf9683c12e096, type: 3}
+  holeChip: {fileID: 3512313655254996632, guid: 1f8cdbb6c09659f41b275fb7957e7e4a,
+    type: 3}
+  mouseSprites:
+  - {fileID: 21300000, guid: 7ce9601d0bc5a464d8d576b181656822, type: 3}
+  - {fileID: 21300000, guid: b44304036c98f3344bbd00d6adc1e724, type: 3}
+  - {fileID: 21300000, guid: b1f75a08e8ba32d4484be2c6a99ce33e, type: 3}
+  - {fileID: 21300000, guid: b57a72e3e229c064fb2581dc9b625d3e, type: 3}
 --- !u!1 &6781495670207286724
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +312,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -134280985
-  m_SortingLayer: 2
+  m_SortingLayer: 7
   m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: dcaa8f6efab424b4e98ed1d08e2fde92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using GlobalVariables.PuzzleVariables;
 
 public class PlayField : MonoBehaviour
 {
@@ -9,12 +8,17 @@ public class PlayField : MonoBehaviour
     [SerializeField] int height;
     [SerializeField] int width;
 
+    [SerializeField] GameObject emptyChip;
+    [SerializeField] GameObject mouseChip;
+    [SerializeField] GameObject catChip;
+    [SerializeField] GameObject holeChip;
+
+    [SerializeField] List<Sprite> mouseSprites;
+
     public static Queue<QueueItem> queue = new Queue<QueueItem>();
 
     Chip[,] chips;
     Vector3[,] chipPositions;
-
-    List<Sprite> mouseSprites = new List<Sprite>();
 
     int winCondition;
     int miceInHole = 0;
@@ -26,7 +30,6 @@ public class PlayField : MonoBehaviour
         fieldFrame = GetComponent<BoxCollider2D>();
         fieldFrame.size = new Vector2(width, height);
         gameObject.transform.localScale = new Vector3(height, width, 1);
-        mouseSprites.AddRange(Sprites.MICESPRITES);
 
         Initialise_Field();
     }
@@ -69,7 +72,7 @@ public class PlayField : MonoBehaviour
         else //mouse adjacent to hole
         {
             miceInHole += 1;
-            Transform_Chip<Chip>(targetIndex, Prefabs.CHIPPREFAB);
+            Transform_Chip<Chip>(targetIndex, emptyChip);
             Check_Win_Condition();
         }
     }
@@ -168,30 +171,30 @@ public class PlayField : MonoBehaviour
                 //spawn chips
                 if (mouseSpawn.Count > 0 && i == mouseSpawn[0][0] && j == mouseSpawn[0][1]) //MouseChip
                 {
-                    clone = Instantiate(Prefabs.MOUSECHIPPREFAB, chipPositions[i, j], Quaternion.identity, transform.parent);
+                    clone = Instantiate(mouseChip, chipPositions[i, j], Quaternion.identity, transform.parent);
                     clone.transform.localPosition = chipPositions[i, j];
-                    MouseChip mouseChip = clone.GetComponent<MouseChip>();
-                    mouseChip.Initialise(mouseSprites[0]);
+                    MouseChip mouseChipScript = clone.GetComponent<MouseChip>();
+                    mouseChipScript.Initialise(mouseSprites[0]);
                     mouseSprites.RemoveAt(0);
-                    chips[i, j] = mouseChip;
+                    chips[i, j] = mouseChipScript;
                     mouseSpawn.RemoveAt(0);
                 }
                 else if (catSpawn.Count > 0 && i == catSpawn[0][0] && j == catSpawn[0][1]) //CatChip
                 {
-                    clone = Instantiate(Prefabs.CATCHIPPREFAB, chipPositions[i, j], Quaternion.identity, transform.parent);
+                    clone = Instantiate(catChip, chipPositions[i, j], Quaternion.identity, transform.parent);
                     clone.transform.localPosition = chipPositions[i, j];
                     chips[i, j] = clone.GetComponent<CatChip>();
                     catSpawn.RemoveAt(0);
                 }
                 else if (i == center[0] && j == center[1]) //HoleChip
                 {
-                    clone = Instantiate(Prefabs.HOLECHIPPREFAB, chipPositions[i, j], Quaternion.identity, transform.parent);
+                    clone = Instantiate(holeChip, chipPositions[i, j], Quaternion.identity, transform.parent);
                     clone.transform.localPosition = chipPositions[i, j];
                     chips[i, j] = clone.GetComponent<HoleChip>();
                 }
                 else //Chip
                 {
-                    clone = Instantiate(Prefabs.CHIPPREFAB, chipPositions[i, j], Quaternion.identity, transform.parent);
+                    clone = Instantiate(emptyChip, chipPositions[i, j], Quaternion.identity, transform.parent);
                     clone.transform.localPosition = chipPositions[i, j];
                     chips[i, j] = clone.GetComponent<Chip>();
                 }

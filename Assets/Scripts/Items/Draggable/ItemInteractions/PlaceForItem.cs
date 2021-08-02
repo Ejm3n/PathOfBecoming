@@ -40,8 +40,12 @@ public class PlaceForItem : MonoBehaviour
     public void Place_Item(GameObject item)
     {
         if (placePosition && !attachedItem)
-            Instantiate(item, placePosition).GetComponent<Collectible>().Attach(this);
-        attachedItem = true;
+        {
+            GameObject clone = Instantiate(item, placePosition);
+            if (clone.TryGetComponent(out Collectible staff))
+                staff.Attach(this);
+            attachedItem = true;
+        }
     }
 
     public virtual void On_Detach()

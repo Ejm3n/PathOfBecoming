@@ -5,6 +5,8 @@ using UnityEngine.Events;
 public class MiniLocation : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera locationCamera;
+    [SerializeField] Transform locationEntrance;
+    [SerializeField] Transform locationExit;
     [SerializeField] UnityEvent onEnter;
     [SerializeField] UnityEvent onExit;
 
@@ -14,6 +16,10 @@ public class MiniLocation : MonoBehaviour
     {
         engine = Engine.current;
         engine.dialogueSystem.SetUI(false);
+        if (locationEntrance)
+            onEnter.AddListener(() => Move_Player(locationEntrance));
+        if(locationExit)
+            onExit.AddListener(() => Move_Player(locationExit));
         engine.Hide_Scene(On_Enter);
     }
 
@@ -23,16 +29,21 @@ public class MiniLocation : MonoBehaviour
         engine.Hide_Scene(On_Exit);
     }
 
-    protected virtual void On_Enter()
+    protected void On_Enter()
     {
         locationCamera.Priority = 11;
         engine.Show_Scene(() => onEnter?.Invoke());
     }
 
-    protected virtual void On_Exit()
+    protected void On_Exit()
     {
         locationCamera.Priority = 1;
         engine.Show_Scene(() => onExit?.Invoke());
         Destroy(gameObject);
+    }
+
+    public void Move_Player(Transform place)
+    {
+        engine.player.transform.position = place.position;
     }
 }
