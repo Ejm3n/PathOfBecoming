@@ -18,8 +18,6 @@ public class MiniLocation : MonoBehaviour
         engine.dialogueSystem.SetUI(false);
         if (locationEntrance)
             onEnter.AddListener(() => Move_Player(locationEntrance));
-        if(locationExit)
-            onExit.AddListener(() => Move_Player(locationExit));
         engine.Hide_Scene(On_Enter);
     }
 
@@ -38,8 +36,14 @@ public class MiniLocation : MonoBehaviour
     protected void On_Exit()
     {
         locationCamera.Priority = 1;
-        engine.Show_Scene(() => onExit?.Invoke());
-        Destroy(gameObject);
+        if (locationExit)
+            Move_Player(locationExit);
+        engine.Show_Scene(Invoke_Exit);
+    }
+
+    void Invoke_Exit()
+    {
+        onExit?.Invoke();
     }
 
     public void Move_Player(Transform place)

@@ -76,6 +76,11 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
+    public void Add_to_Inventory_Trigger(GameObject item)
+    {
+        Add_To_Inventory(item);
+    }
+
     public bool Remove_From_Inventory(Item item)
     {
         int itemIndex = Get_Item_Index(item);
@@ -85,6 +90,11 @@ public class Inventory : MonoBehaviour
         SlotDropped(itemIndex);
         Sort_Inventory();
         return true;
+    }
+
+    public void Remove_From_Inventory_Trigger(GameObject item)
+    {
+        Remove_From_Inventory(item.GetComponent<Item>());
     }
 
     public bool Remove_From_Inventory(Type type, bool force = false)
