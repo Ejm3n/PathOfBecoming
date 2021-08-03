@@ -1,23 +1,20 @@
 ﻿using UnityEngine;
-using GlobalVariables;
 
 public class PlayerAnimator : MonoBehaviour
 {
-
     private Animator anim;
     private float walk;
     private PlayerController PC;
 
     AudioClip[] steps;
-
     AudioClip jump;
 
     void Start()
     {
         PC = transform.parent.GetComponent<PlayerController>();
         anim = GetComponent<Animator>();
-        steps = Sounds.PLAYERSTEPFORESTSOUNDS;
-        jump = Sounds.PLAYERJUMPSOUND;
+        steps = Resources.LoadAll<AudioClip>("Sounds/Effects/Footsteps/Forest");
+        jump = Resources.Load<AudioClip>("Sounds/Effects/Footsteps/jump");
     }
 
     public void Step()

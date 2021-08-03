@@ -59,15 +59,15 @@ public abstract class Engine : MonoBehaviour
 
     protected void Spawn_Characters()
     {
-        player = Instantiate(Prefabs.PLAYER, playerStartPosition.position, playerStartPosition.rotation, transform);
-        fairy = Instantiate(Prefabs.FAIRY, fairyStartPosition.position, fairyStartPosition.rotation, transform);
-        Initialise();
+        Spawn_Characters(playerStartPosition.position, fairyStartPosition.position);
     }
 
     protected void Spawn_Characters(Vector3 playerPosition, Vector3 fairyPosition)
     {
-        player = Instantiate(Prefabs.PLAYER, playerPosition, Quaternion.identity, transform);
-        fairy = Instantiate(Prefabs.FAIRY, fairyPosition, Quaternion.identity, transform);
+        GameObject player = Resources.Load<GameObject>("Prefabs/Characters/Player");
+        GameObject fairy = Resources.Load<GameObject>("Prefabs/Characters/Fairy");
+        this.player = Instantiate(player, playerPosition, Quaternion.identity);
+        this.fairy = Instantiate(fairy, fairyPosition, Quaternion.identity);
         Initialise();
     }
 
