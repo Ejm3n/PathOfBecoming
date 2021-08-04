@@ -7,11 +7,18 @@ public class Chip : MonoBehaviour
     protected static bool chipMoving = false;
     protected int[] index;
 
+    protected PlayField field;
+
     const float EPS = 0.001f;
 
     private void Awake()
     {
         chipMoving = false;
+    }
+
+    public void Initialise(PlayField field)
+    {
+        this.field = field;
     }
 
     public virtual void Move(Vector3 target, int[] index)
@@ -32,8 +39,8 @@ public class Chip : MonoBehaviour
         float speed = distance / time;
         while ((target - gameObject.transform.localPosition).sqrMagnitude > EPS)
         {
-            gameObject.transform.localPosition = Vector3.MoveTowards(gameObject.transform.localPosition, target, speed * Time.fixedUnscaledDeltaTime);
-            yield return new WaitForSecondsRealtime(Time.fixedUnscaledDeltaTime);
+            gameObject.transform.localPosition = Vector3.MoveTowards(gameObject.transform.localPosition, target, speed * Time.fixedDeltaTime);
+            yield return new WaitForFixedUpdate();
         }
         chipMoving = false;
     }
@@ -41,6 +48,6 @@ public class Chip : MonoBehaviour
     private void OnMouseDown()
     {
         if (!chipMoving && Input.GetMouseButtonDown(0))
-            PlayField.queue.Enqueue(new QueueItem(index, null));
+            field.queue.Enqueue(new QueueItem(index, null));
     }
 }

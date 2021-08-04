@@ -112,9 +112,15 @@ namespace AnimationUtils
     public class CoroutineLoader : MonoBehaviour
     {
         #region Change_Transparency
+
+        Coroutine transparencyRendererCoroutine;
+        Coroutine transparencyImageCoroutine;
         public Coroutine Start_Change_Transparency(SpriteRenderer renderer, bool makeTransparent, float processTime, bool timeScale = true, Action onComplete = null)
         {
-            return StartCoroutine(Change_Transparency(renderer, makeTransparent, processTime, timeScale, onComplete));
+            if (transparencyRendererCoroutine != null)
+                StopCoroutine(transparencyRendererCoroutine);
+            transparencyRendererCoroutine = StartCoroutine(Change_Transparency(renderer, makeTransparent, processTime, timeScale, onComplete));
+            return transparencyRendererCoroutine;
         }
 
         IEnumerator Change_Transparency(SpriteRenderer renderer, bool makeTransparent, float processTime, bool timeScale = true, Action onComplete = null)
@@ -135,7 +141,10 @@ namespace AnimationUtils
 
         public Coroutine Start_Change_Transparency(Image image, bool makeTransparent, float processTime, bool timeScale = true, Action onComplete = null)
         {
-            return StartCoroutine(Change_Transparency(image, makeTransparent, processTime, timeScale, onComplete));
+            if (transparencyImageCoroutine != null)
+                StopCoroutine(transparencyImageCoroutine);
+            transparencyImageCoroutine = StartCoroutine(Change_Transparency(image, makeTransparent, processTime, timeScale, onComplete));
+            return transparencyImageCoroutine;
         }
 
         IEnumerator Change_Transparency(Image image, bool makeTransparent, float processTime, bool timeScale = true, Action onComplete = null)
@@ -210,13 +219,18 @@ namespace AnimationUtils
         #endregion Curved_Rotation
 
         #region Slide
+
+        bool sliding = false;
         public Coroutine Start_Slide(Transform transform, Vector3 target, float processTime, bool timeScale = true, Action onComplete = null)
         {
+            if (sliding)
+                return null;
             return StartCoroutine(Slide(transform, target, processTime, timeScale, onComplete));
         }
 
         IEnumerator Slide(Transform transform, Vector3 target, float processTime, bool timeScale = true, Action onComplete = null)
         {
+            sliding = true;
             const float EPS = 0.0001f;
             float timetoWait = timeScale ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime;
             Vector3 iter = (target - transform.position) / processTime;
@@ -229,6 +243,7 @@ namespace AnimationUtils
                     yield return new WaitForSecondsRealtime(timetoWait);
             }
             onComplete?.Invoke();
+            sliding = false;
         }
         #endregion
     }

@@ -94,7 +94,7 @@ public class Inventory : MonoBehaviour
 
     public void Remove_From_Inventory_Trigger(GameObject item)
     {
-        Remove_From_Inventory(item.GetComponent<Item>());
+        Remove_From_Inventory(item.GetComponent<Item>().GetType(), true);
     }
 
     public bool Remove_From_Inventory(Type type, bool force = false)
@@ -112,7 +112,7 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < inventoryList.Count; i++)
             if (inventoryList[i].GetType() == type && 
-                (inventoryList[i].amount < inventoryList[i].stack ^ force))
+                (inventoryList[i].amount < inventoryList[i].stack || force))
                 return i;
         return -1;
     }

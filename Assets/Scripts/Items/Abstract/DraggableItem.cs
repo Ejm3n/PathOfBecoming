@@ -40,5 +40,5 @@ public abstract class DraggableItem : Item, IBeginDragHandler, IEndDragHandler, 
 public enum Items
 {
     //List of draggable Items
-    Spider, Box, EmptyBox, Desk, DoorKey, Plate
+    Spider, Box, EmptyBox, DoorKey, Plate
 }

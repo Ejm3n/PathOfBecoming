@@ -15,7 +15,8 @@ public abstract class Engine : MonoBehaviour
     [SerializeField] protected Interface userInterface;
     [SerializeField] protected Image curtain;
     [SerializeField] CinemachineVirtualCamera playerCamera;
-    [SerializeField] public DialogueSystem dialogueSystem;
+    public DialogueSystem dialogueSystem;
+    public PuzzleController puzzleController;
     public GameSettings gameSettings;
 
     [Header("Start Positions")]
@@ -51,9 +52,9 @@ public abstract class Engine : MonoBehaviour
         Spawn_Characters(data.playerData.lastCheckpoint.Convert_to_UnityVector(), data.fairyData.checkPoint.Convert_to_UnityVector());
         playerController.Load_State(data.playerData);
         fairyController.Load_State(data.fairyData);
-        dialogueSystem.Load_State(data.checkpointIndex);
         userInterface.inventory.LoadInventoryData(data.inventoryData);
         userInterface.spellBook.Load_State(data.spellBookData);
+        dialogueSystem.Load_State(data.checkpointIndex);
         Show_Scene(() => dialogueSystem.SetUI(true));
     }
 

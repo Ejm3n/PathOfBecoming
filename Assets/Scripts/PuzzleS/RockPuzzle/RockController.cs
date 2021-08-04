@@ -8,7 +8,6 @@ public class RockController : MonoBehaviour
     [SerializeField] GameObject[] whatToDelete;
     [Header ("Вписать дефолтную высоту от 1 до 4")]
     [SerializeField] int[] rockLevelChecker;
-    [SerializeField] HintMap hintMap;
     [HideInInspector] public bool ended;
     bool playerNear = false;
 
@@ -22,7 +21,6 @@ public class RockController : MonoBehaviour
                     Destroy(whatToDelete[i]);
             }
             Debug.Log("ПОБЕДА");
-            hintMap.Stop_Highlight();
             ended = true;
             Destroy(gameObject);
         }

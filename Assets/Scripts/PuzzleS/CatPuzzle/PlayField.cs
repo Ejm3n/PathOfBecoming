@@ -15,7 +15,7 @@ public class PlayField : MonoBehaviour
 
     [SerializeField] List<Sprite> mouseSprites;
 
-    public static Queue<QueueItem> queue = new Queue<QueueItem>();
+    public Queue<QueueItem> queue = new Queue<QueueItem>();
 
     Chip[,] chips;
     Vector3[,] chipPositions;
@@ -34,7 +34,7 @@ public class PlayField : MonoBehaviour
         Initialise_Field();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Check_Queue(queue);
     }
@@ -111,7 +111,9 @@ public class PlayField : MonoBehaviour
         Destroy(chips[index[0], index[1]].gameObject);
         clone = Instantiate(prefab, chipPositions[index[0], index[1]], Quaternion.identity, transform.parent);
         clone.transform.localPosition = chipPositions[index[0], index[1]];
-        chips[index[0], index[1]] = clone.GetComponent<T>();
+        T chip = clone.GetComponent<T>();
+        chip.Initialise(this);
+        chips[index[0], index[1]] = chip;
         chips[index[0], index[1]].Set_Index(index);
     }
 
@@ -142,6 +144,8 @@ public class PlayField : MonoBehaviour
 
         Collider2D coll;
         GameObject clone;
+
+        Chip chipScript;
 
         for (int i = 0; i < height; i++)
         {
@@ -174,7 +178,7 @@ public class PlayField : MonoBehaviour
                     clone = Instantiate(mouseChip, chipPositions[i, j], Quaternion.identity, transform.parent);
                     clone.transform.localPosition = chipPositions[i, j];
                     MouseChip mouseChipScript = clone.GetComponent<MouseChip>();
-                    mouseChipScript.Initialise(mouseSprites[0]);
+                    mouseChipScript.Initialise(mouseSprites[0], this);
                     mouseSprites.RemoveAt(0);
                     chips[i, j] = mouseChipScript;
                     mouseSpawn.RemoveAt(0);
@@ -183,20 +187,26 @@ public class PlayField : MonoBehaviour
                 {
                     clone = Instantiate(catChip, chipPositions[i, j], Quaternion.identity, transform.parent);
                     clone.transform.localPosition = chipPositions[i, j];
-                    chips[i, j] = clone.GetComponent<CatChip>();
+                    chipScript = clone.GetComponent<Chip>();
+                    chipScript.Initialise(this);
+                    chips[i, j] = chipScript;
                     catSpawn.RemoveAt(0);
                 }
                 else if (i == center[0] && j == center[1]) //HoleChip
                 {
                     clone = Instantiate(holeChip, chipPositions[i, j], Quaternion.identity, transform.parent);
                     clone.transform.localPosition = chipPositions[i, j];
-                    chips[i, j] = clone.GetComponent<HoleChip>();
+                    chipScript = clone.GetComponent<Chip>();
+                    chipScript.Initialise(this);
+                    chips[i, j] = chipScript;
                 }
                 else //Chip
                 {
                     clone = Instantiate(emptyChip, chipPositions[i, j], Quaternion.identity, transform.parent);
                     clone.transform.localPosition = chipPositions[i, j];
-                    chips[i, j] = clone.GetComponent<Chip>();
+                    chipScript = clone.GetComponent<Chip>();
+                    chipScript.Initialise(this);
+                    chips[i, j] = chipScript;
                 }
                 chips[i, j].Set_Index(new int[] { i, j });
             }

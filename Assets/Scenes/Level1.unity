@@ -856,7 +856,7 @@ PrefabInstance:
     - target: {fileID: 6303547240790361204, guid: 64a2ffcfc63e52b4f9370fa97c5696c8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6303547240790361204, guid: 64a2ffcfc63e52b4f9370fa97c5696c8,
         type: 3}
@@ -1457,6 +1457,7 @@ MonoBehaviour:
   curtain: {fileID: 1915557855}
   playerCamera: {fileID: 523860747}
   dialogueSystem: {fileID: 2369979692232838263}
+  puzzleController: {fileID: 407603182}
   gameSettings:
     soundSettings:
       musicVolume: 1
@@ -1608,10 +1609,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
-  interactController: {fileID: 407603182}
   puzzle: {fileID: 399709785}
   create: 0
-  ds: {fileID: 2369979692232838263}
 --- !u!61 &153583970
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1786,7 +1785,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2024,7 +2023,6 @@ MonoBehaviour:
   - {fileID: 1167144734}
   whatToDelete: []
   rockLevelChecker: 00000000020000000200000003000000
-  hintMap: {fileID: 0}
   ended: 0
 --- !u!61 &209452421
 BoxCollider2D:
@@ -2615,7 +2613,6 @@ Transform:
   m_LocalPosition: {x: -4.7017574, y: -1.2726517, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 516944995}
   - {fileID: 365074302}
   m_Father: {fileID: 575568316}
   m_RootOrder: 11
@@ -8936,13 +8933,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 2369979692232838263}
+        m_MethodName: SetUI
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6739158385195757003}
+        m_MethodName: Add_to_Inventory_Trigger
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1306065675522992209, guid: d8c2019dd3632004492bf419efbf2401,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onFail:
     m_PersistentCalls:
       m_Calls: []
-  interactController: {fileID: 0}
   puzzle: {fileID: 7151812354627702719, guid: 413a5e462b74c094bab8ad836650e7a8, type: 3}
   create: 1
-  ds: {fileID: 0}
 --- !u!61 &482151851
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9265,12 +9283,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516944994}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.7017574, y: -1.2726517, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1426873265}
-  m_Father: {fileID: 279978345}
-  m_RootOrder: 0
+  m_Father: {fileID: 986751013}
+  m_RootOrder: 54
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &518888377
 GameObject:
@@ -9704,10 +9722,43 @@ MonoBehaviour:
   locationExit: {fileID: 191294041}
   onEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2369979692232838263}
+        m_MethodName: SetUI
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onExit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2369979692232838263}
+        m_MethodName: SetUI
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 901544933}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &540705512
 Transform:
   m_ObjectHideFlags: 0
@@ -9716,7 +9767,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540705510}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.11, y: -19.75, z: 43.963707}
+  m_LocalPosition: {x: 13.11, y: -19.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 702932951}
@@ -10260,6 +10311,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1239187842}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &575568315
 GameObject:
   m_ObjectHideFlags: 0
@@ -10801,12 +10863,12 @@ PrefabInstance:
     - target: {fileID: 1103437098965219298, guid: 805e9bd3b2924d845878f0524e72ce48,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1103437098965219298, guid: 805e9bd3b2924d845878f0524e72ce48,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.5
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 1103437098965219298, guid: 805e9bd3b2924d845878f0524e72ce48,
         type: 3}
@@ -11040,10 +11102,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  interactController: {fileID: 0}
   puzzle: {fileID: 6781495670207286724, guid: 90e823ff4a6872840b7dc5049fff576b, type: 3}
   create: 1
-  ds: {fileID: 0}
 --- !u!1 &666587973
 GameObject:
   m_ObjectHideFlags: 0
@@ -11608,7 +11668,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &762807890
 Transform:
   m_ObjectHideFlags: 0
@@ -11646,6 +11706,28 @@ MonoBehaviour:
       - m_Target: {fileID: 482151849}
         m_MethodName: Open_Door
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 901544933}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 762807892}
+        m_MethodName: set_enabled
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13832,6 +13914,7 @@ Transform:
   - {fileID: 799286233}
   - {fileID: 1540698734}
   - {fileID: 525940256}
+  - {fileID: 516944995}
   m_Father: {fileID: 995157281}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15135,7 +15218,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1105468850}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -15946,6 +16029,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1105468852}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onExit:
     m_PersistentCalls:
       m_Calls:
@@ -16476,7 +16570,7 @@ MonoBehaviour:
   placePosition: {fileID: 0}
   failDialog: {fileID: 0}
   interactWith:
-  - item: 3
+  - item: 4
     execution:
       m_PersistentCalls:
         m_Calls:
@@ -16593,12 +16687,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239187839}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.15, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.08599923, z: 0}
+  m_LocalScale: {x: 0.7706413, y: 0.5733296, z: 0.72716695}
   m_Children:
   - {fileID: 1199905181}
-  m_Father: {fileID: 1444896734}
-  m_RootOrder: 1
+  m_Father: {fileID: 1445856833}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1239187841
 MonoBehaviour:
@@ -16615,7 +16709,7 @@ MonoBehaviour:
   placePosition: {fileID: 1199905181}
   failDialog: {fileID: 0}
   interactWith:
-  - item: 4
+  - item: 3
     execution:
       m_PersistentCalls:
         m_Calls:
@@ -17630,6 +17724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1361495979}
   - component: {fileID: 1361495981}
+  - component: {fileID: 1361495980}
   m_Layer: 12
   m_Name: MovingToCaveCollider
   m_TagString: Untagged
@@ -17651,6 +17746,35 @@ Transform:
   m_Father: {fileID: 522185718}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1361495980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361495978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101981fb8d9cfa6468508a8012765e20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 540705511}
+        m_MethodName: Enter_Location
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1361495981
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17835,7 +17959,7 @@ RectTransform:
   m_Children:
   - {fileID: 783114766}
   m_Father: {fileID: 4096867036808471593}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17950,7 +18074,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390159710}
-  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -17959,8 +18083,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 700.1699, y: -386}
-  m_SizeDelta: {x: 161.27884, y: 161.27884}
+  m_AnchoredPosition: {x: 842, y: -418}
+  m_SizeDelta: {x: 161, y: 161}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1390159712
 MonoBehaviour:
@@ -18371,7 +18495,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1445856833}
-  - {fileID: 1239187840}
   m_Father: {fileID: 215571218}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18468,7 +18591,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.2976204, y: 1.7441975, z: 1.3752}
-  m_Children: []
+  m_Children:
+  - {fileID: 1239187840}
   m_Father: {fileID: 1444896734}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18845,7 +18969,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1457493058}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -44.4, y: 5.9, z: 0}
+  m_LocalPosition: {x: -51.4, y: 5.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2369979692232838256}
@@ -18868,6 +18992,17 @@ MonoBehaviour:
   onTrigger:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1757194722}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 1757194722}
         m_MethodName: SetActive
         m_Mode: 6
@@ -20520,10 +20655,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  interactController: {fileID: 407603182}
   puzzle: {fileID: 4342615957535141557, guid: 22a39dab64a70b245af8cc178535c242, type: 3}
   create: 1
-  ds: {fileID: 2369979692232838263}
 --- !u!61 &1584898149
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20784,7 +20917,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1594078765}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32, y: 31.5, z: 0}
+  m_LocalPosition: {x: -32, y: 28.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1195008123}
@@ -21896,7 +22029,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1757194723
 Transform:
   m_ObjectHideFlags: 0
@@ -22356,82 +22489,6 @@ MonoBehaviour:
   onTrigger:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &1914253440
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1914253441}
-  - component: {fileID: 1914253443}
-  - component: {fileID: 1914253442}
-  m_Layer: 0
-  m_Name: TapOnCat
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1914253441
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914253440}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1947335891}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1914253442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914253440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80465db8b36e1de4f95e06beb489688f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  catSr: {fileID: 1947335892}
-  Awakesprite: {fileID: 21300000, guid: 589d25d35e8ba4741a2d49b6909f3df9, type: 3}
-  nextTriggersAfterTaps:
-  - {fileID: 0}
-  - {fileID: 0}
-  hintMap: {fileID: 0}
---- !u!61 &1914253443
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914253440}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.46139908, y: 0.6500895}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 9.388336, y: 4.9844327}
-  m_EdgeRadius: 0
 --- !u!114 &1915557855 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 740394310156016171, guid: 64a2ffcfc63e52b4f9370fa97c5696c8,
@@ -22502,8 +22559,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.19592, y: 0.19592, z: 0.19592}
-  m_Children:
-  - {fileID: 1914253441}
+  m_Children: []
   m_Father: {fileID: 659300950}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26820,9 +26876,9 @@ RectTransform:
   - {fileID: 1854690394}
   - {fileID: 342839217}
   - {fileID: 631509722}
+  - {fileID: 1380434790}
   - {fileID: 1335615307}
   - {fileID: 8146046557226223223}
-  - {fileID: 1380434790}
   m_Father: {fileID: 8774911723089006729}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -27440,7 +27496,7 @@ PrefabInstance:
     - target: {fileID: 5744639958034896453, guid: bdcf51778476edc43b612439dd0208c6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5744639958034896453, guid: bdcf51778476edc43b612439dd0208c6,
         type: 3}
