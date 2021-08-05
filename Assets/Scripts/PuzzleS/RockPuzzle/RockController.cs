@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RockController : MonoBehaviour
 {
     [SerializeField] Transform[] rocks;
-    [SerializeField] GameObject[] whatToDelete;
+    [SerializeField] HintMap hintMap;
     [Header ("Вписать дефолтную высоту от 1 до 4")]
     [SerializeField] int[] rockLevelChecker;
     [HideInInspector] public bool ended;
@@ -15,13 +13,9 @@ public class RockController : MonoBehaviour
     {
         if (rockLevelChecker[0] == 3 && rockLevelChecker[1] == 2 && rockLevelChecker[2] == 1 && rockLevelChecker[3] == 0)
         {
-            for (int i = 0; i < whatToDelete.Length; i++)
-            {
-                if (whatToDelete != null)
-                    Destroy(whatToDelete[i]);
-            }
             Debug.Log("ПОБЕДА");
             ended = true;
+            hintMap.Stop_Highlight();
             Destroy(gameObject);
         }
     }

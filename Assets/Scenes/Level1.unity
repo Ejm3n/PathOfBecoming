@@ -1770,6 +1770,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 329633384}
+        m_MethodName: Highlight
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 9
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onFail:
     m_PersistentCalls:
       m_Calls: []
@@ -2021,7 +2032,7 @@ MonoBehaviour:
   - {fileID: 594971503}
   - {fileID: 261867960}
   - {fileID: 1167144734}
-  whatToDelete: []
+  hintMap: {fileID: 329633384}
   rockLevelChecker: 00000000020000000200000003000000
   ended: 0
 --- !u!61 &209452421
@@ -2058,10 +2069,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209452419}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.406595, y: 2.1639156, z: 13.51}
+  m_LocalPosition: {x: 3.8434048, y: 1.8139156, z: 13.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 575568316}
+  m_Father: {fileID: 343349462}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &215571217
@@ -2094,7 +2105,7 @@ Transform:
   - {fileID: 1444896734}
   - {fileID: 659300950}
   m_Father: {fileID: 575568316}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &245544097
 GameObject:
@@ -2615,7 +2626,7 @@ Transform:
   m_Children:
   - {fileID: 365074302}
   m_Father: {fileID: 575568316}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &285242474
 GameObject:
@@ -2868,6 +2879,24 @@ MonoBehaviour:
   - id: 6
     objectToHighlight: {fileID: 905297473}
     highlightDelay: 0
+  - id: 7
+    objectToHighlight: {fileID: 1539810224}
+    highlightDelay: 60
+  - id: 8
+    objectToHighlight: {fileID: 181543496}
+    highlightDelay: 60
+  - id: 9
+    objectToHighlight: {fileID: 1230830099}
+    highlightDelay: 60
+  - id: 10
+    objectToHighlight: {fileID: 1013882225}
+    highlightDelay: 60
+  - id: 11
+    objectToHighlight: {fileID: 1947335892}
+    highlightDelay: 60
+  - id: 12
+    objectToHighlight: {fileID: 1445856832}
+    highlightDelay: 60
 --- !u!1 &335096729
 GameObject:
   m_ObjectHideFlags: 0
@@ -7731,8 +7760,9 @@ Transform:
   - {fileID: 261867960}
   - {fileID: 594971503}
   - {fileID: 493143333}
+  - {fileID: 209452422}
   m_Father: {fileID: 575568316}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &346616783
 GameObject:
@@ -7798,7 +7828,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 575568316}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &364295548
 BoxCollider2D:
@@ -9519,7 +9549,7 @@ Transform:
   - {fileID: 482151848}
   - {fileID: 1361495979}
   m_Father: {fileID: 575568316}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &523860745
 GameObject:
@@ -9733,6 +9763,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 329633384}
+        m_MethodName: Highlight
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 8
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onExit:
     m_PersistentCalls:
       m_Calls:
@@ -9835,6 +9876,17 @@ MonoBehaviour:
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 329633384}
+        m_MethodName: Highlight
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -10356,7 +10408,6 @@ Transform:
   - {fileID: 693632502}
   - {fileID: 59471930}
   - {fileID: 2061547665}
-  - {fileID: 209452422}
   - {fileID: 343349462}
   - {fileID: 215571218}
   - {fileID: 522185718}
@@ -11088,6 +11139,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 329633384}
+        m_MethodName: Highlight
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 12
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onFail:
     m_PersistentCalls:
       m_Calls:
@@ -11699,7 +11761,18 @@ MonoBehaviour:
   endOfThisDia: 88
   onTrigger:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 329633384}
+        m_MethodName: Highlight
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onCheckpoint:
     m_PersistentCalls:
       m_Calls:
@@ -13073,6 +13146,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1195008125}
         m_MethodName: Enter_Location
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 329633384}
+        m_MethodName: Stop_Highlight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16585,6 +16669,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 329633384}
+          m_MethodName: Stop_Highlight
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!61 &1230830098
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16739,6 +16834,17 @@ MonoBehaviour:
         - m_Target: {fileID: 1239187842}
           m_MethodName: set_enabled
           m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 329633384}
+          m_MethodName: Stop_Highlight
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -19010,6 +19116,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 329633384}
+        m_MethodName: Highlight
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 11
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
