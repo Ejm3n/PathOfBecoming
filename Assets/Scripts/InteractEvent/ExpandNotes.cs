@@ -10,6 +10,7 @@ public class ExpandNotes : InteractEvent
         coll.enabled = false;
         onSuccess.AddListener(() => coll.enabled = true);
 
+        Engine.current.dialogueSystem.SetUI(false);
         GameObject clone = Instantiate(expandedNote, Interface.current.canvas);
         Button onClose = clone.GetComponent<Button>();
         onClose.onClick.AddListener(On_Expanded_Closed);
@@ -17,6 +18,7 @@ public class ExpandNotes : InteractEvent
 
     void On_Expanded_Closed()
     {
+        Engine.current.dialogueSystem.SetUI(true);
         onSuccess?.Invoke();
     }
 }
