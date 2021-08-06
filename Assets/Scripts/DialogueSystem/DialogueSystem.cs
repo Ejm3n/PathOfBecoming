@@ -124,6 +124,11 @@ public class DialogueSystem : MonoBehaviour
         DisplayNextLine();
     }
 
+    public void StartDialogue(Dialogue dialogue, UnityEvent onComplete)
+    {
+        StartDialogue(dialogue.startStringId, dialogue.endStringId, onComplete);
+    }
+
     public void DisplayNextLine()//показать следущую строку
     {
         if(!isDialogueTyping)
