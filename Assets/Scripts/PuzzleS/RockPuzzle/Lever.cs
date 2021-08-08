@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Lever : InteractEvent
 {
@@ -10,7 +8,9 @@ public class Lever : InteractEvent
     [SerializeField] RockController RC;
     public override void Start_Event()
     {
-        RC.ChangeRockPositions(rockUp, rockDown);
+        Debug.Log("PRESSED ON BRANCH & down - " + rockDown + " up - " + rockUp);
+        if(!RC.ended)
+            RC.ChangeRockPositions(rockUp, rockDown);
     }
     
 }

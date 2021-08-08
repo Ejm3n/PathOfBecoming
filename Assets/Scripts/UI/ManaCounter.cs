@@ -28,9 +28,13 @@ public class ManaCounter : MonoBehaviour
             }  
         }       
     }
-    public void SpellShot(float manaCost)
+    public bool SpellShot(float manaCost)
     {
+        if (currentMana < manaCost)
+            return false;
+
         currentMana -= manaCost;
         manaBar.fillAmount = currentMana / startMana;
+        return true;
     }
 }

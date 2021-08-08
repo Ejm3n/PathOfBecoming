@@ -1,14 +1,24 @@
 ﻿using UnityEngine;
-using AnimationUtils.ImageUtils;
 
 public class Level1 : Engine
 {
     [Header("Other")]
     [SerializeField] GameObject startDialog;
 
+    const string LEVEL1MUSIC = "Sounds/Music/ForestTheme";
+    const string LEVEL1AMBIENT = "Sounds/Effects/forestambient";
+
+
+    protected override void Awake()
+    {
+        mainTheme = Resources.Load<AudioClip>(LEVEL1MUSIC);
+        ambient = Resources.Load<AudioClip>(LEVEL1AMBIENT);
+        base.Awake();
+    }
+
     protected override void Start_Level()
     {
         Spawn_Characters();
-        curtain.Fade(timeToFade, () => startDialog.SetActive(true));
+        Show_Scene(() => startDialog.SetActive(true));
     }
 }

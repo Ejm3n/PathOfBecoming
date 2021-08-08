@@ -1,11 +1,11 @@
-﻿using GlobalVariables.PuzzleVariables;
-using UnityEngine;
+﻿using UnityEngine;
 using AnimationUtils.RenderUtils;
 using AnimationUtils.TransformUtils;
 
 public class Hexagon : MonoBehaviour
 {
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] GameObject segmentPrefab;
     CagePuzzle controller;
     Segment[] segments;
 
@@ -29,7 +29,7 @@ public class Hexagon : MonoBehaviour
         float degree = 360 / segmentsAmount;
         for (int i = 0; i < segmentsAmount; i ++)
         {
-            segments[i] = Instantiate(Prefabs.SEGMENTPREFAB, gameObject.transform).GetComponent<Segment>();
+            segments[i] = Instantiate(segmentPrefab, gameObject.transform).GetComponent<Segment>();
             segments[i].gameObject.transform.Rotate(0, 0, i * degree);
             segments[i].Initialize();
         }

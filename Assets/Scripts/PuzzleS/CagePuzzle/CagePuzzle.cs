@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
-using GlobalVariables.PuzzleVariables;
+using GlobalVariables;
 using System.Collections.Generic;
 
 public class CagePuzzle : Puzzle
 {
+    [SerializeField] GameObject hexagonPrefab;
+
     float spawnDelay = 0.5f;
     public bool activated { get; private set; }
 
@@ -31,7 +33,7 @@ public class CagePuzzle : Puzzle
 
     IEnumerator Spawn_Hexagons()
     {
-        GameObject centralHex = Instantiate(Prefabs.HEXAGONPREFAB, gameObject.transform);
+        GameObject centralHex = Instantiate(hexagonPrefab, gameObject.transform);
         hexagons.Add(centralHex.GetComponent<Hexagon>());
         PolygonCollider2D centralHexCol = centralHex.GetComponent<PolygonCollider2D>();
         Vector3[] edgeCenters = new Vector3[centralHexCol.points.Length];
@@ -49,12 +51,13 @@ public class CagePuzzle : Puzzle
         foreach (Vector3 center in edgeCenters)
         {
             yield return new WaitForSeconds(spawnDelay);
-            hexagons.Add(Instantiate(Prefabs.HEXAGONPREFAB, center * 2.1f + transform.position, Quaternion.identity, gameObject.transform).GetComponent<Hexagon>());
+            hexagons.Add(Instantiate(hexagonPrefab, center * 2.1f + transform.position, Quaternion.identity, gameObject.transform).GetComponent<Hexagon>());
         }
 
         yield return new WaitUntil(() => hexagons[hexagons.Count - 1].ready);
         for (int i = 0; i < hexagons.Count; i++)
             hexagons[i].Rotate_Hex(2);
+        SoundRecorder.Play_Effect(Sounds.RIDDLESOUND);
         activated = true;
     }
 

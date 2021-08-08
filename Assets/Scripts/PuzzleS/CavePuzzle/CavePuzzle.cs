@@ -9,21 +9,16 @@ public class CavePuzzle : MonoBehaviour
     bool canUWin = true;
     [SerializeField] PuzzleButtons[] puzzleButtons;
     private Color colorIfUnpressed = new Color(255f, 155f, 0f, 0f);
-    [SerializeField] GameObject nextDialogue;
-    [SerializeField] DialogueSystem ds;
+    [SerializeField] PuzzleController interactController;
     private void Update()
     {
         if (isPressed[0] && isPressed[1] && isPressed[2] && isPressed[3] && isPressed[4]&& canUWin)
         {
             GameWin = true;
             Debug.Log("игра выиграна");
-            if (nextDialogue != null)
-            {
-                nextDialogue.SetActive(true);
-            }
-          
+            interactController.Handle_Puzzle_result(true);
+            Interface.current.inventory.Remove_From_Inventory(typeof(Notes), true);
             Destroy(gameObject);
-            
         }   
     }
     public void OnPuzzleButtonClick(int num)
@@ -43,7 +38,7 @@ public class CavePuzzle : MonoBehaviour
     }
     public void ClosePuzzle()
     {
-        ds.SetUI(true);
+        Engine.current.dialogueSystem.SetUI(true);
         for(int i = 0;i<5;i++)
         {
             isPressed[i] = false;
@@ -54,6 +49,7 @@ public class CavePuzzle : MonoBehaviour
         {
             puzzleButtons[i].Sprite.color = colorIfUnpressed;
         }
+        interactController.Handle_Puzzle_result(false);
         gameObject.SetActive(false);
     }
 }

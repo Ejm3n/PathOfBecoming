@@ -21,6 +21,7 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] Sprite henryImg;//ссылка непосредственно на спрайт игрока
     [SerializeField] Sprite fairyImg;//ссылка непосредственно на спрайт феи
     [SerializeField] Sprite impImg;//ссылка непосредственно на спрайт анчутки
+    [SerializeField] Sprite catImg;//на спрайт кота
     [SerializeField] CanvasGroup blockingPanel;
 
     public string[] file;//все строки файла
@@ -41,13 +42,18 @@ public class DialogueSystem : MonoBehaviour
     private bool typeDialogeInstantly = false;
 
     [SerializeField] CheckpointDialogue[] checkpoints;
-    Engine engine;
     UnityEvent onComplete;
     
-
+    public void SetInventory(bool what)
+    {
+        canUseInventory = what;
+    }
+    public void SetBook(bool what)
+    {
+        canUseSpellBook = what;
+    }
     private void Awake()
     {
-        engine = transform.parent.GetComponent<Engine>();
         TextAsset language = Resources.Load<TextAsset>("Russian2");//считываем файл со строками
         file = language.text.Split('\n');     //заполняем этими строками массив
     }
@@ -61,7 +67,6 @@ public class DialogueSystem : MonoBehaviour
         ChangeCanvasGroup(!what, blockingPanel);
         if (canUseInventory)
         {
-
             ChangeCanvasGroup(what, inventory);
         }
         if (canUseSpellBook)
@@ -119,6 +124,11 @@ public class DialogueSystem : MonoBehaviour
         DisplayNextLine();
     }
 
+    public void StartDialogue(Dialogue dialogue, UnityEvent onComplete)
+    {
+        StartDialogue(dialogue.startStringId, dialogue.endStringId, onComplete);
+    }
+
     public void DisplayNextLine()//показать следущую строку
     {
         if(!isDialogueTyping)
@@ -174,7 +184,9 @@ public class DialogueSystem : MonoBehaviour
         }
         else if(sentence.Contains(subCat))
         {
+            dialogueImg.color = new Color(255, 255, 255);
             nameOutput.text = "Кот";
+            dialogueImg.sprite = catImg;
         }
         else if(sentence.Contains(subAnonim))
         {
@@ -192,7 +204,7 @@ public class DialogueSystem : MonoBehaviour
             isDialogueTyping = true;
             if(!typeDialogeInstantly)
             {
-                yield return new WaitForSecondsRealtime(0.04f);
+                yield return new WaitForSecondsRealtime(0.025f);
                 output.text += letter;
             }
             else
@@ -206,11 +218,11 @@ public class DialogueSystem : MonoBehaviour
         typeDialogeInstantly = false;
     }   
     public void EndDialogue()//закончить диалог 
-    {
-        onComplete?.Invoke();
-        onComplete = null;
+    {      
         panelAnim.SetBool("PanelShow", false);
         SetUI(true);
+        UnityEvent complete = onComplete;
+        complete?.Invoke();
     }
 
     public void Checkpoint(CheckpointDialogue dialogue)
@@ -218,7 +230,7 @@ public class DialogueSystem : MonoBehaviour
         for (int i = 0; i < checkpoints.Length; i++)
             if (dialogue == checkpoints[i])
             {
-                engine.Checkpoint(i);
+                Engine.current.Checkpoint(i);
                 break;
             }
     }

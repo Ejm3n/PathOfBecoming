@@ -1,13 +1,13 @@
 using UnityEngine;
-using GlobalVariables.PuzzleVariables;
 
 public class MouseChip : CatChip
 {
     [SerializeField] SpriteRenderer spriteRenderer;
 
-    private void Start()
+    public void Initialise(Sprite sprite, PlayField field)
     {
-        spriteRenderer.sprite = Sprites.MICESPRITES[Random.Range(0, Sprites.MICESPRITES.Length)];
+        spriteRenderer.sprite = sprite;
+        this.field = field;
     }
 
     public override void Move(Vector3 target, int[] index)

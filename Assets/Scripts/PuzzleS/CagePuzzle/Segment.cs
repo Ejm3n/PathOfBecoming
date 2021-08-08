@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using GlobalVariables.PuzzleVariables;
 using VectorUtils;
 using AnimationUtils.RenderUtils;
 
@@ -7,6 +6,8 @@ public class Segment : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     [SerializeField] Transform rayPoint;
+    [SerializeField] Sprite[] segmentSprites;
+    [SerializeField] Sprite[] segmentSpritesHighlighted;
 
     public bool connected { get; private set; }
     public bool highlighted { get; private set; }
@@ -27,13 +28,14 @@ public class Segment : MonoBehaviour
         if (adjacentSegment)
             type = adjacentSegment.type;
         else
-            type = Random.Range(0, Sprites.SEGMENTSPRITES.Length);
-        spriteRenderer.sprite = Sprites.SEGMENTSPRITES[type];
+            type = Random.Range(0, segmentSprites.Length);
+        spriteRenderer.sprite = segmentSprites[type];
     }
 
     Segment Search_Adjacent_Segments()
     {
-        RaycastHit2D hit = Physics2D.Raycast(rayPoint.position, Vector2.up.Turn(gameObject.transform.rotation.eulerAngles.z), 1, Layers.PUZZLESEGMENTLM);
+        LayerMask segmentsLM = LayerMask.GetMask("PuzzleSegment");
+        RaycastHit2D hit = Physics2D.Raycast(rayPoint.position, Vector2.up.Turn(gameObject.transform.rotation.eulerAngles.z), 1, segmentsLM);
         if (hit)
             return hit.collider.GetComponent<Segment>();
         else
@@ -64,13 +66,13 @@ public class Segment : MonoBehaviour
         if (highlight != highlighted)
         {
             //spriteRenderer.transform.SpringRotation(0.5f, Vector3.forward * 45);
-            spriteRenderer.sprite = highlight ? Sprites.HSEGMENTSPRITES[type] : Sprites.SEGMENTSPRITES[type];
+            spriteRenderer.sprite = highlight ? segmentSpritesHighlighted[type] : segmentSprites[type];
             highlighted = highlight;
         }
         if (adjacentSegment && highlight != adjacentSegment.highlighted)
         {
             //adjacentSegment.spriteRenderer.transform.SpringRotation(0.5f, Vector3.forward * 45);
-            adjacentSegment.spriteRenderer.sprite = highlight ? Sprites.HSEGMENTSPRITES[adjacentSegment.type] : Sprites.SEGMENTSPRITES[adjacentSegment.type];
+            adjacentSegment.spriteRenderer.sprite = highlight ? segmentSpritesHighlighted[adjacentSegment.type] : segmentSprites[adjacentSegment.type];
             adjacentSegment.highlighted = highlight;
         }
 

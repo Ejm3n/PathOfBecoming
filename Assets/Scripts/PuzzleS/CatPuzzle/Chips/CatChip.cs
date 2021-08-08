@@ -23,6 +23,6 @@ public class CatChip : Chip
 
     protected void Search(Type type)
     {
-        PlayField.queue.Enqueue(new QueueItem(index, type));
+        field.queue.Enqueue(new QueueItem(index, type));
     }
 }

@@ -4,8 +4,9 @@
 [RequireComponent(typeof(Collider2D))]
 public class Brick : MonoBehaviour
 {
+    static float powerMultiplier = 10;
+
     public Orientation orientation;
-    public float powerMultiplier;
     public Puzzle controller;
 
     Rigidbody2D brick;

@@ -3,11 +3,11 @@
 public class Puzzle : MonoBehaviour
 {
     bool solved = false;
-    InteractController puzzleController;
+    PuzzleController puzzleController;
 
     private void Awake()
     {
-        puzzleController = transform.parent.GetComponent<InteractController>();
+        puzzleController = transform.parent.GetComponent<PuzzleController>();
     }
 
     public void Solve_Puzzle()
