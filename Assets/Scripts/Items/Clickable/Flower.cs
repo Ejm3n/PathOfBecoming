@@ -1,7 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.UI;
-
+﻿using UnityEngine;
 public class Flower : ClickableItem
 {
     [SerializeField] float healAmount;
