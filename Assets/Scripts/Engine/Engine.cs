@@ -25,7 +25,7 @@ public abstract class Engine : MonoBehaviour
 
     protected const float timeToFade = 1f;
 
-    protected PlayerController playerController;
+    public PlayerController playerController;
     protected Fairy fairyController;
 
     protected AudioClip mainTheme;
@@ -77,7 +77,7 @@ public abstract class Engine : MonoBehaviour
         playerCamera.Follow = player.transform;
         playerController = player.GetComponent<PlayerController>();
         fairyController = fairy.GetComponent<Fairy>();
-        playerController.Initialise(userInterface.healthBar, userInterface.jumpButton);
+        playerController.Initialise(userInterface.healthBar);
     }
 
     protected virtual void Awake()

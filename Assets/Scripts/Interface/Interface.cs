@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Interface : MonoBehaviour
@@ -9,7 +10,6 @@ public class Interface : MonoBehaviour
     public Spellbook spellBook;
     public ManaCounter mana;
     public Image healthBar;
-    public Button jumpButton;
 
     public static Interface current;
 

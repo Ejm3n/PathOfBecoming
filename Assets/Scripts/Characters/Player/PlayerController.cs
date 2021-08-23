@@ -1,5 +1,6 @@
-﻿using System.Collections;
+﻿
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -26,13 +27,11 @@ public class PlayerController : MonoBehaviour
     private int extraJump;
     public int ExtraJumpValue;
 
-    public void Initialise(Image healthBar, Button jump)
+    public void Initialise(Image healthBar)
     {
         health = GetComponent<Health>();
         health.Initialise(healthBar);
-        jump.onClick.AddListener(OnJumpButton);
     }
-
     public void Load_State(PlayerData data)
     {
         health.Set_Health(data.hp);
