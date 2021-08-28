@@ -1454,7 +1454,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userInterface: {fileID: 5705803909316741812}
-  curtain: {fileID: 1915557855}
   playerCamera: {fileID: 523860747}
   dialogueSystem: {fileID: 2369979692232838263}
   puzzleController: {fileID: 407603182}
@@ -1464,7 +1463,6 @@ MonoBehaviour:
       effectsVolume: 1
   playerStartPosition: {fileID: 1040815325}
   fairyStartPosition: {fileID: 698522795}
-  playerController: {fileID: 0}
   startDialog: {fileID: 4820012933081349875}
 --- !u!4 &132950020
 Transform:
@@ -11015,6 +11013,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoisonousFumes
       objectReference: {fileID: 0}
+    - target: {fileID: 7620482568054707329, guid: 805e9bd3b2924d845878f0524e72ce48,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 805e9bd3b2924d845878f0524e72ce48, type: 3}
 --- !u!1 &655148759
@@ -28977,6 +28980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   engine: {fileID: 132950019}
+  curtain: {fileID: 1915557855}
   canvas: {fileID: 4096867036808471593}
   inventory: {fileID: 6739158385195757003}
   spellBook: {fileID: 6633200056144884942}

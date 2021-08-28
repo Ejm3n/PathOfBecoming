@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Interface : MonoBehaviour
 {
     [SerializeField] protected Engine engine;
+    public Image curtain;
     public Transform canvas;
     public Inventory inventory;
     public Spellbook spellBook;

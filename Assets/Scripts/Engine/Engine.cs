@@ -2,7 +2,6 @@
 using System;
 using UnityEngine.UI;
 using Cinemachine;
-using GlobalVariables;
 using AnimationUtils.ImageUtils;
 using UnityEngine.SceneManagement;
 
@@ -13,7 +12,6 @@ public abstract class Engine : MonoBehaviour
     public static Engine current;
 
     [SerializeField] protected Interface userInterface;
-    [SerializeField] protected Image curtain;
     [SerializeField] CinemachineVirtualCamera playerCamera;
     public DialogueSystem dialogueSystem;
     public PuzzleController puzzleController;
@@ -25,8 +23,10 @@ public abstract class Engine : MonoBehaviour
 
     protected const float timeToFade = 1f;
 
-    public PlayerController playerController;
+    public PlayerController playerController { get; private set; }
     protected Fairy fairyController;
+
+    protected Image curtain;
 
     protected AudioClip mainTheme;
     protected AudioClip ambient;
@@ -83,6 +83,7 @@ public abstract class Engine : MonoBehaviour
     protected virtual void Awake()
     {
         current = this;
+        curtain = userInterface.curtain;
         SoundRecorder.Play_Music(mainTheme);
         SoundRecorder.Play_Ambient(ambient);
     }
