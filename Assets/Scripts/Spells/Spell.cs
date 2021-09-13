@@ -36,5 +36,5 @@ public class Spell : MonoBehaviour, IPointerDownHandler
     }
 }
 
-public enum SpellType { Wind }
+public enum SpellType { Wind, Lighter }
 

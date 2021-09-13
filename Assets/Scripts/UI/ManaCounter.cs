@@ -37,4 +37,10 @@ public class ManaCounter : MonoBehaviour
         manaBar.fillAmount = currentMana / startMana;
         return true;
     }
+
+    public bool Mana_Drain(int percentage)
+    {
+        float manaCost = (startMana / 100) * percentage;
+        return SpellShot(manaCost);
+    }
 }

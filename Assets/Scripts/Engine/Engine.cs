@@ -72,6 +72,18 @@ public abstract class Engine : MonoBehaviour
         Initialise();
     }
 
+    protected void Spawn_Characters(GameObject player, GameObject fairy)
+    {
+        Spawn_Characters(player, fairy, playerStartPosition.position, fairyStartPosition.position);
+    }
+
+    protected void Spawn_Characters(GameObject player, GameObject fairy, Vector3 playerPosition, Vector3 fairyPosition)
+    {
+        this.player = Instantiate(player, playerPosition, Quaternion.identity);
+        this.fairy = Instantiate(fairy, fairyPosition, Quaternion.identity);
+        Initialise();
+    }
+
     void Initialise()
     {
         playerCamera.Follow = player.transform;
