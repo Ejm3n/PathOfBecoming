@@ -3,6 +3,12 @@ using UnityEngine;
 
 public class Level2 : Engine
 {
+    protected override void Awake()
+    {
+        mainTheme = Resources.Load<AudioClip>("Sounds/Music/Level2");
+        base.Awake();
+    }
+
     protected override void Start_Level()
     {
         GameObject player = Resources.Load<GameObject>("Prefabs/Characters/Player(Lit)");
