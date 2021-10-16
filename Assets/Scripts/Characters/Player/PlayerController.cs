@@ -1,6 +1,6 @@
 ﻿
 using UnityEngine;
-using UnityEngine.EventSystems;
+using Settings;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -56,13 +56,13 @@ public class PlayerController : MonoBehaviour
     {
         isGround = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
        
-        rb.velocity = new Vector2(Joystick.axisX * speed, rb.velocity.y);
+        rb.velocity = new Vector2(PCControlButtons.xAxisRaw * speed, rb.velocity.y);
 
-        if (faceRight == false && Joystick.axisX > 0)
+        if (faceRight == false && PCControlButtons.xAxisRaw > 0)
         {
             Flip();           
         }
-        else if (faceRight == true && Joystick.axisX < 0)
+        else if (faceRight == true && PCControlButtons.xAxisRaw < 0)
         {
             Flip();           
         }
@@ -72,12 +72,12 @@ public class PlayerController : MonoBehaviour
             extraJump = ExtraJumpValue;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && extraJump > 0)
+        if (Input.GetKeyDown(PCControlButtons.JUMPandUP) && extraJump > 0)
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJump--;
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && extraJump == 0 && isGround == true)
+        else if (Input.GetKeyDown(PCControlButtons.JUMPandUP) && extraJump == 0 && isGround == true)
         {
             rb.velocity = Vector2.up * jumpForce;
         }

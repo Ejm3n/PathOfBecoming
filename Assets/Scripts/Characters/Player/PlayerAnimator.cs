@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Settings;
 
 public class PlayerAnimator : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class PlayerAnimator : MonoBehaviour
 
     void Update()
     {
-        walk = Joystick.axisX;
+        walk = PCControlButtons.xAxisRaw;
         if(walk != 0)
         {
             anim.SetBool("walk", true);

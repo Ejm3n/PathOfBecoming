@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Settings
 {
@@ -17,5 +18,21 @@ namespace Settings
         public static KeyCode USESPELL = KeyCode.Space;
 
         public static KeyCode INTERACT = KeyCode.E;
+
+        public static int xAxisRaw
+        {
+            get
+            {
+                return -Convert.ToInt32(Input.GetKey(LEFT)) + Convert.ToInt32(Input.GetKey(RIGHT));
+            }
+        }
+
+        public static int yAxisRaw
+        {
+            get
+            {
+                return -Convert.ToInt32(Input.GetKey(INVENTORYandDOWN)) + Convert.ToInt32(Input.GetKey(JUMPandUP));
+            }
+        }
     }
 }
