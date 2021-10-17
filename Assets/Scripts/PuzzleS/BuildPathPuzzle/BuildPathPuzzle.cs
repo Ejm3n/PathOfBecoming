@@ -15,7 +15,7 @@ public class BuildPathPuzzle : Puzzle
 
     [SerializeField] List<Sprite> pathPool;
 
-    const float poolOffset = 0.3f;
+    const float poolOffset = 0.2f;
 
     PathSegment[] original;
     List<PathSegment> playerPath;
@@ -108,7 +108,7 @@ public class BuildPathPuzzle : Puzzle
             segmentsPool[pullSequence[i]] = (Instantiate(segmentPrefab, transform).GetComponent<PathSegment>());
 
             origSegment.y = originalStart.position.y - (i * original[i].rangeY);
-            poolSegment.x = segmentPoolStart.position.x + (pullSequence[i] * original[i].rangeX + poolOffset);
+            poolSegment.x = segmentPoolStart.position.x + (pullSequence[i] * (original[i].rangeX + poolOffset));
 
 
             original[i].Initialise(i, curSegment, true, origSegment);

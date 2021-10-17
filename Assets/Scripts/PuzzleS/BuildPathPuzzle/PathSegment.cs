@@ -52,7 +52,7 @@ public class PathSegment : MonoBehaviour
 
     public void Choose(Vector3 moveTo, Action wincon)
     {
-        transform.Move_To(moveTo, 0.5f, wincon);
+        transform.Move_To(moveTo, 0.5f, false, wincon);
         selected = null;
     }
 }
