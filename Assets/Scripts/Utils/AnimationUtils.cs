@@ -106,6 +106,12 @@ namespace AnimationUtils
                     return loader.Start_Slide(obj, target, timeToSlide, timeScale, onComplete);
                 return obj.gameObject.AddComponent<CoroutineLoader>().Start_Slide(obj, target, timeToSlide, timeScale, onComplete);
             }
+            public static Coroutine Move_To(this Transform obj, Vector3 target, float timeToSlide, bool waitslide = true, bool timeScale = true)
+            {
+                if (obj.gameObject.TryGetComponent(out CoroutineLoader loader))
+                    return loader.Start_Slide(obj, target, timeToSlide, timeScale, null, waitslide);
+                return obj.gameObject.AddComponent<CoroutineLoader>().Start_Slide(obj, target, timeToSlide, timeScale, null, waitslide);
+            }
         }
     }
 
@@ -221,11 +227,15 @@ namespace AnimationUtils
         #region Slide
 
         bool sliding = false;
-        public Coroutine Start_Slide(Transform transform, Vector3 target, float processTime, bool timeScale = true, Action onComplete = null)
+        Coroutine slidingCoroutine;
+        public Coroutine Start_Slide(Transform transform, Vector3 target, float processTime, bool timeScale = true, Action onComplete = null, bool waitslide = true)
         {
-            if (sliding)
+            if (sliding && waitslide)
                 return null;
-            return StartCoroutine(Slide(transform, target, processTime, timeScale, onComplete));
+            if (slidingCoroutine != null)
+                StopCoroutine(slidingCoroutine);
+            slidingCoroutine = StartCoroutine(Slide(transform, target, processTime, timeScale, onComplete));
+            return slidingCoroutine;
         }
 
         IEnumerator Slide(Transform transform, Vector3 target, float processTime, bool timeScale = true, Action onComplete = null)

@@ -30,7 +30,7 @@ public class PlayerAnimator : MonoBehaviour
 
     void Update()
     {
-        walk = PCControlButtons.xAxisRaw;
+        walk = ControlButtons.xAxisRaw;
         if(walk != 0)
         {
             anim.SetBool("walk", true);

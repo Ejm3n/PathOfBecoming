@@ -56,13 +56,13 @@ public class PlayerController : MonoBehaviour
     {
         isGround = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
        
-        rb.velocity = new Vector2(PCControlButtons.xAxisRaw * speed, rb.velocity.y);
+        rb.velocity = new Vector2(ControlButtons.xAxisRaw * speed, rb.velocity.y);
 
-        if (faceRight == false && PCControlButtons.xAxisRaw > 0)
+        if (faceRight == false && ControlButtons.xAxisRaw > 0)
         {
             Flip();           
         }
-        else if (faceRight == true && PCControlButtons.xAxisRaw < 0)
+        else if (faceRight == true && ControlButtons.xAxisRaw < 0)
         {
             Flip();           
         }
@@ -72,12 +72,12 @@ public class PlayerController : MonoBehaviour
             extraJump = ExtraJumpValue;
         }
 
-        if (Input.GetKeyDown(PCControlButtons.JUMPandUP) && extraJump > 0)
+        if (ControlButtons.JUMPandUP && extraJump > 0)
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJump--;
         }
-        else if (Input.GetKeyDown(PCControlButtons.JUMPandUP) && extraJump == 0 && isGround == true)
+        else if (ControlButtons.JUMPandUP && extraJump == 0 && isGround == true)
         {
             rb.velocity = Vector2.up * jumpForce;
         }

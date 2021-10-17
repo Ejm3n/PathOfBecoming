@@ -3,6 +3,92 @@ using UnityEngine;
 
 namespace Settings
 {
+    public static class ControlButtons
+    {
+        public static bool LEFT 
+        { 
+            get
+            {
+                return Input.GetKeyDown(PCControlButtons.LEFT);
+            } 
+        }
+
+        public static bool RIGHT
+        {
+            get
+            {
+                return Input.GetKeyDown(PCControlButtons.RIGHT);
+            }
+        }
+
+        public static bool RUNHOLD
+        {
+            get
+            {
+                return Input.GetKey(PCControlButtons.RUN);
+            }
+        }
+
+        public static bool JUMPandUP
+        {
+            get
+            {
+                return Input.GetKeyDown(PCControlButtons.JUMPandUP);
+            }
+        }
+        public static bool INVENTORYandDOWN
+        {
+            get
+            {
+                return Input.GetKeyDown(PCControlButtons.INVENTORYandDOWN);
+            }
+        }
+        public static bool SWITCHSPELL
+        {
+            get
+            {
+                return Input.GetKeyDown(PCControlButtons.SWITCHSPELL);
+            }
+        }
+        public static bool USESPELL
+        {
+            get
+            {
+                return Input.GetKeyDown(PCControlButtons.USESPELL);
+            }
+        }
+        public static bool USESPELLHOLD
+        {
+            get
+            {
+                return Input.GetKey(PCControlButtons.USESPELL);
+            }
+        }
+        public static bool INTERACT
+        {
+            get
+            {
+                return Input.GetKeyDown(PCControlButtons.INTERACT);
+            }
+        }
+
+        public static int xAxisRaw
+        {
+            get
+            {
+                return PCControlButtons.xAxisRaw;
+            }
+        }
+
+        public static int yAxisRaw
+        {
+            get
+            {
+                return PCControlButtons.yAxisRaw;
+            }
+        }
+    }
+
     public static class PCControlButtons
     {
         public static KeyCode LEFT = KeyCode.A;
