@@ -5,6 +5,8 @@ namespace Settings
 {
     public static class ControlButtons
     {
+        public static bool ENABLED = true;
+
         public static bool LEFT 
         { 
             get
@@ -76,7 +78,7 @@ namespace Settings
         {
             get
             {
-                return PCControlButtons.xAxisRaw;
+                return ENABLED ? PCControlButtons.xAxisRaw : 0;
             }
         }
 
@@ -84,7 +86,7 @@ namespace Settings
         {
             get
             {
-                return PCControlButtons.yAxisRaw;
+                return ENABLED ? PCControlButtons.yAxisRaw : 0;
             }
         }
     }

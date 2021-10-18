@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.up * jumpForce;
             extraJump--;
         }
-        else if (ControlButtons.JUMPandUP && extraJump == 0 && isGround == true)
+        else if (ControlButtons.yAxisRaw > 0 && extraJump == 0 && isGround == true)
         {
             rb.velocity = Vector2.up * jumpForce;
         }

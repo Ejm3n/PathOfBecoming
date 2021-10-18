@@ -140,6 +140,5 @@ public class Inventory : MonoBehaviour
         inventoryCG.alpha = 1;
         inventoryCG.blocksRaycasts = true;
         inventoryCG.interactable = true;
-        Engine.current.dialogueSystem.canUseInventory = true;
     }
 }

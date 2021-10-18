@@ -35,8 +35,6 @@ public class DialogueSystem : MonoBehaviour
     private string subCat = "cat";
     private string subAnonim = "anonym";
     private string subStranger = "stranger";
-    public bool canUseInventory = false;//используется ли инвентарь(чтоб его убирать)
-    public bool canUseSpellBook = false;//используется ли книга(чтоб ее убирать)
     Queue<string> linesTriggered = new Queue<string>();//очередь строк, которые триггерятся. именно эта очередь будет выводиться на экран
     private bool isDialogueTyping = false;
     private bool typeDialogeInstantly = false;
@@ -44,14 +42,6 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] CheckpointDialogue[] checkpoints;
     UnityEvent onComplete;
     
-    public void SetInventory(bool what)
-    {
-        canUseInventory = what;
-    }
-    public void SetBook(bool what)
-    {
-        canUseSpellBook = what;
-    }
     private void Awake()
     {
         TextAsset language = Resources.Load<TextAsset>("Russian2");//считываем файл со строками
@@ -64,32 +54,7 @@ public class DialogueSystem : MonoBehaviour
     }
     public void SetUI(bool what)//метод отключающий лишний UI
     {
-        ChangeCanvasGroup(!what, blockingPanel);
-        if (canUseInventory)
-        {
-            ChangeCanvasGroup(what, inventory);
-        }
-        if (canUseSpellBook)
-        {
-            ChangeCanvasGroup(what, spellBook);
-        }
-        controlButtons.SetActive(what);
-        playerBars.SetActive(what);
-    }
-    private void ChangeCanvasGroup(bool whitch, CanvasGroup cg)//для выключения инвентаря и книгизаклинаний
-    {
-        if (whitch)
-        {
-            cg.alpha = 1;
-            cg.interactable = true;
-            cg.blocksRaycasts = true;
-        }
-        else
-        {
-            cg.alpha = 0;
-            cg.interactable = false;
-            cg.blocksRaycasts = false;
-        }
+        Interface.current.Enable_Interface(what);
     }
     public void ChooseStart(int choose1, int choose2,int endOfChoices, UnityEvent onComplete)//старт выборных диалогов
     {

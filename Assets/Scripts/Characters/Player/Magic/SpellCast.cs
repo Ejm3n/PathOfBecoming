@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Settings;
 
 public class SpellCast : MonoBehaviour
 {
@@ -12,9 +13,9 @@ public class SpellCast : MonoBehaviour
 
     private void Update()
     {
-        if (!Input.GetMouseButtonDown(0) || UICheck.overUI)
+        if (!ControlButtons.USESPELL)
             return;
-        Player_Direction();
+        //Player_Direction();
         Interface.current.spellBook.Cast_Chosen_Spell(firePoint.position);
     }
 

@@ -97,7 +97,6 @@ public class Spellbook : MonoBehaviour
         spellBookCG.alpha = 1;
         spellBookCG.blocksRaycasts = true;
         spellBookCG.interactable = true;
-        Engine.current.dialogueSystem.canUseSpellBook = true;
     }
 
     public void Load_State(SpellBookData data)
