@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Settings;
 
@@ -14,6 +13,10 @@ public class BuildPathPuzzle : Puzzle
     [SerializeField] GameObject segmentPrefab;
 
     [SerializeField] List<Sprite> pathPool;
+
+    [Header("Timer")]
+    [SerializeField] Timer timer;
+    [SerializeField] float wrongChoicePunishment;
 
     const float poolOffset = 0.2f;
 
@@ -32,6 +35,7 @@ public class BuildPathPuzzle : Puzzle
 
         Generete_Pools();
         segmentsPool[selectedIndex].Select();
+        timer.Start_Timer(() => Destroy(gameObject));
     }
 
     void Update()
@@ -74,7 +78,7 @@ public class BuildPathPuzzle : Puzzle
             segmentsPool.RemoveAt(selectedIndex);
 
             pathIndex = playerPath.Count;
-            playerPath[pathIndex-1].Choose(movePosition, Win_Condition);
+            playerPath[pathIndex - 1].Choose(movePosition, Win_Condition);
 
             if (segmentsPool.Count > 0)
             {
@@ -82,6 +86,8 @@ public class BuildPathPuzzle : Puzzle
                 segmentsPool[selectedIndex].Select();
             }
         }
+        else
+            timer.Remove_Time(wrongChoicePunishment);
     }
 
     void Win_Condition()
