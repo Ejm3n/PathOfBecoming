@@ -11,10 +11,6 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] Text nameOutput;//ссылка на имя которое будет на UI отображаться
     [SerializeField] Text choice1Text;//ссылка на 1 вариант выбора который будет на UI отображаться
     [SerializeField] Text choice2Text;//ссылка на 2 вариант выбора который будет на UI отображаться
-    [SerializeField] GameObject controlButtons;//кнопки передвижения, нужны чтоб их отключать во время диалогов
-    [SerializeField] GameObject playerBars;//нужен чтоб его отключать во время диалогов
-    [SerializeField] CanvasGroup inventory; //нужен чтоб его отключать во время диалогов
-    [SerializeField] CanvasGroup spellBook;//нужен чтоб его отключать во время диалогов
     [SerializeField] Animator panelAnim;//анимация панели диалогов
     [SerializeField] Animator choosePanelAnim;// анимация панели выбора диалогов
     [SerializeField] Image dialogueImg;//ссылка на картинку говорящего персонажа
@@ -22,7 +18,6 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] Sprite fairyImg;//ссылка непосредственно на спрайт феи
     [SerializeField] Sprite impImg;//ссылка непосредственно на спрайт анчутки
     [SerializeField] Sprite catImg;//на спрайт кота
-    [SerializeField] CanvasGroup blockingPanel;
 
     public string[] file;//все строки файла
     private int whereIsEndChoose;//на какой строчке конец выбора
