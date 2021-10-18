@@ -33,6 +33,12 @@ public class ProjectBuilder
         Show_Summary(BuildPipeline.BuildPlayer(Get_Scenes(), Path.GetDirectoryName(Application.dataPath) + "/Builds/Android/BuildAndroid.apk", BuildTarget.Android, BuildOptions.None));
     }
 
+    public static void Build_MacOS()
+    {
+        Debug.Log("Build started");
+        Show_Summary(BuildPipeline.BuildPlayer(Get_Scenes(), Path.GetDirectoryName(Application.dataPath) + "/Builds/MacOS", BuildTarget.StandaloneOSX, BuildOptions.None));
+    }
+
     static void Show_Summary(BuildReport report)
     {
         if (report.summary.result == BuildResult.Succeeded)
