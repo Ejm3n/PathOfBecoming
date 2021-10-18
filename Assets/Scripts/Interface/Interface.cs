@@ -30,6 +30,7 @@ public class Interface : MonoBehaviour
     {
         interfacePanel.alpha = Convert.ToInt32(enable);
         interfacePanel.interactable = enable;
-        ControlButtons.ENABLED = enable;
+        interfacePanel.blocksRaycasts = enable;
+        ControlButtons.ENABLE_MOVEMENT = enable;
     }
 }

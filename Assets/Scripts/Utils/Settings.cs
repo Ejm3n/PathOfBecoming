@@ -5,7 +5,7 @@ namespace Settings
 {
     public static class ControlButtons
     {
-        public static bool ENABLED = true;
+        public static bool ENABLE_MOVEMENT = true;
 
         public static bool LEFT 
         { 
@@ -78,7 +78,7 @@ namespace Settings
         {
             get
             {
-                return ENABLED ? PCControlButtons.xAxisRaw : 0;
+                return ENABLE_MOVEMENT ? PCControlButtons.xAxisRaw : 0;
             }
         }
 
@@ -86,7 +86,7 @@ namespace Settings
         {
             get
             {
-                return ENABLED ? PCControlButtons.yAxisRaw : 0;
+                return ENABLE_MOVEMENT ? PCControlButtons.yAxisRaw : 0;
             }
         }
     }

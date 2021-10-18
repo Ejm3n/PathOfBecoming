@@ -17,7 +17,6 @@ public class Follower : MonoBehaviour
         spellType = Interface.current.spellBook.chosenSpell.spellType;
         joint = GetComponent<RelativeJoint2D>();
         Collider2D player = Physics2D.OverlapCircle(transform.position, searchRadius, 1<<10);
-        Debug.Log(player);
         if (player)
         {
             joint.connectedBody = Engine.current.playerController.fairyAnchor;
