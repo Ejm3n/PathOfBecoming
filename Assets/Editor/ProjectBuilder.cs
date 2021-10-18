@@ -36,7 +36,7 @@ public class ProjectBuilder
     public static void Build_MacOS()
     {
         Debug.Log("Build started");
-        Show_Summary(BuildPipeline.BuildPlayer(Get_Scenes(), Path.GetDirectoryName(Application.dataPath) + "/Builds/MacOS", BuildTarget.StandaloneOSX, BuildOptions.None));
+        Show_Summary(BuildPipeline.BuildPlayer(Get_Scenes(), Path.GetDirectoryName(Application.dataPath) + "/Builds/MacOS/PoB.app", BuildTarget.StandaloneOSX, BuildOptions.None));
     }
 
     static void Show_Summary(BuildReport report)
