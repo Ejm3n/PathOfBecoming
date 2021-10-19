@@ -15,7 +15,7 @@ public class Spell : MonoBehaviour, IPointerDownHandler
 
     bool onCooldown = false;
 
-    public void Cast(Vector3 firePoint)
+    public void Cast(Vector3 firePoint, bool alternative)
     {   if (onCooldown || !Interface.current.mana.SpellShot(manaCost))
             return;
         Instantiate(projectile, firePoint, Quaternion.identity);
@@ -36,5 +36,5 @@ public class Spell : MonoBehaviour, IPointerDownHandler
     }
 }
 
-public enum SpellType { Wind, Lighter }
+public enum SpellType { Instant, AltInstant, Stream }
 

@@ -57,18 +57,11 @@ public class Spellbook : MonoBehaviour
         Spell_Animation(index, false);
     }
 
-    public void Cast_Chosen_Spell(Vector3 firePoint)
+    public void Cast_Chosen_Spell(Vector3 firePoint, bool alternative = false)
     {
         if (!chosenSpell)
             return;
-        if (chosenSpell.spellType == SpellType.Lighter)
-        {
-            Vector3 castPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            castPosition.z = 0;
-            chosenSpell.Cast(castPosition);
-        }
-        else
-            chosenSpell.Cast(firePoint);
+        chosenSpell.Cast(firePoint, alternative);
     }
 
     void Spell_Animation(int index, bool state = false)
