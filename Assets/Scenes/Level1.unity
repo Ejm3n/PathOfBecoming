@@ -856,7 +856,7 @@ PrefabInstance:
     - target: {fileID: 6303547240790361204, guid: 64a2ffcfc63e52b4f9370fa97c5696c8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6303547240790361204, guid: 64a2ffcfc63e52b4f9370fa97c5696c8,
         type: 3}
@@ -8297,7 +8297,7 @@ RectTransform:
   m_Children:
   - {fileID: 463062351}
   m_Father: {fileID: 4096867036808471593}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11487,6 +11487,80 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &738000384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 738000387}
+  - component: {fileID: 738000386}
+  - component: {fileID: 738000385}
+  m_Layer: 5
+  m_Name: InteractIndicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &738000385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738000384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 09ff27d6917abb14e908bd3585f5a8fe, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &738000386
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738000384}
+  m_CullTransparentMesh: 0
+--- !u!224 &738000387
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738000384}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4096867036808471593}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 636, y: 96}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &756357548
 GameObject:
   m_ObjectHideFlags: 0
@@ -17795,7 +17869,7 @@ RectTransform:
   m_Children:
   - {fileID: 783114766}
   m_Father: {fileID: 4096867036808471593}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -20264,7 +20338,7 @@ GameObject:
   - component: {fileID: 1584898147}
   - component: {fileID: 1584898149}
   - component: {fileID: 1584898148}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: cage_front 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20459,7 +20533,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 4}
+  m_Size: {x: 3, y: 25.83}
   m_EdgeRadius: 0
 --- !u!1 &1590492056
 GameObject:
@@ -24995,10 +25069,6 @@ MonoBehaviour:
   nameOutput: {fileID: 4096867036769205000}
   choice1Text: {fileID: 4096867036885876448}
   choice2Text: {fileID: 4096867038330046695}
-  controlButtons: {fileID: 0}
-  playerBars: {fileID: 3981793007535933878}
-  inventory: {fileID: 6739158385195757002}
-  spellBook: {fileID: 6633200056144884940}
   panelAnim: {fileID: 4096867036412738255}
   choosePanelAnim: {fileID: 4096867036521702165}
   dialogueImg: {fileID: 4096867036898782992}
@@ -25006,7 +25076,6 @@ MonoBehaviour:
   fairyImg: {fileID: 21300000, guid: b09189f6bc4f70142a76e18829dd8a9a, type: 3}
   impImg: {fileID: 21300000, guid: c547dec0766e5954bb8c5fdcde71eb31, type: 3}
   catImg: {fileID: 21300000, guid: 8d4e46136cd4cb345ae7118029f46cd6, type: 3}
-  blockingPanel: {fileID: 1264847137}
   file: []
   checkpoints:
   - {fileID: 4820012934293369261}
@@ -26284,6 +26353,7 @@ RectTransform:
   - {fileID: 1264847134}
   - {fileID: 4096867036412738252}
   - {fileID: 4096867036521702164}
+  - {fileID: 738000387}
   - {fileID: 399709786}
   - {fileID: 1380434790}
   - {fileID: 1335615307}
@@ -26905,7 +26975,7 @@ PrefabInstance:
     - target: {fileID: 5744639958034896453, guid: bdcf51778476edc43b612439dd0208c6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5744639958034896453, guid: bdcf51778476edc43b612439dd0208c6,
         type: 3}
@@ -28196,6 +28266,7 @@ MonoBehaviour:
   mana: {fileID: 3981793006824421786}
   healthBar: {fileID: 3981793008134426487}
   interfacePanel: {fileID: 1264847137}
+  interactIndicator: {fileID: 738000385}
   inventoryGuideTrigger: {fileID: 4820012933034209164}
   startingInventory: {fileID: 1306065675522992209, guid: f3ccaa4c4c7d45a48b4f5fc581ef0d66,
     type: 3}
@@ -28459,12 +28530,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6424137150535294933}
   m_PrefabAsset: {fileID: 0}
---- !u!225 &6633200056144884940 stripped
-CanvasGroup:
-  m_CorrespondingSourceObject: {fileID: 372324311640714009, guid: 6cfb761c8c1eff0489f40803b0c1bd58,
-    type: 3}
-  m_PrefabInstance: {fileID: 6424137150535294933}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6633200056144884942 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 372324311640714011, guid: 6cfb761c8c1eff0489f40803b0c1bd58,
@@ -28480,12 +28545,6 @@ MonoBehaviour:
 --- !u!224 &6739158385195757000 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4006344834000646857, guid: b6490112e7ae9c942bd5d32d61c02699,
-    type: 3}
-  m_PrefabInstance: {fileID: 7646876592159088385}
-  m_PrefabAsset: {fileID: 0}
---- !u!225 &6739158385195757002 stripped
-CanvasGroup:
-  m_CorrespondingSourceObject: {fileID: 4006344834000646859, guid: b6490112e7ae9c942bd5d32d61c02699,
     type: 3}
   m_PrefabInstance: {fileID: 7646876592159088385}
   m_PrefabAsset: {fileID: 0}
