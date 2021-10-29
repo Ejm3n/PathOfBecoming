@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using AnimationUtils.RenderUtils;
 
 public class CavePuzzle : MonoBehaviour
 {
@@ -9,25 +10,18 @@ public class CavePuzzle : MonoBehaviour
     bool canUWin = true;
     [SerializeField] PuzzleButtons[] puzzleButtons;
     private Color colorIfUnpressed = new Color(255f, 155f, 0f, 0f);
-    [SerializeField] GameObject nextDialogue;
-    [SerializeField] DialogueSystem ds;
-    [SerializeField] InteractController interactController;
-    [SerializeField] Inventory inv;
+    [SerializeField] PuzzleController interactController;
+
+    [SerializeField] SpriteRenderer solveHologram;
+    const float timeToFade = 1f;
     private void Update()
     {
         if (isPressed[0] && isPressed[1] && isPressed[2] && isPressed[3] && isPressed[4]&& canUWin)
         {
             GameWin = true;
             Debug.Log("игра выиграна");
-            interactController.Handle_Puzzle_result(true);
-            inv.SlotDropped(0);
-            if (nextDialogue != null)
-            {
-                nextDialogue.SetActive(true);
-            }
-          
-            Destroy(gameObject);
-            
+            Interface.current.inventory.Remove_From_Inventory(typeof(Notes), true);
+            Solve_Animation();
         }   
     }
     public void OnPuzzleButtonClick(int num)
@@ -47,7 +41,7 @@ public class CavePuzzle : MonoBehaviour
     }
     public void ClosePuzzle()
     {
-        ds.SetUI(true);
+        Engine.current.dialogueSystem.SetUI(true);
         for(int i = 0;i<5;i++)
         {
             isPressed[i] = false;
@@ -60,5 +54,20 @@ public class CavePuzzle : MonoBehaviour
         }
         interactController.Handle_Puzzle_result(false);
         gameObject.SetActive(false);
+    }
+
+    public void Solve_Animation()
+    {
+        gameObject.SetActive(false);
+        solveHologram.gameObject.SetActive(true);
+        solveHologram.Unfade(timeToFade, () =>
+        {
+            solveHologram.Fade(timeToFade, () =>
+            {
+                solveHologram.gameObject.SetActive(false);
+                interactController.Handle_Puzzle_result(true);
+                Destroy(gameObject);
+            });
+        });
     }
 }

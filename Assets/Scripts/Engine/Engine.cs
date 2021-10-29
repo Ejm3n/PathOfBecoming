@@ -2,7 +2,6 @@
 using System;
 using UnityEngine.UI;
 using Cinemachine;
-using GlobalVariables;
 using AnimationUtils.ImageUtils;
 using UnityEngine.SceneManagement;
 
@@ -10,26 +9,27 @@ public abstract class Engine : MonoBehaviour
 {
     public static bool load = false;
 
-    [SerializeField] protected Image curtain;
-    [SerializeField] CinemachineVirtualCamera playerCamera;
-    [SerializeField] protected DialogueSystem dialogueSystem;
-    public GameSettings gameSettings;
+    public static Engine current;
 
-    [Header("Player Interface")]
-    [SerializeField] protected ActionWithSpellBook spellBook;
-    [SerializeField] protected Inventory inventory;
-    [SerializeField] ManaCounter mana;
-    [SerializeField] Image healthBar;
-    [SerializeField] Button jumpButton;
+    [SerializeField] protected Interface userInterface;
+    [SerializeField] CinemachineVirtualCamera playerCamera;
+    public DialogueSystem dialogueSystem;
+    public PuzzleController puzzleController;
+    public GameSettings gameSettings;
 
     [Header("Start Positions")]
     [SerializeField] Transform playerStartPosition;
     [SerializeField] Transform fairyStartPosition;
 
-    protected const float timeToFade = 3f;
+    protected const float timeToFade = 1f;
 
-    protected PlayerController playerController;
+    public PlayerController playerController { get; private set; }
     protected Fairy fairyController;
+
+    protected Image curtain;
+
+    protected AudioClip mainTheme;
+    protected AudioClip ambient;
 
     public GameObject player { get; protected set; }
     public GameObject fairy { get; protected set; }
@@ -41,33 +41,46 @@ public abstract class Engine : MonoBehaviour
         try
         {
             data = SaveSyatem.Load_Data();
-            if (data.playerData.sceneIndex != SceneManager.GetActiveScene().buildIndex)
-                Start_Level();
-            Spawn_Characters(data.playerData.lastCheckpoint.Convert_to_UnityVector(), data.fairyData.checkPoint.Convert_to_UnityVector());
-            playerController.Load_State(data.playerData);
-            fairyController.Load_State(data.fairyData);
-            inventory.LoadInventoryData(data.inventoryData);
-            //spellBook.LoadBookData(data.magicBookData);
-            dialogueSystem.Load_State(data.checkpointIndex);
-            Show_Scene(() => dialogueSystem.SetUI(true));
         }
         catch (NullReferenceException)
         {
             Start_Level();
+            return;
         }
+        if (data.playerData.sceneIndex != SceneManager.GetActiveScene().buildIndex)
+            Start_Level();
+        Spawn_Characters(data.playerData.lastCheckpoint.Convert_to_UnityVector(), data.fairyData.checkPoint.Convert_to_UnityVector());
+        playerController.Load_State(data.playerData);
+        fairyController.Load_State(data.fairyData);
+        userInterface.inventory.LoadInventoryData(data.inventoryData);
+        userInterface.spellBook.Load_State(data.spellBookData);
+        dialogueSystem.Load_State(data.checkpointIndex);
+        Show_Scene(() => dialogueSystem.SetUI(true));
     }
 
     protected void Spawn_Characters()
     {
-        player = Instantiate(Prefabs.PLAYER, playerStartPosition.position, playerStartPosition.rotation, transform);
-        fairy = Instantiate(Prefabs.FAIRY, fairyStartPosition.position, fairyStartPosition.rotation, transform);
-        Initialise();
+        Spawn_Characters(playerStartPosition.position, fairyStartPosition.position);
     }
 
     protected void Spawn_Characters(Vector3 playerPosition, Vector3 fairyPosition)
     {
-        player = Instantiate(Prefabs.PLAYER, playerPosition, Quaternion.identity, transform);
-        fairy = Instantiate(Prefabs.FAIRY, fairyPosition, Quaternion.identity, transform);
+        GameObject player = Resources.Load<GameObject>("Prefabs/Characters/Player");
+        GameObject fairy = Resources.Load<GameObject>("Prefabs/Characters/Fairy");
+        this.player = Instantiate(player, playerPosition, Quaternion.identity);
+        this.fairy = Instantiate(fairy, fairyPosition, Quaternion.identity);
+        Initialise();
+    }
+
+    protected void Spawn_Characters(GameObject player, GameObject fairy)
+    {
+        Spawn_Characters(player, fairy, playerStartPosition.position, fairyStartPosition.position);
+    }
+
+    protected void Spawn_Characters(GameObject player, GameObject fairy, Vector3 playerPosition, Vector3 fairyPosition)
+    {
+        this.player = Instantiate(player, playerPosition, Quaternion.identity);
+        this.fairy = Instantiate(fairy, fairyPosition, Quaternion.identity);
         Initialise();
     }
 
@@ -76,7 +89,15 @@ public abstract class Engine : MonoBehaviour
         playerCamera.Follow = player.transform;
         playerController = player.GetComponent<PlayerController>();
         fairyController = fairy.GetComponent<Fairy>();
-        playerController.Initialise(this, spellBook, mana, healthBar, jumpButton);
+        playerController.Initialise(userInterface.healthBar);
+    }
+
+    protected virtual void Awake()
+    {
+        current = this;
+        curtain = userInterface.curtain;
+        SoundRecorder.Play_Music(mainTheme);
+        SoundRecorder.Play_Ambient(ambient);
     }
 
     private void Start()
@@ -92,9 +113,9 @@ public abstract class Engine : MonoBehaviour
     {
         PlayerData playerData = playerController.Save_State();
         FairyData fairyData = fairyController.Save_State();
-        InventoryData inventoryData = inventory.SaveInvetnoryData();
-        MagicBookData magicBookData = spellBook.SaveBookData();
-        new SaveData(index, playerData, fairyData, inventoryData, magicBookData).Save();
+        InventoryData inventoryData = userInterface.inventory.SaveInvetnoryData();
+        SpellBookData spellBookData = userInterface.spellBook.Save_State();
+        new SaveData(index, playerData, fairyData, inventoryData, spellBookData).Save();
     }
 
     public void Connect_Fairy_to_Player()
@@ -122,5 +143,11 @@ public abstract class Engine : MonoBehaviour
     {
         onComplete += () => curtain.gameObject.SetActive(false);
         curtain.Fade(timeToFade, onComplete);
+    }
+
+    public void Load_Next_Level()
+    {
+        load = false;
+        Hide_Scene(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 }

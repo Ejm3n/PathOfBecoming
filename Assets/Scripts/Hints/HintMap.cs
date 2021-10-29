@@ -13,6 +13,7 @@ public class HintMap : MonoBehaviour
     Coroutine hintCoroutine;
 
     public bool highlighted { get; private set; }
+    int highlightedId;
 
     private void Awake()
     {
@@ -29,9 +30,13 @@ public class HintMap : MonoBehaviour
     {
         if (map.Count <= id)
             return;
-        if (highlighted)
+        if (highlighted && highlightedId != id)
             Stop_Highlight();
-        hintCoroutine = StartCoroutine(Highlight_With_Delay(id));
+        if (!highlighted)
+        {
+            hintCoroutine = StartCoroutine(Highlight_With_Delay(id));
+            highlightedId = id;
+        }
     }
 
     public void Stop_Highlight()

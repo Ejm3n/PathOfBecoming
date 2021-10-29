@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SoundRecorder : MonoBehaviour
+public static class SoundRecorder
 {
     public static void Play_Effect(AudioClip clip)
     {
@@ -10,5 +10,10 @@ public class SoundRecorder : MonoBehaviour
     public static void Play_Music(AudioClip clip)
     {
         SoundPlayer.musicQueue.Enqueue(clip);
+    }
+
+    public static void Play_Ambient(AudioClip clip)
+    {
+        SoundPlayer.ambientQueue.Enqueue(clip);
     }
 }

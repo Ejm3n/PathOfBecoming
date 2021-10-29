@@ -11,10 +11,6 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] Text nameOutput;//ссылка на имя которое будет на UI отображаться
     [SerializeField] Text choice1Text;//ссылка на 1 вариант выбора который будет на UI отображаться
     [SerializeField] Text choice2Text;//ссылка на 2 вариант выбора который будет на UI отображаться
-    [SerializeField] GameObject controlButtons;//кнопки передвижения, нужны чтоб их отключать во время диалогов
-    [SerializeField] GameObject playerBars;//нужен чтоб его отключать во время диалогов
-    [SerializeField] CanvasGroup inventory; //нужен чтоб его отключать во время диалогов
-    [SerializeField] CanvasGroup spellBook;//нужен чтоб его отключать во время диалогов
     [SerializeField] Animator panelAnim;//анимация панели диалогов
     [SerializeField] Animator choosePanelAnim;// анимация панели выбора диалогов
     [SerializeField] Image dialogueImg;//ссылка на картинку говорящего персонажа
@@ -22,7 +18,6 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] Sprite fairyImg;//ссылка непосредственно на спрайт феи
     [SerializeField] Sprite impImg;//ссылка непосредственно на спрайт анчутки
     [SerializeField] Sprite catImg;//на спрайт кота
-    [SerializeField] CanvasGroup blockingPanel;
 
     public string[] file;//все строки файла
     private int whereIsEndChoose;//на какой строчке конец выбора
@@ -35,28 +30,15 @@ public class DialogueSystem : MonoBehaviour
     private string subCat = "cat";
     private string subAnonim = "anonym";
     private string subStranger = "stranger";
-    public bool canUseInventory = false;//используется ли инвентарь(чтоб его убирать)
-    public bool canUseSpellBook = false;//используется ли книга(чтоб ее убирать)
     Queue<string> linesTriggered = new Queue<string>();//очередь строк, которые триггерятся. именно эта очередь будет выводиться на экран
     private bool isDialogueTyping = false;
     private bool typeDialogeInstantly = false;
 
     [SerializeField] CheckpointDialogue[] checkpoints;
-    Engine engine;
     UnityEvent onComplete;
     
-    public void SetInventory(bool what)
-    {
-        canUseInventory = what;
-    }
-    public void SetBook(bool what)
-    {
-        canUseSpellBook = what;
-    }
     private void Awake()
     {
-        if (transform.parent.TryGetComponent(out Engine engine)) 
-            this.engine = engine;
         TextAsset language = Resources.Load<TextAsset>("Russian2");//считываем файл со строками
         file = language.text.Split('\n');     //заполняем этими строками массив
     }
@@ -67,32 +49,7 @@ public class DialogueSystem : MonoBehaviour
     }
     public void SetUI(bool what)//метод отключающий лишний UI
     {
-        ChangeCanvasGroup(!what, blockingPanel);
-        if (canUseInventory)
-        {
-            ChangeCanvasGroup(what, inventory);
-        }
-        if (canUseSpellBook)
-        {
-            ChangeCanvasGroup(what, spellBook);
-        }
-        controlButtons.SetActive(what);
-        playerBars.SetActive(what);
-    }
-    private void ChangeCanvasGroup(bool whitch, CanvasGroup cg)//для выключения инвентаря и книгизаклинаний
-    {
-        if (whitch)
-        {
-            cg.alpha = 1;
-            cg.interactable = true;
-            cg.blocksRaycasts = true;
-        }
-        else
-        {
-            cg.alpha = 0;
-            cg.interactable = false;
-            cg.blocksRaycasts = false;
-        }
+        Interface.current.Enable_Interface(what);
     }
     public void ChooseStart(int choose1, int choose2,int endOfChoices, UnityEvent onComplete)//старт выборных диалогов
     {
@@ -125,6 +82,11 @@ public class DialogueSystem : MonoBehaviour
             linesTriggered.Enqueue(file[i]);
         }
         DisplayNextLine();
+    }
+
+    public void StartDialogue(Dialogue dialogue, UnityEvent onComplete)
+    {
+        StartDialogue(dialogue.startStringId, dialogue.endStringId, onComplete);
     }
 
     public void DisplayNextLine()//показать следущую строку
@@ -219,8 +181,8 @@ public class DialogueSystem : MonoBehaviour
     {      
         panelAnim.SetBool("PanelShow", false);
         SetUI(true);
-        onComplete?.Invoke();
-        onComplete = null;
+        UnityEvent complete = onComplete;
+        complete?.Invoke();
     }
 
     public void Checkpoint(CheckpointDialogue dialogue)
@@ -228,7 +190,7 @@ public class DialogueSystem : MonoBehaviour
         for (int i = 0; i < checkpoints.Length; i++)
             if (dialogue == checkpoints[i])
             {
-                engine.Checkpoint(i);
+                Engine.current.Checkpoint(i);
                 break;
             }
     }

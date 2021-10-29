@@ -41,6 +41,13 @@ namespace AnimationUtils
                     return loader.Start_Change_Transparency(renderer, false, timeToFade, timeScale, onComplete);
                 return renderer.gameObject.AddComponent<CoroutineLoader>().Start_Change_Transparency(renderer, false, timeToFade, timeScale, onComplete);
             }
+
+            public static Coroutine Change_Colour(this SpriteRenderer renderer, Color colorTo, float timeToChange)
+            {
+                if (renderer.gameObject.TryGetComponent(out CoroutineLoader loader))
+                    return loader.Start_Gradient(renderer, colorTo, timeToChange);
+                return renderer.gameObject.AddComponent<CoroutineLoader>().Start_Gradient(renderer, colorTo, timeToChange);
+            }
         }
     }
 
@@ -106,15 +113,29 @@ namespace AnimationUtils
                     return loader.Start_Slide(obj, target, timeToSlide, timeScale, onComplete);
                 return obj.gameObject.AddComponent<CoroutineLoader>().Start_Slide(obj, target, timeToSlide, timeScale, onComplete);
             }
+            public static Coroutine Move_To(this Transform obj, Vector3 target, float timeToSlide, bool waitslide = true, Action onComplete = null, bool timeScale = true)
+            {
+                if (obj.gameObject.TryGetComponent(out CoroutineLoader loader))
+                    return loader.Start_Slide(obj, target, timeToSlide, timeScale, onComplete, waitslide);
+                return obj.gameObject.AddComponent<CoroutineLoader>().Start_Slide(obj, target, timeToSlide, timeScale, onComplete, waitslide);
+            }
         }
     }
 
     public class CoroutineLoader : MonoBehaviour
     {
+        const float EPS = 0.001f;
+        
         #region Change_Transparency
+
+        Coroutine transparencyRendererCoroutine;
+        Coroutine transparencyImageCoroutine;
         public Coroutine Start_Change_Transparency(SpriteRenderer renderer, bool makeTransparent, float processTime, bool timeScale = true, Action onComplete = null)
         {
-            return StartCoroutine(Change_Transparency(renderer, makeTransparent, processTime, timeScale, onComplete));
+            if (transparencyRendererCoroutine != null)
+                StopCoroutine(transparencyRendererCoroutine);
+            transparencyRendererCoroutine = StartCoroutine(Change_Transparency(renderer, makeTransparent, processTime, timeScale, onComplete));
+            return transparencyRendererCoroutine;
         }
 
         IEnumerator Change_Transparency(SpriteRenderer renderer, bool makeTransparent, float processTime, bool timeScale = true, Action onComplete = null)
@@ -135,7 +156,10 @@ namespace AnimationUtils
 
         public Coroutine Start_Change_Transparency(Image image, bool makeTransparent, float processTime, bool timeScale = true, Action onComplete = null)
         {
-            return StartCoroutine(Change_Transparency(image, makeTransparent, processTime, timeScale, onComplete));
+            if (transparencyImageCoroutine != null)
+                StopCoroutine(transparencyImageCoroutine);
+            transparencyImageCoroutine = StartCoroutine(Change_Transparency(image, makeTransparent, processTime, timeScale, onComplete));
+            return transparencyImageCoroutine;
         }
 
         IEnumerator Change_Transparency(Image image, bool makeTransparent, float processTime, bool timeScale = true, Action onComplete = null)
@@ -210,13 +234,22 @@ namespace AnimationUtils
         #endregion Curved_Rotation
 
         #region Slide
-        public Coroutine Start_Slide(Transform transform, Vector3 target, float processTime, bool timeScale = true, Action onComplete = null)
+
+        bool sliding = false;
+        Coroutine slidingCoroutine;
+        public Coroutine Start_Slide(Transform transform, Vector3 target, float processTime, bool timeScale = true, Action onComplete = null, bool waitslide = true)
         {
-            return StartCoroutine(Slide(transform, target, processTime, timeScale, onComplete));
+            if (sliding && waitslide)
+                return null;
+            if (slidingCoroutine != null)
+                StopCoroutine(slidingCoroutine);
+            slidingCoroutine = StartCoroutine(Slide(transform, target, processTime, timeScale, onComplete));
+            return slidingCoroutine;
         }
 
         IEnumerator Slide(Transform transform, Vector3 target, float processTime, bool timeScale = true, Action onComplete = null)
         {
+            sliding = true;
             const float EPS = 0.0001f;
             float timetoWait = timeScale ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime;
             Vector3 iter = (target - transform.position) / processTime;
@@ -229,7 +262,36 @@ namespace AnimationUtils
                     yield return new WaitForSecondsRealtime(timetoWait);
             }
             onComplete?.Invoke();
+            sliding = false;
         }
-        #endregion
+        #endregion Slide
+
+        #region Gradient
+        Coroutine gradientCoroutine;
+
+        public Coroutine Start_Gradient(SpriteRenderer renderer, Color colorTo, float processTime)
+        {
+            if (gradientCoroutine != null)
+                StopCoroutine(gradientCoroutine);
+            gradientCoroutine = StartCoroutine(Gradient(renderer, colorTo, processTime));
+            return gradientCoroutine;
+        }
+
+        IEnumerator Gradient(SpriteRenderer renderer, Color colorTo, float processTime)
+        {
+            float red = (colorTo.r - renderer.color.r) / processTime;
+            float green = (colorTo.g - renderer.color.g) / processTime;
+            float blue = (colorTo.b - renderer.color.b) / processTime;
+            while (Mathf.Abs(renderer.color.r - colorTo.r) > EPS &&
+                   Mathf.Abs(renderer.color.g - colorTo.g) > EPS &&
+                   Mathf.Abs(renderer.color.b - colorTo.b) > EPS)
+            {
+                renderer.color = new Color(renderer.color.r + (red * Time.deltaTime),
+                                           renderer.color.g + (green * Time.deltaTime),
+                                           renderer.color.b + (blue * Time.deltaTime));
+                yield return null;
+            }
+        }
+        #endregion Gradient
     }
 }
