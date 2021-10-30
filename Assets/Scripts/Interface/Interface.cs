@@ -13,7 +13,6 @@ public class Interface : MonoBehaviour
     public ManaCounter mana;
     public Image healthBar;
     public CanvasGroup interfacePanel;
-    public Image interactIndicator;
 
     public static Interface current;
 

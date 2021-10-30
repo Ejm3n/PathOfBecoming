@@ -28,12 +28,12 @@ public abstract class InteractEvent : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         active = true;
-        Interface.current.interactIndicator.gameObject.SetActive(true);
+        Engine.current.playerController.interactIndicator.gameObject.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         active = false;
-        Interface.current.interactIndicator.gameObject.SetActive(false);
+        Engine.current.playerController.interactIndicator.gameObject.SetActive(false);
     }
 }
