@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BlockPuzzle : MonoBehaviour
+public class BlockPuzzle : Puzzle
 {
     [SerializeField] private int manaCount;
     [HideInInspector] public int CurrentMana;
@@ -26,6 +26,8 @@ public class BlockPuzzle : MonoBehaviour
     private void Update()
     {
         GameEnded = CheckEnd();
+        if (GameEnded)
+            Solve_Puzzle();
     }
     private bool CheckEnd()
     {

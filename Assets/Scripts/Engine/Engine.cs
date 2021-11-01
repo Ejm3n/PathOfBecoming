@@ -21,6 +21,9 @@ public abstract class Engine : MonoBehaviour
     [SerializeField] Transform playerStartPosition;
     [SerializeField] Transform fairyStartPosition;
 
+    [Header("Other")]
+    [SerializeField] protected GameObject startDialog;
+
     protected const float timeToFade = 1f;
 
     public PlayerController playerController { get; private set; }

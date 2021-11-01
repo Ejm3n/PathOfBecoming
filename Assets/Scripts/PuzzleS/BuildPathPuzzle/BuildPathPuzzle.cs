@@ -27,6 +27,8 @@ public class BuildPathPuzzle : Puzzle
     int selectedIndex = 0;
     int pathIndex = 0;
 
+    bool initial = true;
+
     void Start()
     {
         original = new PathSegment[segmentsAmount];
@@ -34,14 +36,12 @@ public class BuildPathPuzzle : Puzzle
         segmentsPool = new List<PathSegment>(new PathSegment[segmentsAmount]);
 
         Generete_Pools();
-        segmentsPool[selectedIndex].Select();
         timer.Start_Timer(() => Destroy(gameObject));
     }
 
     void Update()
     {
         Select_Segment();
-
         if (ControlButtons.USESPELL)
             Choose_Segment();
     }
@@ -65,10 +65,14 @@ public class BuildPathPuzzle : Puzzle
         else
             return;
         segmentsPool[selectedIndex].Select();
+        if (initial)
+            initial = false;
     }
 
     void Choose_Segment()
     {
+        if (initial)
+            return;
         if (segmentsPool[selectedIndex].index == original[pathIndex].index)
         {
             Vector3 movePosition = playerPathStart.position;

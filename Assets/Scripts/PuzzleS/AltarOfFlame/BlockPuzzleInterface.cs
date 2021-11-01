@@ -23,10 +23,11 @@ public class BlockPuzzleInterface : MonoBehaviour
         else if (bp.CurrentMana <= 0)
         {
             EndTexts("поражение");
+            Destroy(gameObject);
         }
         else
         {
-            youWinText.gameObject.SetActive(false);            
+            youWinText.gameObject.SetActive(false);
         }
     }
     private void EndTexts(string output)

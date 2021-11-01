@@ -11,11 +11,9 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float jumpForce;
     public Rigidbody2D fairyAnchor;
+    public SpriteRenderer interactIndicator;
 
-    public float MoveInput;
     public Rigidbody2D rb { get; private set; }
-
-    public bool faceRight { get; private set; }
     public bool isGround { get; private set; }
     public float checkRadius;
     public LayerMask whatIsGround;
@@ -49,7 +47,6 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         extraJump = ExtraJumpValue;
-        faceRight = true;
     }
 
     private void FixedUpdate()
@@ -57,15 +54,6 @@ public class PlayerController : MonoBehaviour
         isGround = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
        
         rb.velocity = new Vector2(ControlButtons.xAxisRaw * speed, rb.velocity.y);
-
-        if (faceRight == false && ControlButtons.xAxisRaw > 0)
-        {
-            Flip();           
-        }
-        else if (faceRight == true && ControlButtons.xAxisRaw < 0)
-        {
-            Flip();           
-        }
 
         if (isGround == true)
         {
@@ -81,34 +69,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector2.up * jumpForce;
         }
-    }
-
-    public void Flip()
-    {
-        faceRight = !faceRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
-    }
-    public void OnRightButtonDown()
-    {
-        MoveInput = 1;
-        
-    }
-    public void OnLeftButtonDown()
-    {
-        MoveInput = -1;
-        
-    }
-    public void OnButtonUp()
-    {
-        MoveInput = 0;
-    }
-    public void OnJumpButton()
-    {
-        if (isGround)
-            rb.velocity = Vector2.up * jumpForce;
-            
     }
 
     public void Last_Checkpoint()

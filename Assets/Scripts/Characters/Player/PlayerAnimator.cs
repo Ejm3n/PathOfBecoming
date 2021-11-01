@@ -6,6 +6,7 @@ public class PlayerAnimator : MonoBehaviour
     private Animator anim;
     private float walk;
     private PlayerController PC;
+    bool faceRight = true;
 
     AudioClip[] steps;
     AudioClip jump;
@@ -34,19 +35,23 @@ public class PlayerAnimator : MonoBehaviour
         if(walk != 0)
         {
             anim.SetBool("walk", true);
+            if (faceRight == false && walk > 0)
+                Flip();
+            else if (faceRight == true && walk < 0)
+                Flip();
         }
         else
-        {
             anim.SetBool("walk", false);
-        }
 
         if (!PC.isGround)
-        {
             anim.SetBool("jump", true);
-        }
         else
-        {
             anim.SetBool("jump", false);
-        }
+    }
+
+    public void Flip()
+    {
+        faceRight = !faceRight;
+        transform.Rotate(Vector3.up * 180);
     }
 }

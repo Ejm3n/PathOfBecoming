@@ -2,9 +2,6 @@
 
 public class Level1 : Engine
 {
-    [Header("Other")]
-    [SerializeField] GameObject startDialog;
-
     const string LEVEL1MUSIC = "Sounds/Music/ForestTheme";
     const string LEVEL1AMBIENT = "Sounds/Effects/forestambient";
 
