@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         extraJump = ExtraJumpValue;
+        lastCheckpoint = transform.position;
     }
 
     private void FixedUpdate()
