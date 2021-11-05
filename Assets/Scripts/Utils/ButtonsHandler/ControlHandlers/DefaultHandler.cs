@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class DefaultHandler : ControlHandler
+﻿public class DefaultHandler : ControlHandler
 {
     public override void Down()
     {

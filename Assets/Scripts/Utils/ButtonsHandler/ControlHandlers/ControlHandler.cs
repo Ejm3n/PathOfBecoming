@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public abstract class ControlHandler
+﻿public abstract class ControlHandler
 {
     public abstract void Up();
     public abstract void Down();
