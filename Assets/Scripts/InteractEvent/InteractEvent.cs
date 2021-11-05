@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-using Settings;
+using PlayerControls;
 
 [RequireComponent(typeof(Collider2D))]
 public abstract class InteractEvent : MonoBehaviour
@@ -21,7 +21,7 @@ public abstract class InteractEvent : MonoBehaviour
 
     private void Update()
     {
-        if (active && ControlButtons.INTERACT)
+        if (active && ControlButtonsHold.INTERACT)
             Start_Event();
     }
 

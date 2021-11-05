@@ -1,6 +1,6 @@
 ﻿
 using UnityEngine;
-using Settings;
+using PlayerControls;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -54,19 +54,19 @@ public class PlayerController : MonoBehaviour
     {
         isGround = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
        
-        rb.velocity = new Vector2(ControlButtons.xAxisRaw * speed, rb.velocity.y);
+        rb.velocity = new Vector2(ControlButtonsAxis.xAxisRaw * speed, rb.velocity.y);
 
         if (isGround == true)
         {
             extraJump = ExtraJumpValue;
         }
 
-        if (ControlButtons.JUMPandUP && extraJump > 0)
+        if (ControlButtonsHold.UP && extraJump > 0)
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJump--;
         }
-        else if (ControlButtons.yAxisRaw > 0 && extraJump == 0 && isGround == true)
+        else if (ControlButtonsAxis.yAxisRaw > 0 && extraJump == 0 && isGround == true)
         {
             rb.velocity = Vector2.up * jumpForce;
         }

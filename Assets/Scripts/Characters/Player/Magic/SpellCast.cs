@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Settings;
+using PlayerControls;
 using System.Collections;
 
 public class SpellCast : MonoBehaviour
@@ -11,7 +11,7 @@ public class SpellCast : MonoBehaviour
 
     private void Update()
     {
-        if (!ControlButtons.USESPELL || casting || !Interface.current.spellBook.chosenSpell)
+        if (!ControlButtonsHold.USESPELL || casting || !Interface.current.spellBook.chosenSpell)
             return;
         StartCoroutine(Prepare_Cast());
     }
@@ -19,13 +19,12 @@ public class SpellCast : MonoBehaviour
     IEnumerator Prepare_Cast()
     {
         casting = true;
-        ControlButtons.ENABLE_MOVEMENT = false;
-
+        //TODO переделать
         switch (Interface.current.spellBook.chosenSpell.spellType)
         {
             case SpellType.AltInstant:
                 float timeStart = Time.time;
-                while (ControlButtons.USESPELLHOLD)
+                while (ControlButtonsHold.USESPELL)
                     yield return null;
                 Interface.current.spellBook.Cast_Chosen_Spell(firePoint.position, Time.time - timeStart > altCast);
                 break;
@@ -36,6 +35,5 @@ public class SpellCast : MonoBehaviour
         }
 
         casting = false;
-        ControlButtons.ENABLE_MOVEMENT = true;
     }
 }

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Settings;
+using PlayerControls;
 
 public class PlayerAnimator : MonoBehaviour
 {
@@ -31,7 +31,7 @@ public class PlayerAnimator : MonoBehaviour
 
     void Update()
     {
-        walk = ControlButtons.xAxisRaw;
+        walk = ControlButtonsAxis.xAxisRaw;
         if(walk != 0)
         {
             anim.SetBool("walk", true);
