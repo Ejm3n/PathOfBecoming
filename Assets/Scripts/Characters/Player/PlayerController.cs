@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
 
     Health health;
+    ControlHandler buttonsControl;
 
     public Vector3 lastCheckpoint { get; private set; }
 
@@ -48,32 +49,42 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         extraJump = ExtraJumpValue;
         lastCheckpoint = transform.position;
+        Change_Controls<DefaultHandler>();
     }
 
-    private void FixedUpdate()
+    public void Jump()
     {
         isGround = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
-       
-        rb.velocity = new Vector2(ControlButtonsAxis.xAxisRaw * speed, rb.velocity.y);
-
         if (isGround == true)
-        {
             extraJump = ExtraJumpValue;
-        }
-
-        if (ControlButtonsHold.UP && extraJump > 0)
+        if (extraJump > 0)
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJump--;
         }
-        else if (ControlButtonsAxis.yAxisRaw > 0 && extraJump == 0 && isGround == true)
+        else if (extraJump == 0 && isGround == true)
         {
             rb.velocity = Vector2.up * jumpForce;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        buttonsControl.Action();
+    }
+
+    public void Move(int direction)
+    {
+        rb.velocity = new Vector2(direction * speed, rb.velocity.y);
     }
 
     public void Last_Checkpoint()
     {
         Engine.current.Last_Chekpoint(() => health.Heal(health.maxHealth));
+    }
+
+    public void Change_Controls<T>() where T : ControlHandler, new()
+    {
+        buttonsControl = new T();
     }
 }

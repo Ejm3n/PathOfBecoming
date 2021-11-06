@@ -1,42 +1,44 @@
-﻿public class DefaultHandler : ControlHandler
+﻿using PlayerControls;
+
+public class DefaultHandler : ControlHandler
 {
     public override void Down()
     {
-        throw new System.NotImplementedException();
+        return;
     }
 
     public override void Interact()
     {
-        throw new System.NotImplementedException();
+        //interaction with objects
     }
 
     public override void Inventory_Button()
     {
-        throw new System.NotImplementedException();
+        //show inventory
     }
 
     public override void Left()
     {
-        throw new System.NotImplementedException();
+        Engine.current.playerController.Move(ControlButtonsAxis.xAxisRaw);
     }
 
     public override void Right()
     {
-        throw new System.NotImplementedException();
+        Engine.current.playerController.Move(ControlButtonsAxis.xAxisRaw);
     }
 
     public override void Switch_Spell()
     {
-        throw new System.NotImplementedException();
+        //switch spell
     }
 
     public override void Up()
     {
-        throw new System.NotImplementedException();
+        Engine.current.playerController.Jump();
     }
 
     public override void Use_Spell()
     {
-        throw new System.NotImplementedException();
+        //cast spell
     }
 }
