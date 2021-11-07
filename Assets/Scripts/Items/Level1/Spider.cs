@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Spider : DraggableItem
+public class Spider : Item
 {
     [SerializeField] GameObject addToInventory;
 

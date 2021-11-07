@@ -3,7 +3,7 @@ using System;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider2D))]
-public class PlaceForItem : MonoBehaviour
+public class PlaceForItem : InteractEvent
 {
     [SerializeField] Transform placePosition;
     [SerializeField] DialogueTrigger failDialog;
@@ -11,20 +11,17 @@ public class PlaceForItem : MonoBehaviour
 
     bool attachedItem = false;
 
-    private void OnMouseOver()
+    public override void Start_Event()
     {
-        if (Input.GetMouseButtonUp(0))
-            Try_Interaction();
-    }
-
-    void Try_Interaction()
-    {
-        if (!DraggableItem.chosenItem)
+        if (!Interface.current.inventory.chosenItem)
+        {
+            Cannot_Interact();
             return;
+        }
         foreach (ItemExecusion item in interactWith)
-            if (item.item == DraggableItem.chosenItem.item)
+            if (item.item == Interface.current.inventory.chosenItem.item)
             {
-                DraggableItem.chosenItem.Use();
+                Interface.current.inventory.chosenItem.Use();
                 item.execution?.Invoke();
                 return;
             }

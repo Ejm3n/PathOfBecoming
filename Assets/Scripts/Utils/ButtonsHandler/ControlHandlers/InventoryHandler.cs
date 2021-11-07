@@ -1,6 +1,6 @@
 ﻿using PlayerControls;
 
-public class DefaultHandler : ControlHandler
+public class InventoryHandler : ControlHandler
 {
     public override void Down()
     {
@@ -15,33 +15,34 @@ public class DefaultHandler : ControlHandler
 
     public override void Inventory_Button()
     {
-        if(ControlButtonsPress.DOWN)
-            Interface.current.inventory.Open_Inventory();
+        if (ControlButtonsPress.DOWN)
+            Interface.current.inventory.Close_Inventory();
     }
 
     public override void Left()
     {
-        Engine.current.playerController.Move(ControlButtonsAxis.xAxisRaw);
+        if (ControlButtonsPress.LEFT)
+            Interface.current.inventory.Scroll_Inventory(ControlButtonsAxis.xAxisRaw);
     }
 
     public override void Right()
     {
-        return;
+        if (ControlButtonsPress.RIGHT)
+            Interface.current.inventory.Scroll_Inventory(ControlButtonsAxis.xAxisRaw);
     }
 
     public override void Switch_Spell()
     {
-        //switch spell
+        return;
     }
 
     public override void Up()
     {
-        if(ControlButtonsPress.UP)
-            Engine.current.playerController.Jump();
+        return;
     }
 
     public override void Use_Spell()
     {
-        //cast spell
+        return;
     }
 }

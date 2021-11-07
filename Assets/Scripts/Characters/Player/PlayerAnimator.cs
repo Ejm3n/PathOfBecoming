@@ -8,6 +8,8 @@ public class PlayerAnimator : MonoBehaviour
     private PlayerController PC;
     bool faceRight = true;
 
+    const float _Eps = 0.001f; 
+
     AudioClip[] steps;
     AudioClip jump;
 
@@ -32,7 +34,7 @@ public class PlayerAnimator : MonoBehaviour
     void Update()
     {
         walk = ControlButtonsAxis.xAxisRaw;
-        if(walk != 0)
+        if(walk != 0 && PC.rb.velocity.sqrMagnitude > _Eps)
         {
             anim.SetBool("walk", true);
             if (faceRight == false && walk > 0)

@@ -1,6 +1,5 @@
 ﻿
 using UnityEngine;
-using PlayerControls;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -54,7 +53,6 @@ public class PlayerController : MonoBehaviour
 
     public void Jump()
     {
-        isGround = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
         if (isGround == true)
             extraJump = ExtraJumpValue;
         if (extraJump > 0)
@@ -68,13 +66,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         buttonsControl.Action();
     }
 
     public void Move(int direction)
     {
+        isGround = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
         rb.velocity = new Vector2(direction * speed, rb.velocity.y);
     }
 

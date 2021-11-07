@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class Collectible : MonoBehaviour
+public class Collectible : InteractEvent
 {
     [SerializeField] GameObject inventoryItem;
 
@@ -12,7 +12,18 @@ public class Collectible : MonoBehaviour
         attached = place;
     }
 
+    public override void Start_Event()
+    {
+        onSuccess.AddListener(Pick_Up);
+        onSuccess.Invoke();
+    }
+
     private void OnMouseDown()
+    {
+        Pick_Up();
+    }
+
+    private void Pick_Up()
     {
         if (Interface.current.inventory.Add_To_Inventory(inventoryItem))
         {

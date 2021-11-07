@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-public class Notes : ClickableItem
+public class Notes : Item
 {
     public GameObject expanded;
 
-    protected override void On_Click()
+    public override void Use()
     {
         Interface.current.Spawn_UI_Object(expanded);
     }

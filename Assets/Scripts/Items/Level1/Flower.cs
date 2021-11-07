@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-public class Flower : ClickableItem
+public class Flower : Item
 {
     [SerializeField] float healAmount;
 
@@ -13,9 +13,9 @@ public class Flower : ClickableItem
         health = Engine.current.player.GetComponent<Health>();
     }
 
-    protected override void On_Click()
+    public override void Use()
     {
         health.Heal(healAmount);
-        base.On_Click();
+        base.Use();
     }
 }
