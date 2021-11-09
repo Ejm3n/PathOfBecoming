@@ -31,7 +31,8 @@ public class DefaultHandler : ControlHandler
 
     public override void Switch_Spell()
     {
-        //switch spell
+        if (ControlButtonsPress.SWITCHSPELL)
+            Interface.current.spellBook.Scroll_Book();
     }
 
     public override void Up()
@@ -42,6 +43,7 @@ public class DefaultHandler : ControlHandler
 
     public override void Use_Spell()
     {
-        //cast spell
+        if (ControlButtonsPress.USESPELL)
+            Interface.current.spellBook.Start_Casting();
     }
 }

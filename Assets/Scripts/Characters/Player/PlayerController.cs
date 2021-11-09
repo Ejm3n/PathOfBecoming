@@ -4,13 +4,13 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Health))]
-[RequireComponent(typeof(SpellCast))]
 public class PlayerController : MonoBehaviour
 {
     public float speed;
     public float jumpForce;
     public Rigidbody2D fairyAnchor;
     public SpriteRenderer interactIndicator;
+    public Transform firePoint;
 
     public Rigidbody2D rb { get; private set; }
     public bool isGround { get; private set; }
@@ -43,9 +43,14 @@ public class PlayerController : MonoBehaviour
         return new PlayerData(SceneManager.GetActiveScene().buildIndex, new Vector3Serial(transform.position), health.Get_Health());
     }
 
+    private void Awake()
+    {
+        isGround = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         extraJump = ExtraJumpValue;
         lastCheckpoint = transform.position;
         Change_Controls<DefaultHandler>();

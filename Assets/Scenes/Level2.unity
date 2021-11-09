@@ -1726,6 +1726,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40f2e5f95206ee45b8f56b43ea1e939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   inventoryItem: {fileID: 0}
 --- !u!61 &161692093
 BoxCollider2D:
@@ -3515,6 +3521,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40f2e5f95206ee45b8f56b43ea1e939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   inventoryItem: {fileID: 0}
 --- !u!61 &317013960
 BoxCollider2D:
@@ -5237,6 +5249,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40f2e5f95206ee45b8f56b43ea1e939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   inventoryItem: {fileID: 0}
 --- !u!61 &442079103
 BoxCollider2D:
@@ -6190,6 +6208,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f622f3975b9bdc4fac7866b5a8594f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   placePosition: {fileID: 0}
   failDialog: {fileID: 0}
   interactWith: []
@@ -6671,6 +6695,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f622f3975b9bdc4fac7866b5a8594f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   placePosition: {fileID: 0}
   failDialog: {fileID: 0}
   interactWith: []
@@ -8772,6 +8802,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f622f3975b9bdc4fac7866b5a8594f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   placePosition: {fileID: 0}
   failDialog: {fileID: 0}
   interactWith: []
@@ -11475,7 +11511,7 @@ PrefabInstance:
     - target: {fileID: 8498048322027966544, guid: ccc055e16af94b74886b4dfd59ca798c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.0000009536743
       objectReference: {fileID: 0}
     - target: {fileID: 8498048322027966544, guid: ccc055e16af94b74886b4dfd59ca798c,
         type: 3}
@@ -13951,6 +13987,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40f2e5f95206ee45b8f56b43ea1e939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   inventoryItem: {fileID: 0}
 --- !u!61 &1293984837
 BoxCollider2D:
@@ -14498,6 +14540,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f622f3975b9bdc4fac7866b5a8594f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   placePosition: {fileID: 0}
   failDialog: {fileID: 0}
   interactWith: []
@@ -18163,6 +18211,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40f2e5f95206ee45b8f56b43ea1e939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onFail:
+    m_PersistentCalls:
+      m_Calls: []
   inventoryItem: {fileID: 0}
 --- !u!61 &1771033166
 BoxCollider2D:
@@ -19319,6 +19373,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172725225460873101, guid: 84f563526629d894abeefbadc5fd62d7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -119
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172725225460873101, guid: 84f563526629d894abeefbadc5fd62d7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -147
       objectReference: {fileID: 0}
     - target: {fileID: 6119261655672932852, guid: 84f563526629d894abeefbadc5fd62d7,
         type: 3}

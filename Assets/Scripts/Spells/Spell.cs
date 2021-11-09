@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class Spell : MonoBehaviour, IPointerDownHandler
+public class Spell : MonoBehaviour
 {
     //Spell in spellbook
     public float manaCost;
@@ -16,21 +15,16 @@ public class Spell : MonoBehaviour, IPointerDownHandler
     bool onCooldown = false;
 
     public void Cast(Vector3 firePoint, bool alternative)
-    {   if (onCooldown || !Interface.current.mana.SpellShot(manaCost))
+    {   
+        if (onCooldown || !Interface.current.mana.SpellShot(manaCost))
             return;
         Instantiate(projectile, firePoint, Quaternion.identity);
         StartCoroutine(Cooldown());
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Interface.current.spellBook.Choose_Spell(this);
-    }
-
     IEnumerator Cooldown()
     {
         onCooldown = true;
-        Interface.current.spellBook.Spell_Used(this);
         yield return new WaitForSeconds(cooldown);
         onCooldown = false;
     }
