@@ -10,14 +10,17 @@ public class Peschernik : MonoBehaviour
     [SerializeField] float minSpeed;
     [SerializeField] float maxSpeed;
     [SerializeField] LayerMask playerLayer;
+    [SerializeField] bool goingRight;
     GameObject player;
     int currentMovingPoint;
     bool attacking = false;
     SpriteRenderer[] playerSR;
+
     private void Start()
     {
         player = Engine.current.player;
     }
+
     void Update()
     {
         attacking = Physics2D.OverlapCircle(transform.position,radiusToFindPlayer,playerLayer);
@@ -27,12 +30,22 @@ public class Peschernik : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, positionsToPatrol[currentMovingPoint],speed);
             else 
             {
-                if (currentMovingPoint < positionsToPatrol.Length - 1)
-                    currentMovingPoint++;
+                if(goingRight)
+                {
+                    if (currentMovingPoint < positionsToPatrol.Length - 1)
+                        currentMovingPoint++;
+                    else
+                        Flip();                       
+                }
                 else
-                    currentMovingPoint = 0;
-            }
+                {
+                    if (currentMovingPoint > 0)
+                        currentMovingPoint--;
+                    else
+                        Flip();
+                }
                 
+            }               
         }
         else
         {
@@ -64,5 +77,11 @@ public class Peschernik : MonoBehaviour
                 speed += 0.0001f;
             }
         }
+    }
+
+    private void Flip()
+    {
+        goingRight = !goingRight;
+        transform.Rotate(Vector3.up * 180);
     }
 }

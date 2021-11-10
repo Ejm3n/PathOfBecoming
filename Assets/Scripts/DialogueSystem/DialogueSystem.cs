@@ -33,12 +33,13 @@ public class DialogueSystem : MonoBehaviour
     Queue<string> linesTriggered = new Queue<string>();//очередь строк, которые триггерятся. именно эта очередь будет выводиться на экран
     private bool isDialogueTyping = false;
     private bool typeDialogeInstantly = false;
-
+    private Dictionary<string, Sprite> avatars =  new Dictionary<string, Sprite>();
     [SerializeField] CheckpointDialogue[] checkpoints;
     UnityEvent onComplete;
     
     private void Awake()
     {
+
         TextAsset language = Resources.Load<TextAsset>("Russian2");//считываем файл со строками
         file = language.text.Split('\n');     //заполняем этими строками массив
     }
