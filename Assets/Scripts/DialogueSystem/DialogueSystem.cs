@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -39,7 +40,17 @@ public class DialogueSystem : MonoBehaviour
     
     private void Awake()
     {
+        FileInfo[] filesInDirectory = new DirectoryInfo("Assets/Resources/Sprites/Avatars").GetFiles();
+        
+        foreach (FileInfo f in filesInDirectory)
+        {
+            if(!f.Name.Contains("meta"))
+            {
+                string currentName = f.Name.Remove(f.Name.IndexOf('.'));
 
+                avatars.Add((currentName),Resources.Load<Sprite>("Sprites/Avatars/" + currentName));
+            }        
+        }
         TextAsset language = Resources.Load<TextAsset>("Russian2");//считываем файл со строками
         file = language.text.Split('\n');     //заполняем этими строками массив
     }
