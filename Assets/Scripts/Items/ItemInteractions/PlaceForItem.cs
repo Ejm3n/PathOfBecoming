@@ -13,7 +13,7 @@ public class PlaceForItem : InteractEvent
 
     public override void Start_Event()
     {
-        if (!Interface.current.inventory.chosenItem)
+        if (!Interface.current.inventory.chosenItem || !(Engine.current.playerController.buttonsControl is InventoryHandler))
         {
             Cannot_Interact();
             return;
@@ -23,6 +23,7 @@ public class PlaceForItem : InteractEvent
             {
                 Interface.current.inventory.chosenItem.Use();
                 item.execution?.Invoke();
+                onSuccess?.Invoke();
                 return;
             }
         Cannot_Interact();
@@ -32,6 +33,7 @@ public class PlaceForItem : InteractEvent
     {
         if(failDialog)
             failDialog.StartDialogue();
+        onFail?.Invoke();
     }
 
     public void Place_Item(GameObject item)

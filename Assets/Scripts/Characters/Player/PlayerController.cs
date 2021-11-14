@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
 
     Health health;
-    ControlHandler buttonsControl;
+    public ControlHandler buttonsControl { get; private set; }
 
     public Vector3 lastCheckpoint { get; private set; }
 
