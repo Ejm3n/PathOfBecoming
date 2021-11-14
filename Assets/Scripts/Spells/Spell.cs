@@ -9,6 +9,7 @@ public class Spell : MonoBehaviour
     public float cooldown;
 
     public GameObject projectile;
+    public GameObject altProjectile;
 
     public const string path = "Prefabs/Magic/Spells/";
 
@@ -18,7 +19,10 @@ public class Spell : MonoBehaviour
     {   
         if (onCooldown || !Interface.current.mana.SpellShot(manaCost))
             return;
-        Instantiate(projectile, firePoint, Quaternion.identity);
+        if (alternative && altProjectile)
+            Instantiate(altProjectile, firePoint, Quaternion.identity);
+        else
+            Instantiate(projectile, firePoint, Quaternion.identity);
         StartCoroutine(Cooldown());
     }
 
