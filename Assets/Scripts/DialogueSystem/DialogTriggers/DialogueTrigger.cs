@@ -8,6 +8,6 @@ public class DialogueTrigger : MonoBehaviour
     public UnityEvent onTrigger;
     public virtual void StartDialogue()
     {
-        transform.parent.GetComponent<DialogueSystem>().StartDialogue(startNum, endOfThisDia, onTrigger);
+        Engine.current.dialogueSystem.StartDialogue(startNum, endOfThisDia, onTrigger);
     }
 }
