@@ -4,7 +4,8 @@ public class CastingHandler : ControlHandler
 {
     public override void Down()
     {
-        return;
+        if(ControlButtonsPress.DOWN)
+            Interface.current.spellBook.Change_Cast_Angle(ControlButtonsAxis.yAxisRaw);
     }
 
     public override void Interact()
@@ -34,7 +35,8 @@ public class CastingHandler : ControlHandler
 
     public override void Up()
     {
-        return;
+        if (ControlButtonsPress.UP)
+            Interface.current.spellBook.Change_Cast_Angle(ControlButtonsAxis.yAxisRaw);
     }
 
     public override void Use_Spell()

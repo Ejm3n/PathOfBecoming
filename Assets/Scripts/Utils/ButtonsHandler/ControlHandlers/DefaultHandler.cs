@@ -44,6 +44,9 @@ public class DefaultHandler : ControlHandler
     public override void Use_Spell()
     {
         if (ControlButtonsPress.USESPELL)
+        {
+            Interface.current.spellBook.Reset_Angle();
             Interface.current.spellBook.Start_Casting();
+        }
     }
 }

@@ -9,20 +9,16 @@ public class Spell : MonoBehaviour
     public float cooldown;
 
     public GameObject projectile;
-    public GameObject altProjectile;
 
     public const string path = "Prefabs/Magic/Spells/";
 
     bool onCooldown = false;
 
-    public void Cast(Vector3 firePoint, bool alternative)
+    public void Cast(Vector3 firePoint, float angle)
     {   
         if (onCooldown || !Interface.current.mana.SpellShot(manaCost))
             return;
-        if (alternative && altProjectile)
-            Instantiate(altProjectile, firePoint, Quaternion.identity);
-        else
-            Instantiate(projectile, firePoint, Quaternion.identity);
+        Instantiate(projectile, firePoint, Quaternion.Euler(0,Engine.current.player.transform.rotation.eulerAngles.y, angle));
         StartCoroutine(Cooldown());
     }
 

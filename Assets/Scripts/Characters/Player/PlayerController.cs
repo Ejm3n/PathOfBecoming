@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D fairyAnchor;
     public SpriteRenderer interactIndicator;
     public Transform firePoint;
+    public Transform spellDirection;
 
     public Rigidbody2D rb { get; private set; }
     public bool isGround { get; private set; }

@@ -12,11 +12,21 @@ public class Spellbook : MonoBehaviour
 
     List<Spell> spellList = new List<Spell>();
 
-    private float _startCast;
-    const float altCast = 0.5f;
-
     public Spell chosenSpell { get; private set; }
     private int _chosenSpellIndex = 0;
+
+    private float _castAngle 
+    { 
+        set
+        {
+            Engine.current.playerController.spellDirection.rotation = Quaternion.Euler(0, 0, value);
+        }
+        get
+        {
+            return Engine.current.playerController.spellDirection.rotation.eulerAngles.z;
+        }
+    }
+    private const float angleChange = 45f;
 
     private void Awake()
     {
@@ -49,13 +59,13 @@ public class Spellbook : MonoBehaviour
     public void Start_Casting()
     {
         Engine.current.playerController.Change_Controls<CastingHandler>();
-        _startCast = Time.time;
     }
 
     public void Cast()
     {
         Engine.current.playerController.Change_Controls<DefaultHandler>();
-        chosenSpell.Cast(Engine.current.playerController.firePoint.position, Time.time - _startCast >= altCast);
+        chosenSpell.Cast(Engine.current.playerController.firePoint.position, _castAngle);
+        Engine.current.playerController.spellDirection.gameObject.SetActive(false);
     }
 
     public void Enable_Spellbook()
@@ -63,6 +73,17 @@ public class Spellbook : MonoBehaviour
         spellBookCG.alpha = 1;
         spellBookCG.blocksRaycasts = true;
         spellBookCG.interactable = true;
+    }
+
+    public void Reset_Angle()
+    {
+        Engine.current.playerController.spellDirection.gameObject.SetActive(true);
+        _castAngle = 0f;
+    }
+
+    public void Change_Cast_Angle(int direction)
+    {
+        _castAngle = Mathf.Clamp(_castAngle + angleChange * direction, -89, 89);
     }
 
     public void Load_State(SpellBookData data)
