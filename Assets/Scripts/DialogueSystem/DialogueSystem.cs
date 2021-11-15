@@ -147,7 +147,7 @@ public class DialogueSystem : MonoBehaviour
         {
             yield break;
         }
-        string nameString = sentence.Substring(sentence.IndexOf('=') - 1);
+        string nameString = sentence.Split('=')[0].Trim();
         if(avatars.ContainsKey(nameString))
         {
             nameOutput.text = avatars[nameString].Name;
@@ -155,7 +155,7 @@ public class DialogueSystem : MonoBehaviour
         }
         else
         {
-            Debug.LogError("НЕ НАЙДЕНО В СЛОВАРЕ АВАТАРОВ");
+            Debug.LogWarning("НЕ НАЙДЕНО В СЛОВАРЕ АВАТАРОВ");
         }
 
         string result = sentence.Substring(sentence.IndexOf('=') + 1);
