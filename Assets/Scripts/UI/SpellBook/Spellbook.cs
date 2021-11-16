@@ -83,7 +83,7 @@ public class Spellbook : MonoBehaviour
 
     public void Change_Cast_Angle(int direction)
     {
-        _castAngle = Mathf.Clamp(_castAngle + angleChange * direction, -89, 89);
+        _castAngle = Mathf.Clamp(_castAngle + angleChange * direction, -50, 50);
     }
 
     public void Load_State(SpellBookData data)
