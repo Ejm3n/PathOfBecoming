@@ -18,7 +18,7 @@ public class Spell : MonoBehaviour
     {   
         if (onCooldown || !Interface.current.mana.SpellShot(manaCost))
             return;
-        Instantiate(projectile, firePoint, Quaternion.Euler(0,Engine.current.player.transform.rotation.eulerAngles.y, angle));
+        Instantiate(projectile, firePoint, Quaternion.Euler(0,Engine.current.player.transform.GetChild(0).rotation.eulerAngles.y, angle));
         StartCoroutine(Cooldown());
     }
 

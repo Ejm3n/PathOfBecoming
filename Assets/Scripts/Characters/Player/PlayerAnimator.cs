@@ -54,6 +54,6 @@ public class PlayerAnimator : MonoBehaviour
     public void Flip()
     {
         faceRight = !faceRight;
-        transform.parent.Rotate(Vector3.up * 180);
+        transform.Rotate(Vector3.up * 180);
     }
 }
