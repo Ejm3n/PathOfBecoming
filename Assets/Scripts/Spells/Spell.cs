@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spell : MonoBehaviour
 {
@@ -13,6 +14,12 @@ public class Spell : MonoBehaviour
     public const string path = "Prefabs/Magic/Spells/";
 
     bool onCooldown = false;
+    Image spellImage;
+
+    private void Start()
+    {
+        spellImage = GetComponent<Image>();
+    }
 
     public void Cast(Vector3 firePoint, float angle)
     {   
@@ -24,11 +31,17 @@ public class Spell : MonoBehaviour
 
     IEnumerator Cooldown()
     {
+        float _endTime = Time.time + cooldown;
         onCooldown = true;
-        yield return new WaitForSeconds(cooldown);
+        do
+        {
+            spellImage.fillAmount = 1 - ((_endTime - Time.time) / cooldown);
+            yield return null;
+        }
+        while (spellImage.fillAmount < 1);
         onCooldown = false;
     }
 }
 
-public enum SpellType { Instant, AltInstant, Stream }
+public enum SpellType { Wind, Fire, Ice, Levitation }
 

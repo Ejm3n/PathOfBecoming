@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour
 
     public void Change_Controls<T>() where T : ControlHandler, new()
     {
+        rb.velocity = Vector3.zero;
         buttonsControl = new T();
     }
 }

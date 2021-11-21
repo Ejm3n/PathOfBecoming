@@ -72,6 +72,5 @@ public abstract class Item : MonoBehaviour
 
 public enum Items
 {
-    //List of draggable Items
-    Spider, Box, EmptyBox, DoorKey, Plate
+    Spider, Box, EmptyBox, DoorKey, Plate, Mushroom
 }

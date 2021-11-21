@@ -19,7 +19,7 @@ public class Spellbook : MonoBehaviour
     { 
         set
         {
-            Engine.current.playerController.spellDirection.rotation = Quaternion.Euler(0, 0, value);
+            Engine.current.playerController.spellDirection.localRotation = Quaternion.Euler(0, 0, value);
         }
         get
         {

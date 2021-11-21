@@ -15,11 +15,7 @@ public class Level2 : Engine
         GameObject fairy = Resources.Load<GameObject>("Prefabs/Characters/Fairy");
         Spawn_Characters(player, fairy);
         Connect_Fairy_to_Player();
-        userInterface.spellBook.Learn_Spell(Resources.Load<GameObject>("Prefabs/Magic/Spells/Lighter(Spell)"));
         userInterface.spellBook.Learn_Spell(Resources.Load<GameObject>("Prefabs/Magic/Spells/Whirlwind(Spell)"));
-        userInterface.inventory.Add_To_Inventory(Resources.Load<GameObject>("Prefabs/Items/Inventory/Spider"));
-        userInterface.inventory.Add_To_Inventory(Resources.Load<GameObject>("Prefabs/Items/Inventory/Flower"));
-        userInterface.inventory.Add_To_Inventory(Resources.Load<GameObject>("Prefabs/Items/Inventory/Box"));
         Show_Scene(() => {
             userInterface.inventory.Enable_Inventory();
             userInterface.spellBook.Enable_Spellbook();

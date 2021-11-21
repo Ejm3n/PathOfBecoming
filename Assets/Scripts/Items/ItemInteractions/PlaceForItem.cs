@@ -7,12 +7,18 @@ public class PlaceForItem : InteractEvent
 {
     [SerializeField] Transform placePosition;
     [SerializeField] DialogueTrigger failDialog;
+    [SerializeField] DialogueTrigger noItemDialog;
     [SerializeField] ItemExecusion[] interactWith;
 
     bool attachedItem = false;
 
     public override void Start_Event()
     {
+        if(!Interface.current.inventory.chosenItem && noItemDialog)
+        {
+            Examine();
+            return;
+        }
         if (!Interface.current.inventory.chosenItem || !(Engine.current.playerController.buttonsControl is InventoryHandler))
         {
             Cannot_Interact();
@@ -34,6 +40,11 @@ public class PlaceForItem : InteractEvent
         if(failDialog)
             failDialog.StartDialogue();
         onFail?.Invoke();
+    }
+
+    private void Examine()
+    {
+        noItemDialog.StartDialogue();
     }
 
     public void Place_Item(GameObject item)

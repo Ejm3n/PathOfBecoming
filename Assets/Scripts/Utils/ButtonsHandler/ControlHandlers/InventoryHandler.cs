@@ -10,7 +10,10 @@ public class InventoryHandler : ControlHandler
     public override void Interact()
     {
         if (InteractEvent.current && ControlButtonsPress.INTERACT)
+        {
             InteractEvent.current.Start_Event();
+            Interface.current.inventory.Close_Inventory();
+        }
     }
 
     public override void Inventory_Button()
