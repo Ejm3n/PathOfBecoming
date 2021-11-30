@@ -1,9 +1,27 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+
+public class SpeakerObject
+{
+    private Sprite avatarSprite;
+    private string name;
+
+    public Sprite AvatarSprite { get => avatarSprite; set => avatarSprite = value; }
+    public string Name { get => name; set => name = value; }
+
+    public SpeakerObject(Sprite sprite, string name)
+    {
+        avatarSprite = sprite;
+        this.name = name;
+    }
+}
 
 public class DialogueSystem : MonoBehaviour
 {
@@ -19,12 +37,13 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] Sprite impImg;//ссылка непосредственно на спрайт анчутки
     [SerializeField] Sprite catImg;//на спрайт кота
 
-    public string[] file;//все строки файла
+    public string[] DialoguesFile;//все строки файла
+    private string[][] dialogues;
     private int whereIsEndChoose;//на какой строчке конец выбора
     private int choice1;//строка с выбором 1
     private int choice2;//строка с выбором 2
     //далее сабстринги для поиска их в файле
-    private string subPlayer = "player";
+    private string subPlayer = "player";//тут собсна все эти рефы
     private string subFairy = "fairy";
     private string subImp = "imp";
     private string subCat = "cat";
@@ -33,45 +52,58 @@ public class DialogueSystem : MonoBehaviour
     Queue<string> linesTriggered = new Queue<string>();//очередь строк, которые триггерятся. именно эта очередь будет выводиться на экран
     private bool isDialogueTyping = false;
     private bool typeDialogeInstantly = false;
-
+    private Dictionary<string, SpeakerObject> avatars = new Dictionary<string, SpeakerObject>();
     [SerializeField] CheckpointDialogue[] checkpoints;
     UnityEvent onComplete;
-    
+
     private void Awake()
     {
-        TextAsset language = Resources.Load<TextAsset>("Russian2");//считываем файл со строками
-        file = language.text.Split('\n');     //заполняем этими строками массив
+        DialoguesFile = FileParser("Russian2", '\n');
+
+        string dialogFile = Resources.Load<TextAsset>("Russian2").text;
+
+        dialogFile = Regex.Replace(dialogFile, @"{(\w*)}","");        
+        
+        Dictionary<string, string> dialogueNames = new Dictionary<string, string>();
+        string[] names = FileParser("DialogueNames", '\n');
+        foreach (string name in names)
+        {
+            dialogueNames.Add(name.Split('=')[0].Trim(), name.Split('=')[1].Trim());
+        }
+        foreach (Sprite sprite in Resources.LoadAll<Sprite>("Sprites/Avatars"))
+        {
+            avatars.Add(sprite.name, new SpeakerObject(sprite, dialogueNames[sprite.name]));
+        }
+
+        string[] dialogTMP = TextParser(dialogFile, '*');
+        dialogues = new string[dialogTMP.Length][];
+        for (int i = 0; i < dialogTMP.Length; i++)
+        {
+            dialogues[i] = dialogTMP[i].Replace("\r",""). Split('\n');
+        }
     }
-    
+
     public void Next()//метод для пропуска строчки
-    {      
+    {
         DisplayNextLine();
     }
     public void SetUI(bool what)//метод отключающий лишний UI
     {
         Interface.current.Enable_Interface(what);
     }
-    public void ChooseStart(int choose1, int choose2,int endOfChoices, UnityEvent onComplete)//старт выборных диалогов
+
+    public void StartDialogue(int dialogNum, UnityEvent onComplete)
     {
         this.onComplete = onComplete;
+        panelAnim.SetBool("PanelShow", true);
         SetUI(false);
-        choice1Text.text = file[choose1].Substring(file[choose1].IndexOf('=') + 1); ;
-        choice2Text.text = file[choose2].Substring(file[choose2].IndexOf('=') + 1); ;
-        choosePanelAnim.SetBool("PanelShow", true);
-        whereIsEndChoose = endOfChoices;
-        choice1 = choose1;
-        choice2 = choose2;
+        foreach (string str in dialogues[dialogNum])
+        {
+            linesTriggered.Enqueue(str);
+        }
+        DisplayNextLine();
     }
-    public void OnChoice1Click()//выбор 1 нажат
-    {
-        choosePanelAnim.SetBool("PanelShow", false);       
-        StartDialogue(choice1, choice2, onComplete);
-    }
-    public void OnChoice2Click()//выбор 2 нажат
-    {
-        choosePanelAnim.SetBool("PanelShow", false);
-        StartDialogue(choice2, whereIsEndChoose, onComplete);
-    }
+    //тут
     public void StartDialogue(int startLine, int endLine, UnityEvent onComplete)//неачать диалог
     {
         this.onComplete = onComplete;
@@ -79,7 +111,7 @@ public class DialogueSystem : MonoBehaviour
         SetUI(false);
         for (int i = startLine; i < endLine; i++)
         {
-            linesTriggered.Enqueue(file[i]);
+            linesTriggered.Enqueue(DialoguesFile[i]);
         }
         DisplayNextLine();
     }
@@ -91,7 +123,7 @@ public class DialogueSystem : MonoBehaviour
 
     public void DisplayNextLine()//показать следущую строку
     {
-        if(!isDialogueTyping)
+        if (!isDialogueTyping)
         {
             if (linesTriggered.Count == 0)
             {
@@ -108,61 +140,31 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    IEnumerator TypeLine(string sentence)//написать строку заменив иконки и имена
+    //тут
+    private IEnumerator TypeLine(string sentence)//написать строку заменив иконки и имена
     {
-        if(sentence.Contains(subPlayer))
+        if(sentence.Trim() == "")
         {
-            dialogueImg.color = new Color(255, 255, 255);
-            nameOutput.text = "Генри";
-            dialogueImg.sprite = henryImg;
-
+            yield break;
         }
-        else if (sentence.Contains(subStranger))
+        string nameString = sentence.Split('=')[0].Trim();
+        if(avatars.ContainsKey(nameString))
         {
-            dialogueImg.color = new Color(255, 255, 255);
-            nameOutput.text = "???";
-            if (sentence.Contains(subFairy))
-            {
-                dialogueImg.sprite = fairyImg;
-            }               
-            else if (sentence.Contains(subImp))
-            {
-                dialogueImg.sprite = impImg;
-            }               
+            nameOutput.text = avatars[nameString].Name;
+            dialogueImg.sprite = avatars[nameString].AvatarSprite;
         }
-        else if (sentence.Contains(subFairy))
+        else
         {
-            dialogueImg.color = new Color(255, 255, 255);
-            nameOutput.text = "Лилия";
-            dialogueImg.sprite = fairyImg;
+            Debug.LogWarning("НЕ НАЙДЕНО В СЛОВАРЕ АВАТАРОВ");
         }
-        else if (sentence.Contains(subImp))
-        {
-            dialogueImg.color = new Color(255, 255, 255);
-            nameOutput.text = "Анчутка";
-            dialogueImg.sprite = impImg;
-        }
-        else if(sentence.Contains(subCat))
-        {
-            dialogueImg.color = new Color(255, 255, 255);
-            nameOutput.text = "Кот";
-            dialogueImg.sprite = catImg;
-        }
-        else if(sentence.Contains(subAnonim))
-        {
-            nameOutput.text = "???";
-            dialogueImg.sprite = fairyImg;
-            dialogueImg.color = new Color(0,0,0);
-        }
-        
 
         string result = sentence.Substring(sentence.IndexOf('=') + 1);
         sentence = result.Trim();
         output.text = "";
-        foreach(char letter in sentence.ToCharArray())
+        foreach (char letter in sentence.ToCharArray())
         {
             isDialogueTyping = true;
-            if(!typeDialogeInstantly)
+            if (!typeDialogeInstantly)
             {
                 yield return new WaitForSecondsRealtime(0.025f);
                 output.text += letter;
@@ -172,13 +174,12 @@ public class DialogueSystem : MonoBehaviour
                 output.text = sentence;
                 break;
             }
-               
         }
         isDialogueTyping = false;
         typeDialogeInstantly = false;
-    }   
+    }
     public void EndDialogue()//закончить диалог 
-    {      
+    {
         panelAnim.SetBool("PanelShow", false);
         SetUI(true);
         UnityEvent complete = onComplete;
@@ -200,5 +201,16 @@ public class DialogueSystem : MonoBehaviour
         for (int i = 0; i <= index; i++)
             checkpoints[i].onCheckpoint?.Invoke();
         checkpoints[index].onTrigger?.Invoke();
+    }
+    private string[] FileParser(string fileName, char param)
+    {
+        TextAsset file = Resources.Load<TextAsset>(fileName);
+        string[] parsed = file.text.Split(param);
+        return parsed;
+    }
+    private string[] TextParser(string text, char param)
+    {
+        string[] parsed = text.Split(param);
+        return parsed;
     }
 }
