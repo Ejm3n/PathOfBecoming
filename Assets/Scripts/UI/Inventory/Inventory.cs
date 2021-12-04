@@ -146,5 +146,6 @@ public class Inventory : MonoBehaviour
     {
         chosenItem.transform.Move_To(_heapPlace.position, 0.2f, false);
         Engine.current.playerController.Change_Controls<DefaultHandler>();
+        chosenItem = null;
     }
 }

@@ -36,8 +36,6 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] Sprite fairyImg;//ссылка непосредственно на спрайт феи
     [SerializeField] Sprite impImg;//ссылка непосредственно на спрайт анчутки
     [SerializeField] Sprite catImg;//на спрайт кота
-
-    public string[] DialoguesFile;//все строки файла
     private string[][] dialogues;
     private int whereIsEndChoose;//на какой строчке конец выбора
     private int choice1;//строка с выбором 1
@@ -58,11 +56,9 @@ public class DialogueSystem : MonoBehaviour
 
     private void Awake()
     {
-        DialoguesFile = FileParser("Russian2", '\n');
+        string dialogFile = Resources.Load<TextAsset>("dialogtest").text;
 
-        string dialogFile = Resources.Load<TextAsset>("Russian2").text;
-
-        dialogFile = Regex.Replace(dialogFile, @"{(\w*)}","");        
+        dialogFile = Regex.Replace(dialogFile, @"#.*", ""); //@"{(\w*)}","");        
         
         Dictionary<string, string> dialogueNames = new Dictionary<string, string>();
         string[] names = FileParser("DialogueNames", '\n');
@@ -103,23 +99,6 @@ public class DialogueSystem : MonoBehaviour
         }
         DisplayNextLine();
     }
-    //тут
-    public void StartDialogue(int startLine, int endLine, UnityEvent onComplete)//неачать диалог
-    {
-        this.onComplete = onComplete;
-        panelAnim.SetBool("PanelShow", true);
-        SetUI(false);
-        for (int i = startLine; i < endLine; i++)
-        {
-            linesTriggered.Enqueue(DialoguesFile[i]);
-        }
-        DisplayNextLine();
-    }
-
-    public void StartDialogue(Dialogue dialogue, UnityEvent onComplete)
-    {
-        StartDialogue(dialogue.startStringId, dialogue.endStringId, onComplete);
-    }
 
     public void DisplayNextLine()//показать следущую строку
     {
@@ -143,7 +122,11 @@ public class DialogueSystem : MonoBehaviour
     //тут
     private IEnumerator TypeLine(string sentence)//написать строку заменив иконки и имена
     {
-        if(sentence.Trim() == "")
+        if (sentence.Trim() == "" && linesTriggered.Count != 0)
+        {
+            sentence = linesTriggered.Dequeue();
+        }
+        else if (linesTriggered.Count == 0)
         {
             yield break;
         }
