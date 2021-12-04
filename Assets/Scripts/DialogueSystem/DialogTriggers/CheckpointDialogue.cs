@@ -8,6 +8,6 @@ public class CheckpointDialogue : DialogueTrigger
     {
         DialogueSystem ds = transform.parent.GetComponent<DialogueSystem>();
         onTrigger.AddListener(() => ds.Checkpoint(this));
-        ds.StartDialogue(startNum, endOfThisDia, onTrigger);
+        ds.StartDialogue(dialogueNumber, onTrigger);
     }
 }
