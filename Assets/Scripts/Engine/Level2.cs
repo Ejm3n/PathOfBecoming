@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Level2 : Engine
 {
+    private int _mushroom_count = 0;
+    private const int need_mushrooms = 4;
+
     protected override void Awake()
     {
         mainTheme = Resources.Load<AudioClip>("Sounds/Music/Level2");
@@ -22,5 +25,14 @@ public class Level2 : Engine
             userInterface.Enable_Interface(true);
             startDialog.SetActive(true);
         });
+    }
+
+    public void Add_Mushroom()
+    {
+        ++_mushroom_count;
+        if (_mushroom_count >= need_mushrooms)
+        {
+
+        }
     }
 }
