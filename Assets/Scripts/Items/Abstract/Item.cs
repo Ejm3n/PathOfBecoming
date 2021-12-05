@@ -72,5 +72,5 @@ public abstract class Item : MonoBehaviour
 
 public enum Items
 {
-    Spider, Box, EmptyBox, DoorKey, Plate, Mushroom
+    Text, Book, SmallKey, MediumKey, EpicKey, EmptyVessel, FilledVessel, Special, Stackable
 }

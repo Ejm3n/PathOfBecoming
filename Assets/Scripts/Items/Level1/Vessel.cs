@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Spider : Item
+public class Vessel : Default
 {
     [SerializeField] GameObject addToInventory;
 
