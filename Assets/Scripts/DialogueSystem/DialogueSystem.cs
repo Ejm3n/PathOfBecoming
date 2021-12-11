@@ -24,29 +24,13 @@ public class SpeakerObject
 }
 
 public class DialogueSystem : MonoBehaviour
-{
+{ 
     [SerializeField] Text output;//ссылка на текст который будет на UI отображаться
     [SerializeField] Text nameOutput;//ссылка на имя которое будет на UI отображаться
-    [SerializeField] Text choice1Text;//ссылка на 1 вариант выбора который будет на UI отображаться
-    [SerializeField] Text choice2Text;//ссылка на 2 вариант выбора который будет на UI отображаться
     [SerializeField] Animator panelAnim;//анимация панели диалогов
     [SerializeField] Animator choosePanelAnim;// анимация панели выбора диалогов
-    [SerializeField] Image dialogueImg;//ссылка на картинку говорящего персонажа
-    [SerializeField] Sprite henryImg;//ссылка непосредственно на спрайт игрока
-    [SerializeField] Sprite fairyImg;//ссылка непосредственно на спрайт феи
-    [SerializeField] Sprite impImg;//ссылка непосредственно на спрайт анчутки
-    [SerializeField] Sprite catImg;//на спрайт кота
+    [SerializeField] Image dialogueImg;//ссылка на картинку говорящего персонажа   
     private string[][] dialogues;
-    private int whereIsEndChoose;//на какой строчке конец выбора
-    private int choice1;//строка с выбором 1
-    private int choice2;//строка с выбором 2
-    //далее сабстринги для поиска их в файле
-    private string subPlayer = "player";//тут собсна все эти рефы
-    private string subFairy = "fairy";
-    private string subImp = "imp";
-    private string subCat = "cat";
-    private string subAnonim = "anonym";
-    private string subStranger = "stranger";
     Queue<string> linesTriggered = new Queue<string>();//очередь строк, которые триггерятся. именно эта очередь будет выводиться на экран
     private bool isDialogueTyping = false;
     private bool typeDialogeInstantly = false;
@@ -98,6 +82,13 @@ public class DialogueSystem : MonoBehaviour
             linesTriggered.Enqueue(str);
         }
         DisplayNextLine();
+    }
+
+    public void StartChooseDialogue(bool what)
+    {
+        choosePanelAnim.SetBool("PanelShow", what);
+        SetUI(!what);
+
     }
 
     public void DisplayNextLine()//показать следущую строку
@@ -166,6 +157,8 @@ public class DialogueSystem : MonoBehaviour
         panelAnim.SetBool("PanelShow", false);
         SetUI(true);
         UnityEvent complete = onComplete;
+        DialogueTrigger.current = null;
+        Engine.current.playerController.Change_Controls<DefaultHandler>();
         complete?.Invoke();
     }
 

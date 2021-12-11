@@ -13,7 +13,7 @@ public class Interface : MonoBehaviour
     public ManaCounter mana;
     public Image healthBar;
     public CanvasGroup interfacePanel;
-
+    public ChoicePanel choicePanel;
     public static Interface current;
 
     private void Awake()
