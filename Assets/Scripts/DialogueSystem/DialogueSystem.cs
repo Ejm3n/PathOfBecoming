@@ -158,8 +158,8 @@ public class DialogueSystem : MonoBehaviour
         SetUI(true);
         UnityEvent complete = onComplete;
         DialogueTrigger.current = null;
-        Engine.current.playerController.Change_Controls<DefaultHandler>();
         complete?.Invoke();
+        Engine.current.playerController.Change_Controls<DefaultHandler>();
     }
 
     public void Checkpoint(CheckpointDialogue dialogue)
