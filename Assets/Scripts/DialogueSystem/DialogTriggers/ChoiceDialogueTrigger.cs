@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using PlayerControls;
+﻿using System.Collections.Generic;
 using System;
 [Serializable]
 public class Choices
@@ -30,12 +26,11 @@ public class ChoiceDialogueTrigger : DialogueTrigger
         if(index != choices.Count-1)
         {
             choices[index].dialogue.StartDialogue();
-            choices[index].dialogue.onTrigger.AddListener(this.StartDialogue);
+            choices[index].dialogue.onTrigger.AddListener(StartDialogue);
         }
         else
         {
-            choices[index].dialogue.StartDialogue();
-            
+            choices[index].dialogue.StartDialogue();            
         }
            
         choices.RemoveAt(index);
@@ -45,6 +40,7 @@ public class ChoiceDialogueTrigger : DialogueTrigger
     {
         if (choices.Count == 1)
         {
+            choices[0].dialogue.onTrigger.AddListener(() => onTrigger?.Invoke());
             choices[0].dialogue.StartDialogue();
             return;
         }

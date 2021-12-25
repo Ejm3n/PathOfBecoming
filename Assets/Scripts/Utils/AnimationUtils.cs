@@ -250,17 +250,22 @@ namespace AnimationUtils
         IEnumerator Slide(Transform transform, Vector3 target, float processTime, bool timeScale = true, Action onComplete = null)
         {
             sliding = true;
-            const float EPS = 0.0001f;
             float timetoWait = timeScale ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime;
             Vector3 iter = (target - transform.position) / processTime;
-            while((target - transform.position).sqrMagnitude > EPS)
-            {
-                transform.position += iter * timetoWait;
-                if (timeScale)
-                    yield return new WaitForSeconds(timetoWait);
-                else
+            float _startTime = timeScale ? Time.time : Time.unscaledTime;
+            if (timeScale)
+                while (Time.time - _startTime < processTime)
+                {
+                    transform.position += iter * timetoWait;
                     yield return new WaitForSecondsRealtime(timetoWait);
-            }
+                }
+            else
+                while (Time.unscaledTime - _startTime < processTime)
+                {
+                    transform.position += iter * timetoWait;
+                    yield return new WaitForSecondsRealtime(timetoWait);
+                }
+            transform.position = target;
             onComplete?.Invoke();
             sliding = false;
         }

@@ -145,7 +145,8 @@ public class Inventory : MonoBehaviour
     public void Close_Inventory()
     {
         chosenItem.transform.Move_To(_heapPlace.position, 0.2f, false);
-        Engine.current.playerController.Change_Controls<DefaultHandler>();
+        if (Engine.current.playerController.buttonsControl is InventoryHandler)
+            Engine.current.playerController.Change_Controls<DefaultHandler>();
         chosenItem = null;
     }
 }
