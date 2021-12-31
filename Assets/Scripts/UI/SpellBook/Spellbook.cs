@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
-using AnimationUtils.TransformUtils;
+using AnimationUtilsAsync.TransformUtils;
 
 public class Spellbook : MonoBehaviour
 {
@@ -39,7 +39,7 @@ public class Spellbook : MonoBehaviour
         spellList.Add(spell);
         if (spellList.Count == 1)
         {
-            spell.transform.Move_To(_chosenItemPlace.position, 0.2f, false);
+            spell.transform.Move_To(_chosenItemPlace.position, 0.2f);
             chosenSpell = spell;
         }
     }
@@ -48,12 +48,12 @@ public class Spellbook : MonoBehaviour
     {
         if (spellList.Count <= 1)
             return;
-        chosenSpell.transform.Move_To(_heapPlace.position, 0.2f, false);
+        chosenSpell.transform.Move_To(_heapPlace.position, 0.2f);
         ++_chosenSpellIndex;
         if (_chosenSpellIndex == spellList.Count)
             _chosenSpellIndex -= spellList.Count;
         chosenSpell = spellList[_chosenSpellIndex];
-        chosenSpell.transform.Move_To(_chosenItemPlace.position, 0.2f, false);
+        chosenSpell.transform.Move_To(_chosenItemPlace.position, 0.2f);
     }
 
     public void Start_Casting()
