@@ -7,7 +7,7 @@ public abstract class InteractEvent : MonoBehaviour
     public UnityEvent onSuccess;
     public UnityEvent onFail;
 
-    public static InteractEvent current { get; private set; }
+    public static InteractEvent current { get; protected set; }
 
     public virtual void Start_Event()
     {
@@ -18,13 +18,13 @@ public abstract class InteractEvent : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         current = this;
         Engine.current.playerController.interactIndicator.gameObject.SetActive(true);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    protected virtual void OnTriggerExit2D(Collider2D collision)
     {
         current = null;
         Engine.current.playerController.interactIndicator.gameObject.SetActive(false);

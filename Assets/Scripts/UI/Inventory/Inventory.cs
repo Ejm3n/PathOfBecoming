@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using AnimationUtils.TransformUtils;
+using AnimationUtilsAsync.TransformUtils;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private Transform _chosenItemPlace;
@@ -121,7 +121,7 @@ public class Inventory : MonoBehaviour
             return;
         }
         if (chosenItem && inventoryList.Count > 0)
-            chosenItem.transform.Move_To(_heapPlace.position, 0.2f, false);
+            chosenItem.transform.Move_To(_heapPlace.position, 0.2f);
         _chosenItemIndex += direction;
         if (_chosenItemIndex >= inventoryList.Count)
             _chosenItemIndex -= inventoryList.Count;
@@ -129,7 +129,7 @@ public class Inventory : MonoBehaviour
             _chosenItemIndex += inventoryList.Count;
         chosenItem = inventoryList[_chosenItemIndex];
         if (inventoryList.Count > 0)
-            chosenItem.transform.Move_To(_chosenItemPlace.position, 0.2f, false);
+            chosenItem.transform.Move_To(_chosenItemPlace.position, 0.2f);
     }
 
     public void Open_Inventory()
@@ -138,13 +138,13 @@ public class Inventory : MonoBehaviour
             return;
         _chosenItemIndex = 0;
         chosenItem = inventoryList[_chosenItemIndex];
-        chosenItem.transform.Move_To(_chosenItemPlace.position, 0.2f, false);
+        chosenItem.transform.Move_To(_chosenItemPlace.position, 0.2f);
         Engine.current.playerController.Change_Controls<InventoryHandler>();
     }
 
     public void Close_Inventory()
     {
-        chosenItem.transform.Move_To(_heapPlace.position, 0.2f, false);
+        chosenItem.transform.Move_To(_heapPlace.position, 0.2f);
         if (Engine.current.playerController.buttonsControl is InventoryHandler)
             Engine.current.playerController.Change_Controls<DefaultHandler>();
         chosenItem = null;

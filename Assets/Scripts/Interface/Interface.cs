@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System;
-using PlayerControls;
 
 public class Interface : MonoBehaviour
 {
@@ -14,6 +13,7 @@ public class Interface : MonoBehaviour
     public Image healthBar;
     public CanvasGroup interfacePanel;
     public ChoicePanel choicePanel;
+    public CanvasGroup eyeOfHassle;
     public static Interface current;
 
     private void Awake()
