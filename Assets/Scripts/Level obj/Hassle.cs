@@ -6,6 +6,11 @@ public class Hassle : MonoBehaviour
 {
     [SerializeField] private Material _material;
 
+    private void Awake()
+    {
+        _material.SetFloat("_Fade", 1);
+    }
+
     public void Hassle_Disappear(float procTime)
     {
         StartCoroutine(Hassle_Proc(1f, 0f, procTime, () => gameObject.SetActive(false)));
