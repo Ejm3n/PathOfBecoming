@@ -54,6 +54,8 @@ public class Inventory : MonoBehaviour
         //create new item in inventory
         itemScript = Instantiate(item, _heapPlace).GetComponent<Item>();
         itemScript.Initialise(this);
+        if (itemScript.item == Items.EyeOfHassle)
+            Engine.current.Collect_Eye_Of_Hassle((EyeOfHassle)itemScript);
         inventoryList.Add(itemScript);
         return true;
     }
@@ -120,7 +122,7 @@ public class Inventory : MonoBehaviour
             chosenItem = null;
             return;
         }
-        if (chosenItem && inventoryList.Count > 0)
+        if (chosenItem && inventoryList.Count > 1)
             chosenItem.transform.Move_To(_heapPlace.position, 0.2f);
         _chosenItemIndex += direction;
         if (_chosenItemIndex >= inventoryList.Count)

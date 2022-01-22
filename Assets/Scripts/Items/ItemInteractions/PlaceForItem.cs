@@ -35,14 +35,14 @@ public class PlaceForItem : InteractEvent
         Cannot_Interact();
     }
 
-    void Cannot_Interact()
+    protected void Cannot_Interact()
     {
         if(failDialog)
             failDialog.StartDialogue();
         onFail?.Invoke();
     }
 
-    private void Examine()
+    protected void Examine()
     {
         noItemDialog.StartDialogue();
     }

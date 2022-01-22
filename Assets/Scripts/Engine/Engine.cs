@@ -28,6 +28,7 @@ public abstract class Engine : MonoBehaviour
     protected const float timeToFade = 1f;
 
     public PlayerController playerController { get; private set; }
+    public EyeOfHassle eyeOfHassle { get; private set; }
     protected Fairy fairyController;
 
     protected Image curtain;
@@ -147,6 +148,28 @@ public abstract class Engine : MonoBehaviour
     {
         onComplete += () => curtain.gameObject.SetActive(false);
         curtain.Fade(timeToFade, onComplete);
+    }
+
+    public void Collect_Eye_Of_Hassle(EyeOfHassle eye)
+    {
+        eyeOfHassle = eye;
+    }
+
+    public void Remove_Eye_Of_Hassle()
+    {
+        eyeOfHassle = null;
+    }
+
+    public void Awake_Eye()
+    {
+        if (eyeOfHassle)
+            eyeOfHassle.Eye_Awaken();
+    }
+
+    public void Ensleep_Eye()
+    {
+        if (eyeOfHassle)
+            eyeOfHassle.Eye_Asleep();
     }
 
     public void Load_Next_Level()
