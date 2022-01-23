@@ -177,4 +177,9 @@ public abstract class Engine : MonoBehaviour
         load = false;
         Hide_Scene(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
+
+    public void Play_Animation(Animation animation)
+    {
+        animation.Play();
+    }
 }
