@@ -11,6 +11,7 @@ public class Peschernik : MonoBehaviour
     [SerializeField] float maxSpeed;
     [SerializeField] LayerMask playerLayer;
     [SerializeField] bool goingRight;
+   [SerializeField] private Vector2 defaultPosition;
     GameObject player;
     int currentMovingPoint;
     bool attacking = false;
@@ -19,6 +20,8 @@ public class Peschernik : MonoBehaviour
     private void Start()
     {
         player = Engine.current.player;
+       
+        
     }
 
     void Update()
@@ -83,5 +86,9 @@ public class Peschernik : MonoBehaviour
     {
         goingRight = !goingRight;
         transform.Rotate(Vector3.up * 180);
+    }
+    public void SetDefaultPosition()
+    {
+        transform.position = defaultPosition;
     }
 }
