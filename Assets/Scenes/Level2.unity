@@ -17552,12 +17552,12 @@ PrefabInstance:
     - target: {fileID: 4269166773887386378, guid: ccc055e16af94b74886b4dfd59ca798c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.7
+      value: -10.2
       objectReference: {fileID: 0}
     - target: {fileID: 4269166773887386378, guid: ccc055e16af94b74886b4dfd59ca798c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3500023
+      value: -26.9
       objectReference: {fileID: 0}
     - target: {fileID: 6339853820575268344, guid: ccc055e16af94b74886b4dfd59ca798c,
         type: 3}
@@ -17582,12 +17582,12 @@ PrefabInstance:
     - target: {fileID: 7616077539710769098, guid: ccc055e16af94b74886b4dfd59ca798c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.7
+      value: -10.2
       objectReference: {fileID: 0}
     - target: {fileID: 7616077539710769098, guid: ccc055e16af94b74886b4dfd59ca798c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.35
+      value: -26.900002
       objectReference: {fileID: 0}
     - target: {fileID: 8498048322027966544, guid: ccc055e16af94b74886b4dfd59ca798c,
         type: 3}
@@ -32198,7 +32198,7 @@ PrefabInstance:
     - target: {fileID: 4890011798654597120, guid: 51c910b1517a0ef4591438b383537613,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4890011798654597122, guid: 51c910b1517a0ef4591438b383537613,
         type: 3}
@@ -32215,6 +32215,11 @@ PrefabInstance:
       propertyPath: noItemDialog
       value: 
       objectReference: {fileID: 540530214}
+    - target: {fileID: 4890011798654597123, guid: 51c910b1517a0ef4591438b383537613,
+        type: 3}
+      propertyPath: interactWith.Array.data[0].item
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4890011798654597123, guid: 51c910b1517a0ef4591438b383537613,
         type: 3}
       propertyPath: interactWith.Array.data[0].execution.m_PersistentCalls.m_Calls.Array.data[0].m_Target
