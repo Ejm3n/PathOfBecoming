@@ -1,6 +1,6 @@
 ﻿using PlayerControls;
 
-public class CastingHandler : ControlHandler
+public class CastingHandler : UncontrollableHandler
 {
     public override void Down()
     {
@@ -10,27 +10,7 @@ public class CastingHandler : ControlHandler
 
     public override void Interact()
     {
-        return;
-    }
-
-    public override void Inventory_Button()
-    {
-        return;
-    }
-
-    public override void Left()
-    {
-        return;
-    }
-
-    public override void Right()
-    {
-        return;
-    }
-
-    public override void Switch_Spell()
-    {
-        return;
+        base.Interact();
     }
 
     public override void Up()
