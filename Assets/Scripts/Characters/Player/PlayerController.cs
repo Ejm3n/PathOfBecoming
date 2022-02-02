@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour
     {
         extraJump = ExtraJumpValue;
         lastCheckpoint = transform.position;
-        Change_Controls<DefaultHandler>();
     }
 
     public void Jump()
