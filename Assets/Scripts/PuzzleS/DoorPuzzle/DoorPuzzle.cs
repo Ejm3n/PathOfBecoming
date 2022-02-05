@@ -8,8 +8,8 @@ public class DoorPuzzle : Puzzle
     float topPoint;
     [SerializeField] List<SpriteRenderer> leftImages;
     [SerializeField] List<SpriteRenderer> rightImages;
-    [SerializeField]SpriteRenderer[] leftColumn;
-   [SerializeField] SpriteRenderer[] rightColumn;
+    [SerializeField] SpriteRenderer[] leftColumn;
+    [SerializeField] SpriteRenderer[] rightColumn;
 
     [SerializeField] List<Sprite> sprites;
     int correctAnswer;
@@ -30,54 +30,66 @@ public class DoorPuzzle : Puzzle
         if (Input.GetKeyDown(KeyCode.Space) && canPress && !FINISHED)
         {
             Clicked();
-            canPress = true;
+            canPress = false;
         }
-        if (sprites.Count == 2)
+
+        if (begunok.GetCurrentHeight() == topPoint)
         {
-            EqualAllImages();
-            lastMove = true;
-        }
-        if (begunok.GetCurrentHeight() == topPoint )
-        {
-            if( !FINISHED && !lastMove)
+            Debug.Log(begunok.NumberTimesWent);
+            if(begunok.NumberTimesWent != 5-sprites.Count && !lastMove && begunok.AtTopPoint)
+            {
+                OnLose();
+            }
+            if (!FINISHED && !lastMove && sprites.Count != 2)
             {
                 MixImages();
                 canPress = true;
             }
-           else if(!FINISHED && lastMove)
+            else if (!FINISHED && lastMove)
             {
                 bool check = true;
-                for(int i = 0; i<leftColumn.Length;i++)
+                for (int i = 0; i < leftColumn.Length; i++)
                 {
-                    if(leftColumn[i].enabled)
+                    if (leftColumn[i].enabled)
                     {
                         check = false;
                         break;
                     }
                 }
-                if(check)
+                if (check)
                 {
+                    Debug.Log("WIN PUZZLE");
                     FINISHED = true;
-                    Solve_Puzzle();
-                    Debug.Log("WIN!!!!!!!!!!!");
+                    Solve_Puzzle();                   
                 }
-                else
-                {
-                    OnLose();
-                }
+                //else
+                //{
+                //    OnLose();
+                //}
             }
+            if (sprites.Count == 2 && !lastMove)
+            {
+                EqualAllImages();
+                lastMove = true;
+            }
+        }
+       
+        if (sprites.Count <= 2)
+        {
+            canPress = true;
         }
     }
     private void OnLose()
     {
+        Debug.Log("lose");
         Fail_Puzzle();
     }
     private void EqualAllImages()
     {
-        for(int i =0;i<rightImages.Count;i++)
+        for (int i = 0; i < rightImages.Count; i++)
         {
             rightImages[i].sprite = leftImages[i].sprite;
-        }      
+        }
     }
     private void MixImages()
     {
@@ -115,7 +127,7 @@ public class DoorPuzzle : Puzzle
             for (int i = 0; i < maxNum; i++)
             {
                 rightImages[i].sprite = randomList[i];
-                if(i!=correctNum)
+                if (i != correctNum)
                 {
                     if (rightImages[i].sprite == leftImages[i].sprite)
                     {
@@ -125,7 +137,7 @@ public class DoorPuzzle : Puzzle
 
                 }
             }
-        } while (!correct);      
+        } while (!correct);
     }
     private void Clicked()
     {
@@ -135,32 +147,32 @@ public class DoorPuzzle : Puzzle
         if (begunokPos < 10f && begunokPos > 6f)
         {
             whereClicked = 0;
-            Debug.Log("нажат 0 куб");
+            
         }
         else if (begunokPos < 6f && begunokPos > 2f)
         {
             whereClicked = 1;
-            Debug.Log("нажат 1 куб");
+            
         }
         else if (begunokPos < 2f && begunokPos > -2f)
         {
             whereClicked = 2;
-            Debug.Log("нажат 2 куб");
+            
         }
         else if (begunokPos < -2f && begunokPos > -6f)
         {
             whereClicked = 3;
-            Debug.Log("нажат 3 куб");
+           
         }
         else if (begunokPos < -6f && begunokPos > -10f)
         {
             whereClicked = 4;
-            Debug.Log("нажат 4 куб");
+            
         }
         else
         {
             whereClicked = -1;
-            Debug.LogError("БЕГУНОК НАЖАТ ЗА ГРАНИЦАМИ");
+            
         }
         if (whereClicked != -1)
         {
@@ -174,8 +186,9 @@ public class DoorPuzzle : Puzzle
                     sprites.RemoveAt(correctAnswer);
                 }
                 else
-                    {
-                    Debug.Log("ПОРАЖЕНИЕ");
+                {
+                    OnLose();
+                    
                 }
             }
             else if (leftColumn[whereClicked].enabled && leftColumn[whereClicked].sprite == rightColumn[whereClicked].sprite)
@@ -185,12 +198,13 @@ public class DoorPuzzle : Puzzle
             }
             else
             {
-                Debug.Log("ПОРАЖЕНИЕ 2");
+                OnLose();
+                
             }
         }
 
-        
-       
+
+
     }
     private void ColorCorrectBlocks()
     {

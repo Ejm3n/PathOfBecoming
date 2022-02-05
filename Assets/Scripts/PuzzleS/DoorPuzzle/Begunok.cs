@@ -5,22 +5,29 @@ using UnityEngine;
 
 public class Begunok : MonoBehaviour
 {
+    public int NumberTimesWent;
     [SerializeField] Vector2[] points;
     [SerializeField] float speed;
     int currentPoint=1;
+    public bool AtTopPoint = false;
     private void Update()
     {
+        AtTopPoint = false;
 
         if (points[currentPoint].y != transform.localPosition.y)
         {
+            
             transform.localPosition = Vector2.MoveTowards(transform.localPosition, points[currentPoint], speed);
         }
         else
         {
             if (currentPoint == 0)
             {
-               // DoubleSpeed();
+                AtTopPoint = true;
+                NumberTimesWent++;
+                // DoubleSpeed();
                 currentPoint = 1;
+                Debug.Log(NumberTimesWent);
             }
             else
             {
