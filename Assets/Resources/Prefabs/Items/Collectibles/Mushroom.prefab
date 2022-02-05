@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 112050093508699263}
   - component: {fileID: 112050093508699261}
   - component: {fileID: 112050093508699260}
+  - component: {fileID: 5154097063478551878}
   m_Layer: 12
   m_Name: Mushroom
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112050093508699257}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1163533025
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 27
   m_Sprite: {fileID: 21300000, guid: c2b6beca6c0c5c942a3f75748f5c151e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -129,3 +130,22 @@ MonoBehaviour:
       m_Calls: []
   inventoryItem: {fileID: 5794523334788385124, guid: d6d70c3fdbb5c374d8fa56cbd74f34f0,
     type: 3}
+--- !u!95 &5154097063478551878
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112050093508699257}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b3b79a2e46c29c442a2a51bb520485c6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

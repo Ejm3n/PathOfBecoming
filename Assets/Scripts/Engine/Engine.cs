@@ -140,13 +140,16 @@ public abstract class Engine : MonoBehaviour
 
     public void Hide_Scene(Action onComplete = null)
     {
+        playerController.Change_Controls<UncontrollableHandler>();
         curtain.gameObject.SetActive(true);
         curtain.Unfade(timeToFade, onComplete);
     }
 
     public void Show_Scene(Action onComplete = null)
     {
+        playerController.Change_Controls<UncontrollableHandler>();
         onComplete += () => curtain.gameObject.SetActive(false);
+        onComplete += () => playerController.Change_Controls<DefaultHandler>();
         curtain.Fade(timeToFade, onComplete);
     }
 

@@ -21,7 +21,7 @@ public class Level2 : Engine
         Spawn_Characters(player, fairy);
         Connect_Fairy_to_Player();
         userInterface.spellBook.Learn_Spell(Resources.Load<GameObject>("Prefabs/Magic/Spells/Whirlwind(Spell)"));
-        userInterface.spellBook.Learn_Spell(Resources.Load<GameObject>("Prefabs/Magic/Spells/Lighter(Spell)"));
+        //userInterface.spellBook.Learn_Spell(Resources.Load<GameObject>("Prefabs/Magic/Spells/Lighter(Spell)"));
         //userInterface.inventory.Add_To_Inventory(Resources.Load<GameObject>("Prefabs/Items/Inventory/Potion(Level2)"));
         userInterface.inventory.Add_To_Inventory(Resources.Load<GameObject>("Prefabs/Items/Inventory/EyeOfHassle"));
         Show_Scene(() => {

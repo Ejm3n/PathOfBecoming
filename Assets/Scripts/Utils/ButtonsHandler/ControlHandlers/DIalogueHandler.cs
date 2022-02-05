@@ -1,14 +1,12 @@
 ﻿using PlayerControls;
+using UnityEngine;
 
-public class DIalogueHandler : ControlHandler
+public class DIalogueHandler : UncontrollableHandler
 {
-    public override void Down()
-    {
-        return;
-    }
-
     public override void Interact()
     {
+        base.Interact();
+
         if (!ControlButtonsPress.INTERACT)
         {
             return;
@@ -25,26 +23,6 @@ public class DIalogueHandler : ControlHandler
         }
     }
 
-    public override void Inventory_Button()
-    {
-        return;
-    }
-
-    public override void Left()
-    {
-        return;
-    }
-
-    public override void Right()
-    {
-        return;
-    }
-
-    public override void Switch_Spell()
-    {
-        return;
-    }
-
     public override void Up()
     {
         if (!(ControlButtonsPress.DOWN || ControlButtonsPress.UP))
@@ -55,10 +33,5 @@ public class DIalogueHandler : ControlHandler
             ChoiceDialogueTrigger cdt = (ChoiceDialogueTrigger)DialogueTrigger.current;
             cdt.IncreaseIndex(ControlButtonsAxis.yAxisRaw*-1);
         }
-    }
-
-    public override void Use_Spell()
-    {
-        return;
     }
 }
