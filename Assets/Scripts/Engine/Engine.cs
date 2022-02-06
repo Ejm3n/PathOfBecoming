@@ -4,7 +4,6 @@ using UnityEngine.UI;
 using Cinemachine;
 using AnimationUtils.ImageUtils;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public abstract class Engine : MonoBehaviour
 {
@@ -94,7 +93,6 @@ public abstract class Engine : MonoBehaviour
         playerCamera.Follow = player.transform;
         playerController = player.GetComponent<PlayerController>();
         fairyController = fairy.GetComponent<Fairy>();
-        playerController.Initialise(userInterface.healthBar);
     }
 
     protected virtual void Awake()
@@ -128,7 +126,7 @@ public abstract class Engine : MonoBehaviour
         fairyController.Connect_Fairy(playerController.fairyAnchor);
     }
 
-    public void Last_Chekpoint(Action onRespawn)
+    public void Last_Chekpoint(Action onRespawn = null)
     {
         Hide_Scene(() =>
         {

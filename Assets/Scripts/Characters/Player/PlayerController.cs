@@ -1,9 +1,7 @@
 ﻿
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-[RequireComponent(typeof(Health))]
 public class PlayerController : MonoBehaviour
 {
     public float speed;
@@ -18,7 +16,6 @@ public class PlayerController : MonoBehaviour
     public float checkRadius;
     public LayerMask whatIsGround;
 
-    Health health;
     public ControlHandler buttonsControl { get; private set; }
 
     public Vector3 lastCheckpoint { get; private set; }
@@ -26,14 +23,12 @@ public class PlayerController : MonoBehaviour
     private int extraJump;
     public int ExtraJumpValue;
 
-    public void Initialise(Image healthBar)
+    public void Initialise()
     {
-        health = GetComponent<Health>();
-        health.Initialise(healthBar);
+        return;
     }
     public void Load_State(PlayerData data)
     {
-        health.Set_Health(data.hp);
         transform.position = data.lastCheckpoint.Convert_to_UnityVector();
         lastCheckpoint = transform.position;
     }
@@ -41,7 +36,7 @@ public class PlayerController : MonoBehaviour
     public PlayerData Save_State()
     {
         lastCheckpoint = transform.position;
-        return new PlayerData(SceneManager.GetActiveScene().buildIndex, new Vector3Serial(transform.position), health.Get_Health());
+        return new PlayerData(SceneManager.GetActiveScene().buildIndex, new Vector3Serial(transform.position));
     }
 
     private void Awake()
@@ -82,14 +77,14 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(direction * speed, rb.velocity.y);
     }
 
-    public void Last_Checkpoint()
-    {
-        Engine.current.Last_Chekpoint(() => health.Heal(health.maxHealth));
-    }
-
     public void Change_Controls<T>() where T : ControlHandler, new()
     {
         rb.velocity = Vector3.zero;
         buttonsControl = new T();
+    }
+
+    public void Die()
+    {
+        Engine.current.Last_Chekpoint();
     }
 }

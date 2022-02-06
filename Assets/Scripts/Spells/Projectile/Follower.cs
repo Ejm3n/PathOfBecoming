@@ -21,7 +21,6 @@ public class Follower : MonoBehaviour
         {
             joint.connectedBody = Engine.current.playerController.fairyAnchor;
             joint.attachedRigidbody.bodyType = RigidbodyType2D.Dynamic;
-            StartCoroutine(Mana_Drain());
         }
         else
             StartCoroutine(Time_To_Live());
@@ -32,13 +31,6 @@ public class Follower : MonoBehaviour
         Destroy(gameObject);
     }
 
-    IEnumerator Mana_Drain()
-    {
-        yield return new WaitForSeconds(1);
-        while (Interface.current.mana.Mana_Drain(8))
-            yield return new WaitForSeconds(1);
-        Destroy(gameObject);
-    }
     IEnumerator Time_To_Live()
     {
         yield return new WaitForSeconds(timeToLive);

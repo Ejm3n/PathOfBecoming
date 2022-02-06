@@ -64,7 +64,6 @@ GameObject:
   - component: {fileID: 2672418449111013899}
   - component: {fileID: 2672418449111013896}
   - component: {fileID: 2672418449111013893}
-  - component: {fileID: 2672418449111013897}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -148,20 +147,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   ExtraJumpValue: 0
---- !u!114 &2672418449111013897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2672418449111013895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5eab008cef2c0f94995008d75f30d0be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  safeSpeed: 8
 --- !u!1 &2778641712963086945
 GameObject:
   m_ObjectHideFlags: 0
