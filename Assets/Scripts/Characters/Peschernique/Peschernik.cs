@@ -71,7 +71,7 @@ public class Peschernik : MonoBehaviour
                     {
                         sr.color = new Color(255, 255, 255, 1f);
                     }
-                    player.GetComponent<Health>().Damage(100);
+                    player.GetComponent<PlayerController>().Die();
                 }
                 Destroy(gameObject);
             }

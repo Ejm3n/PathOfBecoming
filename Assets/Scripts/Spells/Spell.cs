@@ -23,7 +23,7 @@ public class Spell : MonoBehaviour
 
     public void Cast(Vector3 firePoint, float angle)
     {   
-        if (onCooldown || !Interface.current.mana.SpellShot(manaCost))
+        if (onCooldown)
             return;
         Instantiate(projectile, firePoint, Quaternion.Euler(0,Engine.current.player.transform.GetChild(0).rotation.eulerAngles.y, angle));
         StartCoroutine(Cooldown());

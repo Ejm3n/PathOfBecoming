@@ -1,14 +1,11 @@
 ﻿using PlayerControls;
+using UnityEngine;
 
-public class InventoryHandler : ControlHandler
+public class InventoryHandler : UncontrollableHandler
 {
-    public override void Down()
-    {
-        return;
-    }
-
     public override void Interact()
     {
+        base.Interact();
         if (InteractEvent.current && ControlButtonsPress.INTERACT)
         {
             InteractEvent.current.Start_Event();
@@ -32,20 +29,5 @@ public class InventoryHandler : ControlHandler
     {
         if (ControlButtonsPress.RIGHT)
             Interface.current.inventory.Scroll_Inventory(ControlButtonsAxis.xAxisRaw);
-    }
-
-    public override void Switch_Spell()
-    {
-        return;
-    }
-
-    public override void Up()
-    {
-        return;
-    }
-
-    public override void Use_Spell()
-    {
-        return;
     }
 }

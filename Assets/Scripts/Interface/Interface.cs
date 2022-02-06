@@ -9,8 +9,6 @@ public class Interface : MonoBehaviour
     public Transform canvas;
     public Inventory inventory;
     public Spellbook spellBook;
-    public ManaCounter mana;
-    public Image healthBar;
     public CanvasGroup interfacePanel;
     public ChoicePanel choicePanel;
     public CanvasGroup eyeOfHassle;
