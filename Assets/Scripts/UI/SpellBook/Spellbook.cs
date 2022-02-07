@@ -15,6 +15,19 @@ public class Spellbook : MonoBehaviour
     public Spell chosenSpell { get; private set; }
     private int _chosenSpellIndex = 0;
 
+    bool _swap1 = true;
+    bool _swap2 = true;
+
+    bool _swapped
+    {
+        get { return _swap1 && _swap2; }
+        set
+        {
+            _swap1 = value;
+            _swap2 = value;
+        }
+    }
+
     private float _castAngle 
     { 
         set
@@ -39,21 +52,23 @@ public class Spellbook : MonoBehaviour
         spellList.Add(spell);
         if (spellList.Count == 1)
         {
-            spell.transform.Move_To(_chosenItemPlace.position, 0.2f);
+            _swapped = false;
+            spell.transform.Move_To(_chosenItemPlace.position, 0.2f, () => _swapped = true);
             chosenSpell = spell;
         }
     }
 
     public void Scroll_Book()
     {
-        if (spellList.Count <= 1)
+        if (spellList.Count <= 1 || !_swapped)
             return;
-        chosenSpell.transform.Move_To(_heapPlace.position, 0.2f);
+        _swapped = false;
+        chosenSpell.transform.Move_To(_heapPlace.position, 0.2f, () => _swap1 = true);
         ++_chosenSpellIndex;
         if (_chosenSpellIndex == spellList.Count)
             _chosenSpellIndex -= spellList.Count;
         chosenSpell = spellList[_chosenSpellIndex];
-        chosenSpell.transform.Move_To(_chosenItemPlace.position, 0.2f);
+        chosenSpell.transform.Move_To(_chosenItemPlace.position, 0.2f, () => _swap2 = true);
     }
 
     public void Start_Casting()

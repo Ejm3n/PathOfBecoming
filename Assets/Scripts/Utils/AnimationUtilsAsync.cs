@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -29,8 +28,7 @@ namespace AnimationUtilsAsync
             {
                 if (sliding == null || sliding.IsCompleted)
                     sliding = Move_ToAsync(obj, target, timeToSlide, onComplete, timeScale);
-                else
-                    return;
+
             }
 
             async Task Move_ToAsync(Transform obj, Vector3 target, float timeToSlide, Action onComplete = null, bool timeScale = true)

@@ -253,18 +253,15 @@ namespace AnimationUtils
             float timetoWait = timeScale ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime;
             Vector3 iter = (target - transform.position) / processTime;
             float _startTime = timeScale ? Time.time : Time.unscaledTime;
-            if (timeScale)
-                while (Time.time - _startTime < processTime)
-                {
-                    transform.position += iter * timetoWait;
-                    yield return new WaitForSecondsRealtime(timetoWait);
-                }
-            else
-                while (Time.unscaledTime - _startTime < processTime)
-                {
-                    transform.position += iter * timetoWait;
-                    yield return new WaitForSecondsRealtime(timetoWait);
-                }
+            float _currentTime;
+            while (Mathf.Abs(target.sqrMagnitude - transform.position.sqrMagnitude) > EPS)
+            {
+                transform.position += iter * timetoWait;
+                yield return null;
+                _currentTime = timeScale ? Time.time : Time.unscaledTime;
+                if ((_currentTime - _startTime) >= processTime * 1.1f)
+                    break;
+            }
             transform.position = target;
             onComplete?.Invoke();
             sliding = false;

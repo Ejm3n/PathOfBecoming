@@ -14,6 +14,19 @@ public class Inventory : MonoBehaviour
 
     CanvasGroup inventoryCG;
 
+    bool _swap1 = true;
+    bool _swap2 = true;
+
+    bool _swapped
+    {
+        get { return _swap1 && _swap2; }
+        set
+        {
+            _swap1 = value;
+            _swap2 = value;
+        }
+    }
+
     private void Awake()
     {
         inventoryCG = GetComponent<CanvasGroup>();
@@ -116,22 +129,29 @@ public class Inventory : MonoBehaviour
 
     public void Scroll_Inventory(int direction)
     {
-        if (inventoryList.Count == 0)
+        int items = inventoryList.Count;
+        if (items == 0)
         {
             _chosenItemIndex = 0;
             chosenItem = null;
             return;
         }
-        if (chosenItem && inventoryList.Count > 1)
-            chosenItem.transform.Move_To(_heapPlace.position, 0.2f);
+        else if (items == 1)
+        {
+            return;
+        }
+        if (!_swapped)
+        return;
+
+        _swapped = false;
+        chosenItem.transform.Move_To(_heapPlace.position, 0.2f, () => _swap1 = true);
         _chosenItemIndex += direction;
         if (_chosenItemIndex >= inventoryList.Count)
             _chosenItemIndex -= inventoryList.Count;
         else if (_chosenItemIndex < 0)
             _chosenItemIndex += inventoryList.Count;
         chosenItem = inventoryList[_chosenItemIndex];
-        if (inventoryList.Count > 0)
-            chosenItem.transform.Move_To(_chosenItemPlace.position, 0.2f);
+        chosenItem.transform.Move_To(_chosenItemPlace.position, 0.2f, () => _swap2 = true);
     }
 
     public void Open_Inventory()
@@ -139,14 +159,17 @@ public class Inventory : MonoBehaviour
         if (inventoryList.Count == 0 || !inventoryCG.interactable)
             return;
         _chosenItemIndex = 0;
+        _swapped = false;
         chosenItem = inventoryList[_chosenItemIndex];
-        chosenItem.transform.Move_To(_chosenItemPlace.position, 0.2f);
+        chosenItem.transform.Move_To(_chosenItemPlace.position, 0.2f, () => _swapped = true);
         Engine.current.playerController.Change_Controls<InventoryHandler>();
     }
 
     public void Close_Inventory()
     {
-        chosenItem.transform.Move_To(_heapPlace.position, 0.2f);
+        if (!_swapped)
+            return;
+        chosenItem.transform.Move_To(_heapPlace.position, 0.2f, () => _swapped = true);
         if (Engine.current.playerController.buttonsControl is InventoryHandler)
             Engine.current.playerController.Change_Controls<DefaultHandler>();
         chosenItem = null;
