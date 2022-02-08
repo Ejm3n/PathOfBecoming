@@ -1,7 +1,6 @@
 ﻿using PlayerControls;
-using UnityEngine;
 
-public class DIalogueHandler : UncontrollableHandler
+public class DialogueHandler : UncontrollableHandler
 {
     public override void Interact()
     {

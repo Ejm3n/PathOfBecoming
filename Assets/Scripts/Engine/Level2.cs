@@ -1,4 +1,4 @@
-﻿
+﻿using Cinemachine;
 using System.Collections;
 using UnityEngine;
 
@@ -8,6 +8,7 @@ public class Level2 : Engine
     [SerializeField] Transform fallPoint;
 
     [SerializeField] GameObject windEmpoweredTrigger;
+    [SerializeField] CinemachineVirtualCamera paintingCamera;
     protected override void Awake()
     {
         mainTheme = Resources.Load<AudioClip>("Sounds/Music/Level2");
@@ -47,6 +48,25 @@ public class Level2 : Engine
         windEmpoweredTrigger.SetActive(true);
         yield return new WaitForSeconds(2);
         windEmpoweredTrigger.SetActive(false);
+    }
+
+    public void Zoom_Painting(float timeToZoom)
+    {
+        StartCoroutine(Temp_Switch_Cam(timeToZoom));
+    }
+
+    IEnumerator Temp_Switch_Cam(float timeToSwitch)
+    {
+        playerController.Change_Controls<UncontrollableHandler>();
+        Color indicator = playerController.interactIndicator.color;
+        indicator.a = 0;
+        playerController.interactIndicator.color = indicator;
+        indicator.a = 1;
+        paintingCamera.Priority = 11;
+        yield return new WaitForSeconds(timeToSwitch);
+        playerController.Change_Controls<DefaultHandler>();
+        playerController.interactIndicator.color = indicator;
+        paintingCamera.Priority = 1;
     }
 
 }

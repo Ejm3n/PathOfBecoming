@@ -49,7 +49,7 @@ public class ChoiceDialogueTrigger : DialogueTrigger
         
         current = this;        
         
-        Engine.current.playerController.Change_Controls<DIalogueHandler>();
+        Engine.current.playerController.Change_Controls<DialogueHandler>();
         Engine.current.dialogueSystem.StartChooseDialogue(true);
 
     }
