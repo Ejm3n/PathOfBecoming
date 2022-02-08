@@ -26,6 +26,7 @@ public class ChoicePanel : MonoBehaviour
     }
     public void MoveIndicator(int index)
     {
-        indicator.Move_To(new Vector2(indicator.position.x,chooseButtons[index].transform.position.y), 0.1f, false);
+        indicator.transform.position = new Vector2(indicator.position.x, chooseButtons[index].transform.position.y);
+        //indicator.Move_To(new Vector2(indicator.position.x,chooseButtons[index].transform.position.y), 0.1f, false);
     }
 }
