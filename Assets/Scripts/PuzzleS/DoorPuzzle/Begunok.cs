@@ -27,7 +27,6 @@ public class Begunok : MonoBehaviour
                 NumberTimesWent++;
                 // DoubleSpeed();
                 currentPoint = 1;
-                Debug.Log(NumberTimesWent);
             }
             else
             {

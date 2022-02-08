@@ -58,7 +58,6 @@ public class DoorPuzzle : Puzzle
                 }
                 if (check)
                 {
-                    Debug.Log("WIN PUZZLE");
                     FINISHED = true;
                     Solve_Puzzle();                   
                 }
