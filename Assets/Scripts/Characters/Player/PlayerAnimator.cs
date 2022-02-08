@@ -7,6 +7,7 @@ public class PlayerAnimator : MonoBehaviour
     private float walk;
     private PlayerController PC;
     bool faceRight = true;
+    private bool _run;
 
     const float _Eps = 0.001f; 
 
@@ -34,16 +35,29 @@ public class PlayerAnimator : MonoBehaviour
     void Update()
     {
         walk = ControlButtonsAxis.xAxisRaw;
-        if(walk != 0 && PC.rb.velocity.sqrMagnitude > _Eps)
+        _run = ControlButtonsHold.RUN;
+        if (walk != 0 && PC.rb.velocity.sqrMagnitude > _Eps)
         {
-            anim.SetBool("walk", true);
+            if (_run)
+            {
+                anim.SetBool("run", true);
+                anim.SetBool("walk", false);
+            }
+            else
+            {
+                anim.SetBool("walk", true);
+                anim.SetBool("run", false);
+            }                
             if (faceRight == false && walk > 0)
                 Flip();
             else if (faceRight == true && walk < 0)
                 Flip();
         }
         else
+        {
             anim.SetBool("walk", false);
+            anim.SetBool("run", false);
+        }
 
         if (!PC.isGround)
             anim.SetBool("jump", true);

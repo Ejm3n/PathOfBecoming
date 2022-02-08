@@ -21,7 +21,7 @@ public class DefaultHandler : ControlHandler
 
     public override void Left()
     {
-        Engine.current.playerController.Move(ControlButtonsAxis.xAxisRaw);
+        Engine.current.playerController.Move(ControlButtonsAxis.xAxisRaw, ControlButtonsHold.RUN);
     }
 
     public override void Right()

@@ -72,9 +72,10 @@ public class PlayerController : MonoBehaviour
         isGround = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
     }
 
-    public void Move(int direction)
+    public void Move(int direction, bool run)
     {
-        rb.velocity = new Vector2(direction * speed, rb.velocity.y);
+        float _currentSpeed = run ? speed * 3 : speed;
+        rb.velocity = new Vector2(direction * _currentSpeed, rb.velocity.y);
     }
 
     public void Change_Controls<T>() where T : ControlHandler, new()
