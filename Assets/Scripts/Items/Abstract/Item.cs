@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public abstract class Item : MonoBehaviour
 {
     [SerializeField] Text countText;
+    public string description;
     public Items item;
 
     protected Inventory inventory;
