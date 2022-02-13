@@ -48,16 +48,17 @@ public class PlayerAnimator : MonoBehaviour
                 anim.SetBool("walk", true);
                 anim.SetBool("run", false);
             }                
-            if (faceRight == false && walk > 0)
-                Flip();
-            else if (faceRight == true && walk < 0)
-                Flip();
         }
         else
         {
             anim.SetBool("walk", false);
             anim.SetBool("run", false);
         }
+
+        if (faceRight == false && walk > 0)
+            Flip();
+        else if (faceRight == true && walk < 0)
+            Flip();
 
         if (!PC.isGround)
             anim.SetBool("jump", true);
