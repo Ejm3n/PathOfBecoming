@@ -14,7 +14,7 @@ public class ChoicePanel : MonoBehaviour
             chooseButtons[i].SetActive(true);
             chooseButtons[i].transform.GetChild(0).GetComponent<Text>().text = cdt.choices[i].phrase;
         }
-
+        
         MoveIndicator(0);//ПЕРЕДЕЛАТЬ ТАМ БАГ ПОСЛЕ ПЕРВОГО ВЫБОРА
     }
     public void DisablePanel()
@@ -26,7 +26,8 @@ public class ChoicePanel : MonoBehaviour
     }
     public void MoveIndicator(int index)
     {
-        indicator.transform.position = new Vector2(indicator.position.x, chooseButtons[index].transform.position.y);
+        if (chooseButtons[index].activeInHierarchy)        
+            indicator.transform.position = new Vector2(indicator.position.x, chooseButtons[index].transform.position.y);
         //indicator.Move_To(new Vector2(indicator.position.x,chooseButtons[index].transform.position.y), 0.1f, false);
     }
 }
