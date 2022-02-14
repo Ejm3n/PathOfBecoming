@@ -55,10 +55,11 @@ public class PlayerAnimator : MonoBehaviour
             anim.SetBool("run", false);
         }
 
-        if (faceRight == false && walk > 0)
-            Flip();
-        else if (faceRight == true && walk < 0)
-            Flip();
+        if (!(PC.buttonsControl is UncontrollableHandler))
+            if (faceRight == false && walk > 0)
+                Flip();
+            else if (faceRight == true && walk < 0)
+                Flip();
 
         if (!PC.isGround)
             anim.SetBool("jump", true);
