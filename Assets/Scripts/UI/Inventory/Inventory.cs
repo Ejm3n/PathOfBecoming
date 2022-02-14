@@ -6,10 +6,24 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] private Transform _chosenItemPlace;
     [SerializeField] private Transform _heapPlace;
+    [SerializeField] private ItemDescription _chosenItemDesc;
 
 
     List<Item> inventoryList = new List<Item>();
-    public Item chosenItem { get; private set; }
+
+    Item _chosenItem;
+    public Item chosenItem 
+    { 
+        get => _chosenItem;
+        private set 
+        {
+            _chosenItem = value;
+            if (_chosenItem)
+                _chosenItemDesc.Set_Description(_chosenItem.description);
+            else
+                _chosenItemDesc.Hide_Description();
+        } 
+    }
     private int _chosenItemIndex = 0;
 
     CanvasGroup inventoryCG;

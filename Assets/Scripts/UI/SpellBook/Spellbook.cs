@@ -100,7 +100,7 @@ public class Spellbook : MonoBehaviour
     {
         _castAngle += angleChange * direction;
         if (_castAngle > 90)
-            _castAngle = Mathf.Clamp(_castAngle, 360 - angleChange, 360);
+            _castAngle = 0;
         else
             _castAngle = Mathf.Clamp(_castAngle, 0, angleChange);
     }

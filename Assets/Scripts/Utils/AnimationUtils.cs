@@ -89,6 +89,44 @@ namespace AnimationUtils
         }
     }
 
+    namespace TextUtils
+    {
+        public static class TextUtils
+        {
+            public static Coroutine Fade(this Text text, float timeToFade, bool timeScale = true)
+            {
+                text.color = new Color(text.color.r, text.color.g, text.color.b, 1);
+                if (text.gameObject.TryGetComponent(out CoroutineLoader loader))
+                    return loader.Start_Change_Transparency(text, true, timeToFade, timeScale);
+                return text.gameObject.AddComponent<CoroutineLoader>().Start_Change_Transparency(text, true, timeToFade, timeScale);
+            }
+
+            public static Coroutine Fade(this Text text, float timeToFade, Action onComplete, bool timeScale = true)
+            {
+                text.color = new Color(text.color.r, text.color.g, text.color.b, 1);
+                if (text.gameObject.TryGetComponent(out CoroutineLoader loader))
+                    return loader.Start_Change_Transparency(text, true, timeToFade, timeScale, onComplete);
+                return text.gameObject.AddComponent<CoroutineLoader>().Start_Change_Transparency(text, true, timeToFade, timeScale, onComplete);
+            }
+
+            public static Coroutine Unfade(this Text text, float timeToFade, bool timeScale = true)
+            {
+                text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
+                if (text.gameObject.TryGetComponent(out CoroutineLoader loader))
+                    return loader.Start_Change_Transparency(text, false, timeToFade, timeScale);
+                return text.gameObject.AddComponent<CoroutineLoader>().Start_Change_Transparency(text, false, timeToFade, timeScale);
+            }
+
+            public static Coroutine Unfade(this Text text, float timeToFade, Action onComplete, bool timeScale = true)
+            {
+                text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
+                if (text.gameObject.TryGetComponent(out CoroutineLoader loader))
+                    return loader.Start_Change_Transparency(text, false, timeToFade, timeScale, onComplete);
+                return text.gameObject.AddComponent<CoroutineLoader>().Start_Change_Transparency(text, false, timeToFade, timeScale, onComplete);
+            }
+        }
+    }
+
     namespace TransformUtils
     {
         public static class TransformUtils
@@ -170,6 +208,30 @@ namespace AnimationUtils
             while (image.color.a != alpha)
             {
                 image.color = new Color(image.color.r, image.color.g, image.color.b, Mathf.Clamp(image.color.a + iter * timetoWait, 0, 1));
+                if (timeScale)
+                    yield return new WaitForSeconds(timetoWait);
+                else
+                    yield return new WaitForSecondsRealtime(timetoWait);
+            }
+            onComplete?.Invoke();
+        }
+
+        public Coroutine Start_Change_Transparency(Text text, bool makeTransparent, float processTime, bool timeScale = true, Action onComplete = null)
+        {
+            if (transparencyImageCoroutine != null)
+                StopCoroutine(transparencyImageCoroutine);
+            transparencyImageCoroutine = StartCoroutine(Change_Transparency(text, makeTransparent, processTime, timeScale, onComplete));
+            return transparencyImageCoroutine;
+        }
+
+        IEnumerator Change_Transparency(Text text, bool makeTransparent, float processTime, bool timeScale = true, Action onComplete = null)
+        {
+            float alpha = makeTransparent ? 0 : 1;
+            float timetoWait = timeScale ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime;
+            float iter = (alpha - text.color.a) / processTime;
+            while (text.color.a != alpha)
+            {
+                text.color = new Color(text.color.r, text.color.g, text.color.b, Mathf.Clamp(text.color.a + iter * timetoWait, 0, 1));
                 if (timeScale)
                     yield return new WaitForSeconds(timetoWait);
                 else

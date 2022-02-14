@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 6902846464670265131}
   - component: {fileID: -3796106834814313077}
   m_Layer: 5
-  m_Name: Notes
+  m_Name: Notes(Level1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,6 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countText: {fileID: 3631738896325523075}
+  description: Description
+  item: 0
   expanded: {fileID: 637478468982882166, guid: e123ea39b1ce3d54c907d8417d597977, type: 3}
 --- !u!225 &-3796106834814313077
 CanvasGroup:
