@@ -27,14 +27,12 @@ public class ChoiceDialogueTrigger : DialogueTrigger
         {
             choices[index].dialogue.StartDialogue();
             choices[index].dialogue.onTrigger.AddListener(StartDialogue);
+            choices.RemoveAt(index);
         }
         else
         {
             choices[index].dialogue.StartDialogue();            
         }
-           
-        choices.RemoveAt(index);
-        
     }
     public override void StartDialogue()
     {
