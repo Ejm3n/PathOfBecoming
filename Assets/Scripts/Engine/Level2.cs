@@ -77,4 +77,19 @@ public class Level2 : Engine
         em.rateOverTimeMultiplier += particles;
     }
 
+    public void Camera_Shake(float timeToShake)
+    {
+        StartCoroutine(Vcam_Shaker(timeToShake));
+    }
+
+    IEnumerator Vcam_Shaker(float timeToShake)
+    {
+        CinemachineBasicMultiChannelPerlin noise = playerCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        playerController.Change_Controls<UncontrollableHandler>();
+        noise.m_AmplitudeGain = 2;
+        yield return new WaitForSeconds(timeToShake);
+        noise.m_AmplitudeGain = 0;
+        playerController.Change_Controls<DefaultHandler>();
+    }
+
 }

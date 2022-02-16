@@ -12,7 +12,7 @@ public abstract class Engine : MonoBehaviour
     public static Engine current;
 
     [SerializeField] protected Interface userInterface;
-    [SerializeField] CinemachineVirtualCamera playerCamera;
+    [SerializeField] protected CinemachineVirtualCamera playerCamera;
     public DialogueSystem dialogueSystem;
     public PuzzleController puzzleController;
     public GameSettings gameSettings;
