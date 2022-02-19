@@ -5,6 +5,8 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
     [SerializeField] Color defaultColor = Color.white;
+    [SerializeField] Sprite defaultSprite;
+    [SerializeField] Sprite filledSprite;
     SpriteRenderer sp;
     public bool isFilled = false;
     public int manacost;

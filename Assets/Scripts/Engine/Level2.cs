@@ -9,6 +9,8 @@ public class Level2 : Engine
 
     [SerializeField] GameObject windEmpoweredTrigger;
     [SerializeField] CinemachineVirtualCamera paintingCamera;
+
+    [SerializeField] ParticleSystem potParticle;
     protected override void Awake()
     {
         mainTheme = Resources.Load<AudioClip>("Sounds/Music/Level2");
@@ -67,6 +69,27 @@ public class Level2 : Engine
         playerController.Change_Controls<DefaultHandler>();
         playerController.interactIndicator.color = indicator;
         paintingCamera.Priority = 1;
+    }
+
+    public void PotEmissionChange(int particles)
+    {
+        ParticleSystem.EmissionModule em = potParticle.emission;
+        em.rateOverTimeMultiplier += particles;
+    }
+
+    public void Camera_Shake(float timeToShake)
+    {
+        StartCoroutine(Vcam_Shaker(timeToShake));
+    }
+
+    IEnumerator Vcam_Shaker(float timeToShake)
+    {
+        CinemachineBasicMultiChannelPerlin noise = playerCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        playerController.Change_Controls<UncontrollableHandler>();
+        noise.m_AmplitudeGain = 2;
+        yield return new WaitForSeconds(timeToShake);
+        noise.m_AmplitudeGain = 0;
+        playerController.Change_Controls<DefaultHandler>();
     }
 
 }
