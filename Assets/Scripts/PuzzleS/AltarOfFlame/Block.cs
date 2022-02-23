@@ -7,6 +7,9 @@ public class Block : MonoBehaviour
     [SerializeField] Color defaultColor = Color.white;
     [SerializeField] Sprite defaultSprite;
     [SerializeField] Sprite filledSprite;
+    [Header ("«¿œŒÀÕﬂ“‹ “ŒÀ‹ Œ ≈—À» –¿«ÀŒÃ ≈—“‹")]
+    [SerializeField] SpriteRenderer razlom;
+    [SerializeField] Sprite razlomHalfSprite;
     SpriteRenderer sp;
     public bool isFilled = false;
     public int manacost;
@@ -54,5 +57,6 @@ public class Block : MonoBehaviour
     public void PaintBlock(Color color)
     {
         sp.color = color;
+
     }
 }
