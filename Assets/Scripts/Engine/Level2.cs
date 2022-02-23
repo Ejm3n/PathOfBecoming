@@ -8,7 +8,6 @@ public class Level2 : Engine
     [SerializeField] Transform fallPoint;
 
     [SerializeField] GameObject windEmpoweredTrigger;
-    [SerializeField] CinemachineVirtualCamera paintingCamera;
 
     [SerializeField] ParticleSystem potParticle;
     protected override void Awake()
@@ -52,44 +51,9 @@ public class Level2 : Engine
         windEmpoweredTrigger.SetActive(false);
     }
 
-    public void Zoom_Painting(float timeToZoom)
-    {
-        StartCoroutine(Temp_Switch_Cam(timeToZoom));
-    }
-
-    IEnumerator Temp_Switch_Cam(float timeToSwitch)
-    {
-        playerController.Change_Controls<UncontrollableHandler>();
-        Color indicator = playerController.interactIndicator.color;
-        indicator.a = 0;
-        playerController.interactIndicator.color = indicator;
-        indicator.a = 1;
-        paintingCamera.Priority = 11;
-        yield return new WaitForSeconds(timeToSwitch);
-        playerController.Change_Controls<DefaultHandler>();
-        playerController.interactIndicator.color = indicator;
-        paintingCamera.Priority = 1;
-    }
-
     public void PotEmissionChange(int particles)
     {
         ParticleSystem.EmissionModule em = potParticle.emission;
         em.rateOverTimeMultiplier += particles;
     }
-
-    public void Camera_Shake(float timeToShake)
-    {
-        StartCoroutine(Vcam_Shaker(timeToShake));
-    }
-
-    IEnumerator Vcam_Shaker(float timeToShake)
-    {
-        CinemachineBasicMultiChannelPerlin noise = playerCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        playerController.Change_Controls<UncontrollableHandler>();
-        noise.m_AmplitudeGain = 2;
-        yield return new WaitForSeconds(timeToShake);
-        noise.m_AmplitudeGain = 0;
-        playerController.Change_Controls<DefaultHandler>();
-    }
-
 }

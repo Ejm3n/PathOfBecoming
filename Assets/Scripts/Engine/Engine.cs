@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using Cinemachine;
 using AnimationUtils.ImageUtils;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public abstract class Engine : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public abstract class Engine : MonoBehaviour
     public static Engine current;
 
     [SerializeField] protected Interface userInterface;
-    [SerializeField] protected CinemachineVirtualCamera playerCamera;
+    [SerializeField] CinemachineVirtualCamera playerCamera;
+    [SerializeField] CinemachineVirtualCamera examineCamera;
     public DialogueSystem dialogueSystem;
     public PuzzleController puzzleController;
     public GameSettings gameSettings;
@@ -34,6 +36,8 @@ public abstract class Engine : MonoBehaviour
 
     protected AudioClip mainTheme;
     protected AudioClip ambient;
+
+    private const float timeToZoom = 2f;
 
     public GameObject player { get; protected set; }
     public GameObject fairy { get; protected set; }
@@ -182,5 +186,40 @@ public abstract class Engine : MonoBehaviour
     public void Play_Animation(Animation animation)
     {
         animation.Play();
+    }
+
+    public void Zoom_Object(Transform focus)
+    {
+        examineCamera.Follow = focus;
+        StartCoroutine(Temp_Switch_Cam());
+    }
+
+    IEnumerator Temp_Switch_Cam()
+    {
+        playerController.Change_Controls<UncontrollableHandler>();
+        Color indicator = playerController.interactIndicator.color;
+        indicator.a = 0;
+        playerController.interactIndicator.color = indicator;
+        indicator.a = 1;
+        examineCamera.Priority = 11;
+        yield return new WaitForSeconds(timeToZoom);
+        playerController.Change_Controls<DefaultHandler>();
+        playerController.interactIndicator.color = indicator;
+        examineCamera.Priority = 1;
+    }
+
+    public void Camera_Shake(float timeToShake)
+    {
+        StartCoroutine(Vcam_Shaker(timeToShake));
+    }
+
+    IEnumerator Vcam_Shaker(float timeToShake)
+    {
+        CinemachineBasicMultiChannelPerlin noise = playerCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        playerController.Change_Controls<UncontrollableHandler>();
+        noise.m_AmplitudeGain = 2;
+        yield return new WaitForSeconds(timeToShake);
+        noise.m_AmplitudeGain = 0;
+        playerController.Change_Controls<DefaultHandler>();
     }
 }
