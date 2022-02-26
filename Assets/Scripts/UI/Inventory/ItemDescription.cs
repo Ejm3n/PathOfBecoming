@@ -27,12 +27,8 @@ public class ItemDescription : MonoBehaviour
     {
         if (_window != null)
             StopCoroutine(_window);
-        Color _imageTransparent = _image.color;
-        Color _textTransparent = _description.color;
-        _imageTransparent.a = 0;
-        _textTransparent.a = 0;
-        _image.color = _imageTransparent;
-        _description.color = _textTransparent;
+        _image.Fade(0);
+        _description.Fade(0);
     }
 
     IEnumerator Description_Window(float delay)

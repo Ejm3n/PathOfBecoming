@@ -64,8 +64,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec058a849ae5729499875ebb60b0fb2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openBook: {fileID: 21300000, guid: 96b36166b7dac5f4b8041e7c3824be2e, type: 3}
-  closedBook: {fileID: 21300000, guid: 81580f10c26ec224eb7e7ac1ff9ac883, type: 3}
   _chosenItemPlace: {fileID: 3352366677742050731}
   _heapPlace: {fileID: 3178627918421437386}
 --- !u!1 &372324312745350941
@@ -132,7 +130,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 81580f10c26ec224eb7e7ac1ff9ac883, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 65c141628cad9b94b81d490cf9a70d70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -174,7 +172,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -165, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6159332757410509967

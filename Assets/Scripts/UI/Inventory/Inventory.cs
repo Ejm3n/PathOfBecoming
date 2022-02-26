@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using AnimationUtilsAsync.TransformUtils;
+using UnityEngine.UI;
+
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private Transform _chosenItemPlace;
     [SerializeField] private Transform _heapPlace;
     [SerializeField] private ItemDescription _chosenItemDesc;
+    [SerializeField] Image _bagImage;
+    [SerializeField] Sprite _opened;
+    [SerializeField] Sprite _closed;
 
 
     List<Item> inventoryList = new List<Item>();
@@ -172,6 +177,7 @@ public class Inventory : MonoBehaviour
     {
         if (inventoryList.Count == 0 || !inventoryCG.interactable)
             return;
+        _bagImage.sprite = _opened;
         _chosenItemIndex = 0;
         _swapped = false;
         chosenItem = inventoryList[_chosenItemIndex];
@@ -183,7 +189,9 @@ public class Inventory : MonoBehaviour
     {
         if (!_swapped)
             return;
+        _bagImage.sprite = _closed;
         chosenItem.transform.Move_To(_heapPlace.position, 0.2f, () => _swapped = true);
+        _chosenItemDesc.Hide_Description();
         if (Engine.current.playerController.buttonsControl is InventoryHandler)
             Engine.current.playerController.Change_Controls<DefaultHandler>();
         chosenItem = null;

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CustomBlends:
   - m_From: MainCamera
-    m_To: ZoomPainting
+    m_To: ZoomExamine
     m_Blend:
       m_Style: 2
       m_Time: 1
@@ -24,7 +24,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: ZoomPainting
+  - m_From: ZoomExamine
     m_To: MainCamera
     m_Blend:
       m_Style: 1
