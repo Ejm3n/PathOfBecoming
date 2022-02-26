@@ -7,8 +7,10 @@ public class BlackBlock : Block
     [SerializeField] Block[] cancellingBlocks;
     BlockPuzzle bp;
     bool isStealingMana = false;
+    
     private void Awake()
     {
+        isBlackBlock = true;
         bp = FindObjectOfType<BlockPuzzle>();
     }
 
