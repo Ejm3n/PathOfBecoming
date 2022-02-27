@@ -755,6 +755,7 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: 0}
 --- !u!61 &40890239
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1298,6 +1299,7 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: 0}
 --- !u!61 &78681831
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3792,6 +3794,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
 --- !u!61 &219188994
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4460,7 +4464,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265515311}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.89, y: 3.2, z: 0}
+  m_LocalPosition: {x: -17.39, y: 3.2, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 1057689108}
@@ -4579,6 +4583,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
   puzzle: {fileID: 1238306174161382440, guid: b998ddeeee1900f4c8eed192e7f3d410, type: 3}
   create: 1
 --- !u!61 &265515315
@@ -5720,6 +5726,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: 1561503665921954445, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
 --- !u!4 &303365608
 Transform:
   m_ObjectHideFlags: 0
@@ -8569,6 +8577,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6883004228590850620, guid: e393155e33859c445ad506d2bccc93be,
         type: 3}
+      propertyPath: indicator
+      value: 
+      objectReference: {fileID: 1561503665921954445, guid: 9404155b2ef283e4ba5788af4c9f0509,
+        type: 3}
+    - target: {fileID: 6883004228590850620, guid: e393155e33859c445ad506d2bccc93be,
+        type: 3}
       propertyPath: failDialog
       value: 
       objectReference: {fileID: 1359550744}
@@ -8587,6 +8601,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 6883004229144028010, guid: e393155e33859c445ad506d2bccc93be,
+        type: 3}
+      propertyPath: indicator
+      value: 
+      objectReference: {fileID: 1561503665921954445, guid: 9404155b2ef283e4ba5788af4c9f0509,
+        type: 3}
     - target: {fileID: 6883004229144028010, guid: e393155e33859c445ad506d2bccc93be,
         type: 3}
       propertyPath: noItemDialog
@@ -8627,6 +8647,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6883004229334550220, guid: e393155e33859c445ad506d2bccc93be,
+        type: 3}
+      propertyPath: indicator
+      value: 
+      objectReference: {fileID: 1561503665921954445, guid: 9404155b2ef283e4ba5788af4c9f0509,
+        type: 3}
     - target: {fileID: 6883004229334550220, guid: e393155e33859c445ad506d2bccc93be,
         type: 3}
       propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -10128,6 +10154,7 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: 0}
 --- !u!61 &497830478
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10852,6 +10879,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
   puzzle: {fileID: 75207840308638697, guid: 84950c1a4f2e27b41b629bc65a713f95, type: 3}
   create: 1
 --- !u!61 &531591240
@@ -13354,6 +13383,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: 836083044257278797, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
   exit: {fileID: 1376759584}
 --- !u!61 &659318373
 BoxCollider2D:
@@ -13803,6 +13834,7 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: 0}
 --- !u!61 &684773379
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16068,6 +16100,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: 836083044257278797, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
   exit: {fileID: 1133053923}
 --- !u!61 &804033393
 BoxCollider2D:
@@ -18464,6 +18498,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
 --- !u!61 &931545532
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19626,6 +19662,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
   placePosition: {fileID: 0}
   failDialog: {fileID: 2128037077}
   noItemDialog: {fileID: 113017136}
@@ -20083,6 +20121,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
 --- !u!61 &1022072206
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21167,6 +21207,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: 1561503665921954445, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
 --- !u!61 &1062607709
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21353,6 +21395,7 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: 0}
 --- !u!61 &1067398411
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22534,6 +22577,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: 8964895251833358277, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
   inventoryItem: {fileID: 1749191604798665267, guid: a7014a4c0927afa4ab76ef9ade074ae4,
     type: 3}
 --- !u!61 &1152416984
@@ -25708,6 +25753,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
 --- !u!61 &1273776108
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26934,6 +26981,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
 --- !u!61 &1336076780
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26996,6 +27045,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
   placePosition: {fileID: 0}
   failDialog: {fileID: 0}
   noItemDialog: {fileID: 1473812417}
@@ -27691,6 +27742,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
 --- !u!61 &1382926446
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28901,6 +28954,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
   placePosition: {fileID: 1484614061}
   failDialog: {fileID: 0}
   noItemDialog: {fileID: 785969424}
@@ -30111,6 +30166,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
 --- !u!61 &1518537616
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31517,7 +31574,7 @@ PrefabInstance:
     - target: {fileID: 4560893389387970493, guid: 62d0312fd72373c47a5973daebfa627d,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4560893389387970493, guid: 62d0312fd72373c47a5973daebfa627d,
         type: 3}
@@ -32215,6 +32272,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
   placePosition: {fileID: 0}
   failDialog: {fileID: 0}
   noItemDialog: {fileID: 1347931176}
@@ -33165,6 +33224,7 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: 0}
 --- !u!61 &1708501432
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37394,6 +37454,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
   placePosition: {fileID: 770810658}
   failDialog: {fileID: 0}
   noItemDialog: {fileID: 0}
@@ -38315,6 +38377,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: 836083044257278797, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
   exit: {fileID: 1441803888}
 --- !u!61 &2032992261
 BoxCollider2D:
@@ -38991,7 +39055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2057756608
 Transform:
   m_ObjectHideFlags: 0
@@ -39259,6 +39323,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
   placePosition: {fileID: 2081052325}
   failDialog: {fileID: 0}
   noItemDialog: {fileID: 0}
@@ -39289,6 +39355,17 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2057756607}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
           m_CallState: 2
 --- !u!61 &2081052327
 BoxCollider2D:
@@ -39771,6 +39848,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: 836083044257278797, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
   exit: {fileID: 1470508417}
 --- !u!1 &2124158931
 GameObject:
