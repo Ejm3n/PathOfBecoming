@@ -42,13 +42,14 @@ public class Block : MonoBehaviour
     public void EmptyBlock()
     {
         manacost = defaultMana;
-        sp.color = defaultColor;
+        //sp.color = defaultColor;
+        sp.sprite = defaultSprite;
         isFilled = false ;
     }
     public void PartFillBlock(int strength)
     {
 
-        sp.color = Color.green;
+        //sp.color = Color.green;
         manacost -= strength;
         if(manacost<=0)
         {

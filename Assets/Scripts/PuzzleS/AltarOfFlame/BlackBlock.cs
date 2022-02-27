@@ -38,7 +38,7 @@ public class BlackBlock : Block
         yield return new WaitForSeconds(.5f);
         block.PaintBlock(Color.red);
         yield return new WaitForSeconds(.5f);
-
+        block.PaintBlock(Color.white);
         block.EmptyBlock();
         bp.AllowOrNoClicks(true);
         isStealingMana = false;

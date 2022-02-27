@@ -43,7 +43,7 @@ public class BlockPuzzle : Puzzle
                     if (stolbs[currentStolb].blocks[i].HaveRazlom)
                     {
                         int filling = stolbs[currentStolb].blocks[i].StolbToFill;
-                        for (int j = 0; i < stolbs[filling].blocks.Length; i++)
+                        for (int j = 0; j < stolbs[filling].blocks.Length; j++)
                         {
                             if(!stolbs[filling].blocks[j].isFilled)
                             {
@@ -55,9 +55,12 @@ public class BlockPuzzle : Puzzle
                                 {
                                     CheckWichAnimOn(filling, false);
                                 }
+                                break;
                             }
+                            
                         }
                     }
+                    break;
                 }
             }
         }
