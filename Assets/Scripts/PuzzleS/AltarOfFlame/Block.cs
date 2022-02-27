@@ -13,6 +13,7 @@ public class Block : MonoBehaviour
     SpriteRenderer sp;
     public bool isFilled = false;
     public int manacost;
+    public bool isBlackBlock = false;
     private int defaultMana;
     public bool HaveRazlom;
     public int StolbToFill;
@@ -24,12 +25,13 @@ public class Block : MonoBehaviour
         defaultMana = manacost;
     }
 
-    public int FillBlock(int currentMana)
+    public virtual int FillBlock(int currentMana)
     {
         currentMana -= manacost;
         if (currentMana < 0)
             currentMana = 0;
-        sp.color = Color.yellow;
+        //sp.color = Color.yellow;
+        sp.sprite = filledSprite;
         isFilled = true;
         if(HaveRazlom)
         {
@@ -40,13 +42,14 @@ public class Block : MonoBehaviour
     public void EmptyBlock()
     {
         manacost = defaultMana;
-        sp.color = defaultColor;
+        //sp.color = defaultColor;
+        sp.sprite = defaultSprite;
         isFilled = false ;
     }
     public void PartFillBlock(int strength)
     {
 
-        sp.color = Color.green;
+        //sp.color = Color.green;
         manacost -= strength;
         if(manacost<=0)
         {

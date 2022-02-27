@@ -51,6 +51,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
+  indicator: {fileID: 8964895251833358277, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
   inventoryItem: {fileID: 1749191604798665267, guid: 6ff0e644adc3baa4d9dacd4fa737a3ff,
     type: 3}
 --- !u!61 &1137248757042720478
@@ -147,7 +149,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1393849353
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f0696d5c6e99cdc4e877692a2d1d6caf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

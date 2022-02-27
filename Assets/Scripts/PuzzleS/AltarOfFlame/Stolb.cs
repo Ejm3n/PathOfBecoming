@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Stolb : MonoBehaviour
 {
-    [SerializeField] Block[] blocks;
+    [SerializeField] public Block[] blocks;
     BlockPuzzle bp;
     public bool fullStolb = false;
     public bool clickable = true;
@@ -45,6 +45,7 @@ public class Stolb : MonoBehaviour
     }
     public void AddRazlomPower(int power)
     {
+        //просто заполнить без анимаций? ну визуально поправить но это понятно
         if (!blocks[blocks.Length - 1].isFilled)
         {
             for (int i = 0; i < blocks.Length; i++)

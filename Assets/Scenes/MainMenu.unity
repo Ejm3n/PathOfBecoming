@@ -864,7 +864,7 @@ PrefabInstance:
     - target: {fileID: 7515208875906148994, guid: abbf34da2ce09a44297e483f2241ef21,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7515208875906148994, guid: abbf34da2ce09a44297e483f2241ef21,
         type: 3}
@@ -1750,6 +1750,7 @@ GameObject:
   - component: {fileID: 564008221}
   - component: {fileID: 564008220}
   - component: {fileID: 564008224}
+  - component: {fileID: 564008225}
   m_Layer: 5
   m_Name: settings
   m_TagString: Untagged
@@ -1855,7 +1856,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 981c4b822c6144c4da14ebfee922965e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterVolSlider: {fileID: 0}
+--- !u!114 &564008225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564008219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c82683e69e918c4592034ed2f9a84f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolutionDropdown: {fileID: 1583717718}
 --- !u!1 &656104372
 GameObject:
   m_ObjectHideFlags: 0
@@ -2066,6 +2079,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515208875906148994, guid: abbf34da2ce09a44297e483f2241ef21,
+        type: 3}
+      propertyPath: m_Value
+      value: 0.811
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515208875906148994, guid: abbf34da2ce09a44297e483f2241ef21,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515208875906148994, guid: abbf34da2ce09a44297e483f2241ef21,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 564008225}
+    - target: {fileID: 7515208875906148994, guid: abbf34da2ce09a44297e483f2241ef21,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeBrightness
       objectReference: {fileID: 0}
     - target: {fileID: 7983388849683864624, guid: abbf34da2ce09a44297e483f2241ef21,
         type: 3}
@@ -5005,12 +5038,22 @@ PrefabInstance:
     - target: {fileID: 6747289997892399752, guid: 6d8f3ee81e395f04e9f9656397b75d85,
         type: 3}
       propertyPath: m_Options.m_Options.Array.data[1].m_Text
-      value: 360x240
+      value: 1280x720
       objectReference: {fileID: 0}
     - target: {fileID: 6747289997892399752, guid: 6d8f3ee81e395f04e9f9656397b75d85,
         type: 3}
       propertyPath: m_Options.m_Options.Array.data[2].m_Text
-      value: 100x100
+      value: 1024x576
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747289997892399752, guid: 6d8f3ee81e395f04e9f9656397b75d85,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 564008225}
+    - target: {fileID: 6747289997892399752, guid: 6d8f3ee81e395f04e9f9656397b75d85,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Change
       objectReference: {fileID: 0}
     - target: {fileID: 6747289998483819560, guid: 6d8f3ee81e395f04e9f9656397b75d85,
         type: 3}
@@ -5144,6 +5187,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d8f3ee81e395f04e9f9656397b75d85, type: 3}
+--- !u!114 &1583717718 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6747289997892399752, guid: 6d8f3ee81e395f04e9f9656397b75d85,
+    type: 3}
+  m_PrefabInstance: {fileID: 1583717717}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0b652f32a2cc243917e4028fa0f046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1594965327
 GameObject:
   m_ObjectHideFlags: 0
@@ -5779,6 +5834,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7515208875906148994, guid: abbf34da2ce09a44297e483f2241ef21,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515208875906148994, guid: abbf34da2ce09a44297e483f2241ef21,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 564008224}
+    - target: {fileID: 7515208875906148994, guid: abbf34da2ce09a44297e483f2241ef21,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnMusicSliderValueChange
+      objectReference: {fileID: 0}
     - target: {fileID: 7983388849683864624, guid: abbf34da2ce09a44297e483f2241ef21,
         type: 3}
       propertyPath: m_Name
@@ -6014,6 +6084,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515208875906148994, guid: abbf34da2ce09a44297e483f2241ef21,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515208875906148994, guid: abbf34da2ce09a44297e483f2241ef21,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 564008224}
+    - target: {fileID: 7515208875906148994, guid: abbf34da2ce09a44297e483f2241ef21,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSoundSliderValueChange
       objectReference: {fileID: 0}
     - target: {fileID: 7983388849683864624, guid: abbf34da2ce09a44297e483f2241ef21,
         type: 3}
@@ -6654,7 +6739,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 564008225}
+        m_MethodName: FullScreen
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &2141957509
 GameObject:

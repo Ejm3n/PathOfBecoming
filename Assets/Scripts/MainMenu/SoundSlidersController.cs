@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SoundSlidersController : MonoBehaviour
 {
-    [SerializeField] private Slider masterVolSlider;
+   // [SerializeField] private Slider masterVolSlider;
 
     private GameSettings gameSettings;
 
@@ -13,11 +13,18 @@ public class SoundSlidersController : MonoBehaviour
     {
         gameSettings = SaveSyatem.gameSettings;
     }
-    public void OnMasterSliderValueChange()
+    public void OnMasterSliderValueChange(float val)
     {
-        
+        gameSettings.soundSettings.masterVolume = val;
     }
-
+    public void OnMusicSliderValueChange(float val)
+    {
+        gameSettings.soundSettings.musicVolume = val;
+    }
+    public void OnSoundSliderValueChange(float val)
+    {
+        gameSettings.soundSettings.effectsVolume = val;
+    }
     public void SaveAndExit()
     {
         SaveSyatem.gameSettings = gameSettings;
