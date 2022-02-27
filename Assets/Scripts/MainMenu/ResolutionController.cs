@@ -11,6 +11,14 @@ public class ResolutionController : MonoBehaviour
         int[] widthHeight = GetResolutions(resolutionDropdown.value);
         Screen.SetResolution(widthHeight[0],widthHeight[1], true);
     }
+    public void FullScreen(bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
+    }
+    public void ChangeBrightness(float level)
+    {
+        Screen.brightness = level;
+    }
     private int[] GetResolutions(int option)
     {
         string res = resolutionDropdown.options[option].text;
@@ -20,4 +28,5 @@ public class ResolutionController : MonoBehaviour
         widthNheight[1] = int.Parse(res.Substring(position +1));
         return widthNheight;
     }
+
 }
