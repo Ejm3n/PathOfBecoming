@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Begunok : MonoBehaviour
 {
+    public SpriteRenderer spriteRenderer;
     public int NumberTimesWent;
     [SerializeField] Vector2[] points;
     [SerializeField] float speed;
