@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BlockPuzzleInterface : MonoBehaviour
 {
     [SerializeField]Text Manatext;
+    [SerializeField] Image manaImage;
     [SerializeField] Button but;
     [SerializeField] Text youWinText;
     BlockPuzzle bp;
@@ -15,6 +16,8 @@ public class BlockPuzzleInterface : MonoBehaviour
     }
     private void Update()
     {
+        manaImage.fillAmount = (float) bp.CurrentMana / 100f;
+        //Debug.Log((float) bp.CurrentMana / 100);
         Manatext.text = bp.CurrentMana.ToString();
         if (bp.GameEnded)
         {
