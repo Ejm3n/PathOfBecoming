@@ -21,11 +21,13 @@ public class Spell : MonoBehaviour
         spellImage = GetComponent<Image>();
     }
 
-    public void Cast(Vector3 firePoint, float angle)
+    public virtual void Cast(Vector3 firePoint, float angle)
     {   
+
         if (onCooldown)
-            return;
-        Instantiate(projectile, firePoint, Quaternion.Euler(0,Engine.current.player.transform.GetChild(0).rotation.eulerAngles.y, angle));
+            return;     
+
+        Instantiate(projectile, firePoint, Quaternion.Euler(0,Engine.current.player.transform.GetChild(0).rotation.eulerAngles.y, angle));     
         StartCoroutine(Cooldown());
     }
 

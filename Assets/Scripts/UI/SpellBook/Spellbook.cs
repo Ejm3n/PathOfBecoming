@@ -74,6 +74,12 @@ public class Spellbook : MonoBehaviour
     public void Start_Casting()
     {
         Engine.current.playerController.Change_Controls<CastingHandler>();
+
+        //ANIMATION
+        if(chosenSpell.spellType == SpellType.Fire)
+            Engine.current.playerController.animator.SetTrigger("StartLightCast");
+        else if (chosenSpell.spellType == SpellType.Wind)
+            Engine.current.playerController.animator.SetTrigger("StartWindCast");
     }
 
     public void Cast()
