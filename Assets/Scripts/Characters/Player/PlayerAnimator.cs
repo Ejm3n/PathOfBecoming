@@ -18,7 +18,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         PC = transform.parent.GetComponent<PlayerController>();
         anim = GetComponent<Animator>();
-        steps = Resources.LoadAll<AudioClip>("Sounds/Effects/Footsteps/Forest");
+        steps = Resources.LoadAll<AudioClip>("Sounds/Effects/Footsteps/Stone");
         jump = Resources.Load<AudioClip>("Sounds/Effects/Footsteps/jump");
     }
 
