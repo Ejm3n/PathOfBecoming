@@ -183,6 +183,9 @@ public class Inventory : MonoBehaviour
         chosenItem = inventoryList[_chosenItemIndex];
         chosenItem.transform.Move_To(_chosenItemPlace.position, 0.2f, () => _swapped = true);
         Engine.current.playerController.Change_Controls<InventoryHandler>();
+
+        //animator
+        Engine.current.playerController.animator.SetTrigger("OpenedBag");
     }
 
     public void Close_Inventory()
@@ -195,5 +198,8 @@ public class Inventory : MonoBehaviour
         if (Engine.current.playerController.buttonsControl is InventoryHandler)
             Engine.current.playerController.Change_Controls<DefaultHandler>();
         chosenItem = null;
+
+        //animator
+        Engine.current.playerController.animator.SetTrigger("ClosedBag");
     }
 }

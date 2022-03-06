@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -382,9 +382,9 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 1
+  m_FillAmount: 0.666
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &181082425
@@ -2060,6 +2060,11 @@ PrefabInstance:
       propertyPath: positionsForPointer.Array.data[3].y
       value: 4.3
       objectReference: {fileID: 0}
+    - target: {fileID: 8679871629379711835, guid: ad9e7e3fe876308449d23aaf709b0551,
+        type: 3}
+      propertyPath: manaImage
+      value: 
+      objectReference: {fileID: 181082424}
     - target: {fileID: 8679871629402131748, guid: ad9e7e3fe876308449d23aaf709b0551,
         type: 3}
       propertyPath: m_LocalPosition.x
