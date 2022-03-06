@@ -16,6 +16,8 @@ public class Inventory : MonoBehaviour
 
     List<Item> inventoryList = new List<Item>();
 
+    AudioClip _bagInteract;
+
     Item _chosenItem;
     public Item chosenItem 
     { 
@@ -49,6 +51,7 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         inventoryCG = GetComponent<CanvasGroup>();
+        _bagInteract = Resources.Load<AudioClip>("Sounds/Effects/bag");
     }
 
     public InventoryData SaveInvetnoryData()
@@ -183,6 +186,7 @@ public class Inventory : MonoBehaviour
         chosenItem = inventoryList[_chosenItemIndex];
         chosenItem.transform.Move_To(_chosenItemPlace.position, 0.2f, () => _swapped = true);
         Engine.current.playerController.Change_Controls<InventoryHandler>();
+        SoundRecorder.Play_Effect(_bagInteract);
 
         //animator
         Engine.current.playerController.animator.SetTrigger("OpenedBag");
@@ -192,6 +196,7 @@ public class Inventory : MonoBehaviour
     {
         if (!_swapped)
             return;
+        SoundRecorder.Play_Effect(_bagInteract);
         _bagImage.sprite = _closed;
         chosenItem.transform.Move_To(_heapPlace.position, 0.2f, () => _swapped = true);
         _chosenItemDesc.Hide_Description();
