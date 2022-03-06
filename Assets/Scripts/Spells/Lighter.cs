@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Light : Spell
+public class Lighter : Spell
 {
     public override void Cast(Vector3 firePoint, float angle)
     {
