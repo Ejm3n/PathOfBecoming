@@ -838,7 +838,8 @@ MonoBehaviour:
   onFail:
     m_PersistentCalls:
       m_Calls: []
-  indicator: {fileID: 0}
+  indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
+    type: 3}
 --- !u!61 &40890239
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22349,7 +22350,7 @@ GameObject:
   - component: {fileID: 1056078917}
   - component: {fileID: 1056078916}
   m_Layer: 12
-  m_Name: GameObject
+  m_Name: Interact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22390,6 +22391,29 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1280302869}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Animation, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1056078914}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 270885562}
+        m_MethodName: Play_Effect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: b420b2068baf4214eaae505fd6d0143f,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -35061,6 +35085,18 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 1
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 270885562}
+          m_MethodName: Play_Effect
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: b606b27c4c45e2c4dbe2a3c765cb8cb2,
+              type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
