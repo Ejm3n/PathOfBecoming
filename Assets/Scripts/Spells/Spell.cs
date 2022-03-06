@@ -9,6 +9,8 @@ public class Spell : MonoBehaviour
     public SpellType spellType;
     public float cooldown;
 
+    [SerializeField] private AudioClip _onCast;
+
     public GameObject projectile;
 
     public const string path = "Prefabs/Magic/Spells/";
@@ -27,7 +29,8 @@ public class Spell : MonoBehaviour
         if (onCooldown)
             return;     
 
-        Instantiate(projectile, firePoint, Quaternion.Euler(0,Engine.current.player.transform.GetChild(0).rotation.eulerAngles.y, angle));     
+        Instantiate(projectile, firePoint, Quaternion.Euler(0,Engine.current.player.transform.GetChild(0).rotation.eulerAngles.y, angle));
+        SoundRecorder.Play_Effect(_onCast);
         StartCoroutine(Cooldown());
     }
 
