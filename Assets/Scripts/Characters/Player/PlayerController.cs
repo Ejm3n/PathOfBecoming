@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer interactIndicator;
     public Transform firePoint;
     public Transform spellDirection;
-
+    public Animator animator;
     public Rigidbody2D rb { get; private set; }
     public bool isGround { get; private set; }
     public float checkRadius;
