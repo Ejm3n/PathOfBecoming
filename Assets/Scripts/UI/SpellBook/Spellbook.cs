@@ -84,7 +84,6 @@ public class Spellbook : MonoBehaviour
 
     public void Cast()
     {
-        Engine.current.playerController.Change_Controls<DefaultHandler>();
         chosenSpell.Cast(Engine.current.playerController.firePoint.position, _castAngle);
         Engine.current.playerController.spellDirection.gameObject.SetActive(false);
     }
