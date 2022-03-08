@@ -72,4 +72,10 @@ public class PlayerAnimator : MonoBehaviour
         faceRight = !faceRight;
         transform.Rotate(Vector3.up * 180);
     }
+
+    public void AfterCast()
+    {
+        if (Engine.current.playerController.buttonsControl is UncontrollableHandler)
+            Engine.current.playerController.Change_Controls<DefaultHandler>();
+    }
 }
