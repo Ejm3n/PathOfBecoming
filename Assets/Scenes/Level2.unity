@@ -47507,8 +47507,23 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7904887270250038782, guid: 218f26ffc4b2c054b950c930f2006bd3,
         type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7904887270250038782, guid: 218f26ffc4b2c054b950c930f2006bd3,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7904887270250038782, guid: 218f26ffc4b2c054b950c930f2006bd3,
+        type: 3}
       propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1031414067}
+    - target: {fileID: 7904887270250038782, guid: 218f26ffc4b2c054b950c930f2006bd3,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 218f26ffc4b2c054b950c930f2006bd3, type: 3}

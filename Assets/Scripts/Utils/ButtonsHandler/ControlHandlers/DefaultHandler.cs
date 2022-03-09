@@ -15,13 +15,18 @@ public class DefaultHandler : ControlHandler
 
     public override void Inventory_Button()
     {
-        if(ControlButtonsPress.DOWN)
+        if (!Engine.current.PlayerHandler)
+            return;
+        if (ControlButtonsPress.DOWN)
             Interface.current.inventory.Open_Inventory();
     }
 
     public override void Left()
     {
-        Engine.current.playerController.Move(ControlButtonsAxis.xAxisRaw, ControlButtonsHold.RUN);
+        if (Engine.current.PlayerHandler)
+            Engine.current.playerController.Move(ControlButtonsAxis.xAxisRaw, ControlButtonsHold.RUN);
+        else
+            Engine.current.fairyController.Move_Fairy(ControlButtonsAxis.xAxisRaw, ControlButtonsAxis.yAxisRaw);
     }
 
     public override void Right()
@@ -31,18 +36,24 @@ public class DefaultHandler : ControlHandler
 
     public override void Switch_Spell()
     {
+        if (!Engine.current.PlayerHandler)
+            return;
         if (ControlButtonsPress.SWITCHSPELL)
             Interface.current.spellBook.Scroll_Book();
     }
 
     public override void Up()
     {
-        if(ControlButtonsPress.UP)
+        if (!Engine.current.PlayerHandler)
+            return;
+        if (ControlButtonsPress.UP)
             Engine.current.playerController.Jump();
     }
 
     public override void Use_Spell()
     {
+        if (!Engine.current.PlayerHandler)
+            return;
         if (ControlButtonsPress.USESPELL)
         {
             Interface.current.spellBook.Reset_Angle();
