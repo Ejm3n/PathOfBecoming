@@ -75,13 +75,21 @@ public class DialogueSystem : MonoBehaviour
     public void StartDialogue(int dialogNum, UnityEvent onComplete)
     {
         this.onComplete = onComplete;
-        panelAnim.SetBool("PanelShow", true);
-        SetUI(false);
-        foreach (string str in dialogues[dialogNum])
+        try
         {
-            linesTriggered.Enqueue(str);
+            foreach (string str in dialogues[dialogNum])
+            {
+                linesTriggered.Enqueue(str);
+            }
+            panelAnim.SetBool("PanelShow", true);
+            SetUI(false);
+            Engine.current.playerController.Change_Controls<DialogueHandler>();
+            DisplayNextLine();
         }
-        DisplayNextLine();
+        catch (IndexOutOfRangeException)
+        {
+            onComplete?.Invoke();
+        }
     }
 
     public void StartChooseDialogue(bool what)

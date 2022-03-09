@@ -10,8 +10,12 @@ public class Level2 : Engine
     [SerializeField] GameObject windEmpoweredTrigger;
 
     [SerializeField] ParticleSystem potParticle;
+
+    public bool Stool { get; private set; }
+
     protected override void Awake()
     {
+        Stool = false;
         mainTheme = Resources.Load<AudioClip>("Sounds/Music/Level2");
         base.Awake();
     }

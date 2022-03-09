@@ -9,7 +9,6 @@ public class DialogueTrigger : MonoBehaviour
     public virtual void StartDialogue()
     {
         current = this;
-        Engine.current.playerController.Change_Controls<DialogueHandler>();
         Engine.current.dialogueSystem.StartDialogue(dialogueNumber, onTrigger);
     }
 }
