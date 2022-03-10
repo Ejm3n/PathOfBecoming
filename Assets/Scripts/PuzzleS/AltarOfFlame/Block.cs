@@ -46,7 +46,7 @@ public class Block : MonoBehaviour
         sp.sprite = defaultSprite;
         isFilled = false ;
     }
-    public void PartFillBlock(int strength)
+    public virtual void PartFillBlock(int strength)
     {
 
         //sp.color = Color.green;

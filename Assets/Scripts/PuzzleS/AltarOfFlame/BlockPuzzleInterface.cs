@@ -8,7 +8,7 @@ public class BlockPuzzleInterface : MonoBehaviour
     [SerializeField]Text Manatext;
     [SerializeField] Image manaImage;
     [SerializeField] Button but;
-    [SerializeField] Text youWinText;
+    //[SerializeField] Text youWinText;
     BlockPuzzle bp;
     private void Awake()
     {
@@ -16,7 +16,7 @@ public class BlockPuzzleInterface : MonoBehaviour
     }
     private void Update()
     {
-        manaImage.fillAmount = (float) bp.CurrentMana / 100f;
+        manaImage.fillAmount = (float) 1- bp.CurrentMana / 100f;
         //Debug.Log((float) bp.CurrentMana / 100);
         Manatext.text = bp.CurrentMana.ToString();
         if (bp.GameEnded)
@@ -28,14 +28,10 @@ public class BlockPuzzleInterface : MonoBehaviour
             EndTexts("поражение");
             Destroy(gameObject);
         }
-        else
-        {
-            youWinText.gameObject.SetActive(false);
-        }
+
     }
     private void EndTexts(string output)
     {
-        youWinText.gameObject.SetActive(true);
-        youWinText.text = output;       
+      
     }
 }

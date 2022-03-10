@@ -9,6 +9,18 @@ public class BlockPuzzle : Puzzle
     [SerializeField] private Transform pointer;
     [SerializeField] Vector2[] positionsForPointer;
     [SerializeField] Animator[] animsForRazloms;
+
+    //sound
+    [SerializeField] public AudioClip damageBlack;
+    [SerializeField] public AudioClip blackKill;
+    [SerializeField] AudioClip solvePuzzle;//
+    [SerializeField] public AudioClip suckMana;//
+    [SerializeField] AudioClip pressedSound;//
+    [SerializeField] AudioClip stolbFilled;//
+    [SerializeField] AudioClip  pressedInFullStolb;//
+    [SerializeField] AudioClip razlomManaGive;//
+
+    private bool allowedClicks = true;
     public int currentStolb;
     Stolb[] stolbs;
     public bool GameEnded = false;
@@ -64,7 +76,7 @@ public class BlockPuzzle : Puzzle
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && allowedClicks)
         {
             if (!stolbs[currentStolb].fullStolb)
             {
@@ -72,6 +84,9 @@ public class BlockPuzzle : Puzzle
                 {
                     if (!stolbs[currentStolb].blocks[i].isFilled)
                     {
+                        //sound
+                        SoundRecorder.Play_Effect(pressedSound);
+
                         CurrentMana = stolbs[currentStolb].blocks[i].FillBlock(CurrentMana);
                         break;
                     }
@@ -79,13 +94,25 @@ public class BlockPuzzle : Puzzle
                 if (stolbs[currentStolb].blocks[stolbs[currentStolb].blocks.Length - 1].isFilled)
                 {
                     stolbs[currentStolb].fullStolb = true;
+                    //sound
+                    SoundRecorder.Play_Effect(stolbFilled);
                 }
+            }
+            else
+            {
+                //sound
+                SoundRecorder.Play_Effect(pressedInFullStolb);
             }
         }
         pointer.position = positionsForPointer[currentStolb];
         GameEnded = CheckEnd();
         if (GameEnded)
+        {
+            //sound
+            SoundRecorder.Play_Effect(solvePuzzle);
             Solve_Puzzle();
+        }
+            
     }
     private void CheckWichAnimOn(int stolbToFill, bool isBlack)
     {
@@ -119,11 +146,12 @@ public class BlockPuzzle : Puzzle
     }
     public void DoRazlom(int stolbNum)
     {
-
+        SoundRecorder.Play_Effect(razlomManaGive);
         stolbs[stolbNum].AddRazlomPower(razlomStrength);
     }
     public void AllowOrNoClicks(bool what)
     {
+        allowedClicks = what;
         foreach (Stolb stolb in stolbs)
         {
             stolb.clickable = what;

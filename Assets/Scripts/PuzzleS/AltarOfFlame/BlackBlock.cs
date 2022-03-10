@@ -13,7 +13,20 @@ public class BlackBlock : Block
         isBlackBlock = true;
         bp = FindObjectOfType<BlockPuzzle>();
     }
+    public override int FillBlock(int currentMana)
+    {
+        //sound
+        SoundRecorder.Play_Effect(bp.blackKill);
 
+        return base.FillBlock(currentMana);
+    }
+    public override void PartFillBlock(int strength)
+    {
+        //sound
+        SoundRecorder.Play_Effect(bp.damageBlack);
+
+        base.PartFillBlock(strength);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -32,6 +45,9 @@ public class BlackBlock : Block
     }
     IEnumerator EatMana(Block block)
     {
+        //sound
+        SoundRecorder.Play_Effect(bp.suckMana);
+
         bp.AllowOrNoClicks(false);
         //block.PaintBlock(Color.yellow);
         Debug.Log("tut");
