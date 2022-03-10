@@ -36,7 +36,7 @@ public class DoorPuzzle : Puzzle
     bool canPress = true;
     public bool FINISHED = false;
     private bool lastMove = false;
-    private void Start()
+    private void OnEnable()
     {
         topPoint = begunok.GetMaxHeight();
         foreach (DoorPuzzleLine dpl in lines)
