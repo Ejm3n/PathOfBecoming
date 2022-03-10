@@ -130,27 +130,27 @@ public class DoorPuzzle : Puzzle
         int whereClicked;
         float begunokPos = begunok.GetCurrentHeight();
 
-        if (begunokPos < 10f && begunokPos > 6f)
+        if (begunokPos < 3.5f && begunokPos > 2.5f)
         {
             whereClicked = 0;
             
         }
-        else if (begunokPos < 6f && begunokPos > 2f)
+        else if (begunokPos < 2f && begunokPos > 1f)
         {
             whereClicked = 1;
             
         }
-        else if (begunokPos < 2f && begunokPos > -2f)
+        else if (begunokPos < 0.5f && begunokPos > -0.5f)
         {
             whereClicked = 2;
             
         }
-        else if (begunokPos < -2f && begunokPos > -6f)
+        else if (begunokPos < -1f && begunokPos > -2f)
         {
             whereClicked = 3;
            
         }
-        else if (begunokPos < -6f && begunokPos > -10f)
+        else if (begunokPos < -2.5f && begunokPos > -3.5f)
         {
             whereClicked = 4;
             
