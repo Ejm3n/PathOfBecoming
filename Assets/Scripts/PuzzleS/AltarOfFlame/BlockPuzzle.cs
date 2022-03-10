@@ -13,22 +13,24 @@ public class BlockPuzzle : Puzzle
     //sound
     [SerializeField] public AudioClip damageBlack;
     [SerializeField] public AudioClip blackKill;
-    [SerializeField] AudioClip solvePuzzle;//
-    [SerializeField] public AudioClip suckMana;//
-    [SerializeField] AudioClip pressedSound;//
-    [SerializeField] AudioClip stolbFilled;//
-    [SerializeField] AudioClip  pressedInFullStolb;//
-    [SerializeField] AudioClip razlomManaGive;//
+    [SerializeField] AudioClip solvePuzzle;
+    [SerializeField] public AudioClip suckMana;
+    [SerializeField] AudioClip pressedSound;
+    [SerializeField] AudioClip stolbFilled;
+    [SerializeField] AudioClip  pressedInFullStolb;
+    [SerializeField] AudioClip razlomManaGive;
 
     private bool allowedClicks = true;
     public int currentStolb;
     Stolb[] stolbs;
     public bool GameEnded = false;
     
-    private void Awake()
+    private void OnEnable()
     {
         CurrentMana = manaCount;
         stolbs = GetComponentsInChildren<Stolb>();
+        //отключение игрока
+
     }
     public void Restart()
     {
@@ -104,7 +106,7 @@ public class BlockPuzzle : Puzzle
                 SoundRecorder.Play_Effect(pressedInFullStolb);
             }
         }
-        pointer.position = positionsForPointer[currentStolb];
+        pointer.position = new Vector2(transform.position.x + positionsForPointer[currentStolb].x, transform.position.y + positionsForPointer[currentStolb].y);
         GameEnded = CheckEnd();
         if (GameEnded)
         {
@@ -137,7 +139,6 @@ public class BlockPuzzle : Puzzle
         {
             if (!stolb.fullStolb)
             {
-
                 ended = false;
             }
         }

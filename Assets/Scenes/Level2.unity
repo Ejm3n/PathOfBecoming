@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5131,7 +5131,7 @@ MonoBehaviour:
         m_CallState: 2
   indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
     type: 3}
-  puzzle: {fileID: 1238306174161382440, guid: b998ddeeee1900f4c8eed192e7f3d410, type: 3}
+  puzzle: {fileID: 580861906178142629, guid: 36dd86f227a2a7a41bd516386f605f63, type: 3}
   create: 1
 --- !u!61 &265515315
 BoxCollider2D:
@@ -23993,12 +23993,12 @@ PrefabInstance:
     - target: {fileID: 8498048322027966544, guid: ccc055e16af94b74886b4dfd59ca798c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.011672974
+      value: -0.011671066
       objectReference: {fileID: 0}
     - target: {fileID: 8498048322027966544, guid: ccc055e16af94b74886b4dfd59ca798c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.450849
+      value: 4.450874
       objectReference: {fileID: 0}
     - target: {fileID: 9100194447062226023, guid: ccc055e16af94b74886b4dfd59ca798c,
         type: 3}
