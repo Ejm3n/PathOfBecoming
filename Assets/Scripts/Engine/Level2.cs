@@ -11,6 +11,9 @@ public class Level2 : Engine
 
     [SerializeField] ParticleSystem potParticle;
 
+    [SerializeField] private Transform _rockPlace;
+    [SerializeField] private GameObject _rock;
+
     public bool Stool { get; private set; }
 
     protected override void Awake()
@@ -59,5 +62,17 @@ public class Level2 : Engine
     {
         ParticleSystem.EmissionModule em = potParticle.emission;
         em.rateOverTimeMultiplier += particles;
+    }
+
+    public void Throw_Rock()
+    {
+        playerController.Change_Controls<UncontrollableHandler>();
+        playerController.animator.SetTrigger("Throw");
+    }
+
+    public void Spawn_Rock()
+    {
+        playerController.Change_Controls<DefaultHandler>();
+        Instantiate(_rock, _rockPlace);
     }
 }

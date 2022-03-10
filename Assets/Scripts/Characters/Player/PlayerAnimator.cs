@@ -78,4 +78,10 @@ public class PlayerAnimator : MonoBehaviour
         if (Engine.current.playerController.buttonsControl is UncontrollableHandler)
             Engine.current.playerController.Change_Controls<DefaultHandler>();
     }
+
+    public void Spawn_Rock()
+    {
+        Level2 _engine = (Level2)Engine.current;
+        _engine.Spawn_Rock();
+    }
 }
