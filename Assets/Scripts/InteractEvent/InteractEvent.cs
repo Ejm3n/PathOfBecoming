@@ -23,13 +23,13 @@ public abstract class InteractEvent : MonoBehaviour
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         current = this;
-        Engine.current.playerController.interactIndicator.sprite = indicator;
-        Engine.current.playerController.interactIndicator.gameObject.SetActive(true);
+        Engine.current.Indicator.Set_Indicator(indicator);
+        Engine.current.Indicator.Show_Indicator();
     }
 
     protected virtual void OnTriggerExit2D(Collider2D collision)
     {
         current = null;
-        Engine.current.playerController.interactIndicator.gameObject.SetActive(false);
+        Engine.current.Indicator.Hide_Indicator();
     }
 }

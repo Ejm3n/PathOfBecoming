@@ -9,7 +9,7 @@ public class UncontrollableHandler : ControlHandler
 
     public override void Interact()
     {
-        if (Engine.current.playerController.isGround)
+        if (Engine.current.playerController.isGround && Engine.current.PlayerHandler)
             Engine.current.playerController.rb.velocity = Vector3.zero;
     }
 

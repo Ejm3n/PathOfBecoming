@@ -11,7 +11,12 @@ public class Peschernik : MonoBehaviour
     [SerializeField] float maxSpeed;
     [SerializeField] LayerMask playerLayer;
     [SerializeField] bool goingRight;
-   [SerializeField] private Vector2 defaultPosition;
+    [SerializeField] private Vector2 defaultPosition;
+    [SerializeField] private AudioClip attack;
+    
+    [SerializeField] private AudioClip die;
+    //[SerializeField] private AudioClip attack;
+
     GameObject player;
     int currentMovingPoint;
     bool attacking = false;
@@ -19,9 +24,7 @@ public class Peschernik : MonoBehaviour
 
     private void Start()
     {
-        player = Engine.current.player;
-       
-        
+        player = Engine.current.player;        
     }
 
     void Update()
@@ -60,13 +63,15 @@ public class Peschernik : MonoBehaviour
             {   
                 if (playerSR == null)
                     playerSR = Engine.current.player.GetComponentsInChildren<SpriteRenderer>();
+                //sound
+                SoundRecorder.Play_Effect(attack);
                 foreach (SpriteRenderer sr in playerSR)
                 {
                     sr.color = new Color(sr.color.r-.33f, sr.color.g-.33f, sr.color.b-.33f,1f);                    
                 }
                 if (playerSR[0].color.r < .1)
                 {
-                    Debug.Log("СМЕРТЬ ОТ ПЕЩЕРНИКА");//тут костыль - переделать после смерти класса health
+                    Debug.Log("СМЕРТЬ ОТ ПЕЩЕРНИКА");
                     foreach (SpriteRenderer sr in playerSR)
                     {
                         sr.color = new Color(255, 255, 255, 1f);
@@ -81,7 +86,10 @@ public class Peschernik : MonoBehaviour
             }
         }
     }
-
+    private void OnDisable()
+    {
+        SoundRecorder.Play_Effect(die);
+    }
     private void Flip()
     {
         goingRight = !goingRight;

@@ -2,12 +2,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IPlayerIndicator
 {
     public float speed;
     public float jumpForce;
     public Rigidbody2D fairyAnchor;
-    public SpriteRenderer interactIndicator;
+    public SpriteRenderer _indicator;
     public Transform firePoint;
     public Transform spellDirection;
     public Animator animator;
@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     public bool isGround { get; private set; }
     public float checkRadius;
     public LayerMask whatIsGround;
+
+    public Collider2D Collider { get; set; }
+
+
 
     public ControlHandler buttonsControl { get; private set; }
 
@@ -43,6 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         isGround = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
         rb = GetComponent<Rigidbody2D>();
+        Collider = GetComponent<Collider2D>();
     }
 
     private void Start()
@@ -86,5 +91,24 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         Engine.current.Last_Chekpoint();
+    }
+
+    public void Set_Indicator(Sprite indicator)
+    {
+        _indicator.sprite = indicator;
+    }
+
+    public void Hide_Indicator()
+    {
+        Color indicatorColor = _indicator.color;
+        indicatorColor.a = 0;
+        _indicator.color = indicatorColor;
+    }
+
+    public void Show_Indicator()
+    {
+        Color indicatorColor = _indicator.color;
+        indicatorColor.a = 1;
+        _indicator.color = indicatorColor;
     }
 }

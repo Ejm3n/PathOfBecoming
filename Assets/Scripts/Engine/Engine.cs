@@ -30,7 +30,7 @@ public abstract class Engine : MonoBehaviour
 
     public PlayerController playerController { get; private set; }
     public EyeOfHassle eyeOfHassle { get; private set; }
-    protected Fairy fairyController;
+    public Fairy fairyController { get; private set; }
 
     protected Image curtain;
 
@@ -38,6 +38,20 @@ public abstract class Engine : MonoBehaviour
     protected AudioClip ambient;
 
     private const float timeToZoom = 2f;
+
+    private bool _playerHandler = true;
+    public bool PlayerHandler { get { return _playerHandler; }}
+
+    public IPlayerIndicator Indicator 
+    {
+        get
+        {
+            if (_playerHandler)
+                return playerController;
+            else
+                return fairyController;
+        }
+    }
 
     public GameObject player { get; protected set; }
     public GameObject fairy { get; protected set; }
@@ -188,6 +202,37 @@ public abstract class Engine : MonoBehaviour
         animation.Play();
     }
 
+    public void Switch(bool playerActive)
+    {
+        playerController.Change_Controls<DefaultHandler>();
+        if (playerActive)
+        {
+            Connect_Fairy_to_Player();
+            Indicator.Hide_Indicator();
+            _playerHandler = true;
+
+            fairyController.Collider.enabled = false;
+
+            playerController.Collider.enabled = true;
+            playerController.rb.bodyType = RigidbodyType2D.Dynamic;
+
+            playerCamera.Follow = player.transform;
+        }
+        else
+        {
+            fairyController.Free_Fairy();
+            Indicator.Hide_Indicator();
+            _playerHandler = false;
+
+            playerController.Collider.enabled = false;
+            playerController.rb.bodyType = RigidbodyType2D.Static;
+
+            fairyController.Collider.enabled = true;
+
+            playerCamera.Follow = fairy.transform;
+        }
+    }
+
     public void Zoom_Object(Transform focus)
     {
         examineCamera.Follow = focus;
@@ -197,14 +242,11 @@ public abstract class Engine : MonoBehaviour
     IEnumerator Temp_Switch_Cam()
     {
         playerController.Change_Controls<UncontrollableHandler>();
-        Color indicator = playerController.interactIndicator.color;
-        indicator.a = 0;
-        playerController.interactIndicator.color = indicator;
-        indicator.a = 1;
+        Indicator.Hide_Indicator();
         examineCamera.Priority = 11;
         yield return new WaitForSeconds(timeToZoom);
         playerController.Change_Controls<DefaultHandler>();
-        playerController.interactIndicator.color = indicator;
+        Indicator.Show_Indicator();
         examineCamera.Priority = 1;
     }
 
