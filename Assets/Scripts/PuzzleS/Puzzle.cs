@@ -28,7 +28,8 @@ public class Puzzle : MonoBehaviour
     private void OnDestroy()
     {
         puzzleController.Handle_Puzzle_result(solved);
-        Engine.current.playerController.Change_Controls<DefaultHandler>();
+        if(Engine.current.playerController.buttonsControl is PuzzleHandler)
+            Engine.current.playerController.Change_Controls<DefaultHandler>();
         current = null;
     }
 }

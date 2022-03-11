@@ -65,7 +65,9 @@ public class DialogueSystem : MonoBehaviour
 
     public void Next()//метод для пропуска строчки
     {
-        DisplayNextLine();
+            DisplayNextLine();
+
+
     }
     public void SetUI(bool what)//метод отключающий лишний UI
     {
@@ -127,6 +129,11 @@ public class DialogueSystem : MonoBehaviour
         }
         else if (linesTriggered.Count == 0)
         {
+            yield break;
+        }
+        if (sentence.Trim() == "")
+        {
+            Debug.Log("пустая строчка в диалоге");
             yield break;
         }
         string nameString = sentence.Split('=')[0].Trim();
