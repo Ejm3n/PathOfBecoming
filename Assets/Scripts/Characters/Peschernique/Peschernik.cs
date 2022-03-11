@@ -95,6 +95,7 @@ public class Peschernik : MonoBehaviour
         goingRight = !goingRight;
         transform.Rotate(Vector3.up * 180);
     }
+    
     public void SetDefaultPosition()
     {
         transform.position = defaultPosition;
