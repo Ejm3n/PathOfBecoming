@@ -78,7 +78,7 @@ public class Peschernik : MonoBehaviour
                     }
                     player.GetComponent<PlayerController>().Die();
                 }
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
             if(speed<maxSpeed)
             {

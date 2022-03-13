@@ -12,7 +12,7 @@ public class PeschernikSpawner : MonoBehaviour
         {
             foreach (Peschernik p in Pescherniks)
             {
-                p.GetComponent<GameObject>().SetActive(true);
+                p.gameObject.SetActive(true);
                 p.SetDefaultPosition();
             }
         }
