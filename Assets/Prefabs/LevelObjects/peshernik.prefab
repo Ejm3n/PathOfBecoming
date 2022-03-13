@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 6736057292668433286}
   - component: {fileID: 3971695226687631774}
   - component: {fileID: 6948206922045153551}
-  m_Layer: 22
+  - component: {fileID: 2762915172765875194}
+  - component: {fileID: 4641259353282058845}
+  m_Layer: 16
   m_Name: Cave_spirit_sprite_sheet_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,6 +220,60 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!61 &2762915172765875194
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6736057292668433284}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 0.69}
+    newSize: {x: 1, y: 0.69}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4844711, y: 1.0242851}
+  m_EdgeRadius: 0
+--- !u!114 &4641259353282058845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6736057292668433284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb5b4b978ab4cd743affc1b172a24fc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellEffects:
+  - spellType: 1
+    execution:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6736057293715307949}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6736057293715307949
 GameObject:
   m_ObjectHideFlags: 0
