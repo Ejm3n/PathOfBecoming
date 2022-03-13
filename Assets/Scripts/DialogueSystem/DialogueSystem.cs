@@ -76,6 +76,7 @@ public class DialogueSystem : MonoBehaviour
 
     public void StartDialogue(int dialogNum, UnityEvent onComplete)
     {
+        linesTriggered = new Queue<string>();
         this.onComplete = onComplete;
         try
         {
