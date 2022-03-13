@@ -62,7 +62,11 @@ public class Peschernik : MonoBehaviour
             else
             {   
                 if (playerSR == null)
-                    playerSR = Engine.current.player.GetComponentsInChildren<SpriteRenderer>();
+                {
+                    GameObject playerChild = Engine.current.player.transform.GetChild(0).gameObject;
+                    playerSR = playerChild.GetComponentsInChildren<SpriteRenderer>();
+                }
+                    
                 //sound
                 SoundRecorder.Play_Effect(attack);
                 foreach (SpriteRenderer sr in playerSR)

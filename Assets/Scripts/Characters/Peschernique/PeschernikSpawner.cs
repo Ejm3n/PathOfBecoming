@@ -23,4 +23,8 @@ public class PeschernikSpawner : MonoBehaviour
         IsActivated = true;
 
     }
+    public void DeactivateSpawn()
+    {
+        IsActivated = false;
+    }
 }
