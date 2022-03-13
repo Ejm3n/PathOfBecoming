@@ -5,8 +5,11 @@ using UnityEngine;
 public class PescernikAnimatorController : MonoBehaviour
 {
     [SerializeField] private AudioClip[] walk;
+    [SerializeField] private AudioSource audioSource;
+
     public void PlayStep(int num)
     {
-        SoundRecorder.Play_Effect(walk[num]);
+        audioSource.PlayOneShot(walk[num]);
+        //SoundRecorder.Play_Effect(walk[num]);
     }
 }
