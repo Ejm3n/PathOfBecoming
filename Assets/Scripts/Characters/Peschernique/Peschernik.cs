@@ -16,7 +16,7 @@ public class Peschernik : MonoBehaviour
     
     [SerializeField] private AudioClip die;
     //[SerializeField] private AudioClip attack;
-
+    bool haveSound = true;
     GameObject player;
     int currentMovingPoint;
     bool attacking = false;
@@ -92,7 +92,8 @@ public class Peschernik : MonoBehaviour
     }
     private void OnDisable()
     {
-        SoundRecorder.Play_Effect(die);
+        if(haveSound)
+            SoundRecorder.Play_Effect(die);
     }
     private void Flip()
     {
@@ -103,5 +104,10 @@ public class Peschernik : MonoBehaviour
     public void SetDefaultPosition()
     {
         transform.position = defaultPosition;
+    }
+    public void SilentlyDisable()
+    {
+        haveSound = false;
+        gameObject.SetActive(false);
     }
 }
