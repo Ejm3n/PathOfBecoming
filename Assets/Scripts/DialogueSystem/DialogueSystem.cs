@@ -105,7 +105,7 @@ public class DialogueSystem : MonoBehaviour
     {
         if (!isDialogueTyping)
         {
-            if (linesTriggered.Count == 0)
+            if (linesTriggered.Count == 0 || linesTriggered.Count == 1)
             {
                 EndDialogue();
                 return;
@@ -131,11 +131,17 @@ public class DialogueSystem : MonoBehaviour
         {
             yield break;
         }
+        if(sentence.Trim() == "" && (linesTriggered.Count == 0 || linesTriggered.Count ==1))
+        {
+            EndDialogue();
+            yield break;
+        }
         if (sentence.Trim() == "")
         {
             Debug.Log("пустая строчка в диалоге");
             yield break;
         }
+        
         string nameString = sentence.Split('=')[0].Trim();
         if(avatars.ContainsKey(nameString))
         {
