@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GiantAnimator : MonoBehaviour
 {
+    [SerializeField] private GameObject platformForMushroom;
     private Animator animator;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -32,5 +34,9 @@ public class GiantAnimator : MonoBehaviour
     public void ChangeToSneeze()
     {
         animator.SetTrigger("Sneeze");
+    }
+    public void MushroomFalling()
+    {
+        platformForMushroom.SetActive(false);
     }
 }
