@@ -2993,7 +2993,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5268755, y: -3.0953827}
+  m_Offset: {x: -0.23748195, y: -5.4139404}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3004,7 +3004,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1860981, y: 9.900764}
+  m_Size: {x: 2.714813, y: 14.53788}
   m_EdgeRadius: 0
 --- !u!1 &150219858
 GameObject:
@@ -7605,7 +7605,20 @@ MonoBehaviour:
       m_Calls: []
   dialogueStart:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4822644465706016283, guid: 12709fc91c194c84bb9bdfa93203a1c2,
+          type: 3}
+        m_MethodName: Play_Effect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: b73aa6b129c4973429d263ad4b857b20,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &342449211
 GameObject:
   m_ObjectHideFlags: 0
@@ -20588,7 +20601,7 @@ MonoBehaviour:
   indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
     type: 3}
   placePosition: {fileID: 0}
-  failDialog: {fileID: 0}
+  failDialog: {fileID: 1906264362}
   noItemDialog: {fileID: 0}
   interactWith:
   - item: 11
@@ -23774,6 +23787,7 @@ Transform:
   m_LocalPosition: {x: -0.45000076, y: -1.1000004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1355609745}
   - {fileID: 76650774}
   m_Father: {fileID: 1509440240}
   m_RootOrder: 1
@@ -25381,7 +25395,19 @@ MonoBehaviour:
         m_CallState: 2
   dialogueStart:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 270885562}
+        m_MethodName: Play_Effect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: b73aa6b129c4973429d263ad4b857b20,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1038611980
 GameObject:
   m_ObjectHideFlags: 0
@@ -34542,12 +34568,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355609744}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.008639302, w: 0.9999627}
+  m_LocalPosition: {x: 0.46893936, y: 1.0920612, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1509440240}
-  m_RootOrder: 2
+  m_Father: {fileID: 964105219}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1355609746
 MonoBehaviour:
@@ -35140,6 +35166,19 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4822644465706016283, guid: 12709fc91c194c84bb9bdfa93203a1c2,
+          type: 3}
+        m_MethodName: Play_Effect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a16933eacacebbc498ee8e064f3c9acf,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -37591,7 +37630,6 @@ Transform:
   m_Children:
   - {fileID: 626255623}
   - {fileID: 964105219}
-  - {fileID: 1355609745}
   m_Father: {fileID: 1057689108}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -39148,7 +39186,20 @@ MonoBehaviour:
       m_Calls: []
   dialogueStart:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4822644465706016283, guid: 12709fc91c194c84bb9bdfa93203a1c2,
+          type: 3}
+        m_MethodName: Play_Effect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: b73aa6b129c4973429d263ad4b857b20,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1586707494
 GameObject:
   m_ObjectHideFlags: 0
@@ -39583,7 +39634,7 @@ PrefabInstance:
     - target: {fileID: 4560893388908313768, guid: 62d0312fd72373c47a5973daebfa627d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4560893388908313768, guid: 62d0312fd72373c47a5973daebfa627d,
         type: 3}
@@ -45372,12 +45423,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2530482838659804246, guid: 84f563526629d894abeefbadc5fd62d7,
+        type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2530482838659804247, guid: 84f563526629d894abeefbadc5fd62d7,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 97907e2accb1cd8479c469400d6bb13a,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2530482839292894221, guid: 84f563526629d894abeefbadc5fd62d7,
         type: 3}
       propertyPath: m_Text
