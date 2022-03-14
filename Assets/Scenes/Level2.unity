@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -26021,12 +26021,12 @@ PrefabInstance:
     - target: {fileID: 8498048322027966544, guid: ccc055e16af94b74886b4dfd59ca798c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.011676788
+      value: -0.011669159
       objectReference: {fileID: 0}
     - target: {fileID: 8498048322027966544, guid: ccc055e16af94b74886b4dfd59ca798c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.450854
+      value: 4.4508514
       objectReference: {fileID: 0}
     - target: {fileID: 9100194447062226023, guid: ccc055e16af94b74886b4dfd59ca798c,
         type: 3}
@@ -31662,8 +31662,8 @@ MonoBehaviour:
   audioSource: {fileID: 1225820042}
   sneezeSound: {fileID: 8300000, guid: 1eff84cbee7e2294bb866d400962c9ff, type: 3}
   rumblingSound: {fileID: 8300000, guid: 8c14fbe546b3eb041ac95187eef73f5f, type: 3}
-  shape: {fileID: 8300000, guid: 1a76ea609e6b70d44b1fab55d9d32562, type: 3}
-  shapeOff: {fileID: 8300000, guid: 01da217c9000d6842b6ab26e69ee3f71, type: 3}
+  shape: {fileID: 8300000, guid: 01da217c9000d6842b6ab26e69ee3f71, type: 3}
+  shapeOff: {fileID: 8300000, guid: 1a76ea609e6b70d44b1fab55d9d32562, type: 3}
 --- !u!61 &1225820040
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50372,7 +50372,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2074740726}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 87.77, y: 22.26, z: 0}
+  m_LocalPosition: {x: 87.807, y: 21.505, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1516380763}
