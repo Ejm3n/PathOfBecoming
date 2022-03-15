@@ -21,13 +21,12 @@ public class InventoryHandler : UncontrollableHandler
 
     public override void Left()
     {
-        if (ControlButtonsPress.LEFT)
+        if (ControlButtonsPress.LEFT ^ ControlButtonsPress.RIGHT)
             Interface.current.inventory.Scroll_Inventory(ControlButtonsAxis.xAxisRaw);
     }
 
     public override void Right()
     {
-        if (ControlButtonsPress.RIGHT)
-            Interface.current.inventory.Scroll_Inventory(ControlButtonsAxis.xAxisRaw);
+        return;
     }
 }
