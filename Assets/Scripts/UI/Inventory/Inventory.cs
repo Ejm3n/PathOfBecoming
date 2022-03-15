@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using AnimationUtilsAsync.TransformUtils;
+using AnimationUtils.TransformUtils;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
@@ -35,8 +35,8 @@ public class Inventory : MonoBehaviour
 
     CanvasGroup inventoryCG;
 
-    bool _swap1 = true;
-    bool _swap2 = true;
+    bool _swap1 = false;
+    bool _swap2 = false;
 
     bool _swapped
     {
@@ -166,14 +166,14 @@ public class Inventory : MonoBehaviour
         return;
 
         _swapped = false;
-        chosenItem.transform.Move_To(_heapPlace.position, 0.2f, () => _swap1 = true);
+        chosenItem.transform.Move_To(_heapPlace.position, 0.1f,  true, () => _swap1 = true);
         _chosenItemIndex += direction;
         if (_chosenItemIndex >= inventoryList.Count)
             _chosenItemIndex -= inventoryList.Count;
         else if (_chosenItemIndex < 0)
             _chosenItemIndex += inventoryList.Count;
         chosenItem = inventoryList[_chosenItemIndex];
-        chosenItem.transform.Move_To(_chosenItemPlace.position, 0.2f, () => _swap2 = true);
+        chosenItem.transform.Move_To(_chosenItemPlace.position, 0.1f, true, () => _swap2 = true);
     }
 
     public void Open_Inventory()
@@ -182,9 +182,8 @@ public class Inventory : MonoBehaviour
             return;
         _bagImage.sprite = _opened;
         _chosenItemIndex = 0;
-        _swapped = false;
         chosenItem = inventoryList[_chosenItemIndex];
-        chosenItem.transform.Move_To(_chosenItemPlace.position, 0.2f, () => _swapped = true);
+        chosenItem.transform.Move_To(_chosenItemPlace.position, 0.1f, true, () => _swapped = true);
         Engine.current.playerController.Change_Controls<InventoryHandler>();
         SoundRecorder.Play_Effect(_bagInteract);
 
@@ -198,11 +197,12 @@ public class Inventory : MonoBehaviour
             return;
         SoundRecorder.Play_Effect(_bagInteract);
         _bagImage.sprite = _closed;
-        chosenItem.transform.Move_To(_heapPlace.position, 0.2f, () => _swapped = true);
+        chosenItem.transform.Move_To(_heapPlace.position, 0.1f, true, () => _swapped = true);
         _chosenItemDesc.Hide_Description();
         if (Engine.current.playerController.buttonsControl is InventoryHandler)
             Engine.current.playerController.Change_Controls<DefaultHandler>();
         chosenItem = null;
+        _swapped = false;
 
         //animator
         Engine.current.playerController.animator.SetTrigger("ClosedBag");
