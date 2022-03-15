@@ -11634,9 +11634,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _dialogueList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 127668994}
+  - {fileID: 1394644986}
+  - {fileID: 1057981307}
   - {fileID: 229539128}
 --- !u!4 &444702984
 Transform:
@@ -18911,9 +18911,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1393849353
-  m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingLayerID: 1163533025
+  m_SortingLayer: 2
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 08fb9b291dec2c447a4890deb2402a97, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.45490196}
   m_FlipX: 0
@@ -48628,7 +48628,7 @@ PrefabInstance:
     - target: {fileID: 1179890756139619509, guid: 51c910b1517a0ef4591438b383537613,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1179890756139619509, guid: 51c910b1517a0ef4591438b383537613,
         type: 3}
@@ -48680,6 +48680,11 @@ PrefabInstance:
         type: 3}
       propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
       value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806072007830671386, guid: 51c910b1517a0ef4591438b383537613,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2258587554041266576, guid: 51c910b1517a0ef4591438b383537613,
         type: 3}
@@ -48975,12 +48980,17 @@ PrefabInstance:
     - target: {fileID: 7643652390737994447, guid: 51c910b1517a0ef4591438b383537613,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643652390737994447, guid: 51c910b1517a0ef4591438b383537613,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 7643652390737994447, guid: 51c910b1517a0ef4591438b383537613,
         type: 3}
       propertyPath: m_SortingLayerID
-      value: -1393849353
+      value: 1163533025
       objectReference: {fileID: 0}
     - target: {fileID: 7784160976847070907, guid: 51c910b1517a0ef4591438b383537613,
         type: 3}
