@@ -8,6 +8,6 @@ public class Wind : Spell
     {
         base.Cast(firePoint, angle);
         //animation
-        Engine.current.playerController.animator.SetTrigger("CastWind");
+        Engine.current.playerController.animator.SetTrigger("CastingWind");
     }
 }

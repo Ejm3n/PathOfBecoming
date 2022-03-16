@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -85,6 +86,12 @@ public class PlayerController : MonoBehaviour, IPlayerIndicator
 
     public void Change_Controls<T>() where T : ControlHandler, new()
     {
+        Debug.Log(typeof(T));
+        Debug.Log(Environment.StackTrace);
+        if(typeof(T) == typeof(DefaultHandler))
+        {
+                 Debug.Log("abab");
+        }
         buttonsControl = new T();
     }
 
