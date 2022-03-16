@@ -20,7 +20,7 @@ public class BlackBlock : Block
     {
         //sound
         SoundRecorder.Play_Effect(bp.blackKill);
-
+        blackShitSpriteRen.enabled = false;
         return base.FillBlock(currentMana);
     }
     public override void PartFillBlock(int strength)
