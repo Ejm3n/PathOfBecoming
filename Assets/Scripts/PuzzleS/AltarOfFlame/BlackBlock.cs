@@ -5,6 +5,8 @@ using UnityEngine;
 public class BlackBlock : Block
 {
     [SerializeField] Block[] cancellingBlocks;
+    [SerializeField] Sprite HalfSprite;
+    [SerializeField] SpriteRenderer blackShitSpriteRen;
     BlockPuzzle bp;
     bool isStealingMana = false;
     
@@ -12,6 +14,7 @@ public class BlackBlock : Block
     {
         isBlackBlock = true;
         bp = FindObjectOfType<BlockPuzzle>();
+        
     }
     public override int FillBlock(int currentMana)
     {
@@ -24,7 +27,7 @@ public class BlackBlock : Block
     {
         //sound
         SoundRecorder.Play_Effect(bp.damageBlack);
-
+        blackShitSpriteRen.sprite = HalfSprite;
         base.PartFillBlock(strength);
     }
     // Update is called once per frame

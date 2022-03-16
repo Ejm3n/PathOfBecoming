@@ -65,13 +65,16 @@ public class DoorPuzzle : Puzzle
         if (begunok.GetCurrentHeight() == topPoint)
         {
             Debug.Log(begunok.NumberTimesWent);
-            if(begunok.NumberTimesWent != 5-answered && !lastMove && begunok.AtTopPoint)
+            //if(begunok.NumberTimesWent != 5-answered && !lastMove && begunok.AtTopPoint)
+            //{
+            //    OnLose();
+            //}
+            if(!lines[correctAnswer].IsActive)
             {
-                OnLose();
-            }
-            
                 RandomizeBegunokImage();
                 canPress = true;
+            }
+                
             
             //else if (!FINISHED && lastMove)
             //{
