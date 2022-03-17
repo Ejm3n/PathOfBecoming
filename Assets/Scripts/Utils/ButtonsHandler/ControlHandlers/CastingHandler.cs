@@ -22,7 +22,6 @@ public class CastingHandler : UncontrollableHandler
 
     public override void Use_Spell()
     {
-        Debug.Log("-> " + ControlButtonsHold.USESPELL);
         if (!ControlButtonsHold.USESPELL)
             Interface.current.spellBook.Cast();
     }

@@ -29,7 +29,7 @@ public class PlaceForHassle : PlaceForItem
     {
         if (Engine.current.eyeOfHassle && Engine.current.eyeOfHassle.eyeAwaken)
         {
-            current = this;
+            current = null;
             Interface.current.eyeOfHassle.alpha = 0;
         }
         else
