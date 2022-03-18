@@ -6,7 +6,7 @@ public class CheckpointDialogue : DialogueTrigger
 
     public override void StartDialogue()
     {
-        DialogueSystem ds = transform.parent.GetComponent<DialogueSystem>();
+        DialogueSystem ds = Engine.current.dialogueSystem;
         onTrigger.AddListener(() => ds.Checkpoint(this));
         ds.StartDialogue(dialogueNumber, onTrigger);
     }

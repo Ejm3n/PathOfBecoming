@@ -5,6 +5,7 @@ using Cinemachine;
 using AnimationUtils.ImageUtils;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 
 public abstract class Engine : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public abstract class Engine : MonoBehaviour
     [SerializeField] protected GameObject startDialog;
 
     protected const float timeToFade = 1f;
+
+    private List<int> _checkpoints = new List<int>();
 
     public PlayerController playerController { get; private set; }
     public EyeOfHassle eyeOfHassle { get; private set; }
@@ -76,7 +79,9 @@ public abstract class Engine : MonoBehaviour
         fairyController.Load_State(data.fairyData);
         userInterface.inventory.LoadInventoryData(data.inventoryData);
         userInterface.spellBook.Load_State(data.spellBookData);
-        dialogueSystem.Load_State(data.checkpointIndex);
+
+        _checkpoints.AddRange(data.checkpoints);
+        dialogueSystem.Load_State(data.checkpoints);
         Show_Scene(() => dialogueSystem.SetUI(true));
     }
 
@@ -132,11 +137,15 @@ public abstract class Engine : MonoBehaviour
 
     public void Checkpoint(int index)
     {
+        if (_checkpoints.Contains(index))
+            return;
+        _checkpoints.Add(index);
+
         PlayerData playerData = playerController.Save_State();
         FairyData fairyData = fairyController.Save_State();
         InventoryData inventoryData = userInterface.inventory.SaveInvetnoryData();
         SpellBookData spellBookData = userInterface.spellBook.Save_State();
-        new SaveData(index, playerData, fairyData, inventoryData, spellBookData).Save();
+        new SaveData(_checkpoints.ToArray(), playerData, fairyData, inventoryData, spellBookData).Save();
     }
 
     public void Connect_Fairy_to_Player()

@@ -195,11 +195,11 @@ public class DialogueSystem : MonoBehaviour
             }
     }
 
-    public void Load_State(int index)
+    public void Load_State(int[] checkpointIndexes)
     {
-        for (int i = 0; i <= index; i++)
-            checkpoints[i].onCheckpoint?.Invoke();
-        checkpoints[index].onTrigger?.Invoke();
+        foreach (int checkpoint in checkpointIndexes)
+            checkpoints[checkpoint].onCheckpoint?.Invoke();
+        checkpoints[checkpointIndexes[checkpointIndexes.Length -1]].onTrigger?.Invoke();
     }
     private string[] FileParser(string fileName, char param)
     {
