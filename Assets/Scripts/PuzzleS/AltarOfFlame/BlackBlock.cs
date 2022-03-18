@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BlackBlock : Block
 {
-    [SerializeField] Block[] cancellingBlocks;
+    [SerializeField] public Block[] cancellingBlocks;
     [SerializeField] Sprite HalfSprite;
     [SerializeField] SpriteRenderer blackShitSpriteRen;
     BlockPuzzle bp;
@@ -21,6 +21,7 @@ public class BlackBlock : Block
         //sound
         SoundRecorder.Play_Effect(bp.blackKill);
         blackShitSpriteRen.enabled = false;
+       bp.RemoveBlocksThatCanBeSucked(cancellingBlocks);
         return base.FillBlock(currentMana);
     }
     public override void PartFillBlock(int strength)

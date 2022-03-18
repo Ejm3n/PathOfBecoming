@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -9,6 +10,8 @@ public class BlockPuzzle : Puzzle
     [SerializeField] private Transform pointer;
     [SerializeField] Vector2[] positionsForPointer;
     [SerializeField] Animator[] animsForRazloms;
+
+    private List<Block> blocksThatCanBeSucked = new List<Block>();
 
     //sound
     [SerializeField] public AudioClip damageBlack;
@@ -29,8 +32,19 @@ public class BlockPuzzle : Puzzle
     {
         CurrentMana = manaCount;
         stolbs = GetComponentsInChildren<Stolb>();
+        BlackBlock[] blackBlocks = FindObjectsOfType<BlackBlock>();
+        foreach(BlackBlock block in blackBlocks)
+        {
+            foreach (Block blockingBlock in block.cancellingBlocks)
+                blocksThatCanBeSucked.Add(blockingBlock);
+        }
         //отключение игрока
 
+    }
+    public void RemoveBlocksThatCanBeSucked(Block[] blocks)
+    {
+        foreach (Block block in blocks)
+            blocksThatCanBeSucked.Remove(block);
     }
     public void Restart()
     {
@@ -63,11 +77,15 @@ public class BlockPuzzle : Puzzle
                             {
                                 if(stolbs[filling].blocks[j].isBlackBlock)
                                 {
-                                    CheckWichAnimOn(filling, true);
+                                    CheckWichAnimOn(filling, 0);
+                                }
+                                else if(!blocksThatCanBeSucked.Contains( stolbs[filling].blocks[j]))
+                                {
+                                    CheckWichAnimOn(filling, 1);
                                 }
                                 else
                                 {
-                                    CheckWichAnimOn(filling, false);
+                                    CheckWichAnimOn(filling, 2);
                                 }
                                 break;
                             }
@@ -106,7 +124,8 @@ public class BlockPuzzle : Puzzle
                 SoundRecorder.Play_Effect(pressedInFullStolb);
             }
         }
-        pointer.position = new Vector2(transform.position.x + positionsForPointer[currentStolb].x, transform.position.y + positionsForPointer[currentStolb].y);
+        pointer.position = new Vector2(transform.position.x + positionsForPointer[currentStolb].x,
+            transform.position.y + positionsForPointer[currentStolb].y);
         GameEnded = CheckEnd();
         if (GameEnded)
         {
@@ -116,7 +135,16 @@ public class BlockPuzzle : Puzzle
         }
             
     }
-    private void CheckWichAnimOn(int stolbToFill, bool isBlack)
+
+
+    /// <summary>
+    /// type 0 = заливка в черный блок
+    /// type 1 = заливка в обычный блок
+    /// type 2 = заливка в высасываемый блок
+    /// </summary>
+    /// <param name="stolbToFill"></param>
+    /// <param name="type"></param>
+    private void CheckWichAnimOn(int stolbToFill, int type)
     {
         int index=0;
         if (stolbToFill == 3)
@@ -125,10 +153,12 @@ public class BlockPuzzle : Puzzle
             index = 1;
         else if (stolbToFill == 1)
             index = 2;
-        if(isBlack)        
-            animsForRazloms[index].SetTrigger("Orange");        
-        else
+        if (type == 0)
+            animsForRazloms[index].SetTrigger("Orange");
+        else if (type == 1)
             animsForRazloms[index].SetTrigger("Yellow");
+        else if (type == 2)
+            animsForRazloms[index].SetTrigger("Black");
 
     }
     private bool CheckEnd()
