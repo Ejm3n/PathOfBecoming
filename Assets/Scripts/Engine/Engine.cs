@@ -77,12 +77,18 @@ public abstract class Engine : MonoBehaviour
         Spawn_Characters(data.playerData.lastCheckpoint.Convert_to_UnityVector(), data.fairyData.checkPoint.Convert_to_UnityVector());
         playerController.Load_State(data.playerData);
         fairyController.Load_State(data.fairyData);
+        Connect_Fairy_to_Player();
         userInterface.inventory.LoadInventoryData(data.inventoryData);
         userInterface.spellBook.Load_State(data.spellBookData);
 
         _checkpoints.AddRange(data.checkpoints);
         dialogueSystem.Load_State(data.checkpoints);
-        Show_Scene(() => dialogueSystem.SetUI(true));
+        Show_Scene(() => {
+            userInterface.inventory.Enable_Inventory();
+            userInterface.spellBook.Enable_Spellbook();
+            userInterface.Enable_Interface(true);
+            startDialog.SetActive(true);
+        });
     }
 
     protected void Spawn_Characters()
