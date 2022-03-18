@@ -11,4 +11,11 @@ public class CompositeDialogueTrigger : DialogueTrigger
         if (_dialogueList.Count != 1)
             _dialogueList.RemoveAt(0);
     }
+
+    public void Shift()
+    {
+        _dialogueList[0].onTrigger?.Invoke();
+        if (_dialogueList.Count != 1)
+            _dialogueList.RemoveAt(0);
+    }
 }
