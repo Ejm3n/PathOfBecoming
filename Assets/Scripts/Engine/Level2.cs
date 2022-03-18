@@ -14,6 +14,7 @@ public class Level2 : Engine
     [SerializeField] private Transform _rockPlace;
     [SerializeField] private GameObject _rock;
 
+    [SerializeField] private Transform _windmillPlace;
     public bool Stool { get; private set; }
 
     protected override void Awake()
@@ -74,5 +75,21 @@ public class Level2 : Engine
     {
         playerController.Change_Controls<DefaultHandler>();
         Instantiate(_rock, _rockPlace);
+    }
+    public void WindmillGo()
+    {
+        Hide_Scene(() => StartCoroutine(Unfade()));
+    }
+    IEnumerator Unfade()
+    {
+        player.transform.position = _windmillPlace.position;
+        playerController.Change_Controls<UncontrollableHandler>();
+        fairy.transform.position = _windmillPlace.position;
+        yield return new WaitForSeconds(0.5f);
+        Show_Scene();
+    }
+    public void ChangePlayerAnimatorToJumpAnim()
+    {
+        playerController.animator.SetTrigger("StoolJump");
     }
 }

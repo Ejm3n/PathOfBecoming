@@ -84,4 +84,9 @@ public class PlayerAnimator : MonoBehaviour
         Level2 _engine = (Level2)Engine.current;
         _engine.Spawn_Rock();
     }
+    public void TranslateToWindmill()
+    {
+        Level2 _engine = (Level2)Engine.current;
+        _engine.WindmillGo();
+    }
 }
