@@ -4,6 +4,9 @@ public class NewtAnimator : MonoBehaviour
 {
     [SerializeField] private Transform newtTransform;
     [SerializeField] private Transform movePoint;
+    [SerializeField] private AudioClip[] steps;
+    [SerializeField] private AudioClip fallingSound;
+    [SerializeField] private AudioSource source;
     private Animator animator;
     
     private void Awake()
@@ -30,4 +33,13 @@ public class NewtAnimator : MonoBehaviour
     {
         animator.SetTrigger("Idle");
     }
+    public void WalkingSound    (int stepSound)
+    {
+        source.PlayOneShot(steps[stepSound]);
+    }
+    public void FallingSound()
+    {
+        source.PlayOneShot(fallingSound);
+    }
+
 }
