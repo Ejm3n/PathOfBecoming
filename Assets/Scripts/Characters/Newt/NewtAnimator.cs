@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using AnimationUtils.TransformUtils;
+using AnimationUtilsAsync.TransformUtils;
 public class NewtAnimator : MonoBehaviour
 {
     [SerializeField] private Transform newtTransform;
