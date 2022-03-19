@@ -1383,7 +1383,7 @@ Transform:
   - {fileID: 1236859515}
   - {fileID: 1588635210}
   m_Father: {fileID: 208148113}
-  m_RootOrder: 38
+  m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &58247502
 GameObject:
@@ -15039,6 +15039,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 661040370}
+        m_MethodName: StartDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   indicator: {fileID: -7563638081840091006, guid: 9404155b2ef283e4ba5788af4c9f0509,
     type: 3}
   puzzle: {fileID: 75207840308638697, guid: 84950c1a4f2e27b41b629bc65a713f95, type: 3}
@@ -18198,6 +18209,53 @@ Transform:
   - {fileID: 1001686829}
   m_Father: {fileID: 1057689108}
   m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &661040369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 661040371}
+  - component: {fileID: 661040370}
+  m_Layer: 0
+  m_Name: DialogDoorFail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &661040370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661040369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57aeb464a913a2448a714b4fdc0392ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueNumber: 24
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &661040371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661040369}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 208148113}
+  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &664217469
 GameObject:
@@ -43792,6 +43850,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4822644465706016283, guid: 12709fc91c194c84bb9bdfa93203a1c2,
+          type: 3}
+        m_MethodName: Play_Effect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: f04dd766c3039b54db96e6ec3364d1c1,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1555617002
 Transform:
   m_ObjectHideFlags: 0
@@ -46857,7 +46928,7 @@ MonoBehaviour:
           m_MethodName: Play_Effect
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 50f28c14c496bbb40b7d11d68e6bf80d,
+            m_ObjectArgument: {fileID: 8300000, guid: a26c327b183fdac468fbd17c068601fe,
               type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
             m_IntArgument: 0
@@ -51828,7 +51899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdcffea696ab4a846b08b5b30dbdc96d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueNumber: 0
+  dialogueNumber: 25
   onTrigger:
     m_PersistentCalls:
       m_Calls: []
@@ -53093,18 +53164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onSuccess:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   onFail:
     m_PersistentCalls:
       m_Calls: []
