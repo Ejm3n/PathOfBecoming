@@ -5,12 +5,12 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class EyesDance : MonoBehaviour
 {
     [SerializeField] private GameObject[] _eyes;
-    private Collider2D _collider;
+    [SerializeField] private Collider2D[] _colliders;
     [SerializeField] private Light2D _light;
     [SerializeField] private AudioSource _musicTrack;
     [SerializeField] private AudioClip _changeTrack;
 
-    const float timeToDie = 15f;
+    const float timeToDie = 17f;
     const float intencityThreshold = 0.1f;
     private float startIntencity;
 
@@ -19,7 +19,6 @@ public class EyesDance : MonoBehaviour
     private void Awake()
     {
         startIntencity = _light.intensity;
-        _collider = GetComponent<Collider2D>();
     }
 
     public void Start_Spawn()
@@ -37,22 +36,21 @@ public class EyesDance : MonoBehaviour
 
     private IEnumerator Spawner()
     {
-        float intencityChange = (_light.intensity - intencityThreshold) * 0.1f / timeToDie; 
-        while (true)
+        float intencityChange = (_light.intensity - intencityThreshold) * 0.5f / (timeToDie * 0.9f);
+        float startTime = Time.time;
+        while (Time.time - startTime < timeToDie)
         {
-            Instantiate(_eyes[Random.Range(0, _eyes.Length)], new Vector3(Random.Range(_collider.bounds.min.x, _collider.bounds.max.x), 
-                Random.Range(_collider.bounds.min.y, _collider.bounds.max.y), 0), 
-                Quaternion.identity, transform);
-            _light.intensity -= intencityChange;
-            if (_light.intensity <= intencityThreshold)
+            foreach (Collider2D collider in _colliders)
             {
-                _light.intensity = startIntencity;
-                Engine.current.playerController.Die();
-                _musicTrack.Stop();
-                break;
+                Instantiate(_eyes[Random.Range(0, _eyes.Length)], new Vector3(Random.Range(collider.bounds.min.x, collider.bounds.max.x),
+                            Random.Range(collider.bounds.min.y, collider.bounds.max.y), 0),
+                            Quaternion.identity, transform);
             }
-            yield return new WaitForSeconds(0.1f);
+            _light.intensity -= intencityChange;
+            yield return new WaitForSeconds(0.5f);
         }
+        Engine.current.playerController.Die();
+        _musicTrack.Stop();
     }
 
     private IEnumerator MusicFade(float timeToFade)
