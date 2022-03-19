@@ -8,6 +8,6 @@ public class Lighter : Spell
     {
         base.Cast(firePoint, angle);
         //animation
-        Engine.current.playerController.animator.SetTrigger("CastLight");
+        Engine.current.playerController.animator.SetTrigger("CastingLight");
     }
 }
