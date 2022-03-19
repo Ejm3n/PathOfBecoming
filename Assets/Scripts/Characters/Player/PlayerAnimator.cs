@@ -13,6 +13,7 @@ public class PlayerAnimator : MonoBehaviour
 
     AudioClip[] steps;
     AudioClip jump;
+    AudioClip throwRock;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class PlayerAnimator : MonoBehaviour
         anim = GetComponent<Animator>();
         steps = Resources.LoadAll<AudioClip>("Sounds/Effects/Footsteps/Stone");
         jump = Resources.Load<AudioClip>("Sounds/Effects/Footsteps/jump");
+        throwRock = Resources.Load<AudioClip>("Sounds/Effects/throwRock");
     }
 
     public void Step()
@@ -88,5 +90,10 @@ public class PlayerAnimator : MonoBehaviour
     {
         Level2 _engine = (Level2)Engine.current;
         _engine.WindmillGo();
+    }
+
+    public void Throw_Rock()
+    {
+        SoundRecorder.Play_Effect(throwRock);
     }
 }

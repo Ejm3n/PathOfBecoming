@@ -159,13 +159,12 @@ public abstract class Engine : MonoBehaviour
         fairyController.Connect_Fairy(playerController.fairyAnchor);
     }
 
-    public void Last_Chekpoint(Action onRespawn = null)
+    public void Last_Chekpoint()
     {
         Hide_Scene(() =>
         {
-            player.transform.position = playerController.lastCheckpoint;
-            fairy.transform.position = fairyController.lastCheckpoint;
-            Show_Scene(onRespawn);
+            load = true;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         });
     }
 
