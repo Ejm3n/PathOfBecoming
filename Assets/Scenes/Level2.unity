@@ -250,6 +250,69 @@ Transform:
   m_Father: {fileID: 1044117580}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7928986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7928987}
+  - component: {fileID: 7928988}
+  m_Layer: 12
+  m_Name: PickUpMushroom3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7928987
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7928986}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 57390738}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7928988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7928986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcffea696ab4a846b08b5b30dbdc96d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueNumber: -1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4822644465706016283, guid: 12709fc91c194c84bb9bdfa93203a1c2,
+          type: 3}
+        m_MethodName: Play_Music
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 10fdf66b5abe97544b0140abc5e3b242,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCheckpoint:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &8571094 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3574874957647775235, guid: e393155e33859c445ad506d2bccc93be,
@@ -1268,6 +1331,18 @@ Transform:
   - {fileID: 2137272817}
   - {fileID: 1924919057}
   - {fileID: 479907684}
+  - {fileID: 823391962}
+  - {fileID: 771535654}
+  - {fileID: 930909185}
+  - {fileID: 65408746}
+  - {fileID: 1545412072}
+  - {fileID: 470737639}
+  - {fileID: 7928987}
+  - {fileID: 698354508}
+  - {fileID: 2009059714}
+  - {fileID: 1189549573}
+  - {fileID: 386376381}
+  - {fileID: 1066726691}
   m_Father: {fileID: 208148113}
   m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1365,6 +1440,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1349069870}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 698354509}
+        m_MethodName: StartDialogue
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1511,6 +1597,80 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 30}
   m_EdgeRadius: 0
+--- !u!1 &65408745
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 65408746}
+  - component: {fileID: 65408747}
+  m_Layer: 12
+  m_Name: PlaceMushroom4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &65408746
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65408745}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 57390738}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &65408747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65408745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcffea696ab4a846b08b5b30dbdc96d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueNumber: -1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4822644465706016283, guid: 12709fc91c194c84bb9bdfa93203a1c2,
+          type: 3}
+        m_MethodName: Play_Music
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 10fdf66b5abe97544b0140abc5e3b242,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCheckpoint:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 205444014}
+        m_MethodName: Shift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &67872618
 GameObject:
   m_ObjectHideFlags: 0
@@ -2421,6 +2581,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7928988}
+        m_MethodName: StartDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6354,7 +6525,7 @@ PrefabInstance:
     - target: {fileID: 4560893388908313768, guid: 4efa8d6384b4b594fa4b40331f6d0e3c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -19.14
+      value: -19.131
       objectReference: {fileID: 0}
     - target: {fileID: 4560893388908313768, guid: 4efa8d6384b4b594fa4b40331f6d0e3c,
         type: 3}
@@ -6396,10 +6567,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4560893388908313774, guid: 4efa8d6384b4b594fa4b40331f6d0e3c,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560893388908313774, guid: 4efa8d6384b4b594fa4b40331f6d0e3c,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560893388908313774, guid: 4efa8d6384b4b594fa4b40331f6d0e3c,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2009059715}
+    - target: {fileID: 4560893388908313774, guid: 4efa8d6384b4b594fa4b40331f6d0e3c,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560893388908313774, guid: 4efa8d6384b4b594fa4b40331f6d0e3c,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartDialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560893388908313774, guid: 4efa8d6384b4b594fa4b40331f6d0e3c,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4560893388908313775, guid: 4efa8d6384b4b594fa4b40331f6d0e3c,
         type: 3}
       propertyPath: m_Name
       value: EmptyVessel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560893388908313775, guid: 4efa8d6384b4b594fa4b40331f6d0e3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4efa8d6384b4b594fa4b40331f6d0e3c, type: 3}
@@ -6708,7 +6914,7 @@ PrefabInstance:
     - target: {fileID: 523972113023657586, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.04868407
+      value: -0.048684128
       objectReference: {fileID: 0}
     - target: {fileID: 983234448793470943, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
@@ -6738,7 +6944,7 @@ PrefabInstance:
     - target: {fileID: 983234449572302871, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.111481965
+      value: -0.111481845
       objectReference: {fileID: 0}
     - target: {fileID: 983234449572302871, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
@@ -6753,7 +6959,7 @@ PrefabInstance:
     - target: {fileID: 983234449616180610, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.3046998
+      value: 0.30469978
       objectReference: {fileID: 0}
     - target: {fileID: 983234449616180610, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
@@ -6768,7 +6974,7 @@ PrefabInstance:
     - target: {fileID: 983234449729517620, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.63708776
+      value: -0.6370877
       objectReference: {fileID: 0}
     - target: {fileID: 983234449729517620, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
@@ -6783,7 +6989,7 @@ PrefabInstance:
     - target: {fileID: 983234449795547864, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.042064197
+      value: 0.04206423
       objectReference: {fileID: 0}
     - target: {fileID: 983234449795547864, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
@@ -6828,12 +7034,12 @@ PrefabInstance:
     - target: {fileID: 1690952418645483072, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.115789495
+      value: -0.11578952
       objectReference: {fileID: 0}
     - target: {fileID: 1690952418645483072, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.99327385
+      value: -0.9932738
       objectReference: {fileID: 0}
     - target: {fileID: 2125349504801872050, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
@@ -6843,7 +7049,7 @@ PrefabInstance:
     - target: {fileID: 2125349504801872050, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.025966099
+      value: 0.025966158
       objectReference: {fileID: 0}
     - target: {fileID: 2939657106053091827, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
@@ -6863,17 +7069,17 @@ PrefabInstance:
     - target: {fileID: 2939657106053091827, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.06328654
+      value: 0.0632866
       objectReference: {fileID: 0}
     - target: {fileID: 3012734742398257204, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9954583
+      value: 0.99545825
       objectReference: {fileID: 0}
     - target: {fileID: 3012734742398257204, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.095199
+      value: -0.09519904
       objectReference: {fileID: 0}
     - target: {fileID: 3104916770675941444, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
@@ -6908,7 +7114,7 @@ PrefabInstance:
     - target: {fileID: 3396659484618765742, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.02792831
+      value: 0.027928254
       objectReference: {fileID: 0}
     - target: {fileID: 3491228727859156003, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
@@ -6918,17 +7124,17 @@ PrefabInstance:
     - target: {fileID: 3491228727859156003, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.036814116
+      value: -0.036814112
       objectReference: {fileID: 0}
     - target: {fileID: 4201042096610623692, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9899951
+      value: 0.98999506
       objectReference: {fileID: 0}
     - target: {fileID: 4201042096610623692, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.14110205
+      value: -0.14110208
       objectReference: {fileID: 0}
     - target: {fileID: 4743248760245631899, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
@@ -6938,7 +7144,7 @@ PrefabInstance:
     - target: {fileID: 4743248760245631899, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.067196764
+      value: -0.06719677
       objectReference: {fileID: 0}
     - target: {fileID: 4905031966402367051, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
@@ -6948,7 +7154,7 @@ PrefabInstance:
     - target: {fileID: 4905031966402367051, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.23782979
+      value: -0.23782973
       objectReference: {fileID: 0}
     - target: {fileID: 5791262015154138243, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
@@ -7018,7 +7224,7 @@ PrefabInstance:
     - target: {fileID: 6558769861980899543, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.15849403
+      value: 0.15849401
       objectReference: {fileID: 0}
     - target: {fileID: 6558769861980899543, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
@@ -7033,12 +7239,12 @@ PrefabInstance:
     - target: {fileID: 6582009877654183032, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0034072362
+      value: -0.003407319
       objectReference: {fileID: 0}
     - target: {fileID: 7060948634163924582, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.05791815
+      value: -0.057918135
       objectReference: {fileID: 0}
     - target: {fileID: 7060948634163924582, guid: 8dc9f4c85a02b5047aa9c4258c32fe17,
         type: 3}
@@ -9304,6 +9510,80 @@ Transform:
   m_Father: {fileID: 1187493815}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &386376380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 386376381}
+  - component: {fileID: 386376382}
+  m_Layer: 12
+  m_Name: FillVessel2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &386376381
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386376380}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 57390738}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &386376382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386376380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcffea696ab4a846b08b5b30dbdc96d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueNumber: -1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4822644465706016283, guid: 12709fc91c194c84bb9bdfa93203a1c2,
+          type: 3}
+        m_MethodName: Play_Music
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 10fdf66b5abe97544b0140abc5e3b242,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCheckpoint:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 612216190}
+        m_MethodName: Shift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &387010492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13108,6 +13388,69 @@ Transform:
   m_Father: {fileID: 1092181095}
   m_RootOrder: 53
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &470737638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 470737639}
+  - component: {fileID: 470737640}
+  m_Layer: 12
+  m_Name: PickUpMushroom2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &470737639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470737638}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 57390738}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &470737640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470737638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcffea696ab4a846b08b5b30dbdc96d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueNumber: -1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4822644465706016283, guid: 12709fc91c194c84bb9bdfa93203a1c2,
+          type: 3}
+        m_MethodName: Play_Music
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 10fdf66b5abe97544b0140abc5e3b242,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCheckpoint:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &471009428
 GameObject:
   m_ObjectHideFlags: 0
@@ -18656,6 +18999,69 @@ Transform:
   m_Father: {fileID: 1092181095}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &698354507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 698354508}
+  - component: {fileID: 698354509}
+  m_Layer: 12
+  m_Name: PickUpMushroom4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &698354508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698354507}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 57390738}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &698354509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698354507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcffea696ab4a846b08b5b30dbdc96d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueNumber: -1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4822644465706016283, guid: 12709fc91c194c84bb9bdfa93203a1c2,
+          type: 3}
+        m_MethodName: Play_Music
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 10fdf66b5abe97544b0140abc5e3b242,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCheckpoint:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &701808818
 GameObject:
   m_ObjectHideFlags: 0
@@ -20841,6 +21247,80 @@ Transform:
   m_Father: {fileID: 434361641}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &771535653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 771535654}
+  - component: {fileID: 771535655}
+  m_Layer: 12
+  m_Name: PlaceMushroom2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &771535654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771535653}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 57390738}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &771535655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771535653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcffea696ab4a846b08b5b30dbdc96d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueNumber: -1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4822644465706016283, guid: 12709fc91c194c84bb9bdfa93203a1c2,
+          type: 3}
+        m_MethodName: Play_Music
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 10fdf66b5abe97544b0140abc5e3b242,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCheckpoint:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 205444014}
+        m_MethodName: Shift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &775140436
 GameObject:
   m_ObjectHideFlags: 0
@@ -22204,6 +22684,80 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 5}
   m_EdgeRadius: 0
+--- !u!1 &823391961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 823391962}
+  - component: {fileID: 823391963}
+  m_Layer: 12
+  m_Name: PlaceMushroom1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &823391962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823391961}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 57390738}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &823391963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823391961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcffea696ab4a846b08b5b30dbdc96d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueNumber: -1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4822644465706016283, guid: 12709fc91c194c84bb9bdfa93203a1c2,
+          type: 3}
+        m_MethodName: Play_Music
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 10fdf66b5abe97544b0140abc5e3b242,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCheckpoint:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 205444014}
+        m_MethodName: Shift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &824685795
 GameObject:
   m_ObjectHideFlags: 0
@@ -22596,6 +23150,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 470737640}
+        m_MethodName: StartDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -24727,6 +25292,80 @@ Transform:
   m_Father: {fileID: 798597491}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &930909184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 930909185}
+  - component: {fileID: 930909186}
+  m_Layer: 12
+  m_Name: PlaceMushroom3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &930909185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930909184}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 57390738}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &930909186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930909184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcffea696ab4a846b08b5b30dbdc96d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueNumber: -1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4822644465706016283, guid: 12709fc91c194c84bb9bdfa93203a1c2,
+          type: 3}
+        m_MethodName: Play_Music
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 10fdf66b5abe97544b0140abc5e3b242,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCheckpoint:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 205444014}
+        m_MethodName: Shift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &931545529
 GameObject:
   m_ObjectHideFlags: 0
@@ -28041,12 +28680,12 @@ PrefabInstance:
     - target: {fileID: 8498048322027966544, guid: ccc055e16af94b74886b4dfd59ca798c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.011676788
+      value: -0.01167202
       objectReference: {fileID: 0}
     - target: {fileID: 8498048322027966544, guid: ccc055e16af94b74886b4dfd59ca798c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.450854
+      value: 4.4508567
       objectReference: {fileID: 0}
     - target: {fileID: 9100194447062226023, guid: ccc055e16af94b74886b4dfd59ca798c,
         type: 3}
@@ -28941,6 +29580,80 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.6743622, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1066726690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1066726691}
+  - component: {fileID: 1066726692}
+  m_Layer: 12
+  m_Name: LiquidOnStone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1066726691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066726690}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 57390738}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1066726692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066726690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcffea696ab4a846b08b5b30dbdc96d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueNumber: 0
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4822644465706016283, guid: 12709fc91c194c84bb9bdfa93203a1c2,
+          type: 3}
+        m_MethodName: Play_Music
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 10fdf66b5abe97544b0140abc5e3b242,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCheckpoint:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1152416980}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1067302156
 GameObject:
   m_ObjectHideFlags: 0
@@ -30851,7 +31564,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onSuccess:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1066726692}
+        m_MethodName: StartDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onFail:
     m_PersistentCalls:
       m_Calls: []
@@ -31494,6 +32218,80 @@ Transform:
   m_Father: {fileID: 421041210}
   m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1189549572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1189549573}
+  - component: {fileID: 1189549574}
+  m_Layer: 12
+  m_Name: FillVessel1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1189549573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189549572}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 57390738}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1189549574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189549572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcffea696ab4a846b08b5b30dbdc96d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueNumber: -1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4822644465706016283, guid: 12709fc91c194c84bb9bdfa93203a1c2,
+          type: 3}
+        m_MethodName: Play_Music
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 10fdf66b5abe97544b0140abc5e3b242,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCheckpoint:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 612216190}
+        m_MethodName: Shift
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1192812526
 GameObject:
   m_ObjectHideFlags: 0
@@ -32638,6 +33436,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1545412073}
+        m_MethodName: StartDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -39009,6 +39818,12 @@ Transform:
   m_Father: {fileID: 855521657}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1430800120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4560893388908313775, guid: 4efa8d6384b4b594fa4b40331f6d0e3c,
+    type: 3}
+  m_PrefabInstance: {fileID: 275712043}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1434117096
 GameObject:
   m_ObjectHideFlags: 0
@@ -42112,6 +42927,91 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1545412071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1545412072}
+  - component: {fileID: 1545412073}
+  m_Layer: 12
+  m_Name: PickUpMushroom1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1545412072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545412071}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 57390738}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1545412073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545412071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcffea696ab4a846b08b5b30dbdc96d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueNumber: -1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4822644465706016283, guid: 12709fc91c194c84bb9bdfa93203a1c2,
+          type: 3}
+        m_MethodName: Play_Music
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 10fdf66b5abe97544b0140abc5e3b242,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCheckpoint:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1289982915}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 509530799}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1546839228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50194,6 +51094,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 386376382}
+        m_MethodName: StartDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1924919056
 GameObject:
   m_ObjectHideFlags: 0
@@ -52306,6 +53217,80 @@ Transform:
   m_Father: {fileID: 798794386}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2009059713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2009059714}
+  - component: {fileID: 2009059715}
+  m_Layer: 12
+  m_Name: Vessel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2009059714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009059713}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 57390738}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2009059715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009059713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcffea696ab4a846b08b5b30dbdc96d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueNumber: -1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4822644465706016283, guid: 12709fc91c194c84bb9bdfa93203a1c2,
+          type: 3}
+        m_MethodName: Play_Music
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 10fdf66b5abe97544b0140abc5e3b242,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCheckpoint:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1430800120}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2011915447
 GameObject:
   m_ObjectHideFlags: 0
@@ -54254,7 +55239,18 @@ MonoBehaviour:
   dialogueNumber: 42
   onTrigger:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1189549574}
+        m_MethodName: StartDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2074740726
 GameObject:
   m_ObjectHideFlags: 0
@@ -55811,6 +56807,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mushroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 112050093508699260, guid: 89ff433cfa9cdb244876642eac09728d,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 112050093508699260, guid: 89ff433cfa9cdb244876642eac09728d,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 112050093508699260, guid: 89ff433cfa9cdb244876642eac09728d,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1545412073}
+    - target: {fileID: 112050093508699260, guid: 89ff433cfa9cdb244876642eac09728d,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 112050093508699260, guid: 89ff433cfa9cdb244876642eac09728d,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartDialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 112050093508699260, guid: 89ff433cfa9cdb244876642eac09728d,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 112050093508699262, guid: 89ff433cfa9cdb244876642eac09728d,
         type: 3}
