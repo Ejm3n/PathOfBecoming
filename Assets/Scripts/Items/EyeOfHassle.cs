@@ -11,7 +11,7 @@ public class EyeOfHassle : Item
 
     Image eyeImage;
 
-    private void Start()
+    private void Awake()
     {
         eyeImage = GetComponent<Image>();
         Eye_Asleep();
