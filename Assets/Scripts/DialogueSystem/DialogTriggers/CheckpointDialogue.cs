@@ -8,6 +8,6 @@ public class CheckpointDialogue : DialogueTrigger
     {
         DialogueSystem ds = Engine.current.dialogueSystem;
         onTrigger.AddListener(() => ds.Checkpoint(this));
-        ds.StartDialogue(dialogueNumber, onTrigger);
+        ds.StartDialogue(dialogueNumber, null);
     }
 }

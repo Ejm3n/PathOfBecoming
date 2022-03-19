@@ -11,8 +11,9 @@ public class Level2 : Engine
 
     [SerializeField] ParticleSystem potParticle;
 
-    [SerializeField] private Transform _rockPlace;
+    [SerializeField] private PlaceForItem _rockPlace;
     [SerializeField] private GameObject _rock;
+    [SerializeField] private GameObject _rockSpellFinder;
 
     [SerializeField] private Transform _windmillPlace;
     public bool Stool { get; private set; }
@@ -74,7 +75,8 @@ public class Level2 : Engine
     public void Spawn_Rock()
     {
         playerController.Change_Controls<DefaultHandler>();
-        Instantiate(_rock, _rockPlace);
+        _rockPlace.Place_Item(_rock);
+        _rockSpellFinder.gameObject.SetActive(true);
     }
     public void WindmillGo()
     {
