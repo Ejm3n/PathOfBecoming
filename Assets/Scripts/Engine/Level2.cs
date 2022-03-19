@@ -85,7 +85,7 @@ public class Level2 : Engine
         player.transform.position = _windmillPlace.position;
         playerController.Change_Controls<UncontrollableHandler>();
         fairy.transform.position = _windmillPlace.position;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         Show_Scene();
     }
     public void ChangePlayerAnimatorToJumpAnim()
