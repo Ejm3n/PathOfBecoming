@@ -22,6 +22,7 @@ public class BlockPuzzle : Puzzle
     [SerializeField] AudioClip stolbFilled;
     [SerializeField] AudioClip  pressedInFullStolb;
     [SerializeField] AudioClip razlomManaGive;
+    [SerializeField] AudioClip bgMusic;
 
     private bool allowedClicks = true;
     public int currentStolb;
@@ -30,6 +31,7 @@ public class BlockPuzzle : Puzzle
     
     private void OnEnable()
     {
+        SoundRecorder.Play_Music(bgMusic);
         CurrentMana = manaCount;
         stolbs = GetComponentsInChildren<Stolb>();
         BlackBlock[] blackBlocks = FindObjectsOfType<BlackBlock>();
@@ -39,13 +41,19 @@ public class BlockPuzzle : Puzzle
                 blocksThatCanBeSucked.Add(blockingBlock);
         }
         //отключение игрока
-
     }
+
+    private void OnDisable()
+    {
+        SoundRecorder.Play_Music(Resources.Load<AudioClip>("Sounds/Music/Level2"));    
+    }
+
     public void RemoveBlocksThatCanBeSucked(Block[] blocks)
     {
         foreach (Block block in blocks)
             blocksThatCanBeSucked.Remove(block);
     }
+
     public void Restart()
     {
         CurrentMana = manaCount;
@@ -54,6 +62,7 @@ public class BlockPuzzle : Puzzle
             stolb.ResetBlocks();
         }
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
@@ -132,8 +141,7 @@ public class BlockPuzzle : Puzzle
             //sound
             SoundRecorder.Play_Effect(solvePuzzle);
             Solve_Puzzle();
-        }
-            
+        }           
     }
 
 
@@ -172,14 +180,15 @@ public class BlockPuzzle : Puzzle
                 ended = false;
             }
         }
-
         return ended;
     }
+
     public void DoRazlom(int stolbNum)
     {
         SoundRecorder.Play_Effect(razlomManaGive);
         stolbs[stolbNum].AddRazlomPower(razlomStrength);
     }
+
     public void AllowOrNoClicks(bool what)
     {
         allowedClicks = what;
