@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider2D))]
 public class Collectible : InteractEvent
@@ -20,8 +21,10 @@ public class Collectible : InteractEvent
 
     public override void Start_Event()
     {
-        onSuccess.AddListener(Pick_Up);
-        onSuccess.Invoke();
+        UnityEvent _event = new UnityEvent();
+        _event.AddListener(Pick_Up);
+        _event.AddListener(() => onSuccess?.Invoke());
+        _event?.Invoke();
     }
 
     private void OnMouseDown()

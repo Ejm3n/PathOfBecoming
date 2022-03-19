@@ -7,7 +7,8 @@ public class CheckpointDialogue : DialogueTrigger
     public override void StartDialogue()
     {
         DialogueSystem ds = Engine.current.dialogueSystem;
-        onTrigger.AddListener(() => ds.Checkpoint(this));
-        ds.StartDialogue(dialogueNumber, null);
+        UnityEvent _event = new UnityEvent();
+        _event.AddListener(() => ds.Checkpoint(this));
+        ds.StartDialogue(dialogueNumber, _event);
     }
 }
