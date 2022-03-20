@@ -15889,8 +15889,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1393849353
-  m_SortingLayer: 3
+  m_SortingLayerID: 1163533025
+  m_SortingLayer: 2
   m_SortingOrder: 13
   m_Sprite: {fileID: 21300000, guid: c4a58e9722ea5514098252b6f31c50c3, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -32850,8 +32850,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1393849353
-  m_SortingLayer: 3
+  m_SortingLayerID: 1163533025
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2801b97395a266746ab8e318f211ce8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -34390,6 +34390,11 @@ PrefabInstance:
     - target: {fileID: 1205570936, guid: 73045549165f81b479db65bb8d595d7c, type: 3}
       propertyPath: interactWith.Array.data[0].execution.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916309403421544840, guid: 73045549165f81b479db65bb8d595d7c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6916309403421544846, guid: 73045549165f81b479db65bb8d595d7c,
         type: 3}
@@ -38853,10 +38858,10 @@ CompositeCollider2D:
         Y: -347000000
       - X: -265000000
         Y: -355000000
-      - X: -626000000
-        Y: -355000000
-      - X: -626000000
-        Y: -582000000
+      - X: -529540352
+        Y: -468182592
+      - X: -529494880
+        Y: -578054784
       - X: -345000000
         Y: -578000000
       - X: -262115360
@@ -38889,15 +38894,15 @@ CompositeCollider2D:
       - {x: 47.72973, y: -26.179611}
       - {x: 47.726475, y: -14.901205}
       - {x: -60.875656, y: -14.992861}
-    - - {x: -62.599968, y: -35.5}
-      - {x: -62.599968, y: -58.2}
-      - {x: -34.499996, y: -57.8}
+    - - {x: -52.94949, y: -57.805447}
+      - {x: -34.5, y: -57.8}
       - {x: -26.211535, y: -57.482925}
       - {x: 29.590355, y: -50.863327}
       - {x: 42.600002, y: -51.7}
       - {x: 60.8, y: -51.499973}
       - {x: 61.099968, y: -34.7}
-      - {x: -26.5, y: -35.5}
+      - {x: -26.500006, y: -35.500004}
+      - {x: -52.954037, y: -46.81828}
     - - {x: -32.00003, y: -88.8}
       - {x: -31.960068, y: -73.196335}
       - {x: -31.807169, y: -71.87961}
@@ -38966,8 +38971,8 @@ PolygonCollider2D:
       - {x: 60.8, y: -51.5}
       - {x: 61.1, y: -34.7}
       - {x: -26.5, y: -35.5}
-      - {x: -62.6, y: -35.5}
-      - {x: -62.6, y: -58.2}
+      - {x: -52.954037, y: -46.81826}
+      - {x: -52.94949, y: -57.80548}
       - {x: -34.5, y: -57.8}
       - {x: -26.211536, y: -57.482925}
 --- !u!60 &1298643705
@@ -55805,7 +55810,7 @@ PrefabInstance:
         type: 3}
       propertyPath: noItemDialog
       value: 
-      objectReference: {fileID: 540530214}
+      objectReference: {fileID: 1266300342}
     - target: {fileID: 4890011798654597123, guid: 51c910b1517a0ef4591438b383537613,
         type: 3}
       propertyPath: interactWith.Array.data[0].item
@@ -58851,6 +58856,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1213128304}
         m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 62990034}
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
