@@ -99,4 +99,8 @@ public class Level2 : Engine
     {
         SceneManager.LoadScene(sceneNum);
     }
+    public void RemoveControlsFromPlayer()
+    {
+        playerController.Change_Controls<UncontrollableHandler>();
+    }
 }
