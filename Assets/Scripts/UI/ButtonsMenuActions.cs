@@ -42,4 +42,12 @@ public class ButtonsMenuActions : MonoBehaviour
     {
         Application.Quit();
     }
+    public void DisableSave()
+    {
+        Engine.load = false;
+    }
+    public void EnableSave()
+    {
+        Engine.load = true;
+    }
 }
