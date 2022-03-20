@@ -25,7 +25,7 @@ public abstract class Engine : MonoBehaviour
     [SerializeField] Transform fairyStartPosition;
 
     [Header("Other")]
-    [SerializeField] protected DialogueTrigger startDialog;
+    [SerializeField] protected GameObject startDialog;
 
     protected const float timeToFade = 1f;
 
@@ -87,8 +87,7 @@ public abstract class Engine : MonoBehaviour
             userInterface.inventory.Enable_Inventory();
             userInterface.spellBook.Enable_Spellbook();
             userInterface.Enable_Interface(true);
-            if(startDialog!=null)
-                startDialog.StartDialogue();
+            startDialog.SetActive(true);
         });
     }
 
@@ -177,11 +176,10 @@ public abstract class Engine : MonoBehaviour
     }
 
     public void Show_Scene(Action onComplete = null)
-    {
-        //onComplete += () => playerController.Change_Controls<DefaultHandler>();
+    {      
         playerController.Change_Controls<UncontrollableHandler>();
         onComplete += () => curtain.gameObject.SetActive(false);
-        
+        onComplete += () => playerController.Change_Controls<DefaultHandler>();
         curtain.Fade(timeToFade, onComplete);
     }
 

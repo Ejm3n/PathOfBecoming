@@ -18,7 +18,7 @@ public class Level1 : Engine
         Spawn_Characters();
         Show_Scene(() => {
             if (startDialog != null)
-                startDialog.StartDialogue();
-                });
+                startDialog.SetActive(true);
+        });
     }
 }
