@@ -44,7 +44,7 @@ public class SoundPlayer : MonoBehaviour
             ambientSound.clip = ambientQueue.Dequeue();
             ambientSound.Play();
         }
-        if (ambientSound.volume != Engine.current.gameSettings.soundSettings.effectsVolume)
+        if ( Engine.current != null&&ambientSound.volume != Engine.current.gameSettings.soundSettings.effectsVolume )
             ambientSound.volume = Engine.current.gameSettings.soundSettings.effectsVolume * Engine.current.gameSettings.soundSettings.masterVolume;
     }
 

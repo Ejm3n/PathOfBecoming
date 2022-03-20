@@ -407,6 +407,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4822644465507281094, guid: 12709fc91c194c84bb9bdfa93203a1c2,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 2467686124984976586, guid: 0c60800ea7da5944293a1e21483bcff7,
+        type: 2}
     - target: {fileID: 4822644465706016277, guid: 12709fc91c194c84bb9bdfa93203a1c2,
         type: 3}
       propertyPath: m_Name
@@ -515,7 +521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeAnimator: {fileID: 7322088259357342393}
   loadLevel: 1
-  CanULoadNextLvl: 0
+  CanULoadNextLvl: 1
   CutScenes:
   - {fileID: 460246313}
   - {fileID: 1208558625}
@@ -3331,7 +3337,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 187f1b41857ed54459c1c4a0514126de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a371b20f2effc24096ac42ef8501195, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3979,7 +3985,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d994192bd37d85f4d8e801753924a147, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d2d592ac592228a4bb97003de908569e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4920,7 +4926,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eb219c00e28e3f348b5ab66d8501bf79, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2f2a7402bbc58284c857ca98d06925f9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8033,7 +8039,7 @@ PrefabInstance:
     - target: {fileID: 7344380739278185710, guid: 64a2ffcfc63e52b4f9370fa97c5696c8,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64a2ffcfc63e52b4f9370fa97c5696c8, type: 3}
