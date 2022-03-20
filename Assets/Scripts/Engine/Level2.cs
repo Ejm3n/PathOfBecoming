@@ -1,6 +1,7 @@
 ﻿using Cinemachine;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level2 : Engine
 {
@@ -94,5 +95,9 @@ public class Level2 : Engine
     public void ChangePlayerAnimatorToJumpAnim()
     {
         playerController.animator.SetTrigger("StoolJump");
+    }
+    public void MoveToScene(int sceneNum)
+    {
+        SceneManager.LoadScene(sceneNum);
     }
 }
