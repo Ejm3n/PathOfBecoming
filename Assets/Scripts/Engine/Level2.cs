@@ -39,7 +39,8 @@ public class Level2 : Engine
             userInterface.inventory.Enable_Inventory();
             userInterface.spellBook.Enable_Spellbook();
             userInterface.Enable_Interface(true);
-            startDialog.SetActive(true);
+            if (startDialog != null)
+                startDialog.StartDialogue();
         });
     }
 

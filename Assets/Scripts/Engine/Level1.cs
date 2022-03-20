@@ -16,6 +16,9 @@ public class Level1 : Engine
     protected override void Start_Level()
     {
         Spawn_Characters();
-        Show_Scene(() => startDialog.SetActive(true));
+        Show_Scene(() => {
+            if (startDialog != null)
+                startDialog.StartDialogue();
+                });
     }
 }
