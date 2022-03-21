@@ -13,10 +13,23 @@ public class Interface : MonoBehaviour
     public ChoicePanel choicePanel;
     public CanvasGroup eyeOfHassle;
     public static Interface current;
+    [SerializeField] private GameObject _tutorScreen;
 
     private void Awake()
     {
         current = this;
+    }
+
+    public void Show_Tutor()
+    {
+        Engine.current.playerController.Change_Controls<HelpHandler>();
+        _tutorScreen.SetActive(true);
+    }
+
+    public void Hide_Tutor()
+    {
+        Engine.current.playerController.Change_Controls<DefaultHandler>();
+        _tutorScreen.SetActive(false);
     }
 
     public void Spawn_UI_Object(GameObject prefab)

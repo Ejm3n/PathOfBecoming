@@ -11,6 +11,8 @@ public class DefaultHandler : ControlHandler
     {
         if (InteractEvent.current && ControlButtonsPress.INTERACT)
             InteractEvent.current.Start_Event();
+        else if (ControlButtonsPress.HELP)
+            Interface.current.Show_Tutor();
     }
 
     public override void Inventory_Button()

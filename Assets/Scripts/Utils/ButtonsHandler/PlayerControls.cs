@@ -126,6 +126,14 @@ namespace PlayerControls
                 return Input.GetKeyDown(PCButtons.INTERACT);
             }
         }
+
+        public static bool HELP
+        {
+            get
+            {
+                return Input.GetKeyDown(PCButtons.HELP);
+            }
+        }
     }
 
     public static class ControlButtonsAxis
