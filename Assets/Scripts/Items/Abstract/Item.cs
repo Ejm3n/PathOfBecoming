@@ -73,5 +73,5 @@ public abstract class Item : MonoBehaviour
 
 public enum Items
 {
-    Text, Book, SmallKey, MediumKey, EpicKey, EmptyVessel, FilledVessel, Special1, Special2, Stackable, EyeOfHassle, Stool
+    Text, Book, SmallKey, MediumKey, EpicKey, EmptyVessel, FilledVessel, Special1, Special2, Stackable, EyeOfHassle, Stool, Icicle
 }
