@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class BlockPuzzle : Puzzle
 {
@@ -24,6 +24,8 @@ public class BlockPuzzle : Puzzle
     [SerializeField] AudioClip razlomManaGive;
     [SerializeField] AudioClip bgMusic;
 
+    [SerializeField] GameObject PuzzleTutor;
+    private bool started = false;
     private bool allowedClicks = true;
     public int currentStolb;
     Stolb[] stolbs;
@@ -31,6 +33,7 @@ public class BlockPuzzle : Puzzle
     
     private void OnEnable()
     {
+        PuzzleTutor.SetActive(true);
         SoundRecorder.Play_Music(bgMusic);
         CurrentMana = manaCount;
         stolbs = GetComponentsInChildren<Stolb>();
@@ -65,85 +68,99 @@ public class BlockPuzzle : Puzzle
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-            if (currentStolb > 0)
-                currentStolb--;
-        if (Input.GetKeyDown(KeyCode.D))
-            if (currentStolb < 3)
-                currentStolb++;
-        if (!stolbs[currentStolb].fullStolb)
+        if(started)
         {
-            for (int i = 0; i < stolbs[currentStolb].blocks.Length; i++)
-            {
-                if (!stolbs[currentStolb].blocks[i].isFilled)
-                {
-                    if (stolbs[currentStolb].blocks[i].HaveRazlom)
-                    {
-                        int filling = stolbs[currentStolb].blocks[i].StolbToFill;
-                        for (int j = 0; j < stolbs[filling].blocks.Length; j++)
-                        {
-                            if(!stolbs[filling].blocks[j].isFilled)
-                            {
-                                if(stolbs[filling].blocks[j].isBlackBlock)
-                                {
-                                    CheckWichAnimOn(filling, 0);
-                                }
-                                else if(!blocksThatCanBeSucked.Contains( stolbs[filling].blocks[j]))
-                                {
-                                    CheckWichAnimOn(filling, 1);
-                                }
-                                else
-                                {
-                                    CheckWichAnimOn(filling, 2);
-                                }
-                                break;
-                            }
-                            
-                        }
-                    }
-                    break;
-                }
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Space) && allowedClicks)
-        {
+            if (Input.GetKeyDown(KeyCode.A))
+                if (currentStolb > 0)
+                    currentStolb--;
+            if (Input.GetKeyDown(KeyCode.D))
+                if (currentStolb < 3)
+                    currentStolb++;
             if (!stolbs[currentStolb].fullStolb)
             {
                 for (int i = 0; i < stolbs[currentStolb].blocks.Length; i++)
                 {
                     if (!stolbs[currentStolb].blocks[i].isFilled)
                     {
-                        //sound
-                        SoundRecorder.Play_Effect(pressedSound);
+                        if (stolbs[currentStolb].blocks[i].HaveRazlom)
+                        {
+                            int filling = stolbs[currentStolb].blocks[i].StolbToFill;
+                            for (int j = 0; j < stolbs[filling].blocks.Length; j++)
+                            {
+                                if (!stolbs[filling].blocks[j].isFilled)
+                                {
+                                    if (stolbs[filling].blocks[j].isBlackBlock)
+                                    {
+                                        CheckWichAnimOn(filling, 0);
+                                    }
+                                    else if (!blocksThatCanBeSucked.Contains(stolbs[filling].blocks[j]))
+                                    {
+                                        CheckWichAnimOn(filling, 1);
+                                    }
+                                    else
+                                    {
+                                        CheckWichAnimOn(filling, 2);
+                                    }
+                                    break;
+                                }
 
-                        CurrentMana = stolbs[currentStolb].blocks[i].FillBlock(CurrentMana);
+                            }
+                        }
                         break;
                     }
                 }
-                if (stolbs[currentStolb].blocks[stolbs[currentStolb].blocks.Length - 1].isFilled)
+            }
+            if (Input.GetKeyDown(KeyCode.Space) && allowedClicks)
+            {
+                if (!stolbs[currentStolb].fullStolb)
                 {
-                    stolbs[currentStolb].fullStolb = true;
+                    for (int i = 0; i < stolbs[currentStolb].blocks.Length; i++)
+                    {
+                        if (!stolbs[currentStolb].blocks[i].isFilled)
+                        {
+                            //sound
+                            SoundRecorder.Play_Effect(pressedSound);
+
+                            CurrentMana = stolbs[currentStolb].blocks[i].FillBlock(CurrentMana);
+                            break;
+                        }
+                    }
+                    if (stolbs[currentStolb].blocks[stolbs[currentStolb].blocks.Length - 1].isFilled)
+                    {
+                        stolbs[currentStolb].fullStolb = true;
+                        //sound
+                        SoundRecorder.Play_Effect(stolbFilled);
+                    }
+                }
+                else
+                {
                     //sound
-                    SoundRecorder.Play_Effect(stolbFilled);
+                    SoundRecorder.Play_Effect(pressedInFullStolb);
                 }
             }
-            else
+            pointer.position = new Vector2(transform.position.x + positionsForPointer[currentStolb].x,
+                transform.position.y + positionsForPointer[currentStolb].y);
+            GameEnded = CheckEnd();
+            if (GameEnded)
             {
                 //sound
-                SoundRecorder.Play_Effect(pressedInFullStolb);
+                SoundRecorder.Play_Effect(solvePuzzle);
+                Solve_Puzzle();
             }
         }
-        pointer.position = new Vector2(transform.position.x + positionsForPointer[currentStolb].x,
-            transform.position.y + positionsForPointer[currentStolb].y);
-        GameEnded = CheckEnd();
-        if (GameEnded)
+        else
         {
-            //sound
-            SoundRecorder.Play_Effect(solvePuzzle);
-            Solve_Puzzle();
-        }           
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                DisableTutor();
+            }
+        }
     }
-
+    public void DisableTutor()
+    {
+        PuzzleTutor.SetActive(false);
+        started = true;
+    }
 
     /// <summary>
     /// type 0 = заливка в черный блок

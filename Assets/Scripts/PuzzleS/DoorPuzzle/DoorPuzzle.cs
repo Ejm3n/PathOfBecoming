@@ -8,6 +8,7 @@ public class DoorPuzzleLine
     public SpriteRenderer leftSr;
     public SpriteRenderer rightSr;
     public bool IsActive = true;
+    
     public void DisableLine()
     {
         leftSr.enabled = false;
@@ -38,13 +39,16 @@ public class DoorPuzzle : Puzzle
     [SerializeField] private DoorPuzzleLine[] lines;
     [SerializeField] List<Sprite> sprites;
 
+    [SerializeField] GameObject PuzzleTutor;
+    private bool started = false;
+
     int correctAnswer;
     bool canPress = true;
     public bool FINISHED = false;
     private bool lastMove = false;
     private void OnEnable()
     {
-       
+        PuzzleTutor.SetActive(true);
         SoundRecorder.Play_Music(bgMusic);
         topPoint = begunok.GetMaxHeight();
         foreach (DoorPuzzleLine dpl in lines)
@@ -59,39 +63,54 @@ public class DoorPuzzle : Puzzle
     }
     private void Update()
     {
-        int answered = 0;
-        if (Input.GetKeyDown(KeyCode.Space) && canPress && !FINISHED)
+        if(started)
         {
-            Clicked();
-            canPress = false;
-        }
-        else if (Input.GetKeyDown(KeyCode.Space) && !canPress)
-        {
-            SoundRecorder.Play_Effect(emptyClick);
-        }
-        foreach (DoorPuzzleLine dpl in lines)
-        {
-            if (dpl.IsActive)
-                answered++;
-        }
-        if (answered == 0)
-            Solve_Puzzle();
-
-        if (begunok.GetCurrentHeight() == topPoint)
-        {
-            Debug.Log(begunok.NumberTimesWent);
-            //if(begunok.NumberTimesWent != 5-answered && !lastMove && begunok.AtTopPoint)
-            //{
-            //    OnLose();
-            //}
-            if (!lines[correctAnswer].IsActive)
+            int answered = 0;
+            if (Input.GetKeyDown(KeyCode.Space) && canPress && !FINISHED)
             {
-                RandomizeBegunokImage();
-                canPress = true;
+                Clicked();
+                canPress = false;
+            }
+            else if (Input.GetKeyDown(KeyCode.Space) && !canPress)
+            {
+                SoundRecorder.Play_Effect(emptyClick);
+            }
+            foreach (DoorPuzzleLine dpl in lines)
+            {
+                if (dpl.IsActive)
+                    answered++;
+            }
+            if (answered == 0)
+                Solve_Puzzle();
+
+            if (begunok.GetCurrentHeight() == topPoint)
+            {
+                Debug.Log(begunok.NumberTimesWent);
+                //if(begunok.NumberTimesWent != 5-answered && !lastMove && begunok.AtTopPoint)
+                //{
+                //    OnLose();
+                //}
+                if (!lines[correctAnswer].IsActive)
+                {
+                    RandomizeBegunokImage();
+                    canPress = true;
+                }
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                DisableTutor();
             }
         }
     }
 
+    public void DisableTutor()
+    {
+        PuzzleTutor.SetActive(false);
+        started = true;
+    }
     private void OnLose()
     {
         Debug.Log("lose");
