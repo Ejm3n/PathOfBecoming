@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using UnityEngine;
 using AnimationUtilsAsync.TransformUtils;
+using System.Collections;
 
 public class Spellbook : MonoBehaviour
 {
@@ -80,7 +81,11 @@ public class Spellbook : MonoBehaviour
     {
         chosenSpell.Cast(Engine.current.playerController.firePoint.position, _castAngle);
         Engine.current.playerController.spellDirection.gameObject.SetActive(false);
-        
+        if (Engine.current.playerController.buttonsControl is CastingHandler)
+        {
+            Engine.current.playerController.Change_Controls<UncontrollableHandler>();
+            StartCoroutine(Global_Cooldown());
+        }
     }
 
     public void Enable_Spellbook()
@@ -120,5 +125,12 @@ public class Spellbook : MonoBehaviour
         for (int i = 0; i < data.Length; i++)
             data[i] = Regex.Replace(spellList[i].name, "\\(Clone\\)", string.Empty);
         return new SpellBookData(data);
+    }
+
+    IEnumerator Global_Cooldown()
+    {
+        yield return new WaitForSeconds(0.2f);
+        if (Engine.current.playerController.buttonsControl is UncontrollableHandler)
+            Engine.current.playerController.Change_Controls<DefaultHandler>();
     }
 }
