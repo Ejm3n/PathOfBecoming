@@ -1,41 +1,39 @@
-﻿using System.Collections;
+
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-[RequireComponent(typeof(Health))]
-[RequireComponent(typeof(SpellCast))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IPlayerIndicator
 {
     public float speed;
     public float jumpForce;
     public Rigidbody2D fairyAnchor;
-
-    public float MoveInput;
+    public SpriteRenderer _indicator;
+    public Transform firePoint;
+    public Transform spellDirection;
+    public Animator animator;
     public Rigidbody2D rb { get; private set; }
-
-    public bool faceRight { get; private set; }
     public bool isGround { get; private set; }
     public float checkRadius;
     public LayerMask whatIsGround;
 
-    Health health;
+    public Collider2D Collider { get; set; }
+
+
+
+    public ControlHandler buttonsControl { get; private set; }
 
     public Vector3 lastCheckpoint { get; private set; }
 
     private int extraJump;
     public int ExtraJumpValue;
 
-    public void Initialise(Image healthBar, Button jump)
+    public void Initialise()
     {
-        health = GetComponent<Health>();
-        health.Initialise(healthBar);
-        jump.onClick.AddListener(OnJumpButton);
+        return;
     }
-
     public void Load_State(PlayerData data)
     {
-        health.Set_Health(data.hp);
         transform.position = data.lastCheckpoint.Convert_to_UnityVector();
         lastCheckpoint = transform.position;
     }
@@ -43,77 +41,75 @@ public class PlayerController : MonoBehaviour
     public PlayerData Save_State()
     {
         lastCheckpoint = transform.position;
-        return new PlayerData(SceneManager.GetActiveScene().buildIndex, new Vector3Serial(transform.position), health.Get_Health());
+        return new PlayerData(SceneManager.GetActiveScene().buildIndex, new Vector3Serial(transform.position));
+    }
+
+    private void Awake()
+    {
+        isGround = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
+        rb = GetComponent<Rigidbody2D>();
+        Collider = GetComponent<Collider2D>();
     }
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         extraJump = ExtraJumpValue;
-        faceRight = true;
+        lastCheckpoint = transform.position;
     }
 
-    private void FixedUpdate()
+    public void Jump()
     {
-        isGround = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
-       
-        rb.velocity = new Vector2(Joystick.axisX * speed, rb.velocity.y);
-
-        if (faceRight == false && Joystick.axisX > 0)
-        {
-            Flip();           
-        }
-        else if (faceRight == true && Joystick.axisX < 0)
-        {
-            Flip();           
-        }
-
         if (isGround == true)
-        {
             extraJump = ExtraJumpValue;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && extraJump > 0)
+        if (extraJump > 0)
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJump--;
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && extraJump == 0 && isGround == true)
+        else if (extraJump == 0 && isGround == true)
         {
             rb.velocity = Vector2.up * jumpForce;
         }
     }
 
-    public void Flip()
+    private void Update()
     {
-        faceRight = !faceRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
-    }
-    public void OnRightButtonDown()
-    {
-        MoveInput = 1;
-        
-    }
-    public void OnLeftButtonDown()
-    {
-        MoveInput = -1;
-        
-    }
-    public void OnButtonUp()
-    {
-        MoveInput = 0;
-    }
-    public void OnJumpButton()
-    {
-        if (isGround)
-            rb.velocity = Vector2.up * jumpForce;
-            
+        buttonsControl.Action();
+        isGround = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsGround);
     }
 
-    public void Last_Checkpoint()
+    public void Move(int direction, bool run)
     {
-        Engine.current.Last_Chekpoint(() => health.Heal(health.maxHealth));
+        float _currentSpeed = run ? speed * 3 : speed;
+        rb.velocity = new Vector2(direction * _currentSpeed, rb.velocity.y);
+    }
+
+    public void Change_Controls<T>() where T : ControlHandler, new()
+    {
+        buttonsControl = new T();
+    }
+
+    public void Die()
+    {
+        Engine.current.Last_Chekpoint();
+    }
+
+    public void Set_Indicator(Sprite indicator)
+    {
+        _indicator.sprite = indicator;
+    }
+
+    public void Hide_Indicator()
+    {
+        Color indicatorColor = _indicator.color;
+        indicatorColor.a = 0;
+        _indicator.color = indicatorColor;
+    }
+
+    public void Show_Indicator()
+    {
+        Color indicatorColor = _indicator.color;
+        indicatorColor.a = 1;
+        _indicator.color = indicatorColor;
     }
 }

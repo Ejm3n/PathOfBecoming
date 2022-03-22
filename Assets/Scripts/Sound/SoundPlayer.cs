@@ -6,7 +6,7 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField] AudioSource effectsSound;
     [SerializeField] AudioSource musicSound;
     [SerializeField] AudioSource ambientSound;
-
+    
     static public Queue<AudioClip> effectsQueue = new Queue<AudioClip>();
     static public Queue<AudioClip> musicQueue = new Queue<AudioClip>();
     static public Queue<AudioClip> ambientQueue = new Queue<AudioClip>();
@@ -22,7 +22,7 @@ public class SoundPlayer : MonoBehaviour
     {
         while (effectsQueue.Count > 0)
         {
-            effectsSound.PlayOneShot(effectsQueue.Dequeue(), Engine.current.gameSettings.soundSettings.effectsVolume);
+            effectsSound.PlayOneShot(effectsQueue.Dequeue(), Engine.current.gameSettings.soundSettings.effectsVolume * Engine.current.gameSettings.soundSettings.masterVolume);
         }
     }
 
@@ -33,8 +33,8 @@ public class SoundPlayer : MonoBehaviour
             musicSound.clip = musicQueue.Dequeue();
             musicSound.Play();
         }
-        if (musicSound.volume != Engine.current.gameSettings.soundSettings.musicVolume)
-            musicSound.volume = Engine.current.gameSettings.soundSettings.musicVolume;
+        //if (musicSound.volume != Engine.current.gameSettings.soundSettings.musicVolume)
+        //    musicSound.volume = Engine.current.gameSettings.soundSettings.musicVolume * Engine.current.gameSettings.soundSettings.masterVolume;
     }
 
     void Check_Ambient_Queue()
@@ -44,8 +44,8 @@ public class SoundPlayer : MonoBehaviour
             ambientSound.clip = ambientQueue.Dequeue();
             ambientSound.Play();
         }
-        if (ambientSound.volume != Engine.current.gameSettings.soundSettings.effectsVolume)
-            ambientSound.volume = Engine.current.gameSettings.soundSettings.effectsVolume;
+        if ( Engine.current != null&&ambientSound.volume != Engine.current.gameSettings.soundSettings.effectsVolume )
+            ambientSound.volume = Engine.current.gameSettings.soundSettings.effectsVolume * Engine.current.gameSettings.soundSettings.masterVolume;
     }
 
     public void Play_Effect(AudioClip clip)

@@ -3,11 +3,12 @@ using UnityEngine.Events;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    [SerializeField] protected int startNum;//строка с которой начать
-    [SerializeField] protected int endOfThisDia;//до какого числа диалог
+    [SerializeField] protected int dialogueNumber;//строка с которой начать
+    public static DialogueTrigger current;
     public UnityEvent onTrigger;
     public virtual void StartDialogue()
     {
-        transform.parent.GetComponent<DialogueSystem>().StartDialogue(startNum, endOfThisDia, onTrigger);
+        current = this;
+        Engine.current.dialogueSystem.StartDialogue(dialogueNumber, onTrigger);
     }
 }

@@ -9,13 +9,12 @@ public class ParallaxHandler : MonoBehaviour
     Vector3 target;
     Vector3 parallax;
 
-    public void Awake()
+    public void Start()
     {
         parallaxObject = Camera.main.transform;
-        transform.position = new Vector3(parallaxObject.position.x, parallaxObject.position.y, transform.position.z);
 
         target = new Vector3(parallaxObject.position.x, parallaxObject.position.y);
-        parallax = new Vector3(transform.position.x, transform.position.y);
+        parallax = new Vector3(target.x, target.y);
     }
 
     private void Update()
@@ -27,16 +26,13 @@ public class ParallaxHandler : MonoBehaviour
     void Move_Background()
     {
         target.x = parallaxObject.position.x;
-        target.y = parallaxObject.position.y;
-        parallax.x = transform.position.x;
-        parallax.y = transform.position.y;
 
         if (target == parallax)
             return;
         Vector3 delta = target - parallax;
         foreach (ParallaxBackground background in backgrounds)
             background.background.position -= delta * background.speed;
-        transform.position = new Vector3(parallaxObject.position.x, parallaxObject.position.y, transform.position.z);
+        parallax.x = target.x;
     }
 }
 

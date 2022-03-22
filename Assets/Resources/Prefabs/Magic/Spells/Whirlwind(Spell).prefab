@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6411870857116008755}
   - component: {fileID: 5488075388156747933}
   - component: {fileID: 1120855766748742010}
-  - component: {fileID: 2149316330867924415}
+  - component: {fileID: -7331192029685031956}
   m_Layer: 5
   m_Name: Whirlwind(Spell)
   m_TagString: Untagged
@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 2399206207193066888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 95, y: 95}
+  m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5488075388156747933
 CanvasRenderer:
@@ -65,8 +65,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2306e4c6aae839349bdc3d1b34cd56f3, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 3d5a93506cf3a464da90d30859548917, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2149316330867924415
+--- !u!114 &-7331192029685031956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,11 +84,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2399206207193066888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2e310e9f3658ab43b1100f7f7db6eee, type: 3}
+  m_Script: {fileID: 11500000, guid: c0181de118236ba489ef3b5eb6e2e2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manaCost: 25
   spellType: 0
   cooldown: 2
+  _onCast: {fileID: 8300000, guid: b214faa4989c37b4dbdb7c911b852c90, type: 3}
   projectile: {fileID: 2733221802868007067, guid: 437e2158ca2936f4fa77ba24f8db66be,
     type: 3}

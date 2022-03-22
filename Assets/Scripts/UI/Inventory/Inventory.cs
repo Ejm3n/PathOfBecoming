@@ -1,37 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using AnimationUtils.TransformUtils;
+using UnityEngine.UI;
+
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] Animator slotsAnim;
-    bool shown = false;
-    public Transform[] slots;
+    [SerializeField] private Transform _chosenItemPlace;
+    [SerializeField] private Transform _heapPlace;
+    [SerializeField] private ItemDescription _chosenItemDesc;
+    [SerializeField] Image _bagImage;
+    [SerializeField] Sprite _opened;
+    [SerializeField] Sprite _closed;
+
 
     List<Item> inventoryList = new List<Item>();
 
+    AudioClip _bagInteract;
+
+    Item _chosenItem;
+    public Item chosenItem 
+    { 
+        get => _chosenItem;
+        private set 
+        {
+            _chosenItem = value;
+            if (_chosenItem)
+                _chosenItemDesc.Set_Description(_chosenItem.description);
+            else
+                _chosenItemDesc.Hide_Description();
+        } 
+    }
+    private int _chosenItemIndex = 0;
+
     CanvasGroup inventoryCG;
+
+    bool _swap1 = false;
+    bool _swap2 = false;
+
+    bool _swapped
+    {
+        get { return _swap1 && _swap2; }
+        set
+        {
+            _swap1 = value;
+            _swap2 = value;
+        }
+    }
 
     private void Awake()
     {
         inventoryCG = GetComponent<CanvasGroup>();
-    }
-
-    public void ShowSlots()
-    {
-        shown = !shown;
-        slotsAnim.SetBool("SlotsShown", shown);
-    }
-
-    public void SlotDropped(int slotNum)  
-    {
-        foreach (Transform child in slots[slotNum])
-            Destroy(child.gameObject);
-    }
-
-    private void OnDisable()
-    {
-        slotsAnim.SetBool("SlotsShown", true);
-        shown = true;
+        _bagInteract = Resources.Load<AudioClip>("Sounds/Effects/bag");
     }
 
     public InventoryData SaveInvetnoryData()
@@ -66,12 +86,11 @@ public class Inventory : MonoBehaviour
             return true;
         }
 
-        if (inventoryList.Count >= slots.Length) //inventory is full
-            return false;
-
         //create new item in inventory
-        itemScript = Instantiate(item, slots[inventoryList.Count]).GetComponent<Item>();
+        itemScript = Instantiate(item, _heapPlace).GetComponent<Item>();
         itemScript.Initialise(this);
+        if (itemScript.item == Items.EyeOfHassle)
+            Engine.current.Collect_Eye_Of_Hassle((EyeOfHassle)itemScript);
         inventoryList.Add(itemScript);
         return true;
     }
@@ -86,9 +105,8 @@ public class Inventory : MonoBehaviour
         int itemIndex = Get_Item_Index(item);
         if (itemIndex == -1)
             return false;
+        Destroy(inventoryList[itemIndex].gameObject);
         inventoryList.RemoveAt(itemIndex);
-        SlotDropped(itemIndex);
-        Sort_Inventory();
         return true;
     }
 
@@ -102,9 +120,8 @@ public class Inventory : MonoBehaviour
         int itemIndex = Get_Item_Index_By_Type(type, force);
         if (itemIndex == -1)
             return false;
+        Destroy(inventoryList[itemIndex].gameObject);
         inventoryList.RemoveAt(itemIndex);
-        SlotDropped(itemIndex);
-        Sort_Inventory();
         return true;
     }
 
@@ -125,21 +142,69 @@ public class Inventory : MonoBehaviour
         return -1;
     }
 
-    void Sort_Inventory()
-    {
-        for (int i = 0; i < inventoryList.Count; i++)
-        {
-            Transform item = inventoryList[i].gameObject.transform;
-            item.SetParent(slots[i]);
-            item.localPosition = Vector3.zero;
-        }
-    }
-
     public void Enable_Inventory()
     {
         inventoryCG.alpha = 1;
         inventoryCG.blocksRaycasts = true;
         inventoryCG.interactable = true;
-        Engine.current.dialogueSystem.canUseInventory = true;
+    }
+
+    public void Scroll_Inventory(int direction)
+    {
+        int items = inventoryList.Count;
+        if (items == 0)
+        {
+            _chosenItemIndex = 0;
+            chosenItem = null;
+            return;
+        }
+        else if (items == 1)
+        {
+            return;
+        }
+        if (!_swapped)
+        return;
+
+        _swapped = false;
+        chosenItem.transform.Move_To(_heapPlace.position, 0.1f,  true, () => _swap1 = true);
+        _chosenItemIndex += direction;
+        if (_chosenItemIndex >= inventoryList.Count)
+            _chosenItemIndex -= inventoryList.Count;
+        else if (_chosenItemIndex < 0)
+            _chosenItemIndex += inventoryList.Count;
+        chosenItem = inventoryList[_chosenItemIndex];
+        chosenItem.transform.Move_To(_chosenItemPlace.position, 0.1f, true, () => _swap2 = true);
+    }
+
+    public void Open_Inventory()
+    {
+        if (inventoryList.Count == 0 || !inventoryCG.interactable)
+            return;
+        _bagImage.sprite = _opened;
+        _chosenItemIndex = 0;
+        chosenItem = inventoryList[_chosenItemIndex];
+        chosenItem.transform.Move_To(_chosenItemPlace.position, 0.1f, true, () => _swapped = true);
+        Engine.current.playerController.Change_Controls<InventoryHandler>();
+        SoundRecorder.Play_Effect(_bagInteract);
+
+        //animator
+        Engine.current.playerController.animator.SetTrigger("OpenedBag");
+    }
+
+    public void Close_Inventory()
+    {
+        if (!_swapped)
+            return;
+        SoundRecorder.Play_Effect(_bagInteract);
+        _bagImage.sprite = _closed;
+        chosenItem.transform.Move_To(_heapPlace.position, 0.1f, true, () => _swapped = true);
+        _chosenItemDesc.Hide_Description();
+        if (Engine.current.playerController.buttonsControl is InventoryHandler)
+            Engine.current.playerController.Change_Controls<DefaultHandler>();
+        chosenItem = null;
+        _swapped = false;
+
+        //animator
+        Engine.current.playerController.animator.SetTrigger("ClosedBag");
     }
 }

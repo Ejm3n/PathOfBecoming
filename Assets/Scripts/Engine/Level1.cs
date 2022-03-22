@@ -2,9 +2,6 @@
 
 public class Level1 : Engine
 {
-    [Header("Other")]
-    [SerializeField] GameObject startDialog;
-
     const string LEVEL1MUSIC = "Sounds/Music/ForestTheme";
     const string LEVEL1AMBIENT = "Sounds/Effects/forestambient";
 
@@ -19,6 +16,9 @@ public class Level1 : Engine
     protected override void Start_Level()
     {
         Spawn_Characters();
-        Show_Scene(() => startDialog.SetActive(true));
+        Show_Scene(() => {
+            if (startDialog != null)
+                startDialog.SetActive(true);
+        });
     }
 }

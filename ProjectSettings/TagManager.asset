@@ -12,6 +12,7 @@ TagManager:
   - Spell
   - Wind
   - Hp
+  - CaveRocks
   layers:
   - Default
   - TransparentFX
@@ -35,7 +36,7 @@ TagManager:
   - 
   - Puzzle
   - PuzzleSegment
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -48,6 +49,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Back
+    uniqueID: 757348637
     locked: 0
   - name: Middle
     uniqueID: 1163533025

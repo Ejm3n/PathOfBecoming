@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public abstract class Item : MonoBehaviour
 {
     [SerializeField] Text countText;
+    public string description;
+    public Items item;
 
     protected Inventory inventory;
 
@@ -25,6 +27,11 @@ public abstract class Item : MonoBehaviour
         this.amount = amount;
         this.stack = stack;
         Show_Amount();
+    }
+
+    public virtual void Use()
+    {
+        Remove_From_Stack();
     }
 
     protected void Show_Amount()
@@ -62,4 +69,9 @@ public abstract class Item : MonoBehaviour
     {
         return new ItemData(Regex.Replace(gameObject.name, "\\(Clone\\)", string.Empty), amount, stack);
     }
+}
+
+public enum Items
+{
+    Text, Book, SmallKey, MediumKey, EpicKey, EmptyVessel, FilledVessel, Special1, Special2, Stackable, EyeOfHassle, Stool, Icicle
 }

@@ -41,6 +41,13 @@ namespace AnimationUtils
                     return loader.Start_Change_Transparency(renderer, false, timeToFade, timeScale, onComplete);
                 return renderer.gameObject.AddComponent<CoroutineLoader>().Start_Change_Transparency(renderer, false, timeToFade, timeScale, onComplete);
             }
+
+            public static Coroutine Change_Colour(this SpriteRenderer renderer, Color colorTo, float timeToChange)
+            {
+                if (renderer.gameObject.TryGetComponent(out CoroutineLoader loader))
+                    return loader.Start_Gradient(renderer, colorTo, timeToChange);
+                return renderer.gameObject.AddComponent<CoroutineLoader>().Start_Gradient(renderer, colorTo, timeToChange);
+            }
         }
     }
 
@@ -82,6 +89,44 @@ namespace AnimationUtils
         }
     }
 
+    namespace TextUtils
+    {
+        public static class TextUtils
+        {
+            public static Coroutine Fade(this Text text, float timeToFade, bool timeScale = true)
+            {
+                text.color = new Color(text.color.r, text.color.g, text.color.b, 1);
+                if (text.gameObject.TryGetComponent(out CoroutineLoader loader))
+                    return loader.Start_Change_Transparency(text, true, timeToFade, timeScale);
+                return text.gameObject.AddComponent<CoroutineLoader>().Start_Change_Transparency(text, true, timeToFade, timeScale);
+            }
+
+            public static Coroutine Fade(this Text text, float timeToFade, Action onComplete, bool timeScale = true)
+            {
+                text.color = new Color(text.color.r, text.color.g, text.color.b, 1);
+                if (text.gameObject.TryGetComponent(out CoroutineLoader loader))
+                    return loader.Start_Change_Transparency(text, true, timeToFade, timeScale, onComplete);
+                return text.gameObject.AddComponent<CoroutineLoader>().Start_Change_Transparency(text, true, timeToFade, timeScale, onComplete);
+            }
+
+            public static Coroutine Unfade(this Text text, float timeToFade, bool timeScale = true)
+            {
+                text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
+                if (text.gameObject.TryGetComponent(out CoroutineLoader loader))
+                    return loader.Start_Change_Transparency(text, false, timeToFade, timeScale);
+                return text.gameObject.AddComponent<CoroutineLoader>().Start_Change_Transparency(text, false, timeToFade, timeScale);
+            }
+
+            public static Coroutine Unfade(this Text text, float timeToFade, Action onComplete, bool timeScale = true)
+            {
+                text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
+                if (text.gameObject.TryGetComponent(out CoroutineLoader loader))
+                    return loader.Start_Change_Transparency(text, false, timeToFade, timeScale, onComplete);
+                return text.gameObject.AddComponent<CoroutineLoader>().Start_Change_Transparency(text, false, timeToFade, timeScale, onComplete);
+            }
+        }
+    }
+
     namespace TransformUtils
     {
         public static class TransformUtils
@@ -106,11 +151,19 @@ namespace AnimationUtils
                     return loader.Start_Slide(obj, target, timeToSlide, timeScale, onComplete);
                 return obj.gameObject.AddComponent<CoroutineLoader>().Start_Slide(obj, target, timeToSlide, timeScale, onComplete);
             }
+            public static Coroutine Move_To(this Transform obj, Vector3 target, float timeToSlide, bool waitslide = true, Action onComplete = null, bool timeScale = true)
+            {
+                if (obj.gameObject.TryGetComponent(out CoroutineLoader loader))
+                    return loader.Start_Slide(obj, target, timeToSlide, timeScale, onComplete, waitslide);
+                return obj.gameObject.AddComponent<CoroutineLoader>().Start_Slide(obj, target, timeToSlide, timeScale, onComplete, waitslide);
+            }
         }
     }
 
     public class CoroutineLoader : MonoBehaviour
     {
+        const float EPS = 0.001f;
+        
         #region Change_Transparency
 
         Coroutine transparencyRendererCoroutine;
@@ -155,6 +208,30 @@ namespace AnimationUtils
             while (image.color.a != alpha)
             {
                 image.color = new Color(image.color.r, image.color.g, image.color.b, Mathf.Clamp(image.color.a + iter * timetoWait, 0, 1));
+                if (timeScale)
+                    yield return new WaitForSeconds(timetoWait);
+                else
+                    yield return new WaitForSecondsRealtime(timetoWait);
+            }
+            onComplete?.Invoke();
+        }
+
+        public Coroutine Start_Change_Transparency(Text text, bool makeTransparent, float processTime, bool timeScale = true, Action onComplete = null)
+        {
+            if (transparencyImageCoroutine != null)
+                StopCoroutine(transparencyImageCoroutine);
+            transparencyImageCoroutine = StartCoroutine(Change_Transparency(text, makeTransparent, processTime, timeScale, onComplete));
+            return transparencyImageCoroutine;
+        }
+
+        IEnumerator Change_Transparency(Text text, bool makeTransparent, float processTime, bool timeScale = true, Action onComplete = null)
+        {
+            float alpha = makeTransparent ? 0 : 1;
+            float timetoWait = timeScale ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime;
+            float iter = (alpha - text.color.a) / processTime;
+            while (text.color.a != alpha)
+            {
+                text.color = new Color(text.color.r, text.color.g, text.color.b, Mathf.Clamp(text.color.a + iter * timetoWait, 0, 1));
                 if (timeScale)
                     yield return new WaitForSeconds(timetoWait);
                 else
@@ -221,30 +298,64 @@ namespace AnimationUtils
         #region Slide
 
         bool sliding = false;
-        public Coroutine Start_Slide(Transform transform, Vector3 target, float processTime, bool timeScale = true, Action onComplete = null)
+        Coroutine slidingCoroutine;
+        public Coroutine Start_Slide(Transform transform, Vector3 target, float processTime, bool timeScale = true, Action onComplete = null, bool waitslide = true)
         {
-            if (sliding)
+            if (sliding && waitslide)
                 return null;
-            return StartCoroutine(Slide(transform, target, processTime, timeScale, onComplete));
+            if (slidingCoroutine != null)
+                StopCoroutine(slidingCoroutine);
+            slidingCoroutine = StartCoroutine(Slide(transform, target, processTime, timeScale, onComplete));
+            return slidingCoroutine;
         }
 
         IEnumerator Slide(Transform transform, Vector3 target, float processTime, bool timeScale = true, Action onComplete = null)
         {
             sliding = true;
-            const float EPS = 0.0001f;
             float timetoWait = timeScale ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime;
             Vector3 iter = (target - transform.position) / processTime;
-            while((target - transform.position).sqrMagnitude > EPS)
+            float _startTime = timeScale ? Time.time : Time.unscaledTime;
+            float _currentTime;
+            while (Mathf.Abs(target.sqrMagnitude - transform.position.sqrMagnitude) > EPS)
             {
                 transform.position += iter * timetoWait;
-                if (timeScale)
-                    yield return new WaitForSeconds(timetoWait);
-                else
-                    yield return new WaitForSecondsRealtime(timetoWait);
+                yield return null;
+                _currentTime = timeScale ? Time.time : Time.unscaledTime;
+                if ((_currentTime - _startTime) >= processTime * 1.1f)
+                    break;
             }
+            transform.position = target;
             onComplete?.Invoke();
             sliding = false;
         }
-        #endregion
+        #endregion Slide
+
+        #region Gradient
+        Coroutine gradientCoroutine;
+
+        public Coroutine Start_Gradient(SpriteRenderer renderer, Color colorTo, float processTime)
+        {
+            if (gradientCoroutine != null)
+                StopCoroutine(gradientCoroutine);
+            gradientCoroutine = StartCoroutine(Gradient(renderer, colorTo, processTime));
+            return gradientCoroutine;
+        }
+
+        IEnumerator Gradient(SpriteRenderer renderer, Color colorTo, float processTime)
+        {
+            float red = (colorTo.r - renderer.color.r) / processTime;
+            float green = (colorTo.g - renderer.color.g) / processTime;
+            float blue = (colorTo.b - renderer.color.b) / processTime;
+            while (Mathf.Abs(renderer.color.r - colorTo.r) > EPS &&
+                   Mathf.Abs(renderer.color.g - colorTo.g) > EPS &&
+                   Mathf.Abs(renderer.color.b - colorTo.b) > EPS)
+            {
+                renderer.color = new Color(renderer.color.r + (red * Time.deltaTime),
+                                           renderer.color.g + (green * Time.deltaTime),
+                                           renderer.color.b + (blue * Time.deltaTime));
+                yield return null;
+            }
+        }
+        #endregion Gradient
     }
 }
