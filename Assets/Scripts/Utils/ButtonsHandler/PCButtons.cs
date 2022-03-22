@@ -21,6 +21,8 @@ namespace PlayerControls
 
         public static KeyCode HELP = KeyCode.F1;
 
+        public static KeyCode PAUSE = KeyCode.Escape;
+
         public static int xAxisRaw
         {
             get

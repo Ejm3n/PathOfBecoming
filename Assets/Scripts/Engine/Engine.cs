@@ -16,6 +16,7 @@ public abstract class Engine : MonoBehaviour
     [SerializeField] protected Interface userInterface;
     [SerializeField] CinemachineVirtualCamera playerCamera;
     [SerializeField] CinemachineVirtualCamera examineCamera;
+    [SerializeField] private GameObject pausePanel;
     public DialogueSystem dialogueSystem;
     public PuzzleController puzzleController;
     public GameSettings gameSettings;
@@ -277,5 +278,31 @@ public abstract class Engine : MonoBehaviour
         yield return new WaitForSeconds(timeToShake);
         noise.m_AmplitudeGain = 0;
         playerController.Change_Controls<DefaultHandler>();
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        pausePanel.SetActive(true);
+    }
+
+    public void Continue()
+    {
+        Time.timeScale = 1;
+        pausePanel.SetActive(false);
+    }
+
+    public void Restart()
+    {
+        pausePanel.SetActive(false);
+        Time.timeScale = 1;
+        playerController.Die();
+    }
+
+    public void Main_Menu()
+    {
+        Time.timeScale = 1;
+        pausePanel.SetActive(false);
+        Hide_Scene(() => SceneManager.LoadScene(0));
     }
 }
